@@ -17,11 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.backend.GetServerInfo;
@@ -70,7 +65,6 @@ public class ResourcesActivity extends CABaseActivity {
 //    private WebView webView;
     private Button bPaypal;
     private Button bViewAd;
-    InterstitialAd mInterstitialAd;
     private boolean viewAd;
     private View adProgress;
 
@@ -172,29 +166,6 @@ public class ResourcesActivity extends CABaseActivity {
         UIUtils.setUpCard(aDRMB, 0);
         UIUtils.setUpCard(aAP, 0);
         UIUtils.setUpCard(aWoWsReplays, 0);
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(!CAApp.DEVELOPMENT_MODE ? getString(R.string.ad_unit_id) : getString(R.string.test_ad_unit_id));
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                adProgress.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mInterstitialAd.show();
-                adProgress.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                super.onAdFailedToLoad(errorCode);
-                adProgress.setVisibility(View.GONE);
-            }
-        });
 
         getSwipeBackLayout().setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
     }
@@ -376,11 +347,6 @@ public class ResourcesActivity extends CABaseActivity {
     }
 
     private void requestNewInterstitial() {
-        adProgress.setVisibility(View.VISIBLE);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mInterstitialAd.loadAd(adRequest);
-        viewAd = false;
     }
 
     private void createServer(Server s) {

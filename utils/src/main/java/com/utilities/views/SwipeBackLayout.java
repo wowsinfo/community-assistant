@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.utilities.R;
+import com.half.utils.R;
 import com.utilities.swipeback.ViewDragHelper;
 
 import java.util.ArrayList;

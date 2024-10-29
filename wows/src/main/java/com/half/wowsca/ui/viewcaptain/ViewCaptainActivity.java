@@ -197,67 +197,65 @@ public class ViewCaptainActivity extends CABaseActivity implements ICaptain {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        Intent i = null;
-        switch (id) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-            case R.id.action_refresh:
-                if (CaptainManager.fromSearch(getApplicationContext(), server, id)) {
-                    CaptainManager.deleteTemp(getApplicationContext());
+
+        if (id == android.R.id.home) {
+            onBackPressed();
+
+        } else if (id == R.id.action_refresh) {
+            if (CaptainManager.fromSearch(getApplicationContext(), server, id)) {
+                CaptainManager.deleteTemp(getApplicationContext());
+            }
+            FORCE_REFRESH = true;
+            CAApp.getEventBus().post(new RefreshEvent(false));
+            initView();
+
+        } else if (id == R.id.action_captains) {
+            UIUtils.createCaptainListViewMenu(this, CaptainManager.createCapIdStr(server, this.id));
+
+        } else if (id == R.id.action_bookmark) {
+            String selectedId = CAApp.getSelectedId(getApplicationContext());
+            AddRemoveCaptainEvent event = new AddRemoveCaptainEvent();
+            if (!CaptainManager.createCapIdStr(server, this.id).equals(selectedId)) {
+                if (CaptainManager.getCaptains(getApplicationContext()).get(this.id) == null) {
+                    CaptainManager.saveCaptain(getApplicationContext(), getCaptain(getApplicationContext()));
                 }
+                event.setRemoved(false);
+                CAApp.setSelectedId(getApplicationContext(), CaptainManager.createCapIdStr(server, this.id));
                 FORCE_REFRESH = true;
-                CAApp.getEventBus().post(new RefreshEvent(false));
-                initView();
-                break;
-            case R.id.action_captains:
-                UIUtils.createCaptainListViewMenu(this, CaptainManager.createCapIdStr(server, this.id));
-                break;
-            case R.id.action_bookmark:
-                String selectedId = CAApp.getSelectedId(getApplicationContext());
-                AddRemoveCaptainEvent event = new AddRemoveCaptainEvent();
-                if (!CaptainManager.createCapIdStr(server, this.id).equals(selectedId)) {
-                    if (CaptainManager.getCaptains(getApplicationContext()).get(this.id) == null) {
-                        CaptainManager.saveCaptain(getApplicationContext(), getCaptain(getApplicationContext()));
-                    }
-                    event.setRemoved(false);
-                    CAApp.setSelectedId(getApplicationContext(), CaptainManager.createCapIdStr(server, this.id));
-                    FORCE_REFRESH = true;
-                    invalidateOptionsMenu();
+                invalidateOptionsMenu();
+            } else {
+                event.setRemoved(true);
+                CaptainManager.removeCaptain(getApplicationContext(), CaptainManager.createCapIdStr(server, this.id));
+                CAApp.setSelectedId(getApplicationContext(), null);
+            }
+            CAApp.getEventBus().post(event);
+
+        } else if (id == R.id.action_save) {
+            Map<String, Captain> captains = CaptainManager.getCaptains(getApplicationContext());
+            Captain captain = getCaptain(getApplicationContext());
+            if (captain != null) {
+                AddRemoveEvent e = new AddRemoveEvent();
+                e.setCaptain(captain);
+                if (captains.get(CaptainManager.getCapIdStr(captain)) == null) {
+                    e.setRemove(false);
+                    Toast.makeText(getApplicationContext(), captain.getName() + " " + getString(R.string.list_clan_added_message), Toast.LENGTH_SHORT).show();
                 } else {
-                    event.setRemoved(true);
-                    CaptainManager.removeCaptain(getApplicationContext(), CaptainManager.createCapIdStr(server, this.id));
-                    CAApp.setSelectedId(getApplicationContext(), null);
+                    e.setRemove(true);
+                    Toast.makeText(getApplicationContext(), captain.getName() + " " + getString(R.string.list_clan_removed_message), Toast.LENGTH_SHORT).show();
                 }
-                CAApp.getEventBus().post(event);
-                break;
-            case R.id.action_save:
-                Map<String, Captain> captains = CaptainManager.getCaptains(getApplicationContext());
-                Captain captain = getCaptain(getApplicationContext());
-                if(captain != null) {
-                    AddRemoveEvent e = new AddRemoveEvent();
-                    e.setCaptain(captain);
-                    if (captains.get(CaptainManager.getCapIdStr(captain)) == null) {
-                        e.setRemove(false);
-                        Toast.makeText(getApplicationContext(), captain.getName() + " " + getString(R.string.list_clan_added_message), Toast.LENGTH_SHORT).show();
-                    } else {
-                        e.setRemove(true);
-                        Toast.makeText(getApplicationContext(), captain.getName() + " " + getString(R.string.list_clan_removed_message), Toast.LENGTH_SHORT).show();
-                    }
-                    CAApp.getEventBus().post(e);
-                } else {
-                    Toast.makeText(getApplicationContext(), R.string.crap_contact_me, Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case R.id.action_warships_today:
-                Captain captain2 = getCaptain(getApplicationContext());
-                if(captain2 != null) {
-                    String url = "http://" + captain2.getServer().getWarshipsToday() + ".warships.today/player/" + captain2.getId() + "/" + captain2.getName();
-                    Intent i2 = new Intent(Intent.ACTION_VIEW);
-                    i2.setData(Uri.parse(url));
-                    startActivity(i2);
-                }
-                break;
+                CAApp.getEventBus().post(e);
+            } else {
+                Toast.makeText(getApplicationContext(), R.string.crap_contact_me, Toast.LENGTH_SHORT).show();
+            }
+
+        } else if (id == R.id.action_warships_today) {
+            Captain captain2 = getCaptain(getApplicationContext());
+            if (captain2 != null) {
+                String url = "http://" + captain2.getServer().getWarshipsToday() + ".warships.today/player/" + captain2.getId() + "/" + captain2.getName();
+                Intent i2 = new Intent(Intent.ACTION_VIEW);
+                i2.setData(Uri.parse(url));
+                startActivity(i2);
+            }
         }
         return super.onOptionsItemSelected(item);
     }

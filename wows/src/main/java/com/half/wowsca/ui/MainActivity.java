@@ -1,5 +1,6 @@
 package com.half.wowsca.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,11 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.half.wowsca.CAApp;
 import com.half.wowsca.NumberVault;
 import com.half.wowsca.R;
@@ -63,8 +59,6 @@ public class MainActivity extends CABaseActivity implements ICaptain {
 
     private Drawer drawer;
 
-    InterstitialAd mInterstitialAd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,26 +73,6 @@ public class MainActivity extends CABaseActivity implements ICaptain {
 
 //        ivKarma = (ImageView) findViewById(R.id.toolbar_icon);
 //        tvKarma = (TextView) findViewById(R.id.toolbar_text);
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(!CAApp.DEVELOPMENT_MODE ? getString(R.string.ad_unit_id) : getString(R.string.test_ad_unit_id));
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mInterstitialAd.show();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                super.onAdFailedToLoad(errorCode);
-            }
-        });
 
         setSupportActionBar(mToolbar);
 
@@ -378,45 +352,48 @@ public class MainActivity extends CABaseActivity implements ICaptain {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id) {
-            case R.id.action_refresh:
-                FORCE_REFRESH = true;
-                CAApp.getEventBus().post(new RefreshEvent(false));
-                initView();
-                break;
-            case R.id.action_bookmark:
-                CAApp.setSelectedId(getApplicationContext(), null);
-                selectedId = null;
-                initView();
-                invalidateOptionsMenu();
-                break;
-            case R.id.action_save:
-                Map<String, Captain> captains = CaptainManager.getCaptains(getApplicationContext());
-                Captain captain = captains.get(selectedId);
-                if (captain != null) {
-                    AddRemoveEvent event = new AddRemoveEvent();
-                    event.setCaptain(captain);
-                    event.setRemove(true);
-                    Toast.makeText(getApplicationContext(), captain.getName() + " " + getString(R.string.list_clan_removed_message), Toast.LENGTH_SHORT).show();
-                    CAApp.getEventBus().post(event);
-                }
-                break;
-            case R.id.action_view_ad:
-                Intent i = new Intent(getApplicationContext(), ResourcesActivity.class);
-                i.putExtra(ResourcesActivity.EXTRA_TYPE, ResourcesActivity.EXTRA_DONATE);
-                i.putExtra(ResourcesActivity.EXTRA_VIEW_AD, true);
-                startActivity(i);
-                break;
-            case R.id.action_warships_today:
-                Captain captain2 = getCaptain(getApplicationContext());
-                if(captain2 != null) {
-                    String url = "http://"+captain2.getServer().getWarshipsToday()+".warships.today/player/" + captain2.getId() + "/" + captain2.getName();
-                    Intent i2 = new Intent(Intent.ACTION_VIEW);
-                    i2.setData(Uri.parse(url));
-                    startActivity(i2);
-                }
-                break;
+
+        if (id == R.id.action_refresh) {
+            FORCE_REFRESH = true;
+            CAApp.getEventBus().post(new RefreshEvent(false));
+            initView();
+
+        } else if (id == R.id.action_bookmark) {
+            CAApp.setSelectedId(getApplicationContext(), null);
+            selectedId = null;
+            initView();
+            invalidateOptionsMenu();
+
+        } else if (id == R.id.action_save) {
+            Map<String, Captain> captains = CaptainManager.getCaptains(getApplicationContext());
+            Captain captain = captains.get(selectedId);
+            if (captain != null) {
+                AddRemoveEvent event = new AddRemoveEvent();
+                event.setCaptain(captain);
+                event.setRemove(true);
+                Toast.makeText(getApplicationContext(), captain.getName() + " " + getString(R.string.list_clan_removed_message), Toast.LENGTH_SHORT).show();
+                CAApp.getEventBus().post(event);
+            }
+
+        } else if (id == R.id.action_view_ad) {
+            Intent i = new Intent(getApplicationContext(), ResourcesActivity.class);
+            i.putExtra(ResourcesActivity.EXTRA_TYPE, ResourcesActivity.EXTRA_DONATE);
+            i.putExtra(ResourcesActivity.EXTRA_VIEW_AD, true);
+            startActivity(i);
+
+        } else if (id == R.id.action_warships_today) {
+            Captain captain2 = getCaptain(getApplicationContext());
+            if (captain2 != null) {
+                String url = "http://" + captain2.getServer().getWarshipsToday() + ".warships.today/player/" + captain2.getId() + "/" + captain2.getName();
+                Intent i2 = new Intent(Intent.ACTION_VIEW);
+                i2.setData(Uri.parse(url));
+                startActivity(i2);
+            }
+
+        } else {
+            throw new IllegalStateException("Unexpected value: " + id);
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -500,8 +477,5 @@ public class MainActivity extends CABaseActivity implements ICaptain {
     }
 
     private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mInterstitialAd.loadAd(adRequest);
     }
 }

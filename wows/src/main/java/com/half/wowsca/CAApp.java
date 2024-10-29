@@ -12,6 +12,7 @@ import com.half.wowsca.managers.InfoManager;
 import com.half.wowsca.model.enums.Server;
 import com.half.wowsca.model.enums.ShortcutRoutes;
 import com.half.wowsca.ui.SettingActivity;
+import com.squareup.picasso.BuildConfig;
 import com.utilities.logging.Dlog;
 import com.utilities.preferences.Prefs;
 
