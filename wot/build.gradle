@@ -17,6 +17,7 @@ repositories {
 }
 
 android {
+    namespace "com.half.wotca"
     signingConfigs {
         debug {
             storeFile file('E:/wotca/debug.keystore')

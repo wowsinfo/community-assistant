@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         google()
     }
 }
@@ -13,6 +12,8 @@ repositories {
 }
 
 android {
+    namespace "com.half.wowsca"
+
     signingConfigs {
         debug {
         }

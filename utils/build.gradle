@@ -3,13 +3,14 @@ apply plugin: 'com.android.library'
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         google()
     }
 }
 
 
 android {
+
+    namespace "com.half.utils"
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
 
