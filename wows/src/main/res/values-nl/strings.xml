@@ -11,7 +11,6 @@
 
     <string name="action_settings">Instellingen</string>
 
-    <string name="action_search">Zoeken</string>
     <string name="action_captains">Kapiteins</string>
     <string name="action_refresh">Verversen</string>
     <string name="welcome">Welkom</string>
@@ -44,19 +43,14 @@
     <string name="action_shipopedia">Shipopedia</string>
     <string name="action_websites">Handige Websites</string>
     <string name="action_twitch">Twitch &amp; Youtube Sterren</string>
-    <string name="action_youtubers">Behulpzame Youtubers</string>
     <string name="action_donate">Ondersteun de App</string>
     <string name="drawer_search">Zoek &amp; Vergelijk</string>
     <string name="drawer_captains">Kapiteins</string>
     <string name="encyclopedia_average_damage">Gemiddelde Schade</string>
     <string name="encyclopedia_winrate">Winratios</string>
     <string name="encyclopedia_kills">Gemiddeld vijanden vernietigd</string>
-    <string name="encyclopedia_survival_rate">Overlevingsratio</string>
     <string name="encyclopedia_tier_start">Niveau </string>
     <string name="encyclopedia_tier_end"> Statistieken</string>
-    <string name="encyclopedia_survived_wins">Overlevingsratio met overwinningen</string>
-    <string name="encyclopedia_average_xp">Gemiddelde Ervaring</string>
-    <string name="encyclopedia_games_count">Spellen gespeeld</string>
     <string name="encyclopedia_survivability">Overlevingskansen</string>
     <string name="encyclopedia_artillery">Artillerie</string>
     <string name="encyclopedia_torps">Torpedo\'s</string>
@@ -83,7 +77,6 @@
     <string name="encyclopedia_num_planes"># Vliegtuigen</string>
     <string name="encyclopedia_rudder_time">Roer draaitijd</string>
     <string name="encyclopedia_turning_radius">Draaicircel</string>
-    <string name="encyclopedia_top_configuration">Standaard configuratie statistieken (Dit wordt binnenkort aangepast)</string>
     <string name="encyclopedia_average_stats">Gemiddelde Gevechts Statistieken</string>
     <string name="damage">Schade</string>
     <string name="win_rate">Winratio</string>
@@ -91,9 +84,7 @@
     <string name="planes_downed_game">Vliegtuigen Neergehaald / Spel</string>
     <string name="captures_game">Veroverd / Spel</string>
     <string name="def_reset_game">Def gereset / Spel</string>
-    <string name="xp">Erv</string>
     <string name="survival_rate">Overlevingsratio</string>
-    <string name="powered_by_warshipstats">Mogelijk gemaakt door Warshipstats.com</string>
     <string name="encyclopedia_upgrades">Beschikbare Upgrades</string>
     <string name="encyclopedia_next_ship">Volgend Schip</string>
     <string name="price_not_known">Prijs onbekend</string>
@@ -102,8 +93,6 @@
     <string name="encyclopedia_tb_torp_speed">TB Torpedo snelheid</string>
     <string name="encyclopedia_tb_prep_time">TB voorbereidingstijd</string>
     <string name="encyclopedia_tb_torp_dam">TB Torpedo Schade</string>
-    <string name="encyclopedia_tb_torp">TB Torpedo reikweidte</string>
-    <string name="encyclopedia_num_squadrons"># Squadrons</string>
     <string name="encyclopedia_db_prep_time">DB voorbereidingstijd</string>
     <string name="encyclopedia_db_damage">DB Schade</string>
     <string name="encyclopedia_ship_not_found">Fout op pagina. Kon scheepsID niet vinden</string>
@@ -142,7 +131,6 @@
     <string name="settings_stats_graphs"><![CDATA[Statistieken &\n Grafieken]]></string>
     <string name="shipsHolder">Schepen</string>
     <string name="settings_att">Toewijzing</string>
-    <string name="captain_save_captain">Sla kapitein op</string>
     <string name="average_experience">Gemiddelde Ervaring</string>
     <string name="captain_first_details">Hoe meer gevechten je speelt, hoe meer deze grafiek zich uitbreidt</string>
     <string name="games_by_tier">Spellen per Niveau</string>
@@ -169,7 +157,6 @@
     <string name="ramming">Rammen</string>
     <string name="delete">Verwijder</string>
     <string name="armament_use">Gebruik bewapening</string>
-    <string name="list_ship_average_title">Jouw scheepsstatistieken / Gemiddelde scheepsstatistieken</string>
     <string name="max_kills">Max vijanden vernietigd</string>
     <string name="max_damage">Max Schade</string>
     <string name="max_planes_killed">Max Vliegtuigen neergeschoten</string>
@@ -178,11 +165,9 @@
     <string name="kills_game">Vernietigd / Spel</string>
     <string name="caps_game">Veroveringen / Spel</string>
     <string name="survived_wins">Overleefde \noverwinningen</string>
-    <string name="average_xp">Gemiddeld XP</string>
     <string name="short_kills_game">Vernietigd/Spel</string>
     <string name="short_win_rate">Winratio</string>
     <string name="short_cap_points">Veroverd/Spel</string>
-    <string name="short_def_reset">Def gereset/Spel</string>
     <string name="short_planes_game">Vliegtuigen/Spel</string>
     <string name="baseline">100 is Basisuitgangspunt</string>
     <string name="save_captain">Sla Kapitein op</string>
@@ -200,7 +185,6 @@
     <string name="live">LIVE</string>
     <string name="offline">OFFLINE</string>
     <string name="action_server_info">Server Info</string>
-    <string name="resources_powered_by">Deze app is mogelijk gemaakt door Warshipstats.com</string>
     <string name="premium_ship_stats">Premium statistieken</string>
     <string name="dialog_assist_title">Help de ontwikkelaar van deze app</string>
     <string name="dialog_review_app">Heb je deze app al een recensie gegeven?</string>
@@ -215,7 +199,6 @@
     <string name="yes">Ja</string>
     <string name="dialog_assist_message">Wil je deze gratis app helpen? Doneer of kijk een korte advertentie om de app te ondersteunen. Het kijken van de advertentie is vrijwillig en zal nooit ergens anders in de app verschijnen. Deze ondersteuning helpt met het betalen van de cadeautjes die ik weggeef via Twitter, Twitch of zelfs Youtube en de ontwikkeling van deze app.</string>
     <string name="avg_dmg_c">Gem Schade:</string>
-    <string name="k_d_c">Verm/Gest:</string>
     <string name="avg_caps_c">Gem Veroverd:</string>
     <string name="avg_resets_c">Gem gereset:</string>
     <string name="avg_planes_c">Gem Vliegtuigen:</string>
@@ -229,8 +212,6 @@
     <string name="compareArmament">Bewapeningsstatistieken</string>
     <string name="compare_stats_average">Statistieken vergeleken met de gemiddelde statistieken</string>
     <string name="main_battery_kills">Hoofdgeschut vijanden vernietigd</string>
-    <string name="capture_pts">Veroverings Ptn</string>
-    <string name="def_reset_pts">Def gereset Ptn</string>
     <string name="planes_downed">Vliegtuigen neergeschoten</string>
     <string name="torpedoes_kills">Torpedo vijanden vernietigd</string>
     <string name="aircraft_kills">Vliegtuigen vernietigd</string>
@@ -254,7 +235,6 @@
     <string name="player_stored_data_deleted">Speler opgeslagen data verwijderd</string>
     <string name="purging_refresh">Data opschonen en verversing starten</string>
     <string name="purge_refresh_done">Opschonen en verversen klaar</string>
-    <string name="paypal">Paypal</string>
     <string name="average_win_rate_per_tier">Gemiddeld winratio per niveau</string>
     <string name="average_survival_per_tier">Gemiddeld overlevingsratio per niveau</string>
     <string name="average_damage_per_class">Gemiddelde schade per klasse</string>
@@ -279,12 +259,6 @@
     <string name="top_total_planes">Hoogste totaal vliegtuigen neergeschoten</string>
     <string name="top_total_damage">Hoogste totaal schade</string>
     <string name="top_survival_wins">Hoogste overleefde overwinningen</string>
-    <string name="top_battleship">Beste Slagschip</string>
-    <string name="top_cruiser">Beste Kruiser</string>
-    <string name="top_destroyer">Beste Torpedojager</string>
-    <string name="top_carrier">Beste Vliegdekschip</string>
-
-    <string name="captain_yours_vs_average">Kapiteinsstatistieken versus gemiddelde kapiteinsstatistieken</string>
 
     <string name="wargaming_server_language">Wargaming Server Taal</string>
     <string name="wins">Overwinningen</string>
@@ -347,20 +321,6 @@
     <string name="top_ten_accuracy">Top Tien per hoofdgeschut nauwkeurigheid </string>
     <string name="torp_accuracy">Torpedo nauwkeurigheid</string>
     <string name="main_battery_accuracy">Hoofdgeschut nauwkeurigheid </string>
-    <string name="enemy_accuracy">Vijandelijke nauwkeurigheid</string>
-    <string name="detection_range">Detectie afstand</string>
-    <string name="experience">Ervaring</string>
-    <string name="repair_cost">Reparatie kosten</string>
-    <string name="detontaion_chance">Kans op ontploffen</string>
-    <string name="reload_time">Laadtijd</string>
-    <string name="secondary_guns_accuracy">Bijgeschut nauwkeurigheid</string>
-    <string name="secondary_guns_range">Bijgeschut reikweidte</string>
-    <string name="burning_time">Brandtijd</string>
-    <string name="health_regen_speed">Reparatiesnelheid</string>
-    <string name="ramming_damage_caused">Ramschade toegebracht</string>
-    <string name="ramming_damage_received">Ramschade ontvangen</string>
-    <string name="ship_speed">Scheepssnelheid</string>
-    <string name="flooding_time">Zinktijd</string>
     <string name="search_stats_server"><![CDATA[Search & Stats Server]]></string>
     <string name="karma">Karma</string>
     <string name="login_primary_user">Inschakelen favoriete gebruiker aanmelden</string>
@@ -380,13 +340,9 @@
     <string name="memory_settings">Geheugen instellingen</string>
     <string name="settings_data_points">Aantal opgeslagen informatiemomenten</string>
     <string name="planes_downed_encyclo">Vliegtuigen neergeschoten</string>
-    <string name="capture_points_encyclo">Veroveringspunten</string>
-    <string name="defense_points">Verdedigingspunten</string>
-    <string name="provided_by_warships_today">Informatie verstrekt door Warships.Today</string>
     <string name="community_assistant_rating_overall">Algemene Community Assistant Indicatie</string>
     <string name="community_assistant_rating">Community Assistant Indicatie</string>
     <string name="community_assistant_rating_shorter">CA Indicatie</string>
-    <string name="remove_ca_rating">Verwijder CA Indicatie</string>
     <string name="breakdown_of_rating">Uitgewerkt</string>
     <string name="best_ca_rating">Beste CA Indicatie</string>
     <string name="total_kills">Totaal Gedood</string>
@@ -432,10 +388,6 @@
     <!--This one would be nice to have done.-->
     <string name="ca_rating_tl_dr" >TL:DR:\n\nIndividuele Scheeps Community Assistant Indicatie is %1$s schade, %2$s gedood en %3$s winratio. Algemene Community Assistant Indicatie is berekend door het totaal van(gemiddelde CA Indicatie van het Niveau) * (aantal gevechten van het niveau / totaal gevechten). Basis van 1000.</string>
 
-    <string name="ship_compared_to_others">Scheepsstatistieken vergeleken met andere schepen</string>
-
-    <string name="recommended_setups">Aanbevolen configuraties</string>
-
     <string-array name="themes">
         <item>Oceaan</item>
         <item>Donker</item>
@@ -480,8 +432,6 @@
     <string name="most_scouting_damage_in_a_match">Meest verkenning schade in een ronde</string>
     <string name="top_tanking_damage">Gerankte ingenomen schade</string>
     <string name="top_torpedo_tanking_damage">Gerankte ingenomen schade van Torpedo\'s</string>
-    <string name="modules">Module</string>
-    <string name="graphs">Grafiek</string>
     <string name="toast_not_enough_ships_to_compare">Je moet meer dan één schip geselecteerd hebben om te vergelijken</string>
     <string name="long_click_to_add_ship_to_compare_list">Langdurige muisklik om een schip toe te voegen om te vergelijken  </string>
     <string name="ship_compare_title">Schip vergelijking</string>
