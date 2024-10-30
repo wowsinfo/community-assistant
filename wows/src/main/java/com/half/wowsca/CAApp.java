@@ -50,7 +50,8 @@ public class CAApp extends Application {
         super.onCreate();
 //        AuthInfo.delete(getApplicationContext());
 //        InfoManager.purge(getApplicationContext());
-        DEVELOPMENT_MODE = !BuildConfig.BUILD_TYPE.equals("release");
+        // TODO: review what this does
+//        DEVELOPMENT_MODE = !BuildConfig.BUILD_TYPE.equals("release");
         Dlog.LOGGING_MODE = DEVELOPMENT_MODE;
         Prefs pref = new Prefs(getApplicationContext());
         int launchNumber = pref.getInt(LAUNCH_COUNT, 0);

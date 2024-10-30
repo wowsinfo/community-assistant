@@ -7,7 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
-import com.half.utils.R;
+import com.half.common.R;
 import com.utilities.views.SwipeBackLayout;
 
 

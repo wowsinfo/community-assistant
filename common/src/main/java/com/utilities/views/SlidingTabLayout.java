@@ -36,7 +36,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.half.utils.R;
+import com.half.common.R;
 
 
 /**
