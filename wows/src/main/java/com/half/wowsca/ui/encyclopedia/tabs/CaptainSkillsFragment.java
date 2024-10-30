@@ -15,7 +15,7 @@ import com.half.wowsca.R;
 import com.half.wowsca.alerts.Alert;
 import com.half.wowsca.model.encyclopedia.holders.CaptainSkillHolder;
 import com.half.wowsca.model.encyclopedia.items.CaptainSkill;
-import com.half.wowsca.model.events.CaptainSkillClickedEvent;
+import com.half.wowsca.model.CaptainSkillClickedEvent;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.adapter.CaptainSkillsAdapter;
 

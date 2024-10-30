@@ -12,7 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.managers.CompareManager;
-import com.half.wowsca.model.events.ProgressEvent;
+import com.half.wowsca.model.ProgressEvent;
 import com.half.wowsca.model.result.ShipResult;
 import com.half.wowsca.ui.CABaseActivity;
 import com.half.wowsca.ui.adapter.pager.ShipComparePager;

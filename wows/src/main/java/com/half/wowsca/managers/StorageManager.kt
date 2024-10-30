@@ -8,7 +8,7 @@ import com.half.wowsca.model.Achievement
 import com.half.wowsca.model.Captain
 import com.half.wowsca.model.CaptainDetails
 import com.half.wowsca.model.Ship
-import com.half.wowsca.model.events.CaptainSavedEvent
+import com.half.wowsca.model.CaptainSavedEvent
 import com.half.wowsca.model.saveobjects.SavedAchievements
 import com.half.wowsca.model.saveobjects.SavedDetails
 import com.half.wowsca.model.saveobjects.SavedShips

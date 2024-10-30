@@ -21,7 +21,7 @@ import com.half.wowsca.managers.CompareManager;
 import com.half.wowsca.managers.InfoManager;
 import com.half.wowsca.model.encyclopedia.items.ShipInfo;
 import com.half.wowsca.model.encyclopedia.items.ShipModuleItem;
-import com.half.wowsca.model.events.ProgressEvent;
+import com.half.wowsca.model.ProgressEvent;
 import com.utilities.logging.Dlog;
 
 import java.util.ArrayList;

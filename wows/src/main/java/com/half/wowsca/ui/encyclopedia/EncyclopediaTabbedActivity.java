@@ -18,7 +18,7 @@ import com.half.wowsca.R;
 import com.half.wowsca.managers.CompareManager;
 import com.half.wowsca.managers.InfoManager;
 import com.half.wowsca.model.encyclopedia.holders.ShipsHolder;
-import com.half.wowsca.model.events.ShipCompareEvent;
+import com.half.wowsca.model.ShipCompareEvent;
 import com.half.wowsca.ui.CABaseActivity;
 import com.half.wowsca.ui.adapter.pager.ShipopediaPager;
 import com.half.wowsca.ui.compare.ShipCompareActivity;

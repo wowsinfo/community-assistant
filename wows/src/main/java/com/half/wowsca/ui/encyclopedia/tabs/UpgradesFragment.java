@@ -15,7 +15,7 @@ import com.half.wowsca.R;
 import com.half.wowsca.alerts.Alert;
 import com.half.wowsca.model.encyclopedia.holders.UpgradeHolder;
 import com.half.wowsca.model.encyclopedia.items.EquipmentInfo;
-import com.half.wowsca.model.events.UpgradeClickEvent;
+import com.half.wowsca.model.UpgradeClickEvent;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.adapter.UpgradesAdapter;
 import com.half.wowsca.ui.encyclopedia.ShipProfileActivity;

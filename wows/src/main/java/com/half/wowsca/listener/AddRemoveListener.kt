@@ -8,7 +8,7 @@ import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.R
 import com.half.wowsca.managers.CaptainManager
 import com.half.wowsca.model.Captain
-import com.half.wowsca.model.events.AddRemoveEvent
+import com.half.wowsca.model.AddRemoveEvent
 
 /**
  * Created by slai4 on 9/19/2015.

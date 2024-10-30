@@ -16,7 +16,7 @@ import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.managers.CompareManager;
 import com.half.wowsca.model.encyclopedia.items.ShipInfo;
-import com.half.wowsca.model.events.ShipCompareEvent;
+import com.half.wowsca.model.ShipCompareEvent;
 import com.half.wowsca.ui.UIUtils;
 import com.half.wowsca.ui.encyclopedia.ShipProfileActivity;
 import com.squareup.picasso.Picasso;

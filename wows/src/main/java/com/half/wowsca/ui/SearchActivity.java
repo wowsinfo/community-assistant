@@ -32,7 +32,7 @@ import com.half.wowsca.managers.CaptainManager;
 import com.half.wowsca.managers.CompareManager;
 import com.half.wowsca.model.Captain;
 import com.half.wowsca.model.enums.Server;
-import com.half.wowsca.model.events.AddRemoveEvent;
+import com.half.wowsca.model.AddRemoveEvent;
 import com.half.wowsca.model.queries.SearchQuery;
 import com.half.wowsca.model.result.SearchResults;
 import com.half.wowsca.ui.adapter.CompareAdapter;

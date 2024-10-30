@@ -7,7 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
-import com.half.wowsca.model.events.RefreshEvent;
+import com.half.wowsca.model.RefreshEvent;
 
 /**
  * Created by slai4 on 4/19/2016.

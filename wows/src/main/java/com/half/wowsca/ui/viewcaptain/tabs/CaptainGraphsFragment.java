@@ -30,9 +30,9 @@ import com.half.wowsca.model.Ship;
 import com.half.wowsca.model.ShipCompare;
 import com.half.wowsca.model.encyclopedia.holders.ShipsHolder;
 import com.half.wowsca.model.encyclopedia.items.ShipInfo;
-import com.half.wowsca.model.events.CaptainReceivedEvent;
-import com.half.wowsca.model.events.ProgressEvent;
-import com.half.wowsca.model.events.RefreshEvent;
+import com.half.wowsca.model.CaptainReceivedEvent;
+import com.half.wowsca.model.ProgressEvent;
+import com.half.wowsca.model.RefreshEvent;
 import com.half.wowsca.ui.CAFragment;
 import com.utilities.logging.Dlog;
 

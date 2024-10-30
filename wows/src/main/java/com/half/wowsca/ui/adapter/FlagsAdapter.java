@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.model.encyclopedia.items.ExteriorItem;
-import com.half.wowsca.model.events.FlagClickedEvent;
+import com.half.wowsca.model.FlagClickedEvent;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
