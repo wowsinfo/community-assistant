@@ -7,5 +7,5 @@ public enum ResponseType {
     NO_RESULTS,
     GOOD,
     ERROR,
-    TIMEOUT;
+    TIMEOUT
 }

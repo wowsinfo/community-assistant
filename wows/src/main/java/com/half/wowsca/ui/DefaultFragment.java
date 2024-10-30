@@ -25,7 +25,7 @@ public class DefaultFragment extends CAFragment {
     }
 
     private void bindView(View view) {
-        tvText = (TextView) view.findViewById(R.id.textView);
+        tvText = view.findViewById(R.id.textView);
     }
 
     @Override

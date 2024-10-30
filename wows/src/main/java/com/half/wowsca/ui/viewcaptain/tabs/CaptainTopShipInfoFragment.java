@@ -163,10 +163,10 @@ public class CaptainTopShipInfoFragment extends CAFragment {
     }
 
     private void bindView(View view) {
-        tvArmamentMain = (TextView) view.findViewById(R.id.captain_details_battery_kills_main);
-        tvArmamentAircraft = (TextView) view.findViewById(R.id.captain_details_battery_kills_aircraft);
-        tvArmamentOthers = (TextView) view.findViewById(R.id.captain_details_battery_kills_other);
-        tvArmamentTorps = (TextView) view.findViewById(R.id.captain_details_battery_kills_torps);
+        tvArmamentMain = view.findViewById(R.id.captain_details_battery_kills_main);
+        tvArmamentAircraft = view.findViewById(R.id.captain_details_battery_kills_aircraft);
+        tvArmamentOthers = view.findViewById(R.id.captain_details_battery_kills_other);
+        tvArmamentTorps = view.findViewById(R.id.captain_details_battery_kills_torps);
 
 //        if(CAApp.isLightTheme(view.getContext())){
 //            ((ImageView) view.findViewById(R.id.captain_details_battery_kills_main_iv)).setColorFilter(ContextCompat.getColor(view.getContext(), R.color.top_background), PorterDuff.Mode.MULTIPLY);
@@ -175,125 +175,125 @@ public class CaptainTopShipInfoFragment extends CAFragment {
 //            ((ImageView) view.findViewById(R.id.captain_details_battery_kills_other_iv)).setColorFilter(ContextCompat.getColor(view.getContext(), R.color.top_background), PorterDuff.Mode.MULTIPLY);
 //        }
 
-        ivTopKills = (ImageView) view.findViewById(R.id.captain_details_top_kills_icon);
-        tvTopKills = (TextView) view.findViewById(R.id.captain_details_top_kills_text);
-        tvTopKillsName = (TextView) view.findViewById(R.id.captain_details_top_kills_name_text);
+        ivTopKills = view.findViewById(R.id.captain_details_top_kills_icon);
+        tvTopKills = view.findViewById(R.id.captain_details_top_kills_text);
+        tvTopKillsName = view.findViewById(R.id.captain_details_top_kills_name_text);
 
-        ivTopDamage = (ImageView) view.findViewById(R.id.captain_details_top_damage_icon);
-        tvTopDamage = (TextView) view.findViewById(R.id.captain_details_top_damage_text);
-        tvTopDamageName = (TextView) view.findViewById(R.id.captain_details_top_damage_name_text);
+        ivTopDamage = view.findViewById(R.id.captain_details_top_damage_icon);
+        tvTopDamage = view.findViewById(R.id.captain_details_top_damage_text);
+        tvTopDamageName = view.findViewById(R.id.captain_details_top_damage_name_text);
 
-        ivTopXP = (ImageView) view.findViewById(R.id.captain_details_top_xp_icon);
-        tvTopXP = (TextView) view.findViewById(R.id.captain_details_top_xp_text);
-        tvTopXPName = (TextView) view.findViewById(R.id.captain_details_top_xp_name_text);
+        ivTopXP = view.findViewById(R.id.captain_details_top_xp_icon);
+        tvTopXP = view.findViewById(R.id.captain_details_top_xp_text);
+        tvTopXPName = view.findViewById(R.id.captain_details_top_xp_name_text);
 
-        ivTopPlanes = (ImageView) view.findViewById(R.id.captain_details_top_planes_icon);
-        tvTopPlanes = (TextView) view.findViewById(R.id.captain_details_top_planes_text);
-        tvTopPlanesName = (TextView) view.findViewById(R.id.captain_details_top_planes_name_text);
+        ivTopPlanes = view.findViewById(R.id.captain_details_top_planes_icon);
+        tvTopPlanes = view.findViewById(R.id.captain_details_top_planes_text);
+        tvTopPlanesName = view.findViewById(R.id.captain_details_top_planes_name_text);
 
         //new ones
-        ivTopSurvivalRate = (ImageView) view.findViewById(R.id.captain_details_top_survival_rate_icon);
-        tvTopSurvivalRate = (TextView) view.findViewById(R.id.captain_details_top_survival_rate_text);
-        tvTopSurvivalRateName = (TextView) view.findViewById(R.id.captain_details_top_survival_rate_name_text);
+        ivTopSurvivalRate = view.findViewById(R.id.captain_details_top_survival_rate_icon);
+        tvTopSurvivalRate = view.findViewById(R.id.captain_details_top_survival_rate_text);
+        tvTopSurvivalRateName = view.findViewById(R.id.captain_details_top_survival_rate_name_text);
 
-        ivTopWinRate = (ImageView) view.findViewById(R.id.captain_details_top_win_rate_icon);
-        tvTopWinRate = (TextView) view.findViewById(R.id.captain_details_top_win_rate_text);
-        tvTopWinRateName = (TextView) view.findViewById(R.id.captain_details_top_win_rate_name_text);
+        ivTopWinRate = view.findViewById(R.id.captain_details_top_win_rate_icon);
+        tvTopWinRate = view.findViewById(R.id.captain_details_top_win_rate_text);
+        tvTopWinRateName = view.findViewById(R.id.captain_details_top_win_rate_name_text);
 
-        ivTopPlayed = (ImageView) view.findViewById(R.id.captain_details_top_played_icon);
-        tvTopPlayed = (TextView) view.findViewById(R.id.captain_details_top_played_text);
-        tvTopPlayedName = (TextView) view.findViewById(R.id.captain_details_top_played_name_text);
+        ivTopPlayed = view.findViewById(R.id.captain_details_top_played_icon);
+        tvTopPlayed = view.findViewById(R.id.captain_details_top_played_text);
+        tvTopPlayedName = view.findViewById(R.id.captain_details_top_played_name_text);
 
-        ivTopAvgDmg = (ImageView) view.findViewById(R.id.captain_details_top_average_dmg_icon);
-        tvTopAvgDmg = (TextView) view.findViewById(R.id.captain_details_top_average_dmg_text);
-        tvTopAvgDmgName = (TextView) view.findViewById(R.id.captain_details_top_average_dmg_name_text);
+        ivTopAvgDmg = view.findViewById(R.id.captain_details_top_average_dmg_icon);
+        tvTopAvgDmg = view.findViewById(R.id.captain_details_top_average_dmg_text);
+        tvTopAvgDmgName = view.findViewById(R.id.captain_details_top_average_dmg_name_text);
 
-        ivTopTotalKills = (ImageView) view.findViewById(R.id.captain_details_top_total_kill_icon);
-        tvTopTotalKills = (TextView) view.findViewById(R.id.captain_details_top_total_kill_text);
-        tvTopTotalKillsName = (TextView) view.findViewById(R.id.captain_details_top_total_kill_name_text);
+        ivTopTotalKills = view.findViewById(R.id.captain_details_top_total_kill_icon);
+        tvTopTotalKills = view.findViewById(R.id.captain_details_top_total_kill_text);
+        tvTopTotalKillsName = view.findViewById(R.id.captain_details_top_total_kill_name_text);
 
-        ivTopDistance = (ImageView) view.findViewById(R.id.captain_details_top_distance_traveled_icon);
-        tvTopDistance = (TextView) view.findViewById(R.id.captain_details_top_distance_traveled_text);
-        tvTopDistanceName = (TextView) view.findViewById(R.id.captain_details_top_distance_traveled_name_text);
+        ivTopDistance = view.findViewById(R.id.captain_details_top_distance_traveled_icon);
+        tvTopDistance = view.findViewById(R.id.captain_details_top_distance_traveled_text);
+        tvTopDistanceName = view.findViewById(R.id.captain_details_top_distance_traveled_name_text);
 
-        ivTopTotalDmg = (ImageView) view.findViewById(R.id.captain_details_top_total_damage_icon);
-        tvTopTotalDmg = (TextView) view.findViewById(R.id.captain_details_top_total_damage_text);
-        tvTopTotalDmgName = (TextView) view.findViewById(R.id.captain_details_top_total_damage_name_text);
+        ivTopTotalDmg = view.findViewById(R.id.captain_details_top_total_damage_icon);
+        tvTopTotalDmg = view.findViewById(R.id.captain_details_top_total_damage_text);
+        tvTopTotalDmgName = view.findViewById(R.id.captain_details_top_total_damage_name_text);
 
-        ivTopTotalExp = (ImageView) view.findViewById(R.id.captain_details_top_total_exp_icon);
-        tvTopTotalExp = (TextView) view.findViewById(R.id.captain_details_top_total_exp_text);
-        tvTopTotalExpName = (TextView) view.findViewById(R.id.captain_details_top_total_exp_name_text);
+        ivTopTotalExp = view.findViewById(R.id.captain_details_top_total_exp_icon);
+        tvTopTotalExp = view.findViewById(R.id.captain_details_top_total_exp_text);
+        tvTopTotalExpName = view.findViewById(R.id.captain_details_top_total_exp_name_text);
 
-        ivTopTotalPlanes = (ImageView) view.findViewById(R.id.captain_details_top_total_planes_icon);
-        tvTopTotalPlanes = (TextView) view.findViewById(R.id.captain_details_top_total_planes_text);
-        tvTopTotalPlanesName = (TextView) view.findViewById(R.id.captain_details_top_total_planes_name_text);
+        ivTopTotalPlanes = view.findViewById(R.id.captain_details_top_total_planes_icon);
+        tvTopTotalPlanes = view.findViewById(R.id.captain_details_top_total_planes_text);
+        tvTopTotalPlanesName = view.findViewById(R.id.captain_details_top_total_planes_name_text);
 
-        ivTopSurvivedWins = (ImageView) view.findViewById(R.id.captain_details_top_survived_wins_icon);
-        tvTopSurvivedWins = (TextView) view.findViewById(R.id.captain_details_top_survived_wins_text);
-        tvTopSurvivedWinsName = (TextView) view.findViewById(R.id.captain_details_top_survived_wins_name_text);
+        ivTopSurvivedWins = view.findViewById(R.id.captain_details_top_survived_wins_icon);
+        tvTopSurvivedWins = view.findViewById(R.id.captain_details_top_survived_wins_text);
+        tvTopSurvivedWinsName = view.findViewById(R.id.captain_details_top_survived_wins_name_text);
 
-        ivTopCARating = (ImageView) view.findViewById(R.id.captain_details_top_ca_rating_icon);
-        tvTopCaRating = (TextView) view.findViewById(R.id.captain_details_top_ca_rating_text);
-        tvTopCARatingName = (TextView) view.findViewById(R.id.captain_details_top_ca_rating_name_text);
+        ivTopCARating = view.findViewById(R.id.captain_details_top_ca_rating_icon);
+        tvTopCaRating = view.findViewById(R.id.captain_details_top_ca_rating_text);
+        tvTopCARatingName = view.findViewById(R.id.captain_details_top_ca_rating_name_text);
 
-        ivTopMBAccuracy = (ImageView) view.findViewById(R.id.captain_details_top_mb_acc_icon);
-        tvTopMBAccuracy = (TextView) view.findViewById(R.id.captain_details_top_mb_acc_text);
-        tvTopMBAccuracyName = (TextView) view.findViewById(R.id.captain_details_top_mb_acc_name_text);
+        ivTopMBAccuracy = view.findViewById(R.id.captain_details_top_mb_acc_icon);
+        tvTopMBAccuracy = view.findViewById(R.id.captain_details_top_mb_acc_text);
+        tvTopMBAccuracyName = view.findViewById(R.id.captain_details_top_mb_acc_name_text);
 
-        ivTopTBAccuracy = (ImageView) view.findViewById(R.id.captain_details_top_tb_acc_icon);
-        tvTopTBAccuracy = (TextView) view.findViewById(R.id.captain_details_top_tb_acc_text);
-        tvTopTBAccuracyName = (TextView) view.findViewById(R.id.captain_details_top_tb_acc_name_text);
+        ivTopTBAccuracy = view.findViewById(R.id.captain_details_top_tb_acc_icon);
+        tvTopTBAccuracy = view.findViewById(R.id.captain_details_top_tb_acc_text);
+        tvTopTBAccuracyName = view.findViewById(R.id.captain_details_top_tb_acc_name_text);
 
-        ivTopSpotted = (ImageView) view.findViewById(R.id.captain_details_top_spotted_icon);
-        tvTopSpotted = (TextView) view.findViewById(R.id.captain_details_top_spotted_text);
-        tvTopSpottedName = (TextView) view.findViewById(R.id.captain_details_top_spotted_name_text);
+        ivTopSpotted = view.findViewById(R.id.captain_details_top_spotted_icon);
+        tvTopSpotted = view.findViewById(R.id.captain_details_top_spotted_text);
+        tvTopSpottedName = view.findViewById(R.id.captain_details_top_spotted_name_text);
 
-        ivTopScoutingDamage = (ImageView) view.findViewById(R.id.captain_details_top_spotting_damage_icon);
-        tvTopScoutingDamage = (TextView) view.findViewById(R.id.captain_details_top_spotting_damage_text);
-        tvTopScoutingDamageName = (TextView) view.findViewById(R.id.captain_details_top_spotting_damage_name_text);
+        ivTopScoutingDamage = view.findViewById(R.id.captain_details_top_spotting_damage_icon);
+        tvTopScoutingDamage = view.findViewById(R.id.captain_details_top_spotting_damage_text);
+        tvTopScoutingDamageName = view.findViewById(R.id.captain_details_top_spotting_damage_name_text);
 
-        ivTopTanking = (ImageView) view.findViewById(R.id.captain_details_top_tanking_icon);
-        tvTopTanking = (TextView) view.findViewById(R.id.captain_details_top_tanking_text);
-        tvTopTankingName = (TextView) view.findViewById(R.id.captain_details_top_tanking_name_text);
+        ivTopTanking = view.findViewById(R.id.captain_details_top_tanking_icon);
+        tvTopTanking = view.findViewById(R.id.captain_details_top_tanking_text);
+        tvTopTankingName = view.findViewById(R.id.captain_details_top_tanking_name_text);
 
-        ivTopTorpTanking = (ImageView) view.findViewById(R.id.captain_details_top_torp_tanking_icon);
-        tvTopTorpTanking = (TextView) view.findViewById(R.id.captain_details_top_torp_tanking_text);
-        tvTopTorpTankingName = (TextView) view.findViewById(R.id.captain_details_top_torp_tanking_name_text);
+        ivTopTorpTanking = view.findViewById(R.id.captain_details_top_torp_tanking_icon);
+        tvTopTorpTanking = view.findViewById(R.id.captain_details_top_torp_tanking_text);
+        tvTopTorpTankingName = view.findViewById(R.id.captain_details_top_torp_tanking_name_text);
 
-        tvBatteryMainDestroyed = (TextView) view.findViewById(R.id.captain_details_main_destroyed);
-        tvBatteryMainHitRatio = (TextView) view.findViewById(R.id.captain_details_main_hit_ratio);
-        tvBatteryMainShots = (TextView) view.findViewById(R.id.captain_details_main_shots);
-        ivBatteryMain = (ImageView) view.findViewById(R.id.captain_details_main_ship_icon);
-        tvBatteryMainShipName = (TextView) view.findViewById(R.id.captain_details_main_ship_name);
-        tvBatteryMainShipNumber = (TextView) view.findViewById(R.id.captain_details_main_ship_number);
+        tvBatteryMainDestroyed = view.findViewById(R.id.captain_details_main_destroyed);
+        tvBatteryMainHitRatio = view.findViewById(R.id.captain_details_main_hit_ratio);
+        tvBatteryMainShots = view.findViewById(R.id.captain_details_main_shots);
+        ivBatteryMain = view.findViewById(R.id.captain_details_main_ship_icon);
+        tvBatteryMainShipName = view.findViewById(R.id.captain_details_main_ship_name);
+        tvBatteryMainShipNumber = view.findViewById(R.id.captain_details_main_ship_number);
 
-        tvBatterySecondaryDestroyed = (TextView) view.findViewById(R.id.captain_details_secondary_destroyed);
-        tvBatterySecondaryHitRatio = (TextView) view.findViewById(R.id.captain_details_secondary_hit_ratio);
-        tvBatterySecondaryShots = (TextView) view.findViewById(R.id.captain_details_secondary_shots);
-        ivBatterySecondary = (ImageView) view.findViewById(R.id.captain_details_secondary_ship_icon);
-        tvBatterySecondaryShipName = (TextView) view.findViewById(R.id.captain_details_secondary_ship_name);
-        tvBatterySecondaryShipNumber = (TextView) view.findViewById(R.id.captain_details_secondary_ship_number);
+        tvBatterySecondaryDestroyed = view.findViewById(R.id.captain_details_secondary_destroyed);
+        tvBatterySecondaryHitRatio = view.findViewById(R.id.captain_details_secondary_hit_ratio);
+        tvBatterySecondaryShots = view.findViewById(R.id.captain_details_secondary_shots);
+        ivBatterySecondary = view.findViewById(R.id.captain_details_secondary_ship_icon);
+        tvBatterySecondaryShipName = view.findViewById(R.id.captain_details_secondary_ship_name);
+        tvBatterySecondaryShipNumber = view.findViewById(R.id.captain_details_secondary_ship_number);
 
-        tvBatteryTorpsDestroyed = (TextView) view.findViewById(R.id.captain_details_torps_destroyed);
-        tvBatteryTorpsHitRatio = (TextView) view.findViewById(R.id.captain_details_torps_hit_ratio);
-        tvBatteryTorpsShots = (TextView) view.findViewById(R.id.captain_details_torps_shots);
-        ivBatteryTorps = (ImageView) view.findViewById(R.id.captain_details_torps_ship_icon);
-        tvBatteryTorpsShipName = (TextView) view.findViewById(R.id.captain_details_torps_ship_name);
-        tvBatteryTorpsShipNumber = (TextView) view.findViewById(R.id.captain_details_torps_ship_number);
+        tvBatteryTorpsDestroyed = view.findViewById(R.id.captain_details_torps_destroyed);
+        tvBatteryTorpsHitRatio = view.findViewById(R.id.captain_details_torps_hit_ratio);
+        tvBatteryTorpsShots = view.findViewById(R.id.captain_details_torps_shots);
+        ivBatteryTorps = view.findViewById(R.id.captain_details_torps_ship_icon);
+        tvBatteryTorpsShipName = view.findViewById(R.id.captain_details_torps_ship_name);
+        tvBatteryTorpsShipNumber = view.findViewById(R.id.captain_details_torps_ship_number);
 
-        tvBatteryAircraftDestroyed = (TextView) view.findViewById(R.id.captain_details_aircraft_destroyed);
-        tvBatteryAircraftHitRatio = (TextView) view.findViewById(R.id.captain_details_aircraft_hit_ratio);
-        tvBatteryAircraftShots = (TextView) view.findViewById(R.id.captain_details_aircraft_shots);
-        ivBatteryAircraft = (ImageView) view.findViewById(R.id.captain_details_aircraft_ship_icon);
-        tvBatteryAircraftShipName = (TextView) view.findViewById(R.id.captain_details_aircraft_ship_name);
-        tvBatteryAircraftShipNumber = (TextView) view.findViewById(R.id.captain_details_aircraft_ship_number);
+        tvBatteryAircraftDestroyed = view.findViewById(R.id.captain_details_aircraft_destroyed);
+        tvBatteryAircraftHitRatio = view.findViewById(R.id.captain_details_aircraft_hit_ratio);
+        tvBatteryAircraftShots = view.findViewById(R.id.captain_details_aircraft_shots);
+        ivBatteryAircraft = view.findViewById(R.id.captain_details_aircraft_ship_icon);
+        tvBatteryAircraftShipName = view.findViewById(R.id.captain_details_aircraft_ship_name);
+        tvBatteryAircraftShipNumber = view.findViewById(R.id.captain_details_aircraft_ship_number);
 
-        tvBatteryRammingDestroyed = (TextView) view.findViewById(R.id.captain_details_ramming_destroyed);
-        tvBatteryRammingHitRatio = (TextView) view.findViewById(R.id.captain_details_ramming_hit_ratio);
-        tvBatteryRammingShots = (TextView) view.findViewById(R.id.captain_details_ramming_shots);
-        ivBatteryRamming = (ImageView) view.findViewById(R.id.captain_details_ramming_ship_icon);
-        tvBatteryRammingShipName = (TextView) view.findViewById(R.id.captain_details_ramming_ship_name);
-        tvBatteryRammingShipNumber = (TextView) view.findViewById(R.id.captain_details_ramming_ship_number);
+        tvBatteryRammingDestroyed = view.findViewById(R.id.captain_details_ramming_destroyed);
+        tvBatteryRammingHitRatio = view.findViewById(R.id.captain_details_ramming_hit_ratio);
+        tvBatteryRammingShots = view.findViewById(R.id.captain_details_ramming_shots);
+        ivBatteryRamming = view.findViewById(R.id.captain_details_ramming_ship_icon);
+        tvBatteryRammingShipName = view.findViewById(R.id.captain_details_ramming_ship_name);
+        tvBatteryRammingShipNumber = view.findViewById(R.id.captain_details_ramming_ship_number);
 
         UIUtils.setUpCard(view, R.id.captain_details_top_damage_area);
         UIUtils.setUpCard(view, R.id.captain_details_top_kills_area);
@@ -458,20 +458,20 @@ public class CaptainTopShipInfoFragment extends CAFragment {
 
         ShipInfo topSpottingRating = CAApp.getInfoManager().getShipInfo(getContext()).get(captain.getDetails().getMaxSpottedShipId());
         setTopShipImageName(topSpottingRating, tvTopSpottedName, ivTopSpotted, highDefImage);
-        tvTopSpotted.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxSpotted()) + "");
+        tvTopSpotted.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxSpotted()));
 
         ShipInfo topSpottingDamage = CAApp.getInfoManager().getShipInfo(getContext()).get(captain.getDetails().getMaxDamageScoutingShipId());
         setTopShipImageName(topSpottingDamage, tvTopScoutingDamageName, ivTopScoutingDamage, highDefImage);
-        tvTopScoutingDamage.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxDamageScouting()) + "");
+        tvTopScoutingDamage.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxDamageScouting()));
 
         ShipInfo topTanking = CAApp.getInfoManager().getShipInfo(getContext()).get(captain.getDetails().getMaxArgoDamageShipId());
         setTopShipImageName(topTanking, tvTopTankingName, ivTopTanking, highDefImage);
-        tvTopTanking.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxTotalArgo()) + "");
+        tvTopTanking.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxTotalArgo()));
 
         Dlog.d("CaptainTopShip","torp = " + captain.getDetails().getMaxTorpArgoDamageShipId());
         ShipInfo topTropArgo = CAApp.getInfoManager().getShipInfo(getContext()).get(captain.getDetails().getMaxTorpArgoDamageShipId());
         setTopShipImageName(topTropArgo, tvTopTorpTankingName, ivTopTorpTanking, highDefImage);
-        tvTopTorpTanking.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxTorpTotalArgo()) + "");
+        tvTopTorpTanking.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxTorpTotalArgo()));
     }
 
     private void setTopShipImageName(ShipInfo shipInfo, TextView shipName, ImageView image, boolean highDef) {
@@ -515,7 +515,7 @@ public class CaptainTopShipInfoFragment extends CAFragment {
         ShipInfo ship = CAApp.getInfoManager().getShipInfo(getContext()).get(batteryStats.getMaxFragsShipId());
         if (ship != null) {
             UIUtils.setShipImage(imageView, ship);
-            shipName.setText("" + ship.getName());
+            shipName.setText(ship.getName());
         } else {
             imageView.setImageResource(R.color.transparent);
             shipNumber.setText("");

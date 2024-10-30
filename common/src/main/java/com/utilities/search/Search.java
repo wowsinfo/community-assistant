@@ -10,9 +10,9 @@ import org.greenrobot.eventbus.EventBus;
 
 public class Search<Q extends Query, R extends Result<Q>> extends AsyncTask<Q, Void, R>{
 
-	private IParser<Q,R> mParser;
-	private IResponse<Q,R> mCallback;
-    private EventBus mBus;
+	private final IParser<Q,R> mParser;
+	private final IResponse<Q,R> mCallback;
+    private final EventBus mBus;
 
 	public Search(IParser<Q,R> parser, IResponse<Q,R> callback, EventBus bus) {
 		mParser = parser;

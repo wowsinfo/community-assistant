@@ -123,7 +123,7 @@ public class ViewDragHelper {
 
     private int mTrackingEdges;
 
-    private ScrollerCompat mScroller;
+    private final ScrollerCompat mScroller;
 
     private final Callback mCallback;
 
@@ -1097,7 +1097,7 @@ public class ViewDragHelper {
                     }
 
                     final View toCapture = findTopChildUnder((int) x, (int) y);
-                    if (toCapture != null && checkTouchSlop(toCapture, dx, dy)
+                    if (checkTouchSlop(toCapture, dx, dy)
                             && tryCaptureViewForDrag(toCapture, pointerId)) {
                         break;
                     }

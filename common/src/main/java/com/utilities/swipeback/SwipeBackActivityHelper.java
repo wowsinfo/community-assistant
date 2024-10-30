@@ -12,11 +12,11 @@ import com.utilities.views.SwipeBackLayout;
  * Created by slai4 on 4/17/2016.
  */
 public class SwipeBackActivityHelper {
-    private Activity mActivity;
+    private final Activity mActivity;
 
     private SwipeBackLayout mSwipeBackLayout;
 
-    private int resource;
+    private final int resource;
 
     public SwipeBackActivityHelper(Activity activity, int resource) {
         mActivity = activity;

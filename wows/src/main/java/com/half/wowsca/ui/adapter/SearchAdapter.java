@@ -31,17 +31,13 @@ public class SearchAdapter extends ArrayAdapter<Captain> {
         }
         Captain c = getItem(position);
 
-        TextView name = (TextView) convertView.findViewById(R.id.list_search_name);
+        TextView name = convertView.findViewById(R.id.list_search_name);
         View view = convertView.findViewById(R.id.list_search_checkbox_area);
-        CheckBox box = (CheckBox) convertView.findViewById(R.id.list_search_checkbox);
+        CheckBox box = convertView.findViewById(R.id.list_search_checkbox);
 
         name.setText(c.getName());
 
-        if (CaptainManager.getCaptains(getContext()).get(CaptainManager.createCapIdStr(c.getServer(), c.getId())) != null) {
-            box.setChecked(true);
-        } else {
-            box.setChecked(false);
-        }
+        box.setChecked(CaptainManager.getCaptains(getContext()).get(CaptainManager.createCapIdStr(c.getServer(), c.getId())) != null);
         view.setOnClickListener(new AddRemoveListener(c, getContext(), box));
         return convertView;
     }

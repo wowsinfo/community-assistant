@@ -211,7 +211,7 @@ public class UIUtils {
     public static void setUpCard(View parent, int id) {
         CardView card = null;
         if (id > 0)
-            card = (CardView) parent.findViewById(id);
+            card = parent.findViewById(id);
         else
             card = (CardView) parent;
         int backgroundInt = R.color.transparent;
@@ -247,8 +247,8 @@ public class UIUtils {
     }
 
     private static Map<Long, Long> arpShips;
-    public static final long MYOKO_SHIP_ID = 4286494416l;
-    public static final long KONGO_SHIP_ID = 4287575760l;
+    public static final long MYOKO_SHIP_ID = 4286494416L;
+    public static final long KONGO_SHIP_ID = 4287575760L;
 
     public static void setShipImage(@NonNull ImageView view, ShipInfo ship){
         setShipImage(view, ship, false);
@@ -257,12 +257,12 @@ public class UIUtils {
     public static void setShipImage(@NonNull ImageView view, ShipInfo ship, boolean forceBigImage){
         if(arpShips == null) {
             arpShips = new HashMap<>();
-            arpShips.put(3551442640l, MYOKO_SHIP_ID); // haguro
-            arpShips.put(3552523984l, KONGO_SHIP_ID); // Hiei
-            arpShips.put(3553572560l, KONGO_SHIP_ID); // haruna
-            arpShips.put(3554621136l, KONGO_SHIP_ID); // kirishima
-            arpShips.put(3555636944l, MYOKO_SHIP_ID); // arp myoko
-            arpShips.put(3555669712l, KONGO_SHIP_ID); // arp Kongo
+            arpShips.put(3551442640L, MYOKO_SHIP_ID); // haguro
+            arpShips.put(3552523984L, KONGO_SHIP_ID); // Hiei
+            arpShips.put(3553572560L, KONGO_SHIP_ID); // haruna
+            arpShips.put(3554621136L, KONGO_SHIP_ID); // kirishima
+            arpShips.put(3555636944L, MYOKO_SHIP_ID); // arp myoko
+            arpShips.put(3555669712L, KONGO_SHIP_ID); // arp Kongo
         }
         boolean highDefImage = view.getContext().getResources().getBoolean(R.bool.high_def_images);
         if(forceBigImage)
@@ -297,48 +297,48 @@ public class UIUtils {
 
             UIUtils.setUpCard(view, R.id.list_statistics_area);
 
-            TextView tvTitle = (TextView) view.findViewById(R.id.list_statistics_title);
+            TextView tvTitle = view.findViewById(R.id.list_statistics_title);
 
-            TextView tvDamage = (TextView) view.findViewById(R.id.list_statistics_avg_dmg);
-            TextView tvBattles = (TextView) view.findViewById(R.id.list_statistics_battles);
-            TextView tvAvgExp = (TextView) view.findViewById(R.id.list_statistics_avg_exp);
-            TextView tvWinRate = (TextView) view.findViewById(R.id.list_statistics_win_rate);
-            TextView tvAvgKills = (TextView) view.findViewById(R.id.list_statistics_k_d);
+            TextView tvDamage = view.findViewById(R.id.list_statistics_avg_dmg);
+            TextView tvBattles = view.findViewById(R.id.list_statistics_battles);
+            TextView tvAvgExp = view.findViewById(R.id.list_statistics_avg_exp);
+            TextView tvWinRate = view.findViewById(R.id.list_statistics_win_rate);
+            TextView tvAvgKills = view.findViewById(R.id.list_statistics_k_d);
 
-            TextView tvBatteryMain = (TextView) view.findViewById(R.id.list_statistics_battery_kills_main);
-            TextView tvBatteryTorps = (TextView) view.findViewById(R.id.list_statistics_battery_kills_torps);
-            TextView tvBatteryAircraft = (TextView) view.findViewById(R.id.list_statistics_battery_kills_aircraft);
-            TextView tvBatteryOther = (TextView) view.findViewById(R.id.list_statistics_battery_kills_other);
-
-
-            TextView tvMaxKills = (TextView) view.findViewById(R.id.list_statistics_max_kills);
-            TextView tvMaxDamage = (TextView) view.findViewById(R.id.list_statistics_max_dmg);
-            TextView tvMaxPlanes = (TextView) view.findViewById(R.id.list_statistics_max_planes_killed);
-            TextView tvMaxXP = (TextView) view.findViewById(R.id.list_statistics_max_xp);
-
-            TextView tvTotalKills = (TextView) view.findViewById(R.id.list_statistics_kills);
-            TextView tvTotalDamage = (TextView) view.findViewById(R.id.list_statistics_total_dmg);
-            TextView tvTotalPlanes = (TextView) view.findViewById(R.id.list_statistics_planes_downed);
-            TextView tvTotalXP = (TextView) view.findViewById(R.id.list_statistics_total_xp);
+            TextView tvBatteryMain = view.findViewById(R.id.list_statistics_battery_kills_main);
+            TextView tvBatteryTorps = view.findViewById(R.id.list_statistics_battery_kills_torps);
+            TextView tvBatteryAircraft = view.findViewById(R.id.list_statistics_battery_kills_aircraft);
+            TextView tvBatteryOther = view.findViewById(R.id.list_statistics_battery_kills_other);
 
 
-            TextView tvSurvivalRate = (TextView) view.findViewById(R.id.list_statistics_survival_rate);
-            TextView tvSurvivedWins = (TextView) view.findViewById(R.id.list_statistics_survived_wins);
-            TextView tvCaptures = (TextView) view.findViewById(R.id.list_statistics_captures);
+            TextView tvMaxKills = view.findViewById(R.id.list_statistics_max_kills);
+            TextView tvMaxDamage = view.findViewById(R.id.list_statistics_max_dmg);
+            TextView tvMaxPlanes = view.findViewById(R.id.list_statistics_max_planes_killed);
+            TextView tvMaxXP = view.findViewById(R.id.list_statistics_max_xp);
 
-            TextView tvMainAccuracy = (TextView) view.findViewById(R.id.list_statistics_main_battery_accuracy);
-            TextView tvTorpAccuracy = (TextView) view.findViewById(R.id.list_statistics_torp_battery_accuracy);
-            TextView tvDrpCaptures = (TextView) view.findViewById(R.id.list_statistics_drp_captures);
+            TextView tvTotalKills = view.findViewById(R.id.list_statistics_kills);
+            TextView tvTotalDamage = view.findViewById(R.id.list_statistics_total_dmg);
+            TextView tvTotalPlanes = view.findViewById(R.id.list_statistics_planes_downed);
+            TextView tvTotalXP = view.findViewById(R.id.list_statistics_total_xp);
 
 
-            TextView tvSpottingDamage = (TextView) view.findViewById(R.id.list_statistics_total_spotting);
-            TextView tvArgoDamage = (TextView) view.findViewById(R.id.list_statistics_total_argo);
-            TextView tvBuildingDamage = (TextView) view.findViewById(R.id.list_statistics_total_building);
-            TextView tvArgoTorpDamage = (TextView) view.findViewById(R.id.list_statistics_total_torp_argo);
+            TextView tvSurvivalRate = view.findViewById(R.id.list_statistics_survival_rate);
+            TextView tvSurvivedWins = view.findViewById(R.id.list_statistics_survived_wins);
+            TextView tvCaptures = view.findViewById(R.id.list_statistics_captures);
 
-            TextView tvSuppressionCount = (TextView) view.findViewById(R.id.list_statistics_total_supressions);
-            TextView tvSpottingCount = (TextView) view.findViewById(R.id.list_statistics_total_spots);
-            TextView tvMaxSpotting = (TextView) view.findViewById(R.id.list_statistics_max_spots);
+            TextView tvMainAccuracy = view.findViewById(R.id.list_statistics_main_battery_accuracy);
+            TextView tvTorpAccuracy = view.findViewById(R.id.list_statistics_torp_battery_accuracy);
+            TextView tvDrpCaptures = view.findViewById(R.id.list_statistics_drp_captures);
+
+
+            TextView tvSpottingDamage = view.findViewById(R.id.list_statistics_total_spotting);
+            TextView tvArgoDamage = view.findViewById(R.id.list_statistics_total_argo);
+            TextView tvBuildingDamage = view.findViewById(R.id.list_statistics_total_building);
+            TextView tvArgoTorpDamage = view.findViewById(R.id.list_statistics_total_torp_argo);
+
+            TextView tvSuppressionCount = view.findViewById(R.id.list_statistics_total_supressions);
+            TextView tvSpottingCount = view.findViewById(R.id.list_statistics_total_spots);
+            TextView tvMaxSpotting = view.findViewById(R.id.list_statistics_max_spots);
 
             tvTitle.setText(title);
 
@@ -348,7 +348,7 @@ public class UIUtils {
             tvBattles.setText((int) battles + "");
             tvAvgExp.setText((int) (stats.getTotalXP() / battles) + "");
             tvWinRate.setText(Utils.getDefaultDecimalFormatter().format((stats.getWins() / battles) * 100) + "%");
-            tvAvgKills.setText(Utils.getDefaultDecimalFormatter().format(stats.getFrags() / battles) + "");
+            tvAvgKills.setText(Utils.getDefaultDecimalFormatter().format(stats.getFrags() / battles));
 
             tvBatteryMain.setText(stats.getMainBattery().getFrags() + "");
             tvBatteryTorps.setText(stats.getTorpedoes().getFrags() + "");
@@ -359,19 +359,19 @@ public class UIUtils {
             DecimalFormat format = new DecimalFormat("###,###,###");
 
             tvMaxKills.setText(stats.getMaxFragsInBattle() + "");
-            tvMaxDamage.setText(format.format(stats.getMaxDamage()) + "");
+            tvMaxDamage.setText(format.format(stats.getMaxDamage()));
             tvMaxPlanes.setText(stats.getMaxPlanesKilled() + "");
-            tvMaxXP.setText(format.format(stats.getMaxXP()) + "");
+            tvMaxXP.setText(format.format(stats.getMaxXP()));
 
-            tvTotalKills.setText(format.format(stats.getFrags()) + "");
-            tvTotalDamage.setText(format.format(stats.getTotalDamage()) + "");
+            tvTotalKills.setText(format.format(stats.getFrags()));
+            tvTotalDamage.setText(format.format(stats.getTotalDamage()));
             tvTotalPlanes.setText(stats.getPlanesKilled() + "");
-            tvTotalXP.setText(format.format(stats.getTotalXP()) + "");
+            tvTotalXP.setText(format.format(stats.getTotalXP()));
 
             tvSurvivalRate.setText(Utils.getOneDepthDecimalFormatter().format((stats.getSurvivedBattles() / battles) * 100) + "%");
             tvSurvivedWins.setText(Utils.getOneDepthDecimalFormatter().format((stats.getSurvivedWins() / battles) * 100) + "%");
-            tvCaptures.setText(Utils.getOneDepthDecimalFormatter().format(stats.getCapturePoints() / battles) + "");
-            tvDrpCaptures.setText(Utils.getOneDepthDecimalFormatter().format(stats.getDroppedCapturePoints() / battles) + "");
+            tvCaptures.setText(Utils.getOneDepthDecimalFormatter().format(stats.getCapturePoints() / battles));
+            tvDrpCaptures.setText(Utils.getOneDepthDecimalFormatter().format(stats.getDroppedCapturePoints() / battles));
 
             tvMainAccuracy.setText(Utils.getOneDepthDecimalFormatter().format((stats.getMainBattery().getHits() / (float) stats.getMainBattery().getShots()) * 100) + "%");
             tvTorpAccuracy.setText(Utils.getOneDepthDecimalFormatter().format((stats.getTorpedoes().getHits() / (float) stats.getTorpedoes().getShots()) * 100) + "%");
@@ -379,25 +379,25 @@ public class UIUtils {
             Context ctx = area.getContext();
             String argoDamage = "" + stats.getTotalArgoDamage();
             if(stats.getTotalArgoDamage() > 1000000){
-                argoDamage = "" + Utils.getDefaultDecimalFormatter().format(stats.getTotalArgoDamage() / 1000000) + ctx.getString(R.string.million);
+                argoDamage = Utils.getDefaultDecimalFormatter().format(stats.getTotalArgoDamage() / 1000000) + ctx.getString(R.string.million);
             }
             tvArgoDamage.setText(argoDamage);
 
             String argoTorpDamage = "" + stats.getTorpArgoDamage();
             if(stats.getTotalArgoDamage() > 1000000){
-                argoTorpDamage = "" + Utils.getDefaultDecimalFormatter().format(stats.getTotalArgoDamage() / 1000000) + ctx.getString(R.string.million);
+                argoTorpDamage = Utils.getDefaultDecimalFormatter().format(stats.getTotalArgoDamage() / 1000000) + ctx.getString(R.string.million);
             }
             tvArgoTorpDamage.setText(argoTorpDamage);
 
             String buildingDamage = "" + stats.getBuildingDamage();
             if(stats.getBuildingDamage() > 1000000){
-                buildingDamage = "" + Utils.getDefaultDecimalFormatter().format(stats.getBuildingDamage() / 1000000) + ctx.getString(R.string.million);
+                buildingDamage = Utils.getDefaultDecimalFormatter().format(stats.getBuildingDamage() / 1000000) + ctx.getString(R.string.million);
             }
             tvBuildingDamage.setText(buildingDamage);
 
             String scoutingDamage = "" + stats.getScoutingDamage();
             if(stats.getScoutingDamage() > 1000000){
-                scoutingDamage = "" + Utils.getDefaultDecimalFormatter().format(stats.getScoutingDamage() / 1000000) + ctx.getString(R.string.million);
+                scoutingDamage = Utils.getDefaultDecimalFormatter().format(stats.getScoutingDamage() / 1000000) + ctx.getString(R.string.million);
             }
             tvSpottingDamage.setText(scoutingDamage);
 

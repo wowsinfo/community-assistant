@@ -47,7 +47,7 @@ public class ShipCompareGraphFragment extends CAFragment {
     }
 
     private void onBind(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.compare_ships_list);
+        recyclerView = view.findViewById(R.id.compare_ships_list);
         GridLayoutManager manager = new GridLayoutManager(view.getContext() , getResources().getInteger(R.integer.twitch_cols));
         recyclerView.setLayoutManager(manager);
     }

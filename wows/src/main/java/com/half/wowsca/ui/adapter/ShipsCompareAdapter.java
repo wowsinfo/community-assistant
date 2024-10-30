@@ -77,7 +77,7 @@ public class ShipsCompareAdapter extends RecyclerView.Adapter<ShipsCompareAdapte
 
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
         for (int i = 0; i < xVals.size(); i++) {
-            float value = (float) info.get(xVals.get(i));
+            float value = info.get(xVals.get(i));
             yVals1.add(new BarEntry(value, i));
         }
 
@@ -133,8 +133,8 @@ public class ShipsCompareAdapter extends RecyclerView.Adapter<ShipsCompareAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            barChart = (BarChart) itemView.findViewById(R.id.list_compare_ship_graph);
-            tvTitle = (TextView) itemView.findViewById(R.id.list_compare_ship_graph_text);
+            barChart = itemView.findViewById(R.id.list_compare_ship_graph);
+            tvTitle = itemView.findViewById(R.id.list_compare_ship_graph_text);
         }
     }
 

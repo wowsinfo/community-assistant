@@ -35,7 +35,7 @@ public class ShipModuleListFragment extends CAFragment {
     }
 
     private void onBind(View view) {
-        gridView = (RecyclerView) view.findViewById(R.id.fragment_compare_module_list);
+        gridView = view.findViewById(R.id.fragment_compare_module_list);
     }
 
     @Override

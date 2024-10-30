@@ -118,11 +118,11 @@ public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHold
             view = itemView;
             View click = view.findViewById(R.id.twitch_view);
             click.setOnClickListener(this);
-            title = (TextView) itemView.findViewById(R.id.twitch_title);
-            logo = (ImageView) itemView.findViewById(R.id.twitch_logo);
-            background = (ImageView) itemView.findViewById(R.id.twitch_background);
-            status = (TextView) itemView.findViewById(R.id.twitch_status);
-            alert = (TextView) itemView.findViewById(R.id.twitch_live);
+            title = itemView.findViewById(R.id.twitch_title);
+            logo = itemView.findViewById(R.id.twitch_logo);
+            background = itemView.findViewById(R.id.twitch_background);
+            status = itemView.findViewById(R.id.twitch_status);
+            alert = itemView.findViewById(R.id.twitch_live);
             youtube = itemView.findViewById(R.id.twitch_youtube);
             youtube.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -220,11 +220,11 @@ public class CaptainFragment extends CAFragment {
         aWinRate = view.findViewById(R.id.captain_winning_area);
         aBattles = view.findViewById(R.id.captain_battles_area);
 
-        tvBattles = (TextView) view.findViewById(R.id.captain_battles);
-        tvWinRate = (TextView) view.findViewById(R.id.captain_win_rate);
-        tvAverageExp = (TextView) view.findViewById(R.id.captain_avg_exp);
-        tvAverageDamage = (TextView) view.findViewById(R.id.captain_avg_dmg);
-        tvKillDeath = (TextView) view.findViewById(R.id.captain_k_d);
+        tvBattles = view.findViewById(R.id.captain_battles);
+        tvWinRate = view.findViewById(R.id.captain_win_rate);
+        tvAverageExp = view.findViewById(R.id.captain_avg_exp);
+        tvAverageDamage = view.findViewById(R.id.captain_avg_dmg);
+        tvKillDeath = view.findViewById(R.id.captain_k_d);
 
 //        if(CAApp.isLightTheme(view.getContext())){
 //            ((ImageView) view.findViewById(R.id.captain_battles_iv)).setColorFilter(ContextCompat.getColor(view.getContext(), R.color.top_background), PorterDuff.Mode.MULTIPLY);
@@ -234,88 +234,88 @@ public class CaptainFragment extends CAFragment {
 //            ((ImageView) view.findViewById(R.id.captain_k_d_iv)).setColorFilter(ContextCompat.getColor(view.getContext(), R.color.top_background), PorterDuff.Mode.MULTIPLY);
 //        }
 
-        tvGenXP = (TextView) view.findViewById(R.id.captain_general_total_xp);
-        tvGenDamage = (TextView) view.findViewById(R.id.captain_general_total_damage);
-        tvGenPlanesKilled = (TextView) view.findViewById(R.id.captain_general_planes_killed);
-        tvGenCapture = (TextView) view.findViewById(R.id.captain_general_capture_points);
-        tvGenDropped = (TextView) view.findViewById(R.id.captain_general_defender_points);
-        tvGenProfileLevel = (TextView) view.findViewById(R.id.captain_general_profile_level);
+        tvGenXP = view.findViewById(R.id.captain_general_total_xp);
+        tvGenDamage = view.findViewById(R.id.captain_general_total_damage);
+        tvGenPlanesKilled = view.findViewById(R.id.captain_general_planes_killed);
+        tvGenCapture = view.findViewById(R.id.captain_general_capture_points);
+        tvGenDropped = view.findViewById(R.id.captain_general_defender_points);
+        tvGenProfileLevel = view.findViewById(R.id.captain_general_profile_level);
 
         chartProgress = view.findViewById(R.id.captain_graphs_progress);
 
         topicalArea = view.findViewById(R.id.captain_graph_topical_area);
-        topicalText = (TextView) view.findViewById(R.id.captain_graph_topical_text);
-        topicalChart = (LineChart) view.findViewById(R.id.captain_graph_topical_line);
-        tvTierAverage = (TextView) view.findViewById(R.id.captain_graph_tier_average);
-        tiersChart = (BarChart) view.findViewById(R.id.captain_graphs_tier);
-        tvTopicalDescription = (TextView) view.findViewById(R.id.captain_graph_description);
+        topicalText = view.findViewById(R.id.captain_graph_topical_text);
+        topicalChart = view.findViewById(R.id.captain_graph_topical_line);
+        tvTierAverage = view.findViewById(R.id.captain_graph_tier_average);
+        tiersChart = view.findViewById(R.id.captain_graphs_tier);
+        tvTopicalDescription = view.findViewById(R.id.captain_graph_description);
 
-        chartGamePerType = (HorizontalBarChart) view.findViewById(R.id.captain_graphs_games_per_type);
-        chartGamePerNation = (PieChart) view.findViewById(R.id.captain_graphs_games_per_nation);
+        chartGamePerType = view.findViewById(R.id.captain_graphs_games_per_type);
+        chartGamePerNation = view.findViewById(R.id.captain_graphs_games_per_nation);
 
-        pbDistanceTraveled = (ProgressBar) view.findViewById(R.id.captain_distance_traveled_progress);
-        tvDistanceTraveled = (TextView) view.findViewById(R.id.captain_distance_traveled);
-        tvDistanceTotal = (TextView) view.findViewById(R.id.captain_distance_traveled_text);
+        pbDistanceTraveled = view.findViewById(R.id.captain_distance_traveled_progress);
+        tvDistanceTraveled = view.findViewById(R.id.captain_distance_traveled);
+        tvDistanceTotal = view.findViewById(R.id.captain_distance_traveled_text);
 
 //        captainAddView = view.findViewById(R.id.captain_checkbox_area);
 //        captainCheckBox = (CheckBox) view.findViewById(R.id.captain_checkbox);
 
-        tvWins = (TextView) view.findViewById(R.id.captain_general_wins);
-        tvLosses = (TextView) view.findViewById(R.id.captain_general_losses);
-        tvDraws = (TextView) view.findViewById(R.id.captain_general_draws);
+        tvWins = view.findViewById(R.id.captain_general_wins);
+        tvLosses = view.findViewById(R.id.captain_general_losses);
+        tvDraws = view.findViewById(R.id.captain_general_draws);
 
-        tvMainBatteryAcc = (TextView) view.findViewById(R.id.captain_general_main_accuracy);
-        tvTorpAcc = (TextView) view.findViewById(R.id.captain_general_torp_accuracy);
+        tvMainBatteryAcc = view.findViewById(R.id.captain_general_main_accuracy);
+        tvTorpAcc = view.findViewById(R.id.captain_general_torp_accuracy);
 
-        tvTotalCaptures = (TextView) view.findViewById(R.id.captain_general_total_captures);
-        tvTotalDefReset = (TextView) view.findViewById(R.id.captain_general_total_def_points);
-        tvTotalPlanes = (TextView) view.findViewById(R.id.captain_general_total_planes);
+        tvTotalCaptures = view.findViewById(R.id.captain_general_total_captures);
+        tvTotalDefReset = view.findViewById(R.id.captain_general_total_def_points);
+        tvTotalPlanes = view.findViewById(R.id.captain_general_total_planes);
 
-        lastBattleTime = (TextView) view.findViewById(R.id.captain_general_last_battle);
-        createdOnTime = (TextView) view.findViewById(R.id.captain_general_created_date);
+        lastBattleTime = view.findViewById(R.id.captain_general_last_battle);
+        createdOnTime = view.findViewById(R.id.captain_general_created_date);
 
-        tvSurvivalRate = (TextView) view.findViewById(R.id.captain_general_survival_rate);
-        tvSurvivedWins = (TextView) view.findViewById(R.id.captain_general_survived_wins);
+        tvSurvivalRate = view.findViewById(R.id.captain_general_survival_rate);
+        tvSurvivedWins = view.findViewById(R.id.captain_general_survived_wins);
 
-        tvCARating = (TextView) view.findViewById(R.id.averages_car);
-        tvCADiff = (TextView) view.findViewById(R.id.averages_car_dif);
+        tvCARating = view.findViewById(R.id.averages_car);
+        tvCADiff = view.findViewById(R.id.averages_car_dif);
 
         aAverage = view.findViewById(R.id.averages_grid_area);
 
-        gAverages = (NonScrollableGridView) view.findViewById(R.id.averages_grid);
-        chartAverages = (RadarChart) view.findViewById(R.id.averages_chart);
+        gAverages = view.findViewById(R.id.averages_grid);
+        chartAverages = view.findViewById(R.id.averages_chart);
 
         aPrivateArea = view.findViewById(R.id.captain_private_area);
 
-        chartGamemodes = (PieChart) view.findViewById(R.id.captain_graphs_games_per_mode);
-        chartWRModes = (BarChart) view.findViewById(R.id.captain_graphs_win_rate_per_mode);
-        chartAvgDmg = (HorizontalBarChart) view.findViewById(R.id.captain_graphs_avg_dmg_per_mode);
-        chartSurvivalRate = (BarChart) view.findViewById(R.id.captain_graphs_survival_rate_per_mode);
+        chartGamemodes = view.findViewById(R.id.captain_graphs_games_per_mode);
+        chartWRModes = view.findViewById(R.id.captain_graphs_win_rate_per_mode);
+        chartAvgDmg = view.findViewById(R.id.captain_graphs_avg_dmg_per_mode);
+        chartSurvivalRate = view.findViewById(R.id.captain_graphs_survival_rate_per_mode);
 
         tvGameModeTitle = view.findViewById(R.id.captain_game_mode_title);
 
-        tvPrivateGold = (TextView) view.findViewById(R.id.captain_private_gold);
-        tvPrivateCredits = (TextView) view.findViewById(R.id.captain_private_credits);
-        tvPrivateBattleTime = (TextView) view.findViewById(R.id.captain_private_battle_time);
-        tvPrivateFreeExp = (TextView) view.findViewById(R.id.captain_private_free_exp);
-        tvPrivatePremiumExpiresOn = (TextView) view.findViewById(R.id.captain_private_premium);
-        tvPrivateSlots = (TextView) view.findViewById(R.id.captain_private_slots);
+        tvPrivateGold = view.findViewById(R.id.captain_private_gold);
+        tvPrivateCredits = view.findViewById(R.id.captain_private_credits);
+        tvPrivateBattleTime = view.findViewById(R.id.captain_private_battle_time);
+        tvPrivateFreeExp = view.findViewById(R.id.captain_private_free_exp);
+        tvPrivatePremiumExpiresOn = view.findViewById(R.id.captain_private_premium);
+        tvPrivateSlots = view.findViewById(R.id.captain_private_slots);
 
-        tvSpottingDamage = (TextView) view.findViewById(R.id.captain_general_total_spotting);
-        tvArgoDamage = (TextView) view.findViewById(R.id.captain_general_total_argo);
-        tvBuildingDamage = (TextView) view.findViewById(R.id.captain_general_total_building);
-        tvArgoTorpDamage = (TextView) view.findViewById(R.id.captain_general_total_torp_argo);
+        tvSpottingDamage = view.findViewById(R.id.captain_general_total_spotting);
+        tvArgoDamage = view.findViewById(R.id.captain_general_total_argo);
+        tvBuildingDamage = view.findViewById(R.id.captain_general_total_building);
+        tvArgoTorpDamage = view.findViewById(R.id.captain_general_total_torp_argo);
 
-        tvSuppressionCount = (TextView) view.findViewById(R.id.captain_general_total_supressions);
-        tvSpottingCount = (TextView) view.findViewById(R.id.captain_general_total_spots);
+        tvSuppressionCount = view.findViewById(R.id.captain_general_total_supressions);
+        tvSpottingCount = view.findViewById(R.id.captain_general_total_spots);
 
         aCARatingArea = view.findViewById(R.id.averages_ca_rating_top_area);
 
-        aOtherStats = (LinearLayout) view.findViewById(R.id.captain_statistics_area);
+        aOtherStats = view.findViewById(R.id.captain_statistics_area);
 
-        chartCAContribution = (BarChart) view.findViewById(R.id.averages_contribution_chart);
-        chartCARatingPerTier = (BarChart) view.findViewById(R.id.averages_ca_per_tier_chart);
-        ivBreakdown = (ImageView) view.findViewById(R.id.averages_ca_rating_breakdown);
+        chartCAContribution = view.findViewById(R.id.averages_contribution_chart);
+        chartCARatingPerTier = view.findViewById(R.id.averages_ca_per_tier_chart);
+        ivBreakdown = view.findViewById(R.id.averages_ca_rating_breakdown);
         aBreakdown = view.findViewById(R.id.ca_rating_breakdown_area);
         aBreakdownCharts = view.findViewById(R.id.averages_contribution_chart_area);
 
@@ -359,7 +359,7 @@ public class CaptainFragment extends CAFragment {
 
             if (battles > 0) {
                 DecimalFormat bigNumFormatter = new DecimalFormat("###,###,###");
-                tvBattles.setText(Utils.getDefaultDecimalFormatter().format(battles) + "");
+                tvBattles.setText(Utils.getDefaultDecimalFormatter().format(battles));
 
                 int avgDamage = (int) (details.getTotalDamage() / battles);
                 tvAverageDamage.setText("" + avgDamage);
@@ -371,12 +371,12 @@ public class CaptainFragment extends CAFragment {
                     kdBattles = battles - details.getSurvivedBattles();
                 }
                 float kd = (float) details.getFrags() / kdBattles;
-                tvKillDeath.setText("" + Utils.getDefaultDecimalFormatter().format(kd));
+                tvKillDeath.setText(Utils.getDefaultDecimalFormatter().format(kd));
 
                 float winRate = ((float) details.getWins() / battles) * 100;
                 tvWinRate.setText(Utils.getDefaultDecimalFormatter().format(winRate) + "%");
 
-                tvGenXP.setText("" + bigNumFormatter.format(details.getTotalXP()));
+                tvGenXP.setText(bigNumFormatter.format(details.getTotalXP()));
                 double totalDamage = details.getTotalDamage();
                 if (totalDamage > 1000000) {
                     totalDamage = totalDamage / 1000000;
@@ -385,13 +385,13 @@ public class CaptainFragment extends CAFragment {
                     tvGenDamage.setText("" + totalDamage);
                 }
 
-                tvGenDropped.setText(Utils.getDefaultDecimalFormatter().format(((float) details.getDroppedCapturePoints() / battles)) + "");
-                tvGenCapture.setText(Utils.getDefaultDecimalFormatter().format(((float) details.getCapturePoints() / battles)) + "");
-                tvGenPlanesKilled.setText(Utils.getDefaultDecimalFormatter().format(((float) details.getPlanesKilled() / battles)) + "");
+                tvGenDropped.setText(Utils.getDefaultDecimalFormatter().format(((float) details.getDroppedCapturePoints() / battles)));
+                tvGenCapture.setText(Utils.getDefaultDecimalFormatter().format(((float) details.getCapturePoints() / battles)));
+                tvGenPlanesKilled.setText(Utils.getDefaultDecimalFormatter().format(((float) details.getPlanesKilled() / battles)));
 
-                tvTotalPlanes.setText("" + bigNumFormatter.format(details.getPlanesKilled()));
-                tvTotalCaptures.setText("" + bigNumFormatter.format(details.getCapturePoints()));
-                tvTotalDefReset.setText("" + bigNumFormatter.format(details.getDroppedCapturePoints()));
+                tvTotalPlanes.setText(bigNumFormatter.format(details.getPlanesKilled()));
+                tvTotalCaptures.setText(bigNumFormatter.format(details.getCapturePoints()));
+                tvTotalDefReset.setText(bigNumFormatter.format(details.getDroppedCapturePoints()));
 
                 tvTierAverage.setText(getString(R.string.average_tier) + ": " + Utils.getDefaultDecimalFormatter().format(details.getAverageTier()));
 
@@ -410,25 +410,25 @@ public class CaptainFragment extends CAFragment {
                 Dlog.d("CaptainFragment", "buildings = " + details.getBuildingDamage());
                 String argoDamage = "" + details.getTotalArgoDamage();
                 if(details.getTotalArgoDamage() > 1000000){
-                    argoDamage = "" + Utils.getDefaultDecimalFormatter().format(details.getTotalArgoDamage() / 1000000) + getString(R.string.million);
+                    argoDamage = Utils.getDefaultDecimalFormatter().format(details.getTotalArgoDamage() / 1000000) + getString(R.string.million);
                 }
                 tvArgoDamage.setText(argoDamage);
 
                 String argoTorpDamage = "" + details.getTorpArgoDamage();
                 if(details.getTotalArgoDamage() > 1000000){
-                    argoTorpDamage = "" + Utils.getDefaultDecimalFormatter().format(details.getTotalArgoDamage() / 1000000) + getString(R.string.million);
+                    argoTorpDamage = Utils.getDefaultDecimalFormatter().format(details.getTotalArgoDamage() / 1000000) + getString(R.string.million);
                 }
                 tvArgoTorpDamage.setText(argoTorpDamage);
 
                 String buildingDamage = "" + details.getBuildingDamage();
                 if(details.getBuildingDamage() > 1000000){
-                    buildingDamage = "" + Utils.getDefaultDecimalFormatter().format(details.getBuildingDamage() / 1000000) + getString(R.string.million);
+                    buildingDamage = Utils.getDefaultDecimalFormatter().format(details.getBuildingDamage() / 1000000) + getString(R.string.million);
                 }
                 tvBuildingDamage.setText(buildingDamage);
 
                 String scoutingDamage = "" + details.getScoutingDamage();
                 if(details.getScoutingDamage() > 1000000){
-                    scoutingDamage = "" + Utils.getDefaultDecimalFormatter().format(details.getScoutingDamage() / 1000000) + getString(R.string.million);
+                    scoutingDamage = Utils.getDefaultDecimalFormatter().format(details.getScoutingDamage() / 1000000) + getString(R.string.million);
                 }
                 tvSpottingDamage.setText(scoutingDamage);
 
@@ -507,7 +507,7 @@ public class CaptainFragment extends CAFragment {
         float timesAround = traveled / circumferance;
         int progress = (int) (((traveled % circumferance) / circumferance) * 100f);
         pbDistanceTraveled.setProgress(progress);
-        tvDistanceTraveled.setText(Utils.getDefaultDecimalFormatter().format(timesAround) + "");
+        tvDistanceTraveled.setText(Utils.getDefaultDecimalFormatter().format(timesAround));
         chartProgress.setVisibility(View.VISIBLE);
         StringBuilder sb = new StringBuilder();
         float kilos = details.getDistanceTraveled() * 1.60934f; //kilos
@@ -933,7 +933,7 @@ public class CaptainFragment extends CAFragment {
             chartAverages.post(runnable);
 
             float caRating = captain.getCARating();
-            tvCARating.setText(Utils.getOneDepthDecimalFormatter().format(caRating) + "");
+            tvCARating.setText(Utils.getOneDepthDecimalFormatter().format(caRating));
 
             final List<ListAverages> averages = new ArrayList<ListAverages>();
             averages.add(ListAverages.create(getString(R.string.damage), captain.getcDamage(), captain.getExpectedDamage(), AverageType.LARGE_NUMBER));

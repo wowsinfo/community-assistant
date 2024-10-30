@@ -167,11 +167,7 @@ public class SearchActivity extends CABaseActivity {
     }
 
     private void initCompare() {
-        if (CompareManager.size() > 1) {
-            bCompare.setEnabled(true);
-        } else {
-            bCompare.setEnabled(false);
-        }
+        bCompare.setEnabled(CompareManager.size() > 1);
         refreshCompareSection();
         bCompare.setOnClickListener(new View.OnClickListener() {
             @Override

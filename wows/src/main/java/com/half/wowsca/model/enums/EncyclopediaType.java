@@ -7,6 +7,6 @@ public enum EncyclopediaType {
 
     PERCENT,
     LARGE_NUMBER,
-    NONE;
+    NONE
 
 }

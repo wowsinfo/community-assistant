@@ -22,7 +22,7 @@ import java.net.URL;
  */
 public class GetServerInfo extends AsyncTask<String, Void, ServerResult> {
 
-    private Context ctx;
+    private final Context ctx;
 
     public GetServerInfo(Context ctx) {
         this.ctx = ctx;

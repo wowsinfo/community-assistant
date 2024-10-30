@@ -17,7 +17,7 @@ public class CARatingManager {
     public static final float KILLS_COEF = 0.30f;
     public static final float WR_COEF = 0.20f;
     public static final float ONE = 1f;
-    private static int NORMALIZE_VALUE = 1000;
+    private static final int NORMALIZE_VALUE = 1000;
 
     /**
      * Creates a rating based off of performance on a ship

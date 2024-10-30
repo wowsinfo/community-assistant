@@ -35,9 +35,9 @@ public class ShipsAdapter extends RecyclerView.Adapter<ShipsAdapter.ShipViewHold
 
     private List<Ship> ships;
 
-    private ArrayList<Ship> backupShips;
+    private final ArrayList<Ship> backupShips;
 
-    private Context ctx;
+    private final Context ctx;
 
     private SavedShips savedShips;
 
@@ -70,15 +70,15 @@ public class ShipsAdapter extends RecyclerView.Adapter<ShipsAdapter.ShipViewHold
         public ShipViewHolder(View itemView) {
             super(itemView);
             view = itemView;
-            this.tvName = (TextView) itemView.findViewById(R.id.snippet_ship_name);
-            this.nationTier = (TextView) itemView.findViewById(R.id.snippet_ship_nation_tier);
-            this.tvBattles = (TextView) itemView.findViewById(R.id.snippet_ship_battles);
-            this.tvWinRate = (TextView) itemView.findViewById(R.id.snippet_ship_win_rate);
-            this.tvAverageExp = (TextView) itemView.findViewById(R.id.snippet_ship_avg_exp);
-            this.tvAverageKills = (TextView) itemView.findViewById(R.id.snippet_ship_avg_kills);
-            this.tvAverageDamage = (TextView) itemView.findViewById(R.id.snippet_ship_avg_damage);
-            this.icon = (ImageView) itemView.findViewById(R.id.snippet_ship_icon);
-            this.tvCARating = (TextView) itemView.findViewById(R.id.snippet_ship_ca_rating);
+            this.tvName = itemView.findViewById(R.id.snippet_ship_name);
+            this.nationTier = itemView.findViewById(R.id.snippet_ship_nation_tier);
+            this.tvBattles = itemView.findViewById(R.id.snippet_ship_battles);
+            this.tvWinRate = itemView.findViewById(R.id.snippet_ship_win_rate);
+            this.tvAverageExp = itemView.findViewById(R.id.snippet_ship_avg_exp);
+            this.tvAverageKills = itemView.findViewById(R.id.snippet_ship_avg_kills);
+            this.tvAverageDamage = itemView.findViewById(R.id.snippet_ship_avg_damage);
+            this.icon = itemView.findViewById(R.id.snippet_ship_icon);
+            this.tvCARating = itemView.findViewById(R.id.snippet_ship_ca_rating);
 
             this.aCARating = itemView.findViewById(R.id.snippet_ship_ca_rating_area);
 
@@ -134,7 +134,7 @@ public class ShipsAdapter extends RecyclerView.Adapter<ShipsAdapter.ShipViewHold
                 kdBattles = (int) (battles - s.getSurvivedBattles());
             }
             float kd = (float) s.getFrags() / kdBattles;
-            holder.tvAverageKills.setText("" + Utils.getDefaultDecimalFormatter().format(kd));
+            holder.tvAverageKills.setText(Utils.getDefaultDecimalFormatter().format(kd));
             int avgDamage = (int) (s.getTotalDamage() / battles);
             holder.tvAverageDamage.setText("" + avgDamage);
             holder.tvCARating.setText("" + Math.round(s.getCARating()));

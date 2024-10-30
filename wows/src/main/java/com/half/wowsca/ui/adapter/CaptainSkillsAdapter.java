@@ -21,8 +21,8 @@ import java.util.List;
  */
 public class CaptainSkillsAdapter extends RecyclerView.Adapter<CaptainSkillsAdapter.SkillsViewHolder> {
 
-    private List<CaptainSkill> skills;
-    private Context ctx;
+    private final List<CaptainSkill> skills;
+    private final Context ctx;
 
     public CaptainSkillsAdapter(List<CaptainSkill> skills, Context ctx) {
         this.skills = skills;
@@ -61,8 +61,8 @@ public class CaptainSkillsAdapter extends RecyclerView.Adapter<CaptainSkillsAdap
 
         public SkillsViewHolder(View itemView) {
             super(itemView);
-            tvName = (TextView) itemView.findViewById(R.id.list_captain_skill_text);
-            ivIcon = (ImageView) itemView.findViewById(R.id.list_captain_skill_image);
+            tvName = itemView.findViewById(R.id.list_captain_skill_text);
+            ivIcon = itemView.findViewById(R.id.list_captain_skill_image);
 
             itemView.setOnClickListener(this);
         }

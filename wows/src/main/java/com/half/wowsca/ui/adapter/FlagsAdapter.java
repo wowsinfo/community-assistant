@@ -21,8 +21,8 @@ import java.util.List;
  */
 public class FlagsAdapter extends RecyclerView.Adapter<FlagsAdapter.FlagsViewHolder> {
 
-    private List<ExteriorItem> exteriorItems;
-    private Context ctx;
+    private final List<ExteriorItem> exteriorItems;
+    private final Context ctx;
 
     public FlagsAdapter(List<ExteriorItem> skills, Context ctx) {
         this.exteriorItems = skills;
@@ -61,8 +61,8 @@ public class FlagsAdapter extends RecyclerView.Adapter<FlagsAdapter.FlagsViewHol
 
         public FlagsViewHolder(View itemView) {
             super(itemView);
-            tvName = (TextView) itemView.findViewById(R.id.list_captain_skill_text);
-            ivIcon = (ImageView) itemView.findViewById(R.id.list_captain_skill_image);
+            tvName = itemView.findViewById(R.id.list_captain_skill_text);
+            ivIcon = itemView.findViewById(R.id.list_captain_skill_image);
 
             itemView.setOnClickListener(this);
         }

@@ -46,47 +46,47 @@ public class GetShipEncyclopediaInfo extends AsyncTask<ShipQuery, Void, ShipResu
         if(query.getModules() != null) {
             // artillery id
             Long artillery = query.getModules().get(ARTILLERY);
-            if (artillery != null && artillery != 0l) {
+            if (artillery != null && artillery != 0L) {
                 sb.append("&artillery_id=" + artillery);
             }
             //torpedoes id
             Long torps = query.getModules().get(TORPEDOES);
-            if (torps != null && torps != 0l) {
+            if (torps != null && torps != 0L) {
                 sb.append("&torpedoes_id=" + torps);
             }
             //fire control id
             Long fireControl = query.getModules().get(FIRE_CONTROL);
-            if (fireControl != null && fireControl != 0l) {
+            if (fireControl != null && fireControl != 0L) {
                 sb.append("&fire_control_id=" + fireControl);
             }
             //flight control id
             Long flightControl = query.getModules().get(FLIGHT_CONTROL);
-            if (flightControl != null && flightControl != 0l) {
+            if (flightControl != null && flightControl != 0L) {
                 sb.append("&flight_control_id=" + flightControl);
             }
             //hull id
             Long hull = query.getModules().get(HULL);
-            if (hull != null && hull != 0l) {
+            if (hull != null && hull != 0L) {
                 sb.append("&hull_id=" + hull);
             }
             //engine id
             Long engine = query.getModules().get(ENGINE);
-            if (engine != null && engine != 0l) {
+            if (engine != null && engine != 0L) {
                 sb.append("&engine_id=" + engine);
             }
             //fighter id
             Long fighter = query.getModules().get(FIGHTER);
-            if (fighter != null && fighter != 0l) {
+            if (fighter != null && fighter != 0L) {
                 sb.append("&fighter_id=" + fighter);
             }
             //dive bomber id
             Long diveBomber = query.getModules().get(DIVE_BOMBER);
-            if (diveBomber != null && diveBomber != 0l) {
+            if (diveBomber != null && diveBomber != 0L) {
                 sb.append("&dive_bomber_id=" + diveBomber);
             }
             //torpedo bomber id
             Long torpBomber = query.getModules().get(TORPEDO_BOMBER);
-            if (torpBomber != null && torpBomber != 0l) {
+            if (torpBomber != null && torpBomber != 0L) {
                 sb.append("&torpedo_bomber_id=" + torpBomber);
             }
         }

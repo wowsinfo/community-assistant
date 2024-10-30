@@ -181,78 +181,78 @@ public class ShipFragment extends Fragment{
     }
 
     private void bindView(View view) {
-        ivShip = (ImageView) view.findViewById(R.id.snippet_ship_icon);
-        tvName = (TextView) view.findViewById(R.id.snippet_ship_name);
-        tvNationTier = (TextView) view.findViewById(R.id.snippet_ship_nation_tier);
-        tvBattles = (TextView) view.findViewById(R.id.snippet_ship_battles);
-        tvWinRate = (TextView) view.findViewById(R.id.snippet_ship_win_rate);
-        tvAvgExp = (TextView) view.findViewById(R.id.snippet_ship_avg_exp);
-        tvAvgFrag = (TextView) view.findViewById(R.id.snippet_ship_avg_kills);
-        tvAvgDamage = (TextView) view.findViewById(R.id.snippet_ship_avg_damage);
-        tvTopCARating = (TextView) view.findViewById(R.id.snippet_ship_ca_rating);
+        ivShip = view.findViewById(R.id.snippet_ship_icon);
+        tvName = view.findViewById(R.id.snippet_ship_name);
+        tvNationTier = view.findViewById(R.id.snippet_ship_nation_tier);
+        tvBattles = view.findViewById(R.id.snippet_ship_battles);
+        tvWinRate = view.findViewById(R.id.snippet_ship_win_rate);
+        tvAvgExp = view.findViewById(R.id.snippet_ship_avg_exp);
+        tvAvgFrag = view.findViewById(R.id.snippet_ship_avg_kills);
+        tvAvgDamage = view.findViewById(R.id.snippet_ship_avg_damage);
+        tvTopCARating = view.findViewById(R.id.snippet_ship_ca_rating);
 
-        tvBatteryAircraft = (TextView) view.findViewById(R.id.fragment_ship_battery_kills_aircraft);
-        tvBatteryMain = (TextView) view.findViewById(R.id.fragment_ship_battery_kills_main);
-        tvBatteryTorps = (TextView) view.findViewById(R.id.fragment_ship_battery_kills_torps);
-        tvBatteryOther = (TextView) view.findViewById(R.id.fragment_ship_battery_kills_other);
+        tvBatteryAircraft = view.findViewById(R.id.fragment_ship_battery_kills_aircraft);
+        tvBatteryMain = view.findViewById(R.id.fragment_ship_battery_kills_main);
+        tvBatteryTorps = view.findViewById(R.id.fragment_ship_battery_kills_torps);
+        tvBatteryOther = view.findViewById(R.id.fragment_ship_battery_kills_other);
 
         aCompare = view.findViewById(R.id.averages_grid_area);
-        chartAverages = (RadarChart) view.findViewById(R.id.averages_chart);
-        gridView = (NonScrollableGridView) view.findViewById(R.id.averages_grid);
-        tvCARating = (TextView) view.findViewById(R.id.averages_car);
-        tvCADiff = (TextView) view.findViewById(R.id.averages_car_dif);
+        chartAverages = view.findViewById(R.id.averages_chart);
+        gridView = view.findViewById(R.id.averages_grid);
+        tvCARating = view.findViewById(R.id.averages_car);
+        tvCADiff = view.findViewById(R.id.averages_car_dif);
 
-        tvMaxDamage = (TextView) view.findViewById(R.id.fragment_ship_max_damage);
-        tvMaxKills = (TextView) view.findViewById(R.id.fragment_ship_max_kills);
-        tvMaxPlanes = (TextView) view.findViewById(R.id.fragment_ship_max_planes_killed);
-        tvMaxXp = (TextView) view.findViewById(R.id.fragment_ship_max_xp);
-        tvTraveled = (TextView) view.findViewById(R.id.fragment_ship_distance_traveled);
-        tvAvgPlanes = (TextView) view.findViewById(R.id.fragment_ship_planes_destroyed);
-        tvSurvivalRate = (TextView) view.findViewById(R.id.fragment_ship_survived_battles);
-        tvAvgCaps = (TextView) view.findViewById(R.id.fragment_ship_capture_points);
-        tvAvgDropped  = (TextView) view.findViewById(R.id.fragment_ship_dropped_capture_points);
-        tvTotalXp = (TextView) view.findViewById(R.id.fragment_ship_total_exp);
-        tvSurvivedWins = (TextView) view.findViewById(R.id.fragment_ship_survived_wins);
+        tvMaxDamage = view.findViewById(R.id.fragment_ship_max_damage);
+        tvMaxKills = view.findViewById(R.id.fragment_ship_max_kills);
+        tvMaxPlanes = view.findViewById(R.id.fragment_ship_max_planes_killed);
+        tvMaxXp = view.findViewById(R.id.fragment_ship_max_xp);
+        tvTraveled = view.findViewById(R.id.fragment_ship_distance_traveled);
+        tvAvgPlanes = view.findViewById(R.id.fragment_ship_planes_destroyed);
+        tvSurvivalRate = view.findViewById(R.id.fragment_ship_survived_battles);
+        tvAvgCaps = view.findViewById(R.id.fragment_ship_capture_points);
+        tvAvgDropped  = view.findViewById(R.id.fragment_ship_dropped_capture_points);
+        tvTotalXp = view.findViewById(R.id.fragment_ship_total_exp);
+        tvSurvivedWins = view.findViewById(R.id.fragment_ship_survived_wins);
 
-        tvWins = (TextView) view.findViewById(R.id.fragment_ship_wins);
-        tvLosses = (TextView) view.findViewById(R.id.fragment_ship_losses);
-        tvDraws = (TextView) view.findViewById(R.id.fragment_ship_draws);
+        tvWins = view.findViewById(R.id.fragment_ship_wins);
+        tvLosses = view.findViewById(R.id.fragment_ship_losses);
+        tvDraws = view.findViewById(R.id.fragment_ship_draws);
 
-        tvTotalCaptures = (TextView) view.findViewById(R.id.fragment_ship_total_captures);
-        tvTotalDefReset = (TextView) view.findViewById(R.id.fragment_ship_total_def_points);
-        tvTotalPlanes = (TextView) view.findViewById(R.id.fragment_ship_total_planes);
+        tvTotalCaptures = view.findViewById(R.id.fragment_ship_total_captures);
+        tvTotalDefReset = view.findViewById(R.id.fragment_ship_total_def_points);
+        tvTotalPlanes = view.findViewById(R.id.fragment_ship_total_planes);
 
-        tvBatteryAccMain = (TextView) view.findViewById(R.id.fragment_ship_battery_accuracy_main);
-        tvBatteryAccTorps = (TextView) view.findViewById(R.id.fragment_ship_battery_accuracy_torp);
+        tvBatteryAccMain = view.findViewById(R.id.fragment_ship_battery_accuracy_main);
+        tvBatteryAccTorps = view.findViewById(R.id.fragment_ship_battery_accuracy_torp);
 
         aRanked = view.findViewById(R.id.fragment_ship_ranked_area);
-        llContainer = (LinearLayout) view.findViewById(R.id.fragment_ship_ranked_container);
+        llContainer = view.findViewById(R.id.fragment_ship_ranked_container);
 
         aChartArea = view.findViewById(R.id.fragment_ship_saved_chart_area);
-        chartSavedArea = (LineChart) view.findViewById(R.id.fragment_ship_saved_chart_graph_topical_line);
+        chartSavedArea = view.findViewById(R.id.fragment_ship_saved_chart_graph_topical_line);
 
         aSavedChartBattles = view.findViewById(R.id.fragment_ship_saved_chart_battles_area);
         aSavedChartWinRate = view.findViewById(R.id.fragment_ship_saved_chart_winning_area);
         aSavedChartDamage = view.findViewById(R.id.fragment_ship_saved_chart_damage_area);
         aSavedChartExp = view.findViewById(R.id.fragment_ship_saved_chart_experience_area);
         aSavedChartKills = view.findViewById(R.id.fragment_ship_saved_chart_kills_area);
-        tvChartSaved = (TextView) view.findViewById(R.id.fragment_ship_saved_chart_graph_topical_text);
+        tvChartSaved = view.findViewById(R.id.fragment_ship_saved_chart_graph_topical_text);
 
-        tvSpottingDamage = (TextView) view.findViewById(R.id.fragment_ship_total_spotting);
-        tvArgoDamage = (TextView) view.findViewById(R.id.fragment_ship_total_argo);
-        tvBuildingDamage = (TextView) view.findViewById(R.id.fragment_ship_total_building);
-        tvArgoTorpDamage = (TextView) view.findViewById(R.id.fragment_ship_total_torp_argo);
+        tvSpottingDamage = view.findViewById(R.id.fragment_ship_total_spotting);
+        tvArgoDamage = view.findViewById(R.id.fragment_ship_total_argo);
+        tvBuildingDamage = view.findViewById(R.id.fragment_ship_total_building);
+        tvArgoTorpDamage = view.findViewById(R.id.fragment_ship_total_torp_argo);
 
-        tvSuppressionCount = (TextView) view.findViewById(R.id.fragment_ship_total_supressions);
-        tvSpottingCount = (TextView) view.findViewById(R.id.fragment_ship_total_spots);
-        tvMaxSpotting = (TextView) view.findViewById(R.id.fragment_ship_max_spots);
+        tvSuppressionCount = view.findViewById(R.id.fragment_ship_total_supressions);
+        tvSpottingCount = view.findViewById(R.id.fragment_ship_total_spots);
+        tvMaxSpotting = view.findViewById(R.id.fragment_ship_max_spots);
 
-        aOtherStats = (LinearLayout) view.findViewById(R.id.fragment_ship_other_stats);
-        tvGameModeTitle = (TextView) view.findViewById(R.id.fragment_ship_game_mode_title);
+        aOtherStats = view.findViewById(R.id.fragment_ship_other_stats);
+        tvGameModeTitle = view.findViewById(R.id.fragment_ship_game_mode_title);
 
-        chartGameModes = (PieChart) view.findViewById(R.id.fragment_ship_graphs_games_per_mode);
+        chartGameModes = view.findViewById(R.id.fragment_ship_graphs_games_per_mode);
 
-        tvAverageTitle = (TextView) view.findViewById(R.id.averages_top_title);
+        tvAverageTitle = view.findViewById(R.id.averages_top_title);
         tvAverageTitle.setText(R.string.community_assistant_rating);
 
         aCARatingArea = view.findViewById(R.id.averages_ca_rating_top_area);
@@ -349,7 +349,7 @@ public class ShipFragment extends Fragment{
                         kdBattles = (int) (battles - ship.getSurvivedBattles());
                     }
                     float kd = (float) ship.getFrags() / kdBattles;
-                    tvAvgFrag.setText("" + Utils.getDefaultDecimalFormatter().format(kd));
+                    tvAvgFrag.setText(Utils.getDefaultDecimalFormatter().format(kd));
                     int avgDamage = (int) (ship.getTotalDamage() / battles);
                     tvAvgDamage.setText("" + avgDamage);
 
@@ -377,10 +377,10 @@ public class ShipFragment extends Fragment{
                     tvMaxDamage.setText("" + ship.getMaxDamage());
                     tvMaxPlanes.setText("" + ship.getMaxPlanesKilled());
                     tvMaxXp.setText("" + ship.getMaxXP());
-                    tvAvgCaps.setText(Utils.getOneDepthDecimalFormatter().format((float) ship.getCapturePoints() / battles) + "");
+                    tvAvgCaps.setText(Utils.getOneDepthDecimalFormatter().format((float) ship.getCapturePoints() / battles));
                     tvSurvivedWins.setText(Utils.getOneDepthDecimalFormatter().format((float) ship.getSurvivedWins() / battles) + "%");
                     tvSurvivalRate.setText(Utils.getOneDepthDecimalFormatter().format(((float) ship.getSurvivedBattles() / battles) * 100) + "%");
-                    tvAvgDropped.setText(Utils.getOneDepthDecimalFormatter().format((float) ship.getDroppedCapturePoints() / battles) + "");
+                    tvAvgDropped.setText(Utils.getOneDepthDecimalFormatter().format((float) ship.getDroppedCapturePoints() / battles));
                     tvTotalXp.setText("" + ship.getTotalXP());
 
                     tvWins.setText("" + ship.getWins());
@@ -391,30 +391,30 @@ public class ShipFragment extends Fragment{
                     tvTotalPlanes.setText("" + ship.getPlanesKilled());
                     tvTotalDefReset.setText("" + ship.getDroppedCapturePoints());
 
-                    tvAvgPlanes.setText("" + Utils.getOneDepthDecimalFormatter().format((float) ship.getPlanesKilled() / battles));
+                    tvAvgPlanes.setText(Utils.getOneDepthDecimalFormatter().format((float) ship.getPlanesKilled() / battles));
                     tvTraveled.setText(ship.getDistanceTraveled() + " miles");
 
                     String argoDamage = "" + ship.getTotalArgoDamage();
                     if(ship.getTotalArgoDamage() > 1000000){
-                        argoDamage = "" + Utils.getDefaultDecimalFormatter().format(ship.getTotalArgoDamage() / 1000000) + getString(R.string.million);
+                        argoDamage = Utils.getDefaultDecimalFormatter().format(ship.getTotalArgoDamage() / 1000000) + getString(R.string.million);
                     }
                     tvArgoDamage.setText(argoDamage);
 
                     String argoTorpDamage = "" + ship.getTorpArgoDamage();
                     if(ship.getTotalArgoDamage() > 1000000){
-                        argoTorpDamage = "" + Utils.getDefaultDecimalFormatter().format(ship.getTotalArgoDamage() / 1000000) + getString(R.string.million);
+                        argoTorpDamage = Utils.getDefaultDecimalFormatter().format(ship.getTotalArgoDamage() / 1000000) + getString(R.string.million);
                     }
                     tvArgoTorpDamage.setText(argoTorpDamage);
 
                     String buildingDamage = "" + ship.getBuildingDamage();
                     if(ship.getBuildingDamage() > 1000000){
-                        buildingDamage = "" + Utils.getDefaultDecimalFormatter().format(ship.getBuildingDamage() / 1000000) + getString(R.string.million);
+                        buildingDamage = Utils.getDefaultDecimalFormatter().format(ship.getBuildingDamage() / 1000000) + getString(R.string.million);
                     }
                     tvBuildingDamage.setText(buildingDamage);
 
                     String scoutingDamage = "" + ship.getScoutingDamage();
                     if(ship.getScoutingDamage() > 1000000){
-                        scoutingDamage = "" + Utils.getDefaultDecimalFormatter().format(ship.getScoutingDamage() / 1000000) + getString(R.string.million);
+                        scoutingDamage = Utils.getDefaultDecimalFormatter().format(ship.getScoutingDamage() / 1000000) + getString(R.string.million);
                     }
                     tvSpottingDamage.setText(scoutingDamage);
 
@@ -630,24 +630,24 @@ public class ShipFragment extends Fragment{
 
                     UIUtils.setUpCard(view, R.id.list_ship_ranked_card_area);
 
-                    TextView tvTitle = (TextView) view.findViewById(R.id.list_ship_ranked_title);
+                    TextView tvTitle = view.findViewById(R.id.list_ship_ranked_title);
 
-                    TextView tvBattles = (TextView) view.findViewById(R.id.list_ship_ranked_battles);
-                    TextView tvAvgDamage = (TextView) view.findViewById(R.id.list_ship_ranked_avg_dmg);
-                    TextView tvAvgKills = (TextView) view.findViewById(R.id.list_ship_ranked_kills);
-                    TextView tvAvgCaps = (TextView) view.findViewById(R.id.list_ship_ranked_avg_caps);
-                    TextView tvDrpCapPts = (TextView) view.findViewById(R.id.list_ship_ranked_drp_cap_pts);
-                    TextView tvAvgPlanes = (TextView) view.findViewById(R.id.list_ship_ranked_avg_planes);
-                    TextView tvAvgExp = (TextView) view.findViewById(R.id.list_ship_ranked_avg_exp);
-                    TextView tvSurvivalRate = (TextView) view.findViewById(R.id.list_ship_ranked_survival_rate);
-                    TextView tvWinRate = (TextView) view.findViewById(R.id.list_ship_ranked_win_rate);
-                    TextView tvSurvivedWins = (TextView) view.findViewById(R.id.list_ship_ranked_survival_wins);
+                    TextView tvBattles = view.findViewById(R.id.list_ship_ranked_battles);
+                    TextView tvAvgDamage = view.findViewById(R.id.list_ship_ranked_avg_dmg);
+                    TextView tvAvgKills = view.findViewById(R.id.list_ship_ranked_kills);
+                    TextView tvAvgCaps = view.findViewById(R.id.list_ship_ranked_avg_caps);
+                    TextView tvDrpCapPts = view.findViewById(R.id.list_ship_ranked_drp_cap_pts);
+                    TextView tvAvgPlanes = view.findViewById(R.id.list_ship_ranked_avg_planes);
+                    TextView tvAvgExp = view.findViewById(R.id.list_ship_ranked_avg_exp);
+                    TextView tvSurvivalRate = view.findViewById(R.id.list_ship_ranked_survival_rate);
+                    TextView tvWinRate = view.findViewById(R.id.list_ship_ranked_win_rate);
+                    TextView tvSurvivedWins = view.findViewById(R.id.list_ship_ranked_survival_wins);
 
 
-                    TextView tvBatteryMain = (TextView) view.findViewById(R.id.list_ship_ranked_battery_kills_main);
-                    TextView tvBatteryTorps = (TextView) view.findViewById(R.id.list_ship_ranked_battery_kills_torps);
-                    TextView tvBatteryPlanes = (TextView) view.findViewById(R.id.list_ship_ranked_battery_kills_aircraft);
-                    TextView tvBatteryOther = (TextView) view.findViewById(R.id.list_ship_ranked_battery_kills_other);
+                    TextView tvBatteryMain = view.findViewById(R.id.list_ship_ranked_battery_kills_main);
+                    TextView tvBatteryTorps = view.findViewById(R.id.list_ship_ranked_battery_kills_torps);
+                    TextView tvBatteryPlanes = view.findViewById(R.id.list_ship_ranked_battery_kills_aircraft);
+                    TextView tvBatteryOther = view.findViewById(R.id.list_ship_ranked_battery_kills_other);
 
                     tvTitle.setText(getString(R.string.ranked_season) + " " + stats.getSeasonNum());
                     SeasonStats season = stats.getSolo();
@@ -655,29 +655,29 @@ public class ShipFragment extends Fragment{
                     tvBattles.setText(season.getBattles() + "");
                     if(bat > 0){
                         float avgExp = season.getXp() / bat;
-                        tvAvgExp.setText(Utils.getDefaultDecimalFormatter().format(avgExp) + "");
+                        tvAvgExp.setText(Utils.getDefaultDecimalFormatter().format(avgExp));
                         float wr = (season.getWins() / bat) * 100.0f;
                         tvWinRate.setText(Utils.getDefaultDecimalFormatter().format(wr) + "%");
                         float kd = (float) season.getFrags() / bat;
-                        tvAvgKills.setText("" + Utils.getDefaultDecimalFormatter().format(kd));
+                        tvAvgKills.setText(Utils.getDefaultDecimalFormatter().format(kd));
                         int avgDamage = (int) (season.getDamage() / bat);
                         tvAvgDamage.setText("" + avgDamage);
 
                         BatteryStats mainBatteryStats = season.getMain();
                         BatteryStats torpStats = season.getTorps();
                         BatteryStats aircraftStats = season.getAircraft();
-                        tvBatteryMain.setText("" + CaptainRankedFragment.createBatteryString(mainBatteryStats));
-                        tvBatteryTorps.setText("" + CaptainRankedFragment.createBatteryString(torpStats));
-                        tvBatteryPlanes.setText("" + CaptainRankedFragment.createBatteryString(aircraftStats));
+                        tvBatteryMain.setText(CaptainRankedFragment.createBatteryString(mainBatteryStats));
+                        tvBatteryTorps.setText(CaptainRankedFragment.createBatteryString(torpStats));
+                        tvBatteryPlanes.setText(CaptainRankedFragment.createBatteryString(aircraftStats));
                         int others = season.getFrags() - mainBatteryStats.getFrags() - torpStats.getFrags() - aircraftStats.getFrags();
                         tvBatteryOther.setText("" + others);
 
                         tvAvgPlanes.setText(Utils.getOneDepthDecimalFormatter().format(season.getPlanesKilled() / bat));
 
                         tvSurvivedWins.setText(Utils.getOneDepthDecimalFormatter().format((season.getSurWins() / bat) * 100) + "%");
-                        tvAvgCaps.setText(Utils.getOneDepthDecimalFormatter().format((float) season.getCapPts() / bat) + "");
+                        tvAvgCaps.setText(Utils.getOneDepthDecimalFormatter().format((float) season.getCapPts() / bat));
                         tvSurvivalRate.setText(Utils.getOneDepthDecimalFormatter().format(((float) season.getSurvived() / bat) * 100) + "%");
-                        tvDrpCapPts.setText(Utils.getOneDepthDecimalFormatter().format((float) season.getDrpCapPts() / bat) + "");
+                        tvDrpCapPts.setText(Utils.getOneDepthDecimalFormatter().format((float) season.getDrpCapPts() / bat));
                     }
                     llContainer.addView(view);
                 }
@@ -1041,9 +1041,9 @@ public class ShipFragment extends Fragment{
 
                     float battles = ship.getBattles();
                     yVals.add(new Entry((float) (((ship.getTotalDamage() / battles) / stat.getDmg_dlt()) * 100), 0));
-                    yVals.add(new Entry((float) (((ship.getFrags() / battles) / stat.getFrags()) * 100), 1)); //kills
-                    yVals.add(new Entry((float) (((ship.getWins() / battles) / stat.getWins()) * 100), 2)); //winrate
-                    yVals.add(new Entry(((float) (((ship.getPlanesKilled() / battles) / stat.getPls_kd()) * 100)), 5)); // planes
+                    yVals.add(new Entry(((ship.getFrags() / battles) / stat.getFrags()) * 100, 1)); //kills
+                    yVals.add(new Entry(((ship.getWins() / battles) / stat.getWins()) * 100, 2)); //winrate
+                    yVals.add(new Entry(((ship.getPlanesKilled() / battles) / stat.getPls_kd()) * 100, 5)); // planes
 //                    yVals.add(new Entry((float) (((ship.getCapturePoints() / battles) / stat.getCap_pts()) * 100), 3)); // captures
 //                    yVals.add(new Entry((float) (((ship.getDroppedCapturePoints() / battles) / stat.getDr_cap_pts()) * 100), 4)); // def reset
 

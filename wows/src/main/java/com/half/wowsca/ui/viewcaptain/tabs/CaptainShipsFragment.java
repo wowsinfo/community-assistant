@@ -58,10 +58,10 @@ public class CaptainShipsFragment extends CAFragment {
     }
 
     private void bindView(View view) {
-        sSorter = (Spinner) view.findViewById(R.id.ships_spinner);
-        etSearch = (EditText) view.findViewById(R.id.ships_search);
+        sSorter = view.findViewById(R.id.ships_spinner);
+        etSearch = view.findViewById(R.id.ships_search);
         delete = view.findViewById(R.id.ships_delete);
-        recyclerView = (RecyclerView) view.findViewById(R.id.ships_list);
+        recyclerView = view.findViewById(R.id.ships_list);
 
         bindSwipe(view);
         initSwipeLayout();
@@ -141,7 +141,6 @@ public class CaptainShipsFragment extends CAFragment {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Dlog.wtf("OnItemSelected", "check = " + spinnerCheck + " pos = " + position);
                     if(!spinnerCheck){
-                        return;
                     } else {
                         String sortType = (String) parent.getItemAtPosition(position);
                         Prefs prefs = new Prefs(getContext());

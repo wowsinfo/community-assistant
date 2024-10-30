@@ -33,8 +33,8 @@ public class ViewCaptainTabbedFragment extends Fragment {
 
     private void bindView(View view) {
         //set up pager and info
-        mViewPager = (ViewPager) view.findViewById(R.id.fragment_view_captain_tabbed_pager);
-        pagerTabs = (SlidingTabLayout) view.findViewById(R.id.fragment_view_captain_pager_tab);
+        mViewPager = view.findViewById(R.id.fragment_view_captain_tabbed_pager);
+        pagerTabs = view.findViewById(R.id.fragment_view_captain_pager_tab);
         Integer[] iconResourceArray = {R.drawable.ic_captain,
                 R.drawable.ic_stats, R.drawable.ic_trophy, R.drawable.ic_star, R.drawable.ic_medal,
                 R.drawable.ic_ship};

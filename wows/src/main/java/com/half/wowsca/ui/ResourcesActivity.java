@@ -352,12 +352,12 @@ public class ResourcesActivity extends CABaseActivity {
     private void createServer(Server s) {
         View serverInfo = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_server_info, llServerContainer, false);
 
-        TextView serverName = (TextView) serverInfo.findViewById(R.id.server_info_name);
+        TextView serverName = serverInfo.findViewById(R.id.server_info_name);
 
         serverName.setText(s.toString().toUpperCase());
 
-        LinearLayout wotContainer = (LinearLayout) serverInfo.findViewById(R.id.server_info_container_1);
-        LinearLayout wowsContainer = (LinearLayout) serverInfo.findViewById(R.id.server_info_container_2);
+        LinearLayout wotContainer = serverInfo.findViewById(R.id.server_info_container_1);
+        LinearLayout wowsContainer = serverInfo.findViewById(R.id.server_info_container_2);
 
         List<ServerInfo> currentServerWoT = new ArrayList<>();
         List<ServerInfo> currentServerWoWs = new ArrayList<>();
@@ -380,12 +380,12 @@ public class ResourcesActivity extends CABaseActivity {
 
         int layoutId = R.layout.list_server;
         View serverWoTTitle = LayoutInflater.from(getApplicationContext()).inflate(layoutId, wotContainer, false);
-        TextView tvwot = (TextView) serverWoTTitle.findViewById(R.id.list_server_text);
+        TextView tvwot = serverWoTTitle.findViewById(R.id.list_server_text);
         tvwot.setText(getString(R.string.resources_wot_total_c) + totalWot);
 
 
         View serverWowsTitle = LayoutInflater.from(getApplicationContext()).inflate(layoutId, wotContainer, false);
-        TextView tvwows = (TextView) serverWowsTitle.findViewById(R.id.list_server_text);
+        TextView tvwows = serverWowsTitle.findViewById(R.id.list_server_text);
         tvwows.setText(getString(R.string.resources_wows_total_c) + totalWoWs);
 
         wotContainer.addView(serverWoTTitle);
@@ -393,14 +393,14 @@ public class ResourcesActivity extends CABaseActivity {
 
         for (ServerInfo info : currentServerWoT) {
             View server = LayoutInflater.from(getApplicationContext()).inflate(layoutId, wotContainer, false);
-            TextView text = (TextView) server.findViewById(R.id.list_server_text);
+            TextView text = server.findViewById(R.id.list_server_text);
             text.setText(info.getName() + " - " + info.getPlayers());
             wotContainer.addView(server);
         }
 
         for (ServerInfo info : currentServerWoWs) {
             View server = LayoutInflater.from(getApplicationContext()).inflate(layoutId, wowsContainer, false);
-            TextView text = (TextView) server.findViewById(R.id.list_server_text);
+            TextView text = server.findViewById(R.id.list_server_text);
             text.setText(info.getName() + " - " + info.getPlayers());
             wowsContainer.addView(server);
         }

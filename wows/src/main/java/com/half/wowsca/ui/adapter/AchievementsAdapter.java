@@ -36,9 +36,9 @@ public class AchievementsAdapter extends ArrayAdapter<Achievement> {
         }
         Achievement achievement = getItem(position);
         AchievementInfo info = CAApp.getInfoManager().getAchievements(getContext()).get(achievement.getName());
-        ImageView iv = (ImageView) convertView.findViewById(R.id.list_achievement_icon);
-        TextView tvNumber = (TextView) convertView.findViewById(R.id.list_achievement_text);
-        TextView tvDiff = (TextView) convertView.findViewById(R.id.list_achievement_difference);
+        ImageView iv = convertView.findViewById(R.id.list_achievement_icon);
+        TextView tvNumber = convertView.findViewById(R.id.list_achievement_text);
+        TextView tvDiff = convertView.findViewById(R.id.list_achievement_difference);
 
         if (info != null) {
             Picasso.get().load(info.getImage()).error(R.drawable.ic_missing_image).into(iv);

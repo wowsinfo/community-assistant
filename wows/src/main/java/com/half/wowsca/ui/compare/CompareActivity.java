@@ -257,7 +257,7 @@ public class CompareActivity extends CABaseActivity {
     private void buildTitle(String title){
         View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_compare_title, container, false);
 
-        TextView tvTitle = (TextView) view.findViewById(R.id.list_compare_title);
+        TextView tvTitle = view.findViewById(R.id.list_compare_title);
 
         tvTitle.setText(title);
 
@@ -317,7 +317,7 @@ public class CompareActivity extends CABaseActivity {
         if (num3 == POS_WRONG)
             num3 = 0;
         DecimalFormat formatter = new DecimalFormat("#");
-        build(layoutId, larger, getString(R.string.damage), formatter.format(num1) + "", formatter.format(num2) + "", (larger ? (formatter.format(num3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.damage), formatter.format(num1), formatter.format(num2), (larger ? (formatter.format(num3)) : ""), highestPos);
     }
 
     private void showCARatingStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -330,7 +330,7 @@ public class CompareActivity extends CABaseActivity {
         if (num3 == POS_WRONG)
             num3 = 0;
         DecimalFormat formatter = new DecimalFormat("#");
-        build(layoutId, larger, getString(R.string.community_assistant_rating_shorter), formatter.format(num1) + "", formatter.format(num2) + "", (larger ? (formatter.format(num3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.community_assistant_rating_shorter), formatter.format(num1), formatter.format(num2), (larger ? (formatter.format(num3)) : ""), highestPos);
     }
 
     private void showCEKillsStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -343,7 +343,7 @@ public class CompareActivity extends CABaseActivity {
         if (num3 == POS_WRONG)
             num3 = 0;
         DecimalFormat formatter = new DecimalFormat("#.#");
-        build(layoutId, larger, getString(R.string.kills), formatter.format(num1) + "", formatter.format(num2) + "", (larger ? (formatter.format(num3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.kills), formatter.format(num1), formatter.format(num2), (larger ? (formatter.format(num3)) : ""), highestPos);
     }
 
     private void showCEWRStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -356,7 +356,7 @@ public class CompareActivity extends CABaseActivity {
         if (num3 == POS_WRONG)
             num3 = 0;
         DecimalFormat formatter = new DecimalFormat("#.#%");
-        build(layoutId, larger, getString(R.string.win_rate), formatter.format(num1) + "", formatter.format(num2) + "", (larger ? (formatter.format(num3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.win_rate), formatter.format(num1), formatter.format(num2), (larger ? (formatter.format(num3)) : ""), highestPos);
     }
 
     private void showCEPlanesStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -369,7 +369,7 @@ public class CompareActivity extends CABaseActivity {
         if (num3 == POS_WRONG)
             num3 = 0;
         DecimalFormat formatter = new DecimalFormat("#.#");
-        build(layoutId, larger, getString(R.string.planes_downed), formatter.format(num1) + "", formatter.format(num2) + "", (larger ? (formatter.format(num3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.planes_downed), formatter.format(num1), formatter.format(num2), (larger ? (formatter.format(num3)) : ""), highestPos);
     }
 
 //    private void showCESurvivalStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -457,7 +457,7 @@ public class CompareActivity extends CABaseActivity {
             wn3 = 0;
         DecimalFormat formatter = Utils.getOneDepthDecimalFormatter();
 
-        build(layoutId, larger, getString(R.string.main_battery_hit_per), formatter.format(wn1) + "", formatter.format(wn2) + "", (larger ? (formatter.format(wn3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.main_battery_hit_per), formatter.format(wn1), formatter.format(wn2), (larger ? (formatter.format(wn3)) : ""), highestPos);
     }
 
     private void showTorpHitRate(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -483,7 +483,7 @@ public class CompareActivity extends CABaseActivity {
         DecimalFormat formatter = Utils.getOneDepthDecimalFormatter();
         if (wn3 == POS_WRONG)
             wn3 = 0;
-        build(layoutId, larger, getString(R.string.torpedoes_hit_per), formatter.format(wn1) + "", formatter.format(wn2) + "", (larger ? (formatter.format(wn3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.torpedoes_hit_per), formatter.format(wn1), formatter.format(wn2), (larger ? (formatter.format(wn3)) : ""), highestPos);
     }
 
     private void showAverageDamage(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -509,7 +509,7 @@ public class CompareActivity extends CABaseActivity {
         DecimalFormat formatter = Utils.getDefaultDecimalFormatter();
         if (wn3 == POS_WRONG)
             wn3 = 0;
-        build(layoutId, larger, getString(R.string.average_damage), formatter.format(wn1) + "", formatter.format(wn2) + "", (larger ? (formatter.format(wn3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.average_damage), formatter.format(wn1), formatter.format(wn2), (larger ? (formatter.format(wn3)) : ""), highestPos);
     }
 
     private void showWinRate(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -535,7 +535,7 @@ public class CompareActivity extends CABaseActivity {
         DecimalFormat formatter = Utils.getDefaultDecimalFormatter();
         if (wn3 == POS_WRONG)
             wn3 = 0;
-        build(layoutId, larger, getString(R.string.win_rate), formatter.format(wn1) + "", formatter.format(wn2) + "", (larger ? (formatter.format(wn3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.win_rate), formatter.format(wn1), formatter.format(wn2), (larger ? (formatter.format(wn3)) : ""), highestPos);
     }
 
     private void showSurvivalRate(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -561,7 +561,7 @@ public class CompareActivity extends CABaseActivity {
         DecimalFormat formatter = Utils.getDefaultDecimalFormatter();
         if (wn3 == POS_WRONG)
             wn3 = 0;
-        build(layoutId, larger, getString(R.string.survival_rate), formatter.format(wn1) + "", formatter.format(wn2) + "", (larger ? (formatter.format(wn3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.survival_rate), formatter.format(wn1), formatter.format(wn2), (larger ? (formatter.format(wn3)) : ""), highestPos);
     }
 
     private void showKD(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -597,7 +597,7 @@ public class CompareActivity extends CABaseActivity {
         DecimalFormat formatter = Utils.getDefaultDecimalFormatter();
         if (kd3 == POS_WRONG)
             kd3 = 0;
-        build(layoutId, larger, getString(R.string.kills_game), formatter.format(kd1) + "", formatter.format(kd2) + "", (larger ? (formatter.format(kd3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.kills_game), formatter.format(kd1), formatter.format(kd2), (larger ? (formatter.format(kd3)) : ""), highestPos);
     }
 
     private void showPlanesPerGame(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -623,7 +623,7 @@ public class CompareActivity extends CABaseActivity {
         DecimalFormat formatter = Utils.getOneDepthDecimalFormatter();
         if (wn3 == POS_WRONG)
             wn3 = 0;
-        build(layoutId, larger, getString(R.string.planes_downed_game), formatter.format(wn1) + "", formatter.format(wn2) + "", (larger ? (formatter.format(wn3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.planes_downed_game), formatter.format(wn1), formatter.format(wn2), (larger ? (formatter.format(wn3)) : ""), highestPos);
     }
 
     private void showCapturesPerGame(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -649,7 +649,7 @@ public class CompareActivity extends CABaseActivity {
         DecimalFormat formatter = Utils.getOneDepthDecimalFormatter();
         if (wn3 == POS_WRONG)
             wn3 = 0;
-        build(layoutId, larger, getString(R.string.caps_game), formatter.format(wn1) + "", formatter.format(wn2) + "", (larger ? (formatter.format(wn3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.caps_game), formatter.format(wn1), formatter.format(wn2), (larger ? (formatter.format(wn3)) : ""), highestPos);
     }
 
     private void showDefenderPointsPerGame(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -677,15 +677,15 @@ public class CompareActivity extends CABaseActivity {
         if (wn3 == POS_WRONG)
             wn3 = 0;
 
-        build(layoutId, larger, getString(R.string.def_reset_game), formatter.format(wn1) + "", formatter.format(wn2) + "", (larger ? (formatter.format(wn3) + "") : ""), highestPos);
+        build(layoutId, larger, getString(R.string.def_reset_game), formatter.format(wn1), formatter.format(wn2), (larger ? (formatter.format(wn3)) : ""), highestPos);
     }
 
     private void build(int layoutId, boolean larger, String titleStr, String oneStr, String twoStr, String threeStr, int highest) {
         View view = LayoutInflater.from(getApplicationContext()).inflate(layoutId, container, false);
 
-        TextView title = (TextView) view.findViewById(R.id.compare_title);
-        TextView one = (TextView) view.findViewById(R.id.compare_one);
-        TextView two = (TextView) view.findViewById(R.id.compare_two);
+        TextView title = view.findViewById(R.id.compare_title);
+        TextView one = view.findViewById(R.id.compare_one);
+        TextView two = view.findViewById(R.id.compare_two);
 
         title.setText(titleStr);
         if (TextUtils.isEmpty(titleStr))
@@ -694,7 +694,7 @@ public class CompareActivity extends CABaseActivity {
         two.setText(twoStr);
         TextView three = null;
         if (larger) {
-            three = (TextView) view.findViewById(R.id.compare_three);
+            three = view.findViewById(R.id.compare_three);
             three.setText(threeStr);
         }
         if (highest != POS_WRONG)
@@ -706,16 +706,16 @@ public class CompareActivity extends CABaseActivity {
     private void buildTitleDrag(int layoutId, boolean larger, String titleStr, String oneStr, String twoStr, String threeStr, int highest) {
         View view = LayoutInflater.from(getApplicationContext()).inflate(layoutId, container, false);
 
-        TextView title = (TextView) view.findViewById(R.id.compare_title);
-        TextView one = (TextView) view.findViewById(R.id.compare_one);
-        TextView two = (TextView) view.findViewById(R.id.compare_two);
+        TextView title = view.findViewById(R.id.compare_title);
+        TextView one = view.findViewById(R.id.compare_one);
+        TextView two = view.findViewById(R.id.compare_two);
 
         title.setVisibility(View.INVISIBLE);
         one.setText(oneStr);
         two.setText(twoStr);
         TextView three = null;
         if (larger) {
-            three = (TextView) view.findViewById(R.id.compare_three);
+            three = view.findViewById(R.id.compare_three);
             three.setText(threeStr);
         }
 
@@ -723,16 +723,16 @@ public class CompareActivity extends CABaseActivity {
     }
 
     private void build(View view, boolean larger, String titleStr, String oneStr, String twoStr, String threeStr, int highest) {
-        TextView title = (TextView) view.findViewById(R.id.compare_title);
-        TextView one = (TextView) view.findViewById(R.id.compare_one);
-        TextView two = (TextView) view.findViewById(R.id.compare_two);
+        TextView title = view.findViewById(R.id.compare_title);
+        TextView one = view.findViewById(R.id.compare_one);
+        TextView two = view.findViewById(R.id.compare_two);
 
         title.setText(titleStr);
         one.setText(oneStr);
         two.setText(twoStr);
         TextView three = null;
         if (larger) {
-            three = (TextView) view.findViewById(R.id.compare_three);
+            three = view.findViewById(R.id.compare_three);
             three.setText(threeStr);
         }
         if (highest != POS_WRONG)
@@ -742,20 +742,20 @@ public class CompareActivity extends CABaseActivity {
     private void buildGraphs(int layoutId, boolean larger, String s, String s1, String s2, List<Ship> details1, List<Ship> details2, List<Ship> details3) {
         View damage = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_compare_bar_graph, container, false);
 
-        TextView titledamage = (TextView) damage.findViewById(R.id.list_compare_graph_text);
+        TextView titledamage = damage.findViewById(R.id.list_compare_graph_text);
         titledamage.setText(R.string.average_damage_per_tier);
 
-        BarChart chartDamage = (BarChart) damage.findViewById(R.id.list_compare_graph);
+        BarChart chartDamage = damage.findViewById(R.id.list_compare_graph);
 
         View experience = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_compare_bar_graph, container, false);
 
-        TextView titleExperience = (TextView) experience.findViewById(R.id.list_compare_graph_text);
+        TextView titleExperience = experience.findViewById(R.id.list_compare_graph_text);
         titleExperience.setText(R.string.average_experience_per_tier);
 
-        BarChart chartExperience = (BarChart) experience.findViewById(R.id.list_compare_graph);
+        BarChart chartExperience = experience.findViewById(R.id.list_compare_graph);
 
         View view = LayoutInflater.from(getApplicationContext()).inflate(layoutId, container, false);
-        TextView title = (TextView) view.findViewById(R.id.compare_title);
+        TextView title = view.findViewById(R.id.compare_title);
         title.setText(R.string.average_tier);
 
         setUpCharts(view, larger, s, s1, s2, details1, details2, details3, chartDamage, chartExperience);
@@ -830,13 +830,13 @@ public class CompareActivity extends CABaseActivity {
                     if (battleCount != null && exp != null && battleCount > 0) {
                         averages.put(i, exp / battleCount);
                     } else {
-                        averages.put(i, 0l);
+                        averages.put(i, 0L);
                     }
                     Long damage = damages.get(i);
                     if (damage != null && battleCount > 0) {
                         avgDamages.put(i, damage / battleCount);
                     } else {
-                        avgDamages.put(i, 0l);
+                        avgDamages.put(i, 0L);
                     }
                 }
                 CaptainStatsCompareObject object = new CaptainStatsCompareObject();

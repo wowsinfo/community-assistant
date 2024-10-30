@@ -75,7 +75,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private static final int TAB_VIEW_PADDING_DIPS = 16;
     private static final int TAB_VIEW_TEXT_SIZE_SP = 12;
 
-    private int mTitleOffset;
+    private final int mTitleOffset;
 
     private int mTabViewLayoutId;
     private int mTabViewTextViewId;
@@ -84,7 +84,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private int tintColor;
 
     private ViewPager mViewPager;
-    private SparseArray<String> mContentDescriptions = new SparseArray<String>();
+    private final SparseArray<String> mContentDescriptions = new SparseArray<String>();
     private ViewPager.OnPageChangeListener mViewPagerPageChangeListener;
 
     private final SlidingTabStrip mTabStrip;
@@ -208,7 +208,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
             // If there is a custom tab view layout id set, try and inflate it
             tabView = LayoutInflater.from(getContext()).inflate(R.layout.tab_layout, mTabStrip,
                     false);
-            tabImageView = (ImageView) tabView.findViewById(R.id.tab_layout_icon);
+            tabImageView = tabView.findViewById(R.id.tab_layout_icon);
 //            }
 
 //            if (tabView == null) {

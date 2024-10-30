@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 
 public class Prefs {
 
-	private SharedPreferences settings;
+	private final SharedPreferences settings;
 	
 	public Prefs(Context ctx) {
 		settings = PreferenceManager.getDefaultSharedPreferences(ctx);

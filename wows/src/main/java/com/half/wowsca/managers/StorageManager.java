@@ -99,7 +99,7 @@ public class StorageManager {
 
                     File dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE);
                     File statsDir = new File(dir, STATS_FOLDER);
-                    File statsFile = new File(statsDir, "" + CaptainManager.getCapIdStr(p));
+                    File statsFile = new File(statsDir, CaptainManager.getCapIdStr(p));
                     if (!statsFile.exists())
                         try {
                             statsFile.createNewFile();

@@ -54,7 +54,7 @@ public class CaptainAchievementsFragment extends CAFragment {
     }
 
     private void bindView(View view) {
-        battleGrid = (GridView) view.findViewById(R.id.achievement_battle_grid);
+        battleGrid = view.findViewById(R.id.achievement_battle_grid);
         bindSwipe(view);
         initSwipeLayout();
     }

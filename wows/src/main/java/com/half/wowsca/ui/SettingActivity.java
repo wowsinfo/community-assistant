@@ -24,6 +24,7 @@ import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.alerts.Alert;
 import com.half.wowsca.backend.GetNeededInfoTask;
+import com.half.wowsca.managers.InfoManager;
 import com.half.wowsca.managers.StorageManager;
 import com.half.wowsca.model.enums.Server;
 import com.half.wowsca.model.queries.InfoQuery;
@@ -359,7 +360,8 @@ public class SettingActivity extends CABaseActivity {
         aRefreshInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CAApp.getInfoManager().purge(v.getContext());
+                CAApp.getInfoManager();
+                InfoManager.purge(v.getContext());
                 InfoQuery query = new InfoQuery();
                 query.setServer(CAApp.getServerType(getApplicationContext()));
                 GetNeededInfoTask task = new GetNeededInfoTask();

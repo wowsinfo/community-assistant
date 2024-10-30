@@ -7,5 +7,5 @@ public enum AverageType {
 
     LARGE_NUMBER,
     DEFAULT,
-    PERCENT;
+    PERCENT
 }

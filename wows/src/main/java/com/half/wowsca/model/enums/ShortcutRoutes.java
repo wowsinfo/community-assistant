@@ -9,5 +9,5 @@ public enum ShortcutRoutes {
     ENCYCLOPEDIA,
     SEARCH,
     TWITCH,
-    AD_LAUNCH;
+    AD_LAUNCH
 }

@@ -58,8 +58,8 @@ public class CaptainRankedFragment extends CAFragment {
     }
 
     private void bindView(View view) {
-        aSeasons = (LinearLayout) view.findViewById(R.id.ranked_container);
-        aShips = (LinearLayout) view.findViewById(R.id.ranked_ship_container);
+        aSeasons = view.findViewById(R.id.ranked_container);
+        aShips = view.findViewById(R.id.ranked_ship_container);
 
         bindSwipe(view);
         initSwipeLayout();
@@ -97,7 +97,7 @@ public class CaptainRankedFragment extends CAFragment {
 
             View aHas = view.findViewById(R.id.list_season_has_info);
             View aNo = view.findViewById(R.id.list_season_no_info);
-            TextView tvNoInfo = (TextView) view.findViewById(R.id.list_season_no_info_text);
+            TextView tvNoInfo = view.findViewById(R.id.list_season_no_info_text);
             aNo.setVisibility(View.VISIBLE);
             aHas.setVisibility(View.GONE);
             tvNoInfo.setText(getString(R.string.search_no_results));
@@ -147,37 +147,37 @@ public class CaptainRankedFragment extends CAFragment {
             View aHas = view.findViewById(R.id.list_season_has_info);
             View aNo = view.findViewById(R.id.list_season_no_info);
 
-            TextView tvNoInfo = (TextView) view.findViewById(R.id.list_season_no_info_text);
+            TextView tvNoInfo = view.findViewById(R.id.list_season_no_info_text);
 
-            LinearLayout llStars = (LinearLayout) view.findViewById(R.id.list_season_star_amount);
+            LinearLayout llStars = view.findViewById(R.id.list_season_star_amount);
 
-            TextView tvRank = (TextView) view.findViewById(R.id.list_season_rank);
-            TextView tvMaxRank = (TextView) view.findViewById(R.id.list_season_max_rank);
-            TextView tvTitle = (TextView) view.findViewById(R.id.list_season_title);
+            TextView tvRank = view.findViewById(R.id.list_season_rank);
+            TextView tvMaxRank = view.findViewById(R.id.list_season_max_rank);
+            TextView tvTitle = view.findViewById(R.id.list_season_title);
 
-            TextView tvWinRate = (TextView) view.findViewById(R.id.list_season_winrate);
-            TextView tvSurvivalRate = (TextView) view.findViewById(R.id.list_season_survival_rate);
+            TextView tvWinRate = view.findViewById(R.id.list_season_winrate);
+            TextView tvSurvivalRate = view.findViewById(R.id.list_season_survival_rate);
 
-            TextView tvBattles = (TextView) view.findViewById(R.id.list_season_battles);
-            TextView tvAvgDmg = (TextView) view.findViewById(R.id.list_season_avg_dmg);
-            TextView tvAvgKills = (TextView) view.findViewById(R.id.list_season_avg_kills);
-            TextView tvAvgCaps = (TextView) view.findViewById(R.id.list_season_avg_caps);
-            TextView tvAvgResets = (TextView) view.findViewById(R.id.list_season_avg_resets);
-            TextView tvAvgPlanes = (TextView) view.findViewById(R.id.list_season_avg_planes);
-            TextView tvAvgXP = (TextView) view.findViewById(R.id.list_season_avg_xp);
+            TextView tvBattles = view.findViewById(R.id.list_season_battles);
+            TextView tvAvgDmg = view.findViewById(R.id.list_season_avg_dmg);
+            TextView tvAvgKills = view.findViewById(R.id.list_season_avg_kills);
+            TextView tvAvgCaps = view.findViewById(R.id.list_season_avg_caps);
+            TextView tvAvgResets = view.findViewById(R.id.list_season_avg_resets);
+            TextView tvAvgPlanes = view.findViewById(R.id.list_season_avg_planes);
+            TextView tvAvgXP = view.findViewById(R.id.list_season_avg_xp);
 
-            TextView tvBatteryMain = (TextView) view.findViewById(R.id.list_season_battery_kills_main);
-            TextView tvBatteryAircraft = (TextView) view.findViewById(R.id.list_season_battery_kills_aircraft);
-            TextView tvBatteryTorps = (TextView) view.findViewById(R.id.list_season_battery_kills_torps);
-            TextView tvBatteryOther = (TextView) view.findViewById(R.id.list_season_battery_kills_other);
+            TextView tvBatteryMain = view.findViewById(R.id.list_season_battery_kills_main);
+            TextView tvBatteryAircraft = view.findViewById(R.id.list_season_battery_kills_aircraft);
+            TextView tvBatteryTorps = view.findViewById(R.id.list_season_battery_kills_torps);
+            TextView tvBatteryOther = view.findViewById(R.id.list_season_battery_kills_other);
 
-            TextView tvTopDamage = (TextView) view.findViewById(R.id.list_season_top_damage);
-            TextView tvTopExp = (TextView) view.findViewById(R.id.list_season_top_exp);
+            TextView tvTopDamage = view.findViewById(R.id.list_season_top_damage);
+            TextView tvTopExp = view.findViewById(R.id.list_season_top_exp);
 
             View aShips = view.findViewById(R.id.list_season_ships_area);
             View aShipsTop = view.findViewById(R.id.list_season_ships_top_area);
-            LinearLayout llShips = (LinearLayout) view.findViewById(R.id.list_season_ships_container);
-            ImageView ivShipsArea = (ImageView) view.findViewById(R.id.list_season_ships_image);
+            LinearLayout llShips = view.findViewById(R.id.list_season_ships_container);
+            ImageView ivShipsArea = view.findViewById(R.id.list_season_ships_image);
 
             aShips.setTag(ivShipsArea);
             aShipsTop.setTag(aShips);
@@ -233,7 +233,7 @@ public class CaptainRankedFragment extends CAFragment {
                     float avgXP = stats.getXp() / battles;
 
                     DecimalFormat format = new DecimalFormat("###,###,###");
-                    tvTopDamage.setText(format.format(stats.getMaxDamage()) + "");
+                    tvTopDamage.setText(format.format(stats.getMaxDamage()));
                     tvTopExp.setText(stats.getMaxXP() + "");
 
                     tvBattles.setText((int) battles + "");
@@ -285,10 +285,10 @@ public class CaptainRankedFragment extends CAFragment {
                                 ShipInfo shipInfo = CAApp.getInfoManager().getShipInfo(getContext()).get(s.getShipId());
                                 if(shipInfo != null && shipStats.getBattles() > 0) {
                                     View shipView = LayoutInflater.from(getContext()).inflate(R.layout.list_ranked_ships, llShips, false);
-                                    TextView title = (TextView) shipView.findViewById(R.id.list_ranked_ships_title);
-                                    TextView one = (TextView) shipView.findViewById(R.id.list_ranked_ships_1);
-                                    TextView two = (TextView) shipView.findViewById(R.id.list_ranked_ships_2);
-                                    TextView three = (TextView) shipView.findViewById(R.id.list_ranked_ships_3);
+                                    TextView title = shipView.findViewById(R.id.list_ranked_ships_title);
+                                    TextView one = shipView.findViewById(R.id.list_ranked_ships_1);
+                                    TextView two = shipView.findViewById(R.id.list_ranked_ships_2);
+                                    TextView three = shipView.findViewById(R.id.list_ranked_ships_3);
 
                                     title.setText(shipInfo.getName());
                                     one.setText(shipStats.getBattles() + "");

@@ -35,9 +35,9 @@ public class EncyclopediaAdapter extends RecyclerView.Adapter<EncyclopediaAdapte
     public static final int EMPTY_FILTER = -1;
     private List<ShipInfo> ships;
 
-    private ArrayList<ShipInfo> backupShips;
+    private final ArrayList<ShipInfo> backupShips;
 
-    private Context ctx;
+    private final Context ctx;
 
 
     public EncyclopediaAdapter(List<ShipInfo> ships, Context context) {
@@ -57,8 +57,8 @@ public class EncyclopediaAdapter extends RecyclerView.Adapter<EncyclopediaAdapte
 
         public ShipViewHolder(View itemView) {
             super(itemView);
-            this.img = (ImageView) itemView.findViewById(R.id.list_encyclopedia_ship_image);
-            this.name = (TextView) itemView.findViewById(R.id.list_encyclopedia_ship_name);
+            this.img = itemView.findViewById(R.id.list_encyclopedia_ship_image);
+            this.name = itemView.findViewById(R.id.list_encyclopedia_ship_name);
             this.area = itemView.findViewById(R.id.list_encyclopedia_area);
             area.setOnClickListener(new View.OnClickListener() {
                 @Override

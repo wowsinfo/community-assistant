@@ -89,14 +89,14 @@ public class EncyclopediaShipsFragment extends CAFragment {
     private void bindView(View view) {
         topArea = view.findViewById(R.id.encyclopedia_list_top_area);
 
-        listView = (RecyclerView) view.findViewById(R.id.encyclopedia_list_listview);
-        etSearch = (EditText) view.findViewById(R.id.encyclopedia_list_et);
+        listView = view.findViewById(R.id.encyclopedia_list_listview);
+        etSearch = view.findViewById(R.id.encyclopedia_list_et);
         delete = view.findViewById(R.id.encyclopedia_list_et_delete);
 
-        sTier = (Spinner) view.findViewById(R.id.encyclopedia_list_tier_selector);
-        sNation = (Spinner) view.findViewById(R.id.encyclopedia_list_nation_selector);
+        sTier = view.findViewById(R.id.encyclopedia_list_tier_selector);
+        sNation = view.findViewById(R.id.encyclopedia_list_nation_selector);
 
-        tvCompareText = (TextView) view.findViewById(R.id.encyclopedia_list_compare_text);
+        tvCompareText = view.findViewById(R.id.encyclopedia_list_compare_text);
     }
 
     @Override
@@ -211,9 +211,7 @@ public class EncyclopediaShipsFragment extends CAFragment {
     private void initNationSpinner() {
         List<String> nationList = new ArrayList<>();
         nationList.add(getString(R.string.encyclopedia_all));
-        for(String str : getResources().getStringArray(R.array.search_nation)){
-            nationList.add(str);
-        }
+        Collections.addAll(nationList, getResources().getStringArray(R.array.search_nation));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.ca_spinner_item_trans, nationList);
         adapter.setDropDownViewResource(!CAApp.isDarkTheme(sNation.getContext()) ? R.layout.ca_spinner_item : R.layout.ca_spinner_item_dark);
         sNation.setAdapter(adapter);

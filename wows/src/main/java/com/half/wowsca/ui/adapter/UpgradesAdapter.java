@@ -21,8 +21,8 @@ import java.util.List;
  */
 public class UpgradesAdapter extends RecyclerView.Adapter<UpgradesAdapter.UpgradesHolder> {
 
-    private List<EquipmentInfo> items;
-    private Context ctx;
+    private final List<EquipmentInfo> items;
+    private final Context ctx;
 
     public UpgradesAdapter(List<EquipmentInfo> equipmentInfos, Context ctx) {
         this.items = equipmentInfos;
@@ -61,8 +61,8 @@ public class UpgradesAdapter extends RecyclerView.Adapter<UpgradesAdapter.Upgrad
 
         public UpgradesHolder(View itemView) {
             super(itemView);
-            tvName = (TextView) itemView.findViewById(R.id.list_captain_skill_text);
-            ivIcon = (ImageView) itemView.findViewById(R.id.list_captain_skill_image);
+            tvName = itemView.findViewById(R.id.list_captain_skill_text);
+            ivIcon = itemView.findViewById(R.id.list_captain_skill_image);
 
             itemView.setOnClickListener(this);
         }

@@ -43,7 +43,7 @@ public class GraphsStatsFragment extends Fragment {
     }
 
     private void bindView(View view) {
-        listView = (ExpandableListView) view.findViewById(R.id.encyclopedia_stats_list);
+        listView = view.findViewById(R.id.encyclopedia_stats_list);
     }
 
     @Override

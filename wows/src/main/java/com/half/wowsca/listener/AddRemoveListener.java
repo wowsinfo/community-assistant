@@ -20,9 +20,9 @@ import java.util.Map;
  */
 public class AddRemoveListener implements View.OnClickListener {
 
-    private Captain captain;
-    private Context ctx;
-    private CheckBox box;
+    private final Captain captain;
+    private final Context ctx;
+    private final CheckBox box;
 
     public AddRemoveListener(Captain captain, Context ctx, CheckBox box) {
         this.captain = captain;

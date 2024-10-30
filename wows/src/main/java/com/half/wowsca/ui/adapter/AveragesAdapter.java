@@ -32,9 +32,9 @@ public class AveragesAdapter extends ArrayAdapter<ListAverages> {
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_averages, parent, false);
         }
-        TextView title = (TextView) convertView.findViewById(R.id.list_average_title);
-        TextView text = (TextView) convertView.findViewById(R.id.list_average_avg);
-        TextView midText = (TextView) convertView.findViewById(R.id.list_average_mid_text);
+        TextView title = convertView.findViewById(R.id.list_average_title);
+        TextView text = convertView.findViewById(R.id.list_average_avg);
+        TextView midText = convertView.findViewById(R.id.list_average_mid_text);
 
         ListAverages avg = getItem(position);
 

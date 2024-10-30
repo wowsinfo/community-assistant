@@ -39,9 +39,9 @@ import java.util.Map;
  */
 public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
 
-    private List<String> headers;
-    private Map<String, List<EncyclopediaChild>> values;
-    private Context ctx;
+    private final List<String> headers;
+    private final Map<String, List<EncyclopediaChild>> values;
+    private final Context ctx;
 
     public ExpandableStatsAdapter(List<String> headers, Map<String, List<EncyclopediaChild>> values, Context ctx) {
         this.headers = headers;
@@ -58,7 +58,7 @@ public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
         }
 
 //        ImageView img = (ImageView) convertView.findViewById(R.id.list_group_stats_img);
-        TextView text = (TextView) convertView.findViewById(R.id.list_group_stats_text);
+        TextView text = convertView.findViewById(R.id.list_group_stats_text);
 //        if(isExpanded){
 //            img.setImageResource(R.drawable.expander_close_holo_dark);
 //        } else {
@@ -73,16 +73,13 @@ public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         String header = (String) getGroup(groupPosition);
-        boolean premium = false;
-        if(header.equals(ctx.getString(R.string.premium_ship_stats))){
-            premium = true;
-        }
+        boolean premium = header.equals(ctx.getString(R.string.premium_ship_stats));
         EncyclopediaChild child = (EncyclopediaChild) getChild(groupPosition, childPosition);
         int layoutId = R.layout.list_child_bar;
 
         View view = LayoutInflater.from(ctx).inflate(layoutId, parent, false);
 
-        TextView text = (TextView) view.findViewById(R.id.list_child_title);
+        TextView text = view.findViewById(R.id.list_child_title);
         View chart = view.findViewById(R.id.list_child_graph);
         if(premium){
             int size = child.getValues().size() * 18;
@@ -252,7 +249,7 @@ public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
 
     private class MyFormatter implements ValueFormatter {
 
-        private DecimalFormat mFormat;
+        private final DecimalFormat mFormat;
 
         public MyFormatter() {
             this.mFormat = new DecimalFormat("##.#%");

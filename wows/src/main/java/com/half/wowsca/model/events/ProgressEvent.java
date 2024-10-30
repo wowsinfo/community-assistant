@@ -6,7 +6,7 @@ package com.half.wowsca.model.events;
 
 public class ProgressEvent {
 
-    private boolean refreshing;
+    private final boolean refreshing;
 
     public ProgressEvent(boolean refreshing){
         this.refreshing = refreshing;

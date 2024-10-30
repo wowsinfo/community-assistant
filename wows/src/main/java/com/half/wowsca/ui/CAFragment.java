@@ -16,7 +16,7 @@ public class CAFragment extends Fragment {
     protected SwipeRefreshLayout mSwipeRefreshLayout;
 
     protected void bindSwipe(View view){
-        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swiperefresh);
+        mSwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
     }
 
     protected void initSwipeLayout() {

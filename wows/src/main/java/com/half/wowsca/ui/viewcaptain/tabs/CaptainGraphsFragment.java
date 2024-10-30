@@ -75,23 +75,23 @@ public class CaptainGraphsFragment extends CAFragment {
     }
 
     private void bindView(View view) {
-        chartAverageExperience = (BarChart) view.findViewById(R.id.captain_details_graphs_avg_exp_per_tier);
-        chartAverageDamage = (BarChart) view.findViewById(R.id.captain_details_graphs_damage_per_tier);
-        chartAverageWinRate = (BarChart) view.findViewById(R.id.captain_details_graphs_win_rate_per_tier);
-        chartAverageSurvival = (BarChart) view.findViewById(R.id.captain_details_graphs_survival_per_tier);
-        chartAverageAccuracy = (BarChart) view.findViewById(R.id.captain_details_graphs_accuracy_per_tier);
+        chartAverageExperience = view.findViewById(R.id.captain_details_graphs_avg_exp_per_tier);
+        chartAverageDamage = view.findViewById(R.id.captain_details_graphs_damage_per_tier);
+        chartAverageWinRate = view.findViewById(R.id.captain_details_graphs_win_rate_per_tier);
+        chartAverageSurvival = view.findViewById(R.id.captain_details_graphs_survival_per_tier);
+        chartAverageAccuracy = view.findViewById(R.id.captain_details_graphs_accuracy_per_tier);
 
-        chartAverageDamageClass = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_damage_per_class);
-        chartAverageWinRateClass = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_win_rate_per_class);
-        chartAverageExperienceClass = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_experience_per_class);
-        chartAverageSurvivalClass = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_survival_rate_per_class);
+        chartAverageDamageClass = view.findViewById(R.id.captain_details_graphs_damage_per_class);
+        chartAverageWinRateClass = view.findViewById(R.id.captain_details_graphs_win_rate_per_class);
+        chartAverageExperienceClass = view.findViewById(R.id.captain_details_graphs_experience_per_class);
+        chartAverageSurvivalClass = view.findViewById(R.id.captain_details_graphs_survival_rate_per_class);
 
-        chartTopTenPlayed = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_top_ten_played);
-        chartTopTenExp = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_top_ten_exp);
-        chartTopTenDmg = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_top_ten_average_dmg);
-        chartTopTenWinRate = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_top_ten_win_rate);
-        chartTopTenKD = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_top_ten_k_d);
-        chartTopTenAccuracy = (HorizontalBarChart) view.findViewById(R.id.captain_details_graphs_top_ten_accuracy);
+        chartTopTenPlayed = view.findViewById(R.id.captain_details_graphs_top_ten_played);
+        chartTopTenExp = view.findViewById(R.id.captain_details_graphs_top_ten_exp);
+        chartTopTenDmg = view.findViewById(R.id.captain_details_graphs_top_ten_average_dmg);
+        chartTopTenWinRate = view.findViewById(R.id.captain_details_graphs_top_ten_win_rate);
+        chartTopTenKD = view.findViewById(R.id.captain_details_graphs_top_ten_k_d);
+        chartTopTenAccuracy = view.findViewById(R.id.captain_details_graphs_top_ten_accuracy);
 
         bindSwipe(view);
         initSwipeLayout();
@@ -168,13 +168,13 @@ public class CaptainGraphsFragment extends CAFragment {
                             }
                             Long winRate = wins.get(tier);
                             if (winRate != null) {
-                                wins.put(tier, (long) (winRate + s.getWins()));
+                                wins.put(tier, winRate + s.getWins());
                             } else {
                                 wins.put(tier, (long) s.getWins());
                             }
                             Long survival = survivalRate.get(tier);
                             if (survival != null) {
-                                survivalRate.put(tier, (long) (survival + s.getSurvivedBattles()));
+                                survivalRate.put(tier, survival + s.getSurvivedBattles());
                             } else {
                                 survivalRate.put(tier, (long) s.getSurvivedBattles());
                             }
@@ -215,19 +215,19 @@ public class CaptainGraphsFragment extends CAFragment {
                             }
                             Long winsC = winsClass.get(shipType);
                             if (winsC != null) {
-                                winsClass.put(shipType, (long) (winsC + s.getWins()));
+                                winsClass.put(shipType, winsC + s.getWins());
                             } else {
                                 winsClass.put(shipType, (long) s.getWins());
                             }
                             Long expC = expClass.get(shipType);
                             if (expC != null) {
-                                expClass.put(shipType, (long) expC + s.getTotalXP());
+                                expClass.put(shipType, expC + s.getTotalXP());
                             } else {
-                                expClass.put(shipType, (long) s.getTotalXP());
+                                expClass.put(shipType, s.getTotalXP());
                             }
                             Long survivalC = survivalClass.get(shipType);
                             if (survivalC != null) {
-                                survivalClass.put(shipType, (long) survivalC + s.getSurvivedBattles());
+                                survivalClass.put(shipType, survivalC + s.getSurvivedBattles());
                             } else {
                                 survivalClass.put(shipType, (long) s.getSurvivedBattles());
                             }
@@ -244,32 +244,32 @@ public class CaptainGraphsFragment extends CAFragment {
                         if (battleCount != null && exp != null && battleCount > 0) {
                             averages.put(i, exp / battleCount);
                         } else {
-                            averages.put(i, 0l);
+                            averages.put(i, 0L);
                         }
                         Long damage = damages.get(i);
                         if (damage != null && battleCount > 0) {
                             avgDamages.put(i, damage / battleCount);
                         } else {
-                            avgDamages.put(i, 0l);
+                            avgDamages.put(i, 0L);
                         }
                         Long win = wins.get(i);
                         if (win != null && battleCount > 0) {
                             avgWinRate.put(i, (long) ((win / (float) battleCount) * 100));
                         } else {
-                            avgWinRate.put(i, 0l);
+                            avgWinRate.put(i, 0L);
                         }
                         Long survival = survivalRate.get(i);
                         if (survival != null && battleCount > 0) {
                             avgSuvival.put(i, (long) ((survival / (float) battleCount) * 100));
                         } else {
-                            avgSuvival.put(i, 0l);
+                            avgSuvival.put(i, 0L);
                         }
                         Long hits = accuracyHits.get(i);
                         Long shots = accuracyShots.get(i);
                         if(hits != null && shots > 0){
                             avgAccuracy.put(i, (long) ((hits / (float)shots) * 100));
                         } else {
-                            avgAccuracy.put(i, 0l);
+                            avgAccuracy.put(i, 0L);
                         }
                     }
 
@@ -284,28 +284,28 @@ public class CaptainGraphsFragment extends CAFragment {
                             if (damage != null) {
                                 damageClass.put(key, (long) (damage / fBattles));
                             } else {
-                                damageClass.put(key, 0l);
+                                damageClass.put(key, 0L);
                             }
                             if (winsC != null) {
                                 winsClass.put(key, (long) ((winsC / fBattles) * 100));
                             } else {
-                                winsClass.put(key, 0l);
+                                winsClass.put(key, 0L);
                             }
                             if (expC != null) {
                                 expClass.put(key, (long) ((expC / fBattles)));
                             } else {
-                                expClass.put(key, 0l);
+                                expClass.put(key, 0L);
                             }
                             if (survivalC != null) {
                                 survivalClass.put(key, (long) ((survivalC / fBattles) * 100));
                             } else {
-                                survivalClass.put(key, 0l);
+                                survivalClass.put(key, 0L);
                             }
                         } else {
-                            damageClass.put(key, 0l);
-                            winsClass.put(key, 0l);
-                            expClass.put(key, 0l);
-                            survivalClass.put(key, 0l);
+                            damageClass.put(key, 0L);
+                            winsClass.put(key, 0L);
+                            expClass.put(key, 0L);
+                            survivalClass.put(key, 0L);
                         }
                     }
 

@@ -28,7 +28,7 @@ public class CompareAdapter extends ArrayAdapter<Captain> {
         }
         Captain c = getItem(position);
 
-        TextView text = (TextView) convertView.findViewById(R.id.list_compare_text);
+        TextView text = convertView.findViewById(R.id.list_compare_text);
 
         text.setText(c.getName());
 

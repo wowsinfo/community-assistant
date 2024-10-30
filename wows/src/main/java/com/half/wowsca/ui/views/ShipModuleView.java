@@ -209,8 +209,8 @@ public class ShipModuleView extends LinearLayout {
                     params.setMargins(5,5,5,5);
                     convertView.setLayoutParams(params);
 
-                    TextView tv = (TextView) convertView.findViewById(R.id.list_module_top);
-                    TextView tvText = (TextView) convertView.findViewById(R.id.list_module_text);
+                    TextView tv = convertView.findViewById(R.id.list_module_top);
+                    TextView tvText = convertView.findViewById(R.id.list_module_text);
 
                     ShipModuleItem item = items.get(i);
 
@@ -223,10 +223,7 @@ public class ShipModuleView extends LinearLayout {
                         convertView.setBackgroundResource(R.drawable.compare_normal_grid);
                     }
 
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(item.getName());
-
-                    tvText.setText(sb.toString());
+                    tvText.setText(item.getName());
 
                     cleanModuleTitle(tv, item.getType());
 
@@ -299,7 +296,7 @@ public class ShipModuleView extends LinearLayout {
                                             if(MODULE_LIST == null)
                                                 MODULE_LIST = new HashMap<String, Long>();
                                             Dlog.d("ShipModuleView", "id = " + i.getId());
-                                            Dlog.d("ShipModuleView", "moduleListB = " + MODULE_LIST.toString());
+                                            Dlog.d("ShipModuleView", "moduleListB = " + MODULE_LIST);
                                             switch (i.getType()){
                                                 case "Suo":
                                                     MODULE_LIST.put(GetShipEncyclopediaInfo.FIRE_CONTROL, i.getId());
@@ -329,7 +326,7 @@ public class ShipModuleView extends LinearLayout {
                                                     MODULE_LIST.put(GetShipEncyclopediaInfo.ENGINE, i.getId());
                                                     break;
                                             }
-                                            Dlog.d("ShipModuleView", "moduleListA = " + MODULE_LIST.toString());
+                                            Dlog.d("ShipModuleView", "moduleListA = " + MODULE_LIST);
                                             CompareManager.getModuleList().put(shipID, MODULE_LIST);
                                             Dlog.d("ShipModuleView", "moduleListS = " + CompareManager.getModuleList().get(shipID).toString());
                                             //Update the screen

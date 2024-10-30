@@ -13,9 +13,9 @@ public enum Server {
 
     private final String appId = "2acfbd91939b7bd250094257551d1f28";
 
-    private String suffix;
-    private String serverName;
-    private String warshipsToday;
+    private final String suffix;
+    private final String serverName;
+    private final String warshipsToday;
 
     Server(String suffix, String serverName, String warshipsToday) {
         this.suffix = suffix;

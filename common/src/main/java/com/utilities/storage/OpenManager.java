@@ -9,7 +9,7 @@ import java.io.FileReader;
 
 public class OpenManager<T> {
 
-	private Class<T> type;
+	private final Class<T> type;
 	
 	public OpenManager(Class<T> type) {
 		this.type = type;

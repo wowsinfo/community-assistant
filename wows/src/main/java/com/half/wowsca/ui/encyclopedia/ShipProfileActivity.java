@@ -370,17 +370,16 @@ public class ShipProfileActivity extends CABaseActivity {
                         disableView(statsNumPlanesText);
                     }
 
-                    StringBuilder strbug = new StringBuilder();
-                    strbug.append(grabMinMax(info.getArmour(), "range", getString(R.string.range_armor)));
-                    strbug.append("\n");
-                    strbug.append(grabMinMax(info.getArmour(), "deck", getString(R.string.deck_armor)));
-                    strbug.append("\n");
-                    strbug.append(grabMinMax(info.getArmour(), "extremities", getString(R.string.bow_stern_armor)));
-                    strbug.append("\n");
-                    strbug.append(grabMinMax(info.getArmour(), "casemate", getString(R.string.gun_casemate_armor)));
-                    strbug.append("\n");
-                    strbug.append(grabMinMax(info.getArmour(), "citadel", getString(R.string.citadel_armor)));
-                    statsArmor.setText(strbug.toString());
+                    String strbug = grabMinMax(info.getArmour(), "range", getString(R.string.range_armor)) +
+                            "\n" +
+                            grabMinMax(info.getArmour(), "deck", getString(R.string.deck_armor)) +
+                            "\n" +
+                            grabMinMax(info.getArmour(), "extremities", getString(R.string.bow_stern_armor)) +
+                            "\n" +
+                            grabMinMax(info.getArmour(), "casemate", getString(R.string.gun_casemate_armor)) +
+                            "\n" +
+                            grabMinMax(info.getArmour(), "citadel", getString(R.string.citadel_armor));
+                    statsArmor.setText(strbug);
 
                     //artillery
                     int artileryTotal = info.getArtilleryTotal();
@@ -558,10 +557,10 @@ public class ShipProfileActivity extends CABaseActivity {
                 }
                 ShipStat stats = CAApp.getInfoManager().getShipStats(getApplicationContext()).get(shipId);
                 if (stats != null) {
-                    avgDamage.setText("" + Utils.getOneDepthDecimalFormatter().format(stats.getDmg_dlt()));
+                    avgDamage.setText(Utils.getOneDepthDecimalFormatter().format(stats.getDmg_dlt()));
                     avgWinRate.setText(Utils.getOneDepthDecimalFormatter().format(stats.getWins() * 100) + "%");
-                    avgKills.setText("" + Utils.getDefaultDecimalFormatter().format(stats.getFrags()));
-                    avgPlanes.setText("" + Utils.getOneDepthDecimalFormatter().format(stats.getPls_kd()));
+                    avgKills.setText(Utils.getDefaultDecimalFormatter().format(stats.getFrags()));
+                    avgPlanes.setText(Utils.getOneDepthDecimalFormatter().format(stats.getPls_kd()));
                 } else {
                     disableView(avgDamage);
                     disableView(avgWinRate);
@@ -693,8 +692,8 @@ public class ShipProfileActivity extends CABaseActivity {
                         parent = llModule2;
 
                     View convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_ship_module, parent, false);
-                    TextView tv = (TextView) convertView.findViewById(R.id.list_module_top);
-                    TextView tvText = (TextView) convertView.findViewById(R.id.list_module_text);
+                    TextView tv = convertView.findViewById(R.id.list_module_top);
+                    TextView tvText = convertView.findViewById(R.id.list_module_text);
 
                     ShipModuleItem item = items.get(i);
                     boolean hasOpt = hasOptions.get(i);
@@ -931,8 +930,8 @@ public class ShipProfileActivity extends CABaseActivity {
                     ShipInfo info = CAApp.getInfoManager().getShipInfo(getApplicationContext()).get(l);
                     if (info != null) {
                         View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_next_ship, llNextShips, false);
-                        ImageView image = (ImageView) view.findViewById(R.id.list_next_ship_image);
-                        TextView text = (TextView) view.findViewById(R.id.list_next_ship_text);
+                        ImageView image = view.findViewById(R.id.list_next_ship_image);
+                        TextView text = view.findViewById(R.id.list_next_ship_text);
 
                         text.setText(info.getName());
                         Picasso.get().load(info.getImage()).error(R.drawable.ic_missing_image).into(image);
@@ -965,7 +964,7 @@ public class ShipProfileActivity extends CABaseActivity {
                     EquipmentInfo info = CAApp.getInfoManager().getUpgrades(getApplicationContext()).get(l);
                     if (info != null) {
                         View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_upgrades, llNextShips, false);
-                        ImageView image = (ImageView) view.findViewById(R.id.list_upgrades_image);
+                        ImageView image = view.findViewById(R.id.list_upgrades_image);
                         Picasso.get().load(info.getImage()).error(R.drawable.ic_missing_image).into(image);
                         view.setTag(l);
                         view.setOnClickListener(new View.OnClickListener() {

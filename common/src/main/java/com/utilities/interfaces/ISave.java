@@ -5,5 +5,5 @@ public interface ISave {
 	/**
 	 * Prep the object for saving
 	 */
-	public void readyForSave();
+    void readyForSave();
 }

@@ -198,58 +198,58 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                     if (ships != null) {
 
                         float maxSurvivalRate = 0;
-                        long maxSurvivalRateShipId = 0l;
+                        long maxSurvivalRateShipId = 0L;
 
                         float maxWinRate = 0;
-                        long maxWinRateShipId = 0l;
+                        long maxWinRateShipId = 0L;
 
                         int maxTotalKills = 0;
-                        long maxTotalKillsShipId = 0l;
+                        long maxTotalKillsShipId = 0L;
 
                         int maxPlayed = 0;
-                        long maxPlayedShipId = 0l;
+                        long maxPlayedShipId = 0L;
 
                         float maxCARating = 0;
-                        long maxCARatingShipId = 0l;
+                        long maxCARatingShipId = 0L;
 
                         int maxMostTraveled = 0;
                         long maxMostTraveledShipId = 0;
 
                         float maxAvgDmg = 0;
-                        long maxAvgDmgShipId = 0l;
+                        long maxAvgDmgShipId = 0L;
 
                         float maxTotalPlanes = 0;
-                        long maxTotalPlanesShipId = 0l;
+                        long maxTotalPlanesShipId = 0L;
 
                         long maxTotalExp = 0;
-                        long maxTotalExpShipId = 0l;
+                        long maxTotalExpShipId = 0L;
 
                         double maxTotalDamage = 0;
-                        long maxTotalDmgShipId = 0l;
+                        long maxTotalDmgShipId = 0L;
 
                         float maxSurvivedWins = 0;
-                        long maxTotalSurWinsShipId = 0l;
+                        long maxTotalSurWinsShipId = 0L;
 
                         float maxMBAccuracy = 0;
-                        long maxMBAccuracyShipId = 0l;
+                        long maxMBAccuracyShipId = 0L;
 
                         float maxTBAccuracy = 0;
-                        long maxTBAccuracyShipId = 0l;
+                        long maxTBAccuracyShipId = 0L;
 
                         double maxSpotted  = 0;
-                        long maxSpottedShipId = 0l;
+                        long maxSpottedShipId = 0L;
 
                         double maxDamageScouting = 0;
-                        long maxDamageScoutingShipId = 0l;
+                        long maxDamageScoutingShipId = 0L;
 
                         double maxArgo = 0;
-                        long maxArgoShipId = 0l;
+                        long maxArgoShipId = 0L;
 
                         double maxTorpArgo = 0;
-                        long maxTorpArgoShipId = 0l;
+                        long maxTorpArgoShipId = 0L;
 
                         double maxSuppressionCount = 0;
-                        long maxSuppressionCountShipId = 0l;
+                        long maxSuppressionCountShipId = 0L;
 
                         for (int i = 0; i < ships.length(); i++) {
                             JSONObject ship = ships.optJSONObject(i);
