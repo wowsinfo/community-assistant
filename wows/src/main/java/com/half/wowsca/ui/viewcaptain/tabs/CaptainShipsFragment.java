@@ -254,9 +254,9 @@ public class CaptainShipsFragment extends CAFragment {
 
     @Subscribe
     public void onScrollEvent(ScrollToEvent event) {
-        Dlog.wtf("Onscroll", "pos = " + event.getPosition());
+        Dlog.wtf("Onscroll", "pos = " + event.position);
         try {
-            layoutManager.scrollToPositionWithOffset(event.getPosition(), 0);
+            layoutManager.scrollToPositionWithOffset(event.position, 0);
         } catch (Exception e) {
             e.printStackTrace();
         }

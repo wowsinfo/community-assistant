@@ -85,21 +85,21 @@ public class CaptainAchievementsFragment extends CAFragment {
             List<Achievement> achs = new ArrayList<>();
             Map<String, Integer> captainAchievements = new HashMap<>();
             for (Achievement achievement : captain.getAchievements()) {
-                captainAchievements.put(achievement.getName(), achievement.getNumber());
+                captainAchievements.put(achievement.name, achievement.number);
             }
 
             if (achievementsHolder != null && achievementsHolder.getItems() != null) {
                 for (AchievementInfo info : achievementsHolder.getItems().values()) {
                     Achievement ach = new Achievement();
-                    ach.setName(info.getId());
-                    Integer number = captainAchievements.get(info.getId());
-                    ach.setNumber((number != null ? number : 0));
+                    ach.name = info.id;
+                    Integer number = captainAchievements.get(info.id);
+                    ach.number = (number != null ? number : 0);
                     achs.add(ach);
                 }
                 Collections.sort(achs, new Comparator<Achievement>() {
                     @Override
                     public int compare(Achievement lhs, Achievement rhs) {
-                        return rhs.getNumber() - lhs.getNumber();
+                        return rhs.number - lhs.number;
                     }
                 });
 
@@ -114,8 +114,8 @@ public class CaptainAchievementsFragment extends CAFragment {
                         AchievementInfo info = CAApp.getInfoManager().getAchievements(getContext()).get(achievementName);
                         if (info != null) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-                            builder.setTitle(info.getName());
-                            builder.setMessage(info.getDescription());
+                            builder.setTitle(info.name);
+                            builder.setMessage(info.description);
                             builder.setPositiveButton(R.string.dismiss, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -146,7 +146,7 @@ public class CaptainAchievementsFragment extends CAFragment {
                         List<Achievement> achis = achievements.getSavedAchievements().get(1);
                         Map<String, Integer> mapAchi = new HashMap<>();
                         for (Achievement achievement : achis) {
-                            mapAchi.put(achievement.getName(), achievement.getNumber());
+                            mapAchi.put(achievement.name, achievement.number);
                         }
                         adapter.setSavedAchievements(mapAchi);
                     }

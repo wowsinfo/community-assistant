@@ -413,10 +413,10 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
                             JSONObject achievement = battle.optJSONObject(key);
                             if (achievement != null) {
                                 AchievementInfo info = new AchievementInfo();
-                                info.setName(achievement.optString("name"));
-                                info.setDescription(achievement.optString("description"));
-                                info.setImage(achievement.optString("image"));
-                                info.setId(key);
+                                info.name = achievement.optString("name");
+                                info.description = achievement.optString("description");
+                                info.image = achievement.optString("image");
+                                info.id = key;
                                 achievementInfo.put(key, info);
                             }
                         }

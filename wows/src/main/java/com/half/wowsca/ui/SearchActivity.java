@@ -464,10 +464,10 @@ public class SearchActivity extends CABaseActivity {
     @Subscribe
     public void onAddRemove(AddRemoveEvent event) {
         if (!event.isRemove()) {
-            UIUtils.createBookmarkingDialogIfNeeded(this, event.getCaptain());
-            CaptainManager.saveCaptain(getApplicationContext(), event.getCaptain());
+            UIUtils.createBookmarkingDialogIfNeeded(this, event.captain);
+            CaptainManager.saveCaptain(getApplicationContext(), event.captain);
         } else {
-            CaptainManager.removeCaptain(getApplicationContext(), CaptainManager.createCapIdStr(event.getCaptain().getServer(), event.getCaptain().getId()));
+            CaptainManager.removeCaptain(getApplicationContext(), CaptainManager.createCapIdStr(event.captain.getServer(), event.captain.getId()));
         }
 
     }

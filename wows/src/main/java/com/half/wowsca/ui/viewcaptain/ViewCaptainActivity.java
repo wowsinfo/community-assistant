@@ -235,7 +235,7 @@ public class ViewCaptainActivity extends CABaseActivity implements ICaptain {
             Captain captain = getCaptain(getApplicationContext());
             if (captain != null) {
                 AddRemoveEvent e = new AddRemoveEvent();
-                e.setCaptain(captain);
+                e.captain = captain;
                 if (captains.get(CaptainManager.getCapIdStr(captain)) == null) {
                     e.setRemove(false);
                     Toast.makeText(getApplicationContext(), captain.getName() + " " + getString(R.string.list_clan_added_message), Toast.LENGTH_SHORT).show();
@@ -320,12 +320,12 @@ public class ViewCaptainActivity extends CABaseActivity implements ICaptain {
     @Subscribe
     public void onAddRemove(AddRemoveEvent event) {
         if (!event.isRemove()) {
-            UIUtils.createBookmarkingDialogIfNeeded(this, event.getCaptain());
+            UIUtils.createBookmarkingDialogIfNeeded(this, event.captain);
             CaptainManager.saveCaptain(getApplicationContext(), getCaptain(getApplicationContext()));
         } else {
-            CaptainManager.removeCaptain(getApplicationContext(), CaptainManager.getCapIdStr(event.getCaptain()));
+            CaptainManager.removeCaptain(getApplicationContext(), CaptainManager.getCapIdStr(event.captain));
             String selectedId = CAApp.getSelectedId(getApplicationContext());
-            if (CaptainManager.getCapIdStr(event.getCaptain()).equals(selectedId)) {
+            if (CaptainManager.getCapIdStr(event.captain).equals(selectedId)) {
                 CAApp.setSelectedId(getApplicationContext(), null);
             }
             finish();
@@ -337,7 +337,7 @@ public class ViewCaptainActivity extends CABaseActivity implements ICaptain {
     public void showShip(ShipClickedEvent ship) {
         if (ship != null) {
             ShipFragment shipFragment = new ShipFragment();
-            shipFragment.setId(ship.getId());
+            shipFragment.setId(ship.id);
             getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left, R.anim.anim_slide_in_right, R.anim.anim_slide_out_right)
                     .replace(R.id.container, shipFragment)

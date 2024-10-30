@@ -36,26 +36,26 @@ public class AchievementsAdapter extends ArrayAdapter<Achievement> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_achievement, parent, false);
         }
         Achievement achievement = getItem(position);
-        AchievementInfo info = CAApp.getInfoManager().getAchievements(getContext()).get(achievement.getName());
+        AchievementInfo info = CAApp.getInfoManager().getAchievements(getContext()).get(achievement.name);
         ImageView iv = convertView.findViewById(R.id.list_achievement_icon);
         TextView tvNumber = convertView.findViewById(R.id.list_achievement_text);
         TextView tvDiff = convertView.findViewById(R.id.list_achievement_difference);
 
         if (info != null) {
-            Picasso.get().load(info.getImage()).error(R.drawable.ic_missing_image).into(iv);
+            Picasso.get().load(info.image).error(R.drawable.ic_missing_image).into(iv);
         }
-        if (achievement.getNumber() == 0) {
+        if (achievement.number == 0) {
             iv.setImageAlpha(125);
             tvNumber.setText("");
         } else {
             iv.setImageAlpha(255);
-            tvNumber.setText(achievement.getNumber() + "");
+            tvNumber.setText(achievement.number + "");
         }
 
         if (savedAchievements != null) {
-            Integer achi = savedAchievements.get(achievement.getName());
+            Integer achi = savedAchievements.get(achievement.name);
             if (achi != null) {
-                int difference = achievement.getNumber() - achi;
+                int difference = achievement.number - achi;
                 tvDiff.setText("+" + difference);
                 tvDiff.setTextColor(ContextCompat.getColor(getContext(), R.color.average_up));
                 if (difference > 0) {
@@ -69,7 +69,7 @@ public class AchievementsAdapter extends ArrayAdapter<Achievement> {
         } else {
             tvDiff.setVisibility(View.GONE);
         }
-        convertView.setTag(achievement.getName());
+        convertView.setTag(achievement.name);
         return convertView;
     }
 

@@ -226,21 +226,21 @@ public class CompareActivity extends CABaseActivity {
         Map<String, Integer> captain2Achi = new HashMap<>();
         Map<String, Integer> captain3Achi = new HashMap<>();
         for (Achievement achi : c1.getAchievements()) {
-            captain1Achi.put(achi.getName(), achi.getNumber());
+            captain1Achi.put(achi.name, achi.number);
         }
         for (Achievement achi : c2.getAchievements()) {
-            captain2Achi.put(achi.getName(), achi.getNumber());
+            captain2Achi.put(achi.name, achi.number);
         }
         if (c3 != null)
             for (Achievement achi : c3.getAchievements()) {
-                captain3Achi.put(achi.getName(), achi.getNumber());
+                captain3Achi.put(achi.name, achi.number);
             }
 
         AchievementsHolder achis = CAApp.getInfoManager().getAchievements(getApplicationContext());
         for (AchievementInfo ach : achis.getItems().values()) {
-            Integer c1Achi = captain1Achi.get(ach.getId());
-            Integer c2Achi = captain2Achi.get(ach.getId());
-            Integer c3Achi = captain3Achi.get(ach.getId());
+            Integer c1Achi = captain1Achi.get(ach.id);
+            Integer c2Achi = captain2Achi.get(ach.id);
+            Integer c3Achi = captain3Achi.get(ach.id);
             if (c1Achi == null) {
                 c1Achi = 0;
             }
@@ -251,7 +251,7 @@ public class CompareActivity extends CABaseActivity {
                 c3Achi = 0;
             }
             if (c1Achi > 0 || c2Achi > 0 || c3Achi > 0) {
-                showAchievement(larger, layoutId, c1Achi, c2Achi, c3Achi, ach.getName());
+                showAchievement(larger, layoutId, c1Achi, c2Achi, c3Achi, ach.name);
             }
         }
     }

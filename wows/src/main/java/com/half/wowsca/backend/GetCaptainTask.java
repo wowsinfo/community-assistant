@@ -613,8 +613,8 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
     private void AddAchievement(Captain captain, JSONObject battleAchievements, String key) {
         int number = battleAchievements.optInt(key);
         Achievement achi = new Achievement();
-        achi.setName(key);
-        achi.setNumber(number);
+        achi.name = key;
+        achi.number = number;
         captain.getAchievements().add(achi);
     }
 

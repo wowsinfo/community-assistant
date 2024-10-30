@@ -955,7 +955,7 @@ public class ShipProfileActivity extends CABaseActivity {
                                 EquipmentInfo info = CAApp.getInfoManager().getUpgrades(getApplicationContext()).get(id);
                                 Context ctx = ShipProfileActivity.this;
                                 DecimalFormat formatter = new DecimalFormat(PATTERN);
-                                Alert.createGeneralAlert(ctx, info.getName(), info.getDescription() + getString(R.string.encyclopedia_upgrade_cost) + formatter.format(info.getPrice()), getString(R.string.dismiss));
+                                Alert.createGeneralAlert(ctx, info.getName(), info.description + getString(R.string.encyclopedia_upgrade_cost) + formatter.format(info.price), getString(R.string.dismiss));
                             }
                         });
                         llUpgrades.addView(view);

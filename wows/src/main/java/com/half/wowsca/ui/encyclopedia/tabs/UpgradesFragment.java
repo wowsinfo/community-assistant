@@ -67,7 +67,7 @@ public class UpgradesFragment extends CAFragment {
             Collections.sort(upgrades, new Comparator<EquipmentInfo>() {
                 @Override
                 public int compare(EquipmentInfo lhs, EquipmentInfo rhs) {
-                    return lhs.getPrice() - rhs.getPrice();
+                    return lhs.price - rhs.price;
                 }
             });
 
@@ -85,10 +85,10 @@ public class UpgradesFragment extends CAFragment {
     @Subscribe
     public void upgradeClicked(UpgradeClickEvent event) {
         UpgradeHolder holder = CAApp.getInfoManager().getUpgrades(getContext());
-        EquipmentInfo info = holder.get(event.getId());
+        EquipmentInfo info = holder.get(event.id);
         if (info != null) {
             DecimalFormat formatter = new DecimalFormat(ShipProfileActivity.PATTERN);
-            Alert.createGeneralAlert(getActivity(), info.getName(), info.getDescription() + getString(R.string.encyclopedia_upgrade_cost) + formatter.format(info.getPrice()), getString(R.string.dismiss), R.drawable.ic_upgrade);
+            Alert.createGeneralAlert(getActivity(), info.getName(), info.description + getString(R.string.encyclopedia_upgrade_cost) + formatter.format(info.price), getString(R.string.dismiss), R.drawable.ic_upgrade);
         } else {
             Toast.makeText(getContext(), R.string.resources_error, Toast.LENGTH_SHORT).show();
         }

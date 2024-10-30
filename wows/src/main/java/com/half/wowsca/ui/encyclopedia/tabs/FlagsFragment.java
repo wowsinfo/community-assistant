@@ -70,7 +70,7 @@ public class FlagsFragment extends CAFragment {
             Collections.sort(flags, new Comparator<ExteriorItem>() {
                 @Override
                 public int compare(ExteriorItem lhs, ExteriorItem rhs) {
-                    return rhs.getType().compareToIgnoreCase(lhs.getType());
+                    return rhs.type.compareToIgnoreCase(lhs.type);
                 }
             });
 
@@ -88,16 +88,16 @@ public class FlagsFragment extends CAFragment {
     @Subscribe
     public void flagClickedEvent(FlagClickedEvent event) {
         ExteriorHolder holder = CAApp.getInfoManager().getExteriorItems(getContext());
-        ExteriorItem item = holder.get(event.getId());
+        ExteriorItem item = holder.get(event.id);
         if (item != null) {
             StringBuilder sb = new StringBuilder();
-            sb.append(item.getDescription());
-            if (item.getCoef() != null && !item.getCoef().isEmpty()) {
+            sb.append(item.description);
+            if (item.coef != null && !item.coef.isEmpty()) {
                 sb.append("\n\n");
-                Iterator<String> iter = item.getCoef().keySet().iterator();
+                Iterator<String> iter = item.coef.keySet().iterator();
                 while (iter.hasNext()) {
                     String key = iter.next();
-                    Pair<String, Float> pair = item.getCoef().get(key);
+                    Pair<String, Float> pair = item.coef.get(key);
                     sb.append(pair.first);
                     if (iter.hasNext()) {
                         sb.append("\n");

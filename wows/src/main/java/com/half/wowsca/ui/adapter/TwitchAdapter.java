@@ -103,7 +103,7 @@ public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHold
         Collections.sort(getTwitchObjs(), new Comparator<TwitchObj>() {
             @Override
             public int compare(TwitchObj lhs, TwitchObj rhs) {
-                return lhs.isLive().getOrder() - rhs.isLive().getOrder();
+                return lhs.isLive().order - rhs.isLive().order;
             }
         });
         notifyDataSetChanged();

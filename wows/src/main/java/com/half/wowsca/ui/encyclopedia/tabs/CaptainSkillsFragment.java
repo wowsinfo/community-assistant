@@ -65,7 +65,7 @@ public class CaptainSkillsFragment extends CAFragment {
             Collections.sort(skills, new Comparator<CaptainSkill>() {
                 @Override
                 public int compare(CaptainSkill lhs, CaptainSkill rhs) {
-                    return lhs.getTier() - rhs.getTier();
+                    return lhs.tier - rhs.tier;
                 }
             });
 
@@ -83,10 +83,10 @@ public class CaptainSkillsFragment extends CAFragment {
     @Subscribe
     public void captainClickedEvent(CaptainSkillClickedEvent event) {
         CaptainSkillHolder holder = CAApp.getInfoManager().getCaptainSkills(getContext());
-        CaptainSkill skill = holder.get(event.getId() + "");
+        CaptainSkill skill = holder.get(event.id + "");
         if (skill != null) {
             StringBuilder sb = new StringBuilder();
-            sb.append(getString(R.string.encyclopedia_tier_start) + " " + skill.getTier() + "\n\n");
+            sb.append(getString(R.string.encyclopedia_tier_start) + " " + skill.tier + "\n\n");
             if (skill.getAbilities() != null && !skill.getAbilities().isEmpty()) {
                 for (int i = 0; i < skill.getAbilities().size(); i++) {
                     sb.append(skill.getAbilities().get(i));

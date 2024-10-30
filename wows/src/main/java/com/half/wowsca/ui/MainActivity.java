@@ -156,8 +156,8 @@ public class MainActivity extends CABaseActivity implements ICaptain {
                     boolean useLogin = new Prefs(getApplicationContext()).getBoolean(SettingActivity.LOGIN_USER, false);
                     if (useLogin) {
                         AuthInfo info = AuthInfo.getAuthInfo(getApplicationContext());
-                        boolean sameUser = captain.getName().equals(info.getUsername());
-                        if (sameUser && !info.isExpired()) {
+                        boolean sameUser = captain.getName().equals(info.username);
+                        if (sameUser && !info.isExpired) {
                             grabCaptain(captain, info);
                         } else {
                             Intent t = new Intent(getApplicationContext(), AuthenticationActivity.class);
@@ -231,7 +231,7 @@ public class MainActivity extends CABaseActivity implements ICaptain {
         query.setId(captain.getId());
         query.setName(captain.getName());
         query.setServer(captain.getServer());
-        query.setToken(info != null ? info.getToken() : null);
+        query.setToken(info != null ? info.token : null);
 
         GetCaptainTask task = new GetCaptainTask();
         task.setCtx(getApplicationContext());
@@ -251,13 +251,13 @@ public class MainActivity extends CABaseActivity implements ICaptain {
                                 DrawerChild drawerObj = (DrawerChild) drawerItem.getTag();
                                 Intent i = null;
                                 if (drawerObj != null) {
-                                    switch (drawerObj.getType()) {
+                                    switch (drawerObj.type) {
                                         case SEARCH:
                                             i = new Intent(getApplicationContext(), SearchActivity.class);
                                             break;
                                         case CAPTAIN:
-                                            Server server = drawerObj.getServer();
-                                            String captainName = drawerObj.getTitle();
+                                            Server server = drawerObj.server;
+                                            String captainName = drawerObj.title;
                                             Map<String, Captain> captains = CaptainManager.getCaptains(getApplicationContext());
                                             Collection<Captain> caps = captains.values();
                                             for (Captain captain : caps) {
@@ -369,7 +369,7 @@ public class MainActivity extends CABaseActivity implements ICaptain {
             Captain captain = captains.get(selectedId);
             if (captain != null) {
                 AddRemoveEvent event = new AddRemoveEvent();
-                event.setCaptain(captain);
+                event.captain = captain;
                 event.setRemove(true);
                 Toast.makeText(getApplicationContext(), captain.getName() + " " + getString(R.string.list_clan_removed_message), Toast.LENGTH_SHORT).show();
                 CAApp.getEventBus().post(event);
@@ -451,10 +451,10 @@ public class MainActivity extends CABaseActivity implements ICaptain {
     @Subscribe
     public void onAddRemove(AddRemoveEvent event) {
         if (!event.isRemove()) {
-            UIUtils.createBookmarkingDialogIfNeeded(this, event.getCaptain());
+            UIUtils.createBookmarkingDialogIfNeeded(this, event.captain);
             CaptainManager.saveCaptain(getApplicationContext(), getCaptain(getApplicationContext()));
         } else {
-            CaptainManager.removeCaptain(getApplicationContext(), CaptainManager.createCapIdStr(event.getCaptain().getServer(), event.getCaptain().getId()));
+            CaptainManager.removeCaptain(getApplicationContext(), CaptainManager.createCapIdStr(event.captain.getServer(), event.captain.getId()));
             CAApp.setSelectedId(getApplicationContext(), null);
             selectedId = null;
             initView();
@@ -467,7 +467,7 @@ public class MainActivity extends CABaseActivity implements ICaptain {
     public void showShip(ShipClickedEvent ship) {
         if (ship != null) {
             ShipFragment shipFragment = new ShipFragment();
-            shipFragment.setId(ship.getId());
+            shipFragment.setId(ship.id);
             getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left, R.anim.anim_slide_in_right, R.anim.anim_slide_out_right)
                     .replace(R.id.container, shipFragment)

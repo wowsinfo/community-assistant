@@ -102,10 +102,10 @@ public class AuthenticationActivity extends CABaseActivity {
             if (url.contains("complete/?&status=ok")) {
                 Uri uri = Uri.parse(url);
                 AuthInfo info = new AuthInfo();
-                info.setToken(uri.getQueryParameter("access_token"));
-                info.setAccount_id(Long.parseLong(uri.getQueryParameter("account_id")));
-                info.setExpires(Long.parseLong(uri.getQueryParameter("expires_at")));
-                info.setUsername(uri.getQueryParameter("nickname"));
+                info.token = uri.getQueryParameter("access_token");
+                info.account_id = Long.parseLong(uri.getQueryParameter("account_id"));
+                info.expires = Long.parseLong(uri.getQueryParameter("expires_at"));
+                info.username = uri.getQueryParameter("nickname");
                 Dlog.d("AuthURL", info.toString());
 //                String[] split = url.split("?");
 //                if(split.length > 1){
