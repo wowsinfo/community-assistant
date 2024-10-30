@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("org.jetbrains.kotlin.android")
 }
 
 buildscript {
@@ -53,6 +54,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 dependencies {
@@ -66,6 +70,7 @@ dependencies {
     implementation("com.mikepenz:materialdrawer:5.2.6@aar") {
         isTransitive = true
     }
+    implementation("androidx.core:core-ktx:1.13.1")
     // Uncomment the line below if you want to include Google Play Services Ads, make sure to use a different version
     // implementation("com.google.android.gms:play-services-ads:17.1.1")
 }

@@ -1,5 +1,6 @@
 plugins {
     id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 }
 
 buildscript {
@@ -28,6 +29,14 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.txt")
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 dependencies {
@@ -40,4 +49,5 @@ dependencies {
     api("androidx.appcompat:appcompat:1.7.0")
     api("org.jsoup:jsoup:1.13.1")
     api("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
+    implementation("androidx.core:core-ktx:1.13.1")
 }
