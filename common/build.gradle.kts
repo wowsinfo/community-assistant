@@ -9,13 +9,17 @@ buildscript {
     }
 }
 
+val wowsMinSdk: String by project
+val wowsTargetSdk: String by project
+val wowsCompileSdk: String by project
+
 android {
     namespace = "com.half.common"
 
     defaultConfig {
-        minSdk = 26
-        targetSdkVersion(27)
-        compileSdk = 34
+        minSdk = wowsMinSdk.toInt()
+        targetSdkVersion(wowsTargetSdk.toInt())
+        compileSdk = wowsCompileSdk.toInt()
     }
 
     buildTypes {

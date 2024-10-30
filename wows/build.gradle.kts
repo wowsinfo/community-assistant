@@ -13,6 +13,10 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
+val wowsMinSdk: String by project
+val wowsTargetSdk: String by project
+val wowsCompileSdk: String by project
+
 android {
     namespace = "com.half.wowsca"
 
@@ -21,9 +25,9 @@ android {
     }
 
     defaultConfig {
-        minSdk = 26
-        targetSdkVersion(28)
-        compileSdk = 34
+        minSdk = wowsMinSdk.toInt()
+        targetSdkVersion(wowsTargetSdk.toInt())
+        compileSdk = wowsCompileSdk.toInt()
         versionCode = 57
         versionName = "1.3.1.3"
     }
