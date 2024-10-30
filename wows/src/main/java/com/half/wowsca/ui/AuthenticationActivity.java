@@ -64,8 +64,8 @@ public class AuthenticationActivity extends CABaseActivity {
         Server server = CAApp.getServerType(getApplicationContext());
         String url = webview.getUrl();
         Dlog.d("AUTH", "url = " + url);
-        if(TextUtils.isEmpty(url)){
-           webview.loadUrl("https://api.worldoftanks" + server.getSuffix() + "/wot/auth/login/?application_id=" + server.getAppId() + "&redirect_uri=https%3A%2F%2Fna.wargaming.net%2Fdevelopers%2Fapi_explorer%2Fwot%2Fauth%2Flogin%2Fcomplete%2F");
+        if (TextUtils.isEmpty(url)) {
+            webview.loadUrl("https://api.worldoftanks" + server.getSuffix() + "/wot/auth/login/?application_id=" + server.getAppId() + "&redirect_uri=https%3A%2F%2Fna.wargaming.net%2Fdevelopers%2Fapi_explorer%2Fwot%2Fauth%2Flogin%2Fcomplete%2F");
         }
     }
 
@@ -75,6 +75,23 @@ public class AuthenticationActivity extends CABaseActivity {
         return true;
     }
 
+    private String getParamObj(String params) {
+        String[] paramList = params.split("=");
+        return paramList[1];
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        } else if (item.getItemId() == R.id.action_Login) {
+            Prefs prefs = new Prefs(getApplicationContext());
+            prefs.setBoolean(SettingActivity.LOGIN_USER, false);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private class MyCustomWebClient extends WebViewClient {
 
         @Override
@@ -82,7 +99,7 @@ public class AuthenticationActivity extends CABaseActivity {
             // Here put your code
             Log.d("My Webview", url);
 
-            if(url.contains("complete/?&status=ok")){
+            if (url.contains("complete/?&status=ok")) {
                 Uri uri = Uri.parse(url);
                 AuthInfo info = new AuthInfo();
                 info.setToken(uri.getQueryParameter("access_token"));
@@ -113,8 +130,8 @@ public class AuthenticationActivity extends CABaseActivity {
 //                            info.setToken(token);
 //                        }
 //                    }
-                    info.save(getApplicationContext());
-                    finish();
+                info.save(getApplicationContext());
+                finish();
 //                }
                 return true;
             }
@@ -122,29 +139,12 @@ public class AuthenticationActivity extends CABaseActivity {
         }
     }
 
-    private String getParamObj(String params){
-        String[] paramList = params.split("=");
-        return paramList[1];
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() ==  android.R.id.home){
-            onBackPressed();
-        } else if (item.getItemId() == R.id.action_Login){
-            Prefs prefs = new Prefs(getApplicationContext());
-            prefs.setBoolean(SettingActivity.LOGIN_USER, false);
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private class MyCustonChromeClient extends WebChromeClient {
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             super.onProgressChanged(view, newProgress);
-            if(newProgress < 100){
+            if (newProgress < 100) {
                 progress.setVisibility(View.VISIBLE);
             } else {
                 progress.setVisibility(View.GONE);

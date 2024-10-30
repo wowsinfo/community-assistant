@@ -88,7 +88,7 @@ public class CaptainAchievementsFragment extends CAFragment {
                 captainAchievements.put(achievement.getName(), achievement.getNumber());
             }
 
-            if(achievementsHolder != null && achievementsHolder.getItems() != null) {
+            if (achievementsHolder != null && achievementsHolder.getItems() != null) {
                 for (AchievementInfo info : achievementsHolder.getItems().values()) {
                     Achievement ach = new Achievement();
                     ach.setName(info.getId());
@@ -129,7 +129,7 @@ public class CaptainAchievementsFragment extends CAFragment {
                     }
                 });
                 getOldAchievements(CaptainManager.createCapIdStr(captain.getServer(), captain.getId()));
-            }else {
+            } else {
 //                Toast.makeText(getContext(), getString(R.string.resources_error), Toast.LENGTH_SHORT).show();
             }
         }
@@ -141,11 +141,11 @@ public class CaptainAchievementsFragment extends CAFragment {
             public void run() {
                 try {
                     SavedAchievements achievements = StorageManager.getPlayerAchievements(getContext(), accountId);
-                    if(achievements != null && achievements.getSavedAchievements() != null && achievements.getSavedAchievements().size() > 1 && battleGrid.getAdapter() != null){
+                    if (achievements != null && achievements.getSavedAchievements() != null && achievements.getSavedAchievements().size() > 1 && battleGrid.getAdapter() != null) {
                         AchievementsAdapter adapter = (AchievementsAdapter) battleGrid.getAdapter();
-                        List<Achievement> achis =  achievements.getSavedAchievements().get(1);
+                        List<Achievement> achis = achievements.getSavedAchievements().get(1);
                         Map<String, Integer> mapAchi = new HashMap<>();
-                        for(Achievement achievement : achis){
+                        for (Achievement achievement : achis) {
                             mapAchi.put(achievement.getName(), achievement.getNumber());
                         }
                         adapter.setSavedAchievements(mapAchi);
@@ -169,8 +169,8 @@ public class CaptainAchievementsFragment extends CAFragment {
     }
 
     @Subscribe
-    public void onProgressEvent(ProgressEvent event){
-        if(mSwipeRefreshLayout != null){
+    public void onProgressEvent(ProgressEvent event) {
+        if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(event.isRefreshing());
         }
     }

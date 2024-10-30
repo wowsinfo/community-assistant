@@ -7,7 +7,7 @@ public enum Server {
 
     NA(".com", "na", "na"),
     EU(".eu", "eu", "eu"),
-    RU(".ru",  "ru", "ru"),
+    RU(".ru", "ru", "ru"),
     SEA(".asia", "asia", "asia"),
     KR(".kr", "kr", "asia");
 

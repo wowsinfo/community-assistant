@@ -53,7 +53,7 @@ public class FlagsAdapter extends RecyclerView.Adapter<FlagsAdapter.FlagsViewHol
             return 0;
     }
 
-    public static class FlagsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class FlagsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvName;
         ImageView ivIcon;

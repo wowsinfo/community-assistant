@@ -74,7 +74,7 @@ public class ShipModuleView extends LinearLayout {
     public void initView() {
         // grab module list for the ship ID;
         ShipInfo info = new InfoManager().getShipInfo(getContext()).get(shipID);
-        if(info != null) {
+        if (info != null) {
             tvTitle.setText(info.getName());
             // build out grid view
             createGrid();
@@ -91,7 +91,7 @@ public class ShipModuleView extends LinearLayout {
                 Dlog.d("ShipModuleView", "items = " + shipInfo.getItems());
 
                 Map<String, Long> moduleList = CompareManager.getModuleList().get(shipID);
-                if(moduleList == null)
+                if (moduleList == null)
                     moduleList = new HashMap<String, Long>();
                 buildDefaultModuleList(shipInfo, moduleList);
 
@@ -118,46 +118,46 @@ public class ShipModuleView extends LinearLayout {
             }
 
             private void addNecessaryModules(ShipInfo shipInfo, ShipModuleItem artillery, ShipModuleItem torps, ShipModuleItem fireControl, ShipModuleItem flightControl, ShipModuleItem hull, ShipModuleItem engine, ShipModuleItem fighter, ShipModuleItem diveBomber, ShipModuleItem torpBomber, List<Boolean> hasOptions, List<ShipModuleItem> items) {
-                if(artillery != null) {
+                if (artillery != null) {
                     items.add(artillery);
                     hasOptions.add(shipInfo.getArtillery().size() > 1);
                 }
-                if(torps != null) {
+                if (torps != null) {
                     items.add(torps);
                     hasOptions.add(shipInfo.getTorps().size() > 1);
                 }
-                if(fireControl != null) {
+                if (fireControl != null) {
                     items.add(fireControl);
                     hasOptions.add(shipInfo.getFireControl().size() > 1);
                 }
-                if(flightControl != null) {
+                if (flightControl != null) {
                     items.add(flightControl);
                     hasOptions.add(shipInfo.getFlightControl().size() > 1);
                 }
-                if(hull != null) {
+                if (hull != null) {
                     items.add(hull);
                     hasOptions.add(shipInfo.getHull().size() > 1);
                 }
-                if(engine != null) {
+                if (engine != null) {
                     items.add(engine);
                     hasOptions.add(shipInfo.getEngine().size() > 1);
                 }
-                if(fighter != null) {
+                if (fighter != null) {
                     items.add(fighter);
                     hasOptions.add(shipInfo.getFighter().size() > 1);
                 }
-                if(diveBomber != null) {
+                if (diveBomber != null) {
                     items.add(diveBomber);
                     hasOptions.add(shipInfo.getDiveBomber().size() > 1);
                 }
-                if(torpBomber != null) {
+                if (torpBomber != null) {
                     items.add(torpBomber);
                     hasOptions.add(shipInfo.getTorpBomb().size() > 1);
                 }
             }
 
             private void buildDefaultModuleList(ShipInfo shipInfo, Map<String, Long> moduleList) {
-                if(shipInfo != null && moduleList.isEmpty()){
+                if (shipInfo != null && moduleList.isEmpty()) {
                     moduleList.put(GetShipEncyclopediaInfo.ARTILLERY, getBaseModuleToList(shipInfo, shipInfo.getArtillery()));
                     moduleList.put(GetShipEncyclopediaInfo.TORPEDOES, getBaseModuleToList(shipInfo, shipInfo.getTorps()));
                     moduleList.put(GetShipEncyclopediaInfo.FIRE_CONTROL, getBaseModuleToList(shipInfo, shipInfo.getFireControl()));
@@ -170,8 +170,8 @@ public class ShipModuleView extends LinearLayout {
                 }
             }
 
-            private long getBaseModuleToList(ShipInfo info, List<Long> modules){
-                if(modules != null && modules.size() > 0) {
+            private long getBaseModuleToList(ShipInfo info, List<Long> modules) {
+                if (modules != null && modules.size() > 0) {
                     for (int i = 0; i < modules.size(); i++) {
                         ShipModuleItem item = info.getItems().get(modules.get(i));
                         if (item.isDefault()) {
@@ -183,8 +183,8 @@ public class ShipModuleView extends LinearLayout {
                     return 0;
             }
 
-            private void cleanModuleTitle(TextView tv, String title){
-                switch (title){
+            private void cleanModuleTitle(TextView tv, String title) {
+                switch (title) {
                     case "Suo":
                         title = getContext().getString(R.string.fire_control);
                         break;
@@ -203,11 +203,11 @@ public class ShipModuleView extends LinearLayout {
 
             private boolean buildModuleLists(List<Boolean> hasOptions, List<ShipModuleItem> items) {
                 boolean hasAnOption = false;
-                for(int i = 0; i < items.size(); i++){
+                for (int i = 0; i < items.size(); i++) {
                     View convertView = LayoutInflater.from(gridView.getContext()).inflate(R.layout.list_ship_module, gridView, false);
                     GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                     params.columnSpec = GridLayout.spec(i % 2, 1, 1);
-                    params.setMargins(5,5,5,5);
+                    params.setMargins(5, 5, 5, 5);
                     convertView.setLayoutParams(params);
 
                     TextView tv = convertView.findViewById(R.id.list_module_top);
@@ -217,7 +217,7 @@ public class ShipModuleView extends LinearLayout {
 
                     boolean hasOpt = hasOptions.get(i);
 
-                    if(hasOpt){
+                    if (hasOpt) {
                         hasAnOption = true;
                         convertView.setBackgroundResource(R.drawable.encyclopedia_module_white);
                     } else {
@@ -234,11 +234,11 @@ public class ShipModuleView extends LinearLayout {
                         @Override
                         public void onClick(View v) {
                             Long id = (Long) v.getTag();
-                            if(id != null){
+                            if (id != null) {
                                 final ShipInfo shipInfo = CAApp.getInfoManager().getShipInfo(gridView.getContext()).get(shipID);
                                 ShipModuleItem item = shipInfo.getItems().get(id);
                                 List<Long> typeIds = new ArrayList<Long>();
-                                switch (item.getType()){
+                                switch (item.getType()) {
                                     case "Suo":
                                         typeIds = shipInfo.getFireControl();
                                         break;
@@ -275,16 +275,16 @@ public class ShipModuleView extends LinearLayout {
                                         return lhsItem.getName().compareToIgnoreCase(rhsItem.getName());
                                     }
                                 });
-                                if(typeIds.size() > 1) {
+                                if (typeIds.size() > 1) {
                                     PopupMenu menu = new PopupMenu(gridView.getContext(), v);
                                     menu.setGravity(Gravity.CENTER);
                                     final Map<Integer, ShipModuleItem> mapOfItems = new HashMap<Integer, ShipModuleItem>();
                                     Menu m = menu.getMenu();
 
                                     long current = (long) v.getTag();
-                                    for (int i = 0; i < typeIds.size(); i++){
+                                    for (int i = 0; i < typeIds.size(); i++) {
                                         ShipModuleItem it = shipInfo.getItems().get(typeIds.get(i));
-                                        if(it != null && it.getId() != current) {
+                                        if (it != null && it.getId() != current) {
                                             m.add(0, i, 0, it.getName());
                                             mapOfItems.put(i, it);
                                         }
@@ -294,11 +294,11 @@ public class ShipModuleView extends LinearLayout {
                                         public boolean onMenuItemClick(MenuItem item) {
                                             ShipModuleItem i = mapOfItems.get(item.getItemId());
                                             Map<String, Long> MODULE_LIST = CompareManager.getModuleList().get(shipID);
-                                            if(MODULE_LIST == null)
+                                            if (MODULE_LIST == null)
                                                 MODULE_LIST = new HashMap<String, Long>();
                                             Dlog.d("ShipModuleView", "id = " + i.getId());
                                             Dlog.d("ShipModuleView", "moduleListB = " + MODULE_LIST);
-                                            switch (i.getType()){
+                                            switch (i.getType()) {
                                                 case "Suo":
                                                     MODULE_LIST.put(GetShipEncyclopediaInfo.FIRE_CONTROL, i.getId());
                                                     break;

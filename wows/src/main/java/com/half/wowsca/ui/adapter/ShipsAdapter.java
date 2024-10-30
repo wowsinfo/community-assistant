@@ -34,63 +34,15 @@ import java.util.Locale;
  */
 public class ShipsAdapter extends RecyclerView.Adapter<ShipsAdapter.ShipViewHolder> {
 
-    private List<Ship> ships;
-
     private final ArrayList<Ship> backupShips;
-
     private final Context ctx;
-
+    private List<Ship> ships;
     private SavedShips savedShips;
 
     public ShipsAdapter(List<Ship> ships, Context ctx) {
         this.ships = ships;
         backupShips = (ArrayList<Ship>) ships;
         this.ctx = ctx;
-    }
-
-    public static class ShipViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        TextView tvName;
-        TextView nationTier;
-        TextView tvBattles;
-        TextView tvWinRate;
-        TextView tvAverageExp;
-        TextView tvAverageKills;
-        TextView tvAverageDamage;
-        TextView tvCARating;
-
-        View aCARating;
-
-        ImageView icon;
-
-        long ship;
-        int pos;
-
-        View view;
-
-        public ShipViewHolder(View itemView) {
-            super(itemView);
-            view = itemView;
-            this.tvName = itemView.findViewById(R.id.snippet_ship_name);
-            this.nationTier = itemView.findViewById(R.id.snippet_ship_nation_tier);
-            this.tvBattles = itemView.findViewById(R.id.snippet_ship_battles);
-            this.tvWinRate = itemView.findViewById(R.id.snippet_ship_win_rate);
-            this.tvAverageExp = itemView.findViewById(R.id.snippet_ship_avg_exp);
-            this.tvAverageKills = itemView.findViewById(R.id.snippet_ship_avg_kills);
-            this.tvAverageDamage = itemView.findViewById(R.id.snippet_ship_avg_damage);
-            this.icon = itemView.findViewById(R.id.snippet_ship_icon);
-            this.tvCARating = itemView.findViewById(R.id.snippet_ship_ca_rating);
-
-            this.aCARating = itemView.findViewById(R.id.snippet_ship_ca_rating_area);
-
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            CAApp.getEventBus().post(new ShipClickedEvent(ship));
-            CAApp.setLastShipPos(pos);
-        }
     }
 
     @Override
@@ -208,7 +160,7 @@ public class ShipsAdapter extends RecyclerView.Adapter<ShipsAdapter.ShipViewHold
                 case 10:// Tier 1-10
                     Collections.sort(ships, compare.tierAscendingComparator);
                     break;
-                case  11: // ca rating
+                case 11: // ca rating
                     Collections.sort(ships, compare.CARatingComparator);
                     break;
                 case 12: // main battery
@@ -270,6 +222,51 @@ public class ShipsAdapter extends RecyclerView.Adapter<ShipsAdapter.ShipViewHold
 
     public void setSavedShips(SavedShips savedShips) {
         this.savedShips = savedShips;
+    }
+
+    public static class ShipViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView tvName;
+        TextView nationTier;
+        TextView tvBattles;
+        TextView tvWinRate;
+        TextView tvAverageExp;
+        TextView tvAverageKills;
+        TextView tvAverageDamage;
+        TextView tvCARating;
+
+        View aCARating;
+
+        ImageView icon;
+
+        long ship;
+        int pos;
+
+        View view;
+
+        public ShipViewHolder(View itemView) {
+            super(itemView);
+            view = itemView;
+            this.tvName = itemView.findViewById(R.id.snippet_ship_name);
+            this.nationTier = itemView.findViewById(R.id.snippet_ship_nation_tier);
+            this.tvBattles = itemView.findViewById(R.id.snippet_ship_battles);
+            this.tvWinRate = itemView.findViewById(R.id.snippet_ship_win_rate);
+            this.tvAverageExp = itemView.findViewById(R.id.snippet_ship_avg_exp);
+            this.tvAverageKills = itemView.findViewById(R.id.snippet_ship_avg_kills);
+            this.tvAverageDamage = itemView.findViewById(R.id.snippet_ship_avg_damage);
+            this.icon = itemView.findViewById(R.id.snippet_ship_icon);
+            this.tvCARating = itemView.findViewById(R.id.snippet_ship_ca_rating);
+
+            this.aCARating = itemView.findViewById(R.id.snippet_ship_ca_rating_area);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            CAApp.getEventBus().post(new ShipClickedEvent(ship));
+            CAApp.setLastShipPos(pos);
+        }
     }
 
 }

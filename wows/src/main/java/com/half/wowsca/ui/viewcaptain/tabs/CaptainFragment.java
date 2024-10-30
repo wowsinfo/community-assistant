@@ -395,10 +395,10 @@ public class CaptainFragment extends CAFragment {
 
                 tvTierAverage.setText(getString(R.string.average_tier) + ": " + Utils.getDefaultDecimalFormatter().format(details.getAverageTier()));
 
-                if(details.getMainBattery().getShots() > 0)
-                    tvMainBatteryAcc.setText(Utils.getOneDepthDecimalFormatter().format(details.getMainBattery().getHits() / (float) details.getMainBattery().getShots()* 100f) + "%");
-                if(details.getTorpedoes().getShots() > 0)
-                    tvTorpAcc.setText(Utils.getOneDepthDecimalFormatter().format(details.getTorpedoes().getHits() / (float) details.getTorpedoes().getShots()* 100f) + "%");
+                if (details.getMainBattery().getShots() > 0)
+                    tvMainBatteryAcc.setText(Utils.getOneDepthDecimalFormatter().format(details.getMainBattery().getHits() / (float) details.getMainBattery().getShots() * 100f) + "%");
+                if (details.getTorpedoes().getShots() > 0)
+                    tvTorpAcc.setText(Utils.getOneDepthDecimalFormatter().format(details.getTorpedoes().getHits() / (float) details.getTorpedoes().getShots() * 100f) + "%");
 
                 tvWins.setText("" + details.getWins());
                 tvLosses.setText("" + details.getLosses());
@@ -409,25 +409,25 @@ public class CaptainFragment extends CAFragment {
 
                 Dlog.d("CaptainFragment", "buildings = " + details.getBuildingDamage());
                 String argoDamage = "" + details.getTotalArgoDamage();
-                if(details.getTotalArgoDamage() > 1000000){
+                if (details.getTotalArgoDamage() > 1000000) {
                     argoDamage = Utils.getDefaultDecimalFormatter().format(details.getTotalArgoDamage() / 1000000) + getString(R.string.million);
                 }
                 tvArgoDamage.setText(argoDamage);
 
                 String argoTorpDamage = "" + details.getTorpArgoDamage();
-                if(details.getTotalArgoDamage() > 1000000){
+                if (details.getTotalArgoDamage() > 1000000) {
                     argoTorpDamage = Utils.getDefaultDecimalFormatter().format(details.getTotalArgoDamage() / 1000000) + getString(R.string.million);
                 }
                 tvArgoTorpDamage.setText(argoTorpDamage);
 
                 String buildingDamage = "" + details.getBuildingDamage();
-                if(details.getBuildingDamage() > 1000000){
+                if (details.getBuildingDamage() > 1000000) {
                     buildingDamage = Utils.getDefaultDecimalFormatter().format(details.getBuildingDamage() / 1000000) + getString(R.string.million);
                 }
                 tvBuildingDamage.setText(buildingDamage);
 
                 String scoutingDamage = "" + details.getScoutingDamage();
-                if(details.getScoutingDamage() > 1000000){
+                if (details.getScoutingDamage() > 1000000) {
                     scoutingDamage = Utils.getDefaultDecimalFormatter().format(details.getScoutingDamage() / 1000000) + getString(R.string.million);
                 }
                 tvSpottingDamage.setText(scoutingDamage);
@@ -458,7 +458,7 @@ public class CaptainFragment extends CAFragment {
                 setUpOtherStatistics(captain);
 
             } else {
-                if(captain.getShips() == null)
+                if (captain.getShips() == null)
                     refreshing(true);
                 tvBattles.setText("0");
                 tvWinRate.setText("0.0%");
@@ -471,7 +471,7 @@ public class CaptainFragment extends CAFragment {
         }
     }
 
-    private void setUpCARatingExplantion(){
+    private void setUpCARatingExplantion() {
         aAverage.setClickable(true);
         aAverage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -513,7 +513,7 @@ public class CaptainFragment extends CAFragment {
         float kilos = details.getDistanceTraveled() * 1.60934f; //kilos
         DecimalFormat format = new DecimalFormat("###,###,###");
         sb.append(format.format(kilos) + "km / ");
-        sb.append(format.format(details.getDistanceTraveled()) +  "m");
+        sb.append(format.format(details.getDistanceTraveled()) + "m");
         tvDistanceTotal.setText(sb.toString());
     }
 
@@ -556,7 +556,7 @@ public class CaptainFragment extends CAFragment {
     }
 
     private void setupPrivateInformation(Captain captain, DecimalFormat bigNumFormatter) {
-        if(captain.getInformation() != null){
+        if (captain.getInformation() != null) {
             aPrivateArea.setVisibility(View.VISIBLE);
             CaptainPrivateInformation info = captain.getInformation();
             int filledSlots = info.getSlots() - info.getEmptySlots();
@@ -581,23 +581,23 @@ public class CaptainFragment extends CAFragment {
             battleTimeM = battleTimeM % 60;
 
             StringBuilder sb = new StringBuilder();
-            if(battleTimeY > 0) {
+            if (battleTimeY > 0) {
                 sb.append(battleTimeY + " " + (battleTimeY > 1 ? "years" : "year"));
                 sb.append(" ");
             }
-            if(battleTimeW > 0) {
+            if (battleTimeW > 0) {
                 sb.append(battleTimeW + " " + (battleTimeW > 1 ? "weeks" : "week"));
                 sb.append(" ");
             }
-            if(battleTimeD > 0) {
+            if (battleTimeD > 0) {
                 sb.append(battleTimeD + " " + (battleTimeD > 1 ? "days" : "day"));
                 sb.append(" ");
             }
-            if(battleTimeH > 0) {
+            if (battleTimeH > 0) {
                 sb.append(battleTimeH + " " + (battleTimeH > 1 ? "hours" : "hour"));
                 sb.append(" ");
             }
-            if(battleTimeM > 0) {
+            if (battleTimeM > 0) {
                 sb.append(battleTimeM + " " + (battleTimeM > 1 ? "minutes" : "minute"));
                 sb.append(" ");
             }
@@ -676,7 +676,7 @@ public class CaptainFragment extends CAFragment {
                         } else if (tag.equals(TAG_KILL_DEATH)) {
                             strResId = R.string.captain_kills_deaths;
                             float deaths = (battles - (float) detail.getSurvivedBattles());
-                            if(deaths <= 1){
+                            if (deaths <= 1) {
                                 deaths = 1f;
                             }
                             float kd = (float) detail.getFrags() / deaths;
@@ -692,7 +692,7 @@ public class CaptainFragment extends CAFragment {
                     for (int i = 0; i < numbers.size(); i++) {
                         yVals.add(new Entry(numbers.get(i), i));
                     }
-                    if(yVals.size() > 0) {
+                    if (yVals.size() > 0) {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -777,7 +777,7 @@ public class CaptainFragment extends CAFragment {
         try {
             final CaptainDetails last = reversedDetails.get(reversedDetails.size() - 2);
             final float currentRating = captain.getDetails().getCARating();
-            if(last != null){
+            if (last != null) {
                 tvCARating.post(new Runnable() {
                     @Override
                     public void run() {
@@ -813,13 +813,13 @@ public class CaptainFragment extends CAFragment {
     private void setUpAverages(final String captainId, final CaptainDetails captain) {
         Prefs prefs = new Prefs(chartAverages.getContext());
         boolean showCompare = prefs.getBoolean(SettingActivity.SHOW_COMPARE, true);
-        if(showCompare) {
+        if (showCompare) {
             aAverage.setVisibility(View.VISIBLE);
             ivBreakdown.setVisibility(View.VISIBLE);
             aBreakdown.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(aBreakdownCharts.getVisibility() == View.GONE){
+                    if (aBreakdownCharts.getVisibility() == View.GONE) {
                         aBreakdownCharts.setVisibility(View.VISIBLE);
                         ivBreakdown.setImageResource(R.drawable.ic_collapse);
                     } else {
@@ -835,7 +835,7 @@ public class CaptainFragment extends CAFragment {
                     ivBreakdown.setImageResource(R.drawable.ic_expand);
                 }
             });
-            if(aBreakdownCharts.getVisibility() == View.GONE){
+            if (aBreakdownCharts.getVisibility() == View.GONE) {
                 ivBreakdown.setImageResource(R.drawable.ic_expand);
             } else {
                 ivBreakdown.setImageResource(R.drawable.ic_collapse);
@@ -845,10 +845,10 @@ public class CaptainFragment extends CAFragment {
                     setUpAveragesRadarChart();
                 }
 
-                private String cleanTitleString(int id){
+                private String cleanTitleString(int id) {
                     String str = getString(id);
-                    if(str.length() > 14){
-                        str = str.substring(0,15).trim() + "...";
+                    if (str.length() > 14) {
+                        str = str.substring(0, 15).trim() + "...";
                     }
                     return str;
                 }
@@ -950,56 +950,6 @@ public class CaptainFragment extends CAFragment {
         }
     }
 
-    private class MyFormatter implements ValueFormatter {
-
-        private DecimalFormat mFormat;
-        private boolean isPercent;
-
-        public MyFormatter() {
-            this.mFormat = new DecimalFormat("###,###,##0.0");
-        }
-
-        public void change(String tag) {
-            if (tag.equals(TAG_AVERAGE_EXP) || tag.equals(TAG_AVERAGE_DAMAGE)) {
-                this.mFormat = new DecimalFormat("###,###,##0");
-            } else {
-                this.mFormat = new DecimalFormat("###,###,##0.0");
-            }
-            isPercent = tag.equals(TAG_WIN_RATE) || tag.equals(TAG_BATTLES);
-        }
-
-        @Override
-        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-            return mFormat.format(value) + (isPercent ? "%" : "");
-        }
-    }
-
-    private class MyYFormatter implements YAxisValueFormatter {
-
-        private DecimalFormat mFormat;
-        private boolean isPercent;
-
-        public MyYFormatter() {
-            this.mFormat = new DecimalFormat("###,###,##0.0");
-        }
-
-        public void change(String tag) {
-            if (tag.equals(TAG_AVERAGE_EXP) || tag.equals(TAG_AVERAGE_DAMAGE)) {
-                this.mFormat = new DecimalFormat("###,###,##0");
-            } else if (tag.equals(TAG_KILL_DEATH)) {
-                this.mFormat = new DecimalFormat("###,###,##0.00");
-            } else {
-                this.mFormat = new DecimalFormat("###,###,##0.0");
-            }
-            isPercent = tag.equals(TAG_WIN_RATE) || tag.equals(TAG_BATTLES);
-        }
-
-        @Override
-        public String getFormattedValue(float value, YAxis yAxis) {
-            return mFormat.format(value) + (isPercent ? "%" : "");
-        }
-    }
-
     private void setUpCharts(final Captain captain) {
         Runnable runnable = new Runnable() {
             @Override
@@ -1043,12 +993,12 @@ public class CaptainFragment extends CAFragment {
                     }
                     final Map<String, Float> caPerTier = new HashMap<>();
                     final Map<String, Float> caContribPerTier = new HashMap<>();
-                    for( int i = 1; i <= shipsPerTier.size(); i++){
+                    for (int i = 1; i <= shipsPerTier.size(); i++) {
                         Float ratingTotal = ratingsPerTier.get(i);
                         Float shipsTotal = shipsPerTier.get(i);
                         Float battlesTotal = battlePerTier.get(i);
 
-                        if(ratingTotal != null && shipsTotal != null && battlesTotal != null && battlesTotal > 0){
+                        if (ratingTotal != null && shipsTotal != null && battlesTotal != null && battlesTotal > 0) {
                             // avgRating = total rating per tier / ship per tier
                             float tierRatingAverage = ratingTotal / shipsTotal;
                             // percentageRatio = total battles per tier / total games
@@ -1070,7 +1020,7 @@ public class CaptainFragment extends CAFragment {
                             - captain.getPvpDiv2Details().getBattles()
                             - captain.getPvpDiv3Details().getBattles()
                             - captain.getTeamBattleDetails().getBattles();
-                    if(soloBattles > 0) {
+                    if (soloBattles > 0) {
                         String str = getString(R.string.solo_pvp);
                         modeStrings.add(str);
                         gamesPerMode.put(str, soloBattles);
@@ -1080,7 +1030,7 @@ public class CaptainFragment extends CAFragment {
                         float survivedWins = (captain.getDetails().getSurvivedWins() / (float) captain.getDetails().getBattles()) * 100;
                         survivalRateMode.put(str, survivedWins);
                     }
-                    if(captain.getPveDetails().getBattles() > 0) {
+                    if (captain.getPveDetails().getBattles() > 0) {
                         String str = getString(R.string.pve);
                         modeStrings.add(str);
                         gamesPerMode.put(str, captain.getPveDetails().getBattles());
@@ -1090,7 +1040,7 @@ public class CaptainFragment extends CAFragment {
                         float survivedWins = (captain.getPveDetails().getSurvivedWins() / (float) captain.getPveDetails().getBattles()) * 100;
                         survivalRateMode.put(str, survivedWins);
                     }
-                    if(captain.getPvpDiv2Details().getBattles() > 0) {
+                    if (captain.getPvpDiv2Details().getBattles() > 0) {
                         String str = getString(R.string.pvp_2_div);
                         modeStrings.add(str);
                         gamesPerMode.put(str, captain.getPvpDiv2Details().getBattles());
@@ -1100,7 +1050,7 @@ public class CaptainFragment extends CAFragment {
                         float survivedWins = (captain.getPvpDiv2Details().getSurvivedWins() / (float) captain.getPvpDiv2Details().getBattles()) * 100;
                         survivalRateMode.put(str, survivedWins);
                     }
-                    if(captain.getPvpDiv3Details().getBattles() > 0) {
+                    if (captain.getPvpDiv3Details().getBattles() > 0) {
                         String str = getString(R.string.pvp_3_div);
                         modeStrings.add(str);
                         gamesPerMode.put(str, captain.getPvpDiv3Details().getBattles());
@@ -1110,7 +1060,7 @@ public class CaptainFragment extends CAFragment {
                         float survivedWins = (captain.getPvpDiv3Details().getSurvivedWins() / (float) captain.getPvpDiv3Details().getBattles()) * 100;
                         survivalRateMode.put(str, survivedWins);
                     }
-                    if(captain.getTeamBattleDetails().getBattles() > 0) {
+                    if (captain.getTeamBattleDetails().getBattles() > 0) {
                         String str = getString(R.string.team_battles);
                         modeStrings.add(str);
                         gamesPerMode.put(str, captain.getTeamBattleDetails().getBattles());
@@ -1120,12 +1070,12 @@ public class CaptainFragment extends CAFragment {
                         float survivedWins = (captain.getTeamBattleDetails().getSurvivedWins() / (float) captain.getTeamBattleDetails().getBattles()) * 100;
                         survivalRateMode.put(str, survivedWins);
                     }
-                    if(captain.getRankedSeasons() != null){
+                    if (captain.getRankedSeasons() != null) {
                         int ranked = 0;
                         float wins = 0;
                         float damage = 0;
                         float survivedBattles = 0;
-                        for(RankedInfo info : captain.getRankedSeasons()){
+                        for (RankedInfo info : captain.getRankedSeasons()) {
                             try {
                                 ranked += info.getSolo().getBattles();
                                 wins += info.getSolo().getWins();
@@ -1134,7 +1084,7 @@ public class CaptainFragment extends CAFragment {
                             } catch (Exception e) {
                             }
                         }
-                        if(ranked > 0){
+                        if (ranked > 0) {
                             String rankedStr = getString(R.string.ranked);
                             modeStrings.add(rankedStr);
                             gamesPerMode.put(rankedStr, ranked);
@@ -1174,7 +1124,7 @@ public class CaptainFragment extends CAFragment {
                         }
 
                         private void setUpCAChart(BarChart chart, Map<String, Float> map) {
-                            if(map.size() > 0){
+                            if (map.size() > 0) {
                                 int textColor = CAApp.getTextColor(chart.getContext());
                                 boolean colorblind = CAApp.isColorblind(chart.getContext());
                                 int accentColor = !colorblind ?
@@ -1238,7 +1188,7 @@ public class CaptainFragment extends CAFragment {
                         }
 
                         private void setUpGamesPerModeChart() {
-                            if(gamesPerMode.size() > 0) {
+                            if (gamesPerMode.size() > 0) {
                                 int textColor = CAApp.getTextColor(chartGamemodes.getContext());
                                 boolean colorblind = CAApp.isColorblind(chartGamemodes.getContext());
 
@@ -1303,7 +1253,7 @@ public class CaptainFragment extends CAFragment {
                         }
 
                         private void setUpGamesNationChart() {
-                            if(gamesPerNation.size() > 1) {
+                            if (gamesPerNation.size() > 1) {
                                 int textColor = CAApp.getTextColor(chartGamePerNation.getContext());
                                 boolean colorblind = CAApp.isColorblind(chartGamePerNation.getContext());
 
@@ -1383,7 +1333,7 @@ public class CaptainFragment extends CAFragment {
                         }
 
                         private void setUpGamesTypeChart() {
-                            if(gamesPerType.size() > 0) {
+                            if (gamesPerType.size() > 0) {
                                 int textColor = CAApp.getTextColor(chartGamePerType.getContext());
                                 boolean colorblind = CAApp.isColorblind(chartGamePerType.getContext());
 
@@ -1461,13 +1411,13 @@ public class CaptainFragment extends CAFragment {
                         }
 
                         private void setUpTiersChart() {
-                            if(battleCounts.size() > 0) {
+                            if (battleCounts.size() > 0) {
                                 int textColor = CAApp.getTextColor(tiersChart.getContext());
                                 boolean colorblind = CAApp.isColorblind(tiersChart.getContext());
                                 int accentColor = !colorblind ?
-                                (CAApp.getTheme(topicalChart.getContext()).equals("ocean") ?
-                                        ContextCompat.getColor(topicalChart.getContext(), R.color.graph_line_color) : ContextCompat.getColor(topicalChart.getContext(), R.color.top_background))
-                                : ContextCompat.getColor(topicalChart.getContext(), R.color.white);
+                                        (CAApp.getTheme(topicalChart.getContext()).equals("ocean") ?
+                                                ContextCompat.getColor(topicalChart.getContext(), R.color.graph_line_color) : ContextCompat.getColor(topicalChart.getContext(), R.color.top_background))
+                                        : ContextCompat.getColor(topicalChart.getContext(), R.color.white);
                                 tiersChart.setDrawBarShadow(false);
                                 tiersChart.setDrawValueAboveBar(false);
                                 tiersChart.setPinchZoom(false);
@@ -1524,7 +1474,7 @@ public class CaptainFragment extends CAFragment {
                         }
 
                         private void setUpWRPerModeChart() {
-                            if(winRatePerMode.size() > 0) {
+                            if (winRatePerMode.size() > 0) {
                                 int textColor = CAApp.getTextColor(chartWRModes.getContext());
 
                                 chartWRModes.setDrawBarShadow(false);
@@ -1587,7 +1537,7 @@ public class CaptainFragment extends CAFragment {
                         }
 
                         private void setUpAvgDmgPerModeChart() {
-                            if(avgDamageMode.size() > 0) {
+                            if (avgDamageMode.size() > 0) {
                                 int textColor = CAApp.getTextColor(chartAvgDmg.getContext());
 
                                 chartAvgDmg.setDrawBarShadow(false);
@@ -1650,7 +1600,7 @@ public class CaptainFragment extends CAFragment {
                         }
 
                         private void setUpSurvivalRatePerModeChart() {
-                            if(survivalRateMode.size() > 0) {
+                            if (survivalRateMode.size() > 0) {
                                 int textColor = CAApp.getTextColor(chartSurvivalRate.getContext());
 
                                 chartSurvivalRate.setDrawBarShadow(false);
@@ -1725,19 +1675,19 @@ public class CaptainFragment extends CAFragment {
         final List<String> strStatistics = new ArrayList<>();
         final List<Statistics> statistics = new ArrayList<>();
 
-        if(captain.getTeamBattleDetails() != null && captain.getTeamBattleDetails().getBattles() > 0) {
+        if (captain.getTeamBattleDetails() != null && captain.getTeamBattleDetails().getBattles() > 0) {
             strStatistics.add(getString(R.string.team_battles_title));
             statistics.add(captain.getTeamBattleDetails());
         }
-        if(captain.getPvpDiv2Details() != null && captain.getPvpDiv2Details().getBattles() > 0){
+        if (captain.getPvpDiv2Details() != null && captain.getPvpDiv2Details().getBattles() > 0) {
             strStatistics.add(getString(R.string.two_div_title));
             statistics.add(captain.getPvpDiv2Details());
         }
-        if(captain.getPvpDiv3Details() != null && captain.getPvpDiv3Details().getBattles() > 0) {
+        if (captain.getPvpDiv3Details() != null && captain.getPvpDiv3Details().getBattles() > 0) {
             strStatistics.add(getString(R.string.three_div_title));
             statistics.add(captain.getPvpDiv3Details());
         }
-        if(captain.getPveDetails() != null && captain.getPveDetails().getBattles() > 0) {
+        if (captain.getPveDetails() != null && captain.getPveDetails().getBattles() > 0) {
             strStatistics.add(getString(R.string.pve_title));
             statistics.add(captain.getPveDetails());
         }
@@ -1761,7 +1711,6 @@ public class CaptainFragment extends CAFragment {
         initView();
     }
 
-
     @Subscribe
     public void onSaveFinished(CaptainSavedEvent event) {
         chartProgress.post(new Runnable() {
@@ -1773,9 +1722,9 @@ public class CaptainFragment extends CAFragment {
     }
 
     @Subscribe
-    public void onProgressEvent(ProgressEvent event){
-        Dlog.d("CaptainFragment","progressEvent");
-        if(mSwipeRefreshLayout != null){
+    public void onProgressEvent(ProgressEvent event) {
+        Dlog.d("CaptainFragment", "progressEvent");
+        if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(event.isRefreshing());
         }
     }
@@ -1826,5 +1775,55 @@ public class CaptainFragment extends CAFragment {
         aOtherStats.removeAllViews();
 
         tiersChart.clear();
+    }
+
+    private class MyFormatter implements ValueFormatter {
+
+        private DecimalFormat mFormat;
+        private boolean isPercent;
+
+        public MyFormatter() {
+            this.mFormat = new DecimalFormat("###,###,##0.0");
+        }
+
+        public void change(String tag) {
+            if (tag.equals(TAG_AVERAGE_EXP) || tag.equals(TAG_AVERAGE_DAMAGE)) {
+                this.mFormat = new DecimalFormat("###,###,##0");
+            } else {
+                this.mFormat = new DecimalFormat("###,###,##0.0");
+            }
+            isPercent = tag.equals(TAG_WIN_RATE) || tag.equals(TAG_BATTLES);
+        }
+
+        @Override
+        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+            return mFormat.format(value) + (isPercent ? "%" : "");
+        }
+    }
+
+    private class MyYFormatter implements YAxisValueFormatter {
+
+        private DecimalFormat mFormat;
+        private boolean isPercent;
+
+        public MyYFormatter() {
+            this.mFormat = new DecimalFormat("###,###,##0.0");
+        }
+
+        public void change(String tag) {
+            if (tag.equals(TAG_AVERAGE_EXP) || tag.equals(TAG_AVERAGE_DAMAGE)) {
+                this.mFormat = new DecimalFormat("###,###,##0");
+            } else if (tag.equals(TAG_KILL_DEATH)) {
+                this.mFormat = new DecimalFormat("###,###,##0.00");
+            } else {
+                this.mFormat = new DecimalFormat("###,###,##0.0");
+            }
+            isPercent = tag.equals(TAG_WIN_RATE) || tag.equals(TAG_BATTLES);
+        }
+
+        @Override
+        public String getFormattedValue(float value, YAxis yAxis) {
+            return mFormat.format(value) + (isPercent ? "%" : "");
+        }
     }
 }

@@ -470,7 +470,7 @@ public class CaptainTopShipInfoFragment extends CAFragment {
         setTopShipImageName(topTanking, tvTopTankingName, ivTopTanking, highDefImage);
         tvTopTanking.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxTotalArgo()));
 
-        Dlog.d("CaptainTopShip","torp = " + captain.getDetails().getMaxTorpArgoDamageShipId());
+        Dlog.d("CaptainTopShip", "torp = " + captain.getDetails().getMaxTorpArgoDamageShipId());
         ShipInfo topTropArgo = CAApp.getInfoManager().getShipInfo(getContext()).get(captain.getDetails().getMaxTorpArgoDamageShipId());
         setTopShipImageName(topTropArgo, tvTopTorpTankingName, ivTopTorpTanking, highDefImage);
         tvTopTorpTanking.setText(Utils.getOneDepthDecimalFormatter().format(captain.getDetails().getMaxTorpTotalArgo()));
@@ -606,8 +606,8 @@ public class CaptainTopShipInfoFragment extends CAFragment {
     }
 
     @Subscribe
-    public void onProgressEvent(ProgressEvent event){
-        if(mSwipeRefreshLayout != null){
+    public void onProgressEvent(ProgressEvent event) {
+        if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(event.isRefreshing());
         }
     }

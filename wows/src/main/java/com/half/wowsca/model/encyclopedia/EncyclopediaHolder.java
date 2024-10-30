@@ -8,21 +8,21 @@ import java.util.Map;
  */
 public class EncyclopediaHolder<X, Y> {
 
-    private Map<X,Y> items;
+    private Map<X, Y> items;
 
     public EncyclopediaHolder() {
         items = new HashMap<>();
     }
 
-    public Y get(X x){
-        if(items != null)
+    public Y get(X x) {
+        if (items != null)
             return items.get(x);
         else
             return null;
     }
 
-    public void put(X x, Y y){
-        if(items != null)
+    public void put(X x, Y y) {
+        if (items != null)
             items.put(x, y);
     }
 

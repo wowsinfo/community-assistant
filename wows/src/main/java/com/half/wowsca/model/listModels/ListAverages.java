@@ -13,7 +13,7 @@ public class ListAverages {
     private float expected;
     private AverageType type;
 
-    public static ListAverages create(String title, float amount, float expected, AverageType type){
+    public static ListAverages create(String title, float amount, float expected, AverageType type) {
         ListAverages averages = new ListAverages();
         averages.setAverage(amount);
         averages.setTitle(title);

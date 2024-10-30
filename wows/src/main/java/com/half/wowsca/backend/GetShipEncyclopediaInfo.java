@@ -42,7 +42,7 @@ public class GetShipEncyclopediaInfo extends AsyncTask<ShipQuery, Void, ShipResu
         sb.append("?application_id=" + query.getServer().getAppId());
         sb.append("&ship_id=" + query.getShipId());
         sb.append("&language=" + query.getLanguage());
-        if(query.getModules() != null) {
+        if (query.getModules() != null) {
             // artillery id
             Long artillery = query.getModules().get(ARTILLERY);
             if (artillery != null && artillery != 0L) {
@@ -103,7 +103,7 @@ public class GetShipEncyclopediaInfo extends AsyncTask<ShipQuery, Void, ShipResu
             }
             if (feed != null) {
                 JSONObject data = feed.optJSONObject("data");
-                if(data != null) {
+                if (data != null) {
                     JSONObject ship = data.optJSONObject(query.getShipId() + "");
                     if (ship != null)
                         result.setShipInfo(ship.toString());

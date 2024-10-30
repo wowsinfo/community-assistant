@@ -53,7 +53,7 @@ public class UpgradesAdapter extends RecyclerView.Adapter<UpgradesAdapter.Upgrad
             return 0;
     }
 
-    public static class UpgradesHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class UpgradesHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvName;
         ImageView ivIcon;

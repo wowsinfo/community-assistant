@@ -65,9 +65,9 @@ public class Statistics {
 
     private double suppressionCount;
 
-    public static Statistics parse(JSONObject obj){
+    public static Statistics parse(JSONObject obj) {
         Statistics statistics = new Statistics();
-        if(obj != null) {
+        if (obj != null) {
             statistics.setBattles(obj.optInt("battles"));
             statistics.setMaxXP(obj.optLong("max_xp"));
             statistics.setMainBattery(BatteryStats.parse(obj.optJSONObject("main_battery")));

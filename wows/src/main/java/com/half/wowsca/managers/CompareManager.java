@@ -26,6 +26,15 @@ import java.util.Map;
 public class CompareManager {
 
     private static final List<Captain> captains = new ArrayList<>();
+    public static boolean GRABBING_INFO;
+    /**
+     * SHIP COMPARE AREA
+     */
+
+    private static List<Long> SHIPS;
+    private static LongSparseArray<String> SHIP_INFORMATION;
+    private static LongSparseArray<Map<String, Long>> MODULE_LIST;
+    private static List<GetShipEncyclopediaInfo> asyncTasks;
 
     public static void search(Context ctx) {
         if (size() > 1) {
@@ -60,7 +69,7 @@ public class CompareManager {
         boolean added = false;
         if (size() < 3) {
             if (!isAlreadyThere(c.getServer(), c.getId())) {
-                if(!addToFirst)
+                if (!addToFirst)
                     captains.add(c);
                 else
                     captains.add(0, c);
@@ -117,21 +126,7 @@ public class CompareManager {
         return captains;
     }
 
-    /**
-     *
-     * SHIP COMPARE AREA
-     *
-     */
-
-    private static List<Long> SHIPS;
-    private static LongSparseArray<String> SHIP_INFORMATION;
-    private static LongSparseArray<Map<String,Long>> MODULE_LIST;
-
-    public static boolean GRABBING_INFO;
-
-    private static List<GetShipEncyclopediaInfo> asyncTasks;
-
-    public static void searchShips(Context ctx){
+    public static void searchShips(Context ctx) {
         GRABBING_INFO = true;
         asyncTasks = new ArrayList<GetShipEncyclopediaInfo>();
 
@@ -147,7 +142,7 @@ public class CompareManager {
         }
     }
 
-    public static void searchShip(Context ctx, long shipId){
+    public static void searchShip(Context ctx, long shipId) {
         GetShipEncyclopediaInfo info = new GetShipEncyclopediaInfo();
         ShipQuery query = new ShipQuery();
         query.setShipId(shipId);
@@ -158,32 +153,32 @@ public class CompareManager {
     }
 
     public static List<Long> getSHIPS() {
-        if(SHIPS == null)
+        if (SHIPS == null)
             SHIPS = new ArrayList<>();
         return SHIPS;
     }
 
     public static LongSparseArray<String> getShipInformation() {
-        if(SHIP_INFORMATION == null)
+        if (SHIP_INFORMATION == null)
             SHIP_INFORMATION = new LongSparseArray<>();
         return SHIP_INFORMATION;
     }
 
     public static LongSparseArray<Map<String, Long>> getModuleList() {
-        if(MODULE_LIST == null)
+        if (MODULE_LIST == null)
             MODULE_LIST = new LongSparseArray<>();
         return MODULE_LIST;
     }
 
-    public static void addShipInfo(Long id,String shipInfo){
-        if(SHIP_INFORMATION == null){
+    public static void addShipInfo(Long id, String shipInfo) {
+        if (SHIP_INFORMATION == null) {
             SHIP_INFORMATION = new LongSparseArray<>();
         }
         SHIP_INFORMATION.put(id, shipInfo);
     }
 
-    public static void addShipID(long shipID){
-        if(SHIPS == null){
+    public static void addShipID(long shipID) {
+        if (SHIPS == null) {
             SHIPS = new ArrayList<>();
             SHIP_INFORMATION = new LongSparseArray<>();
             MODULE_LIST = new LongSparseArray<>();
@@ -191,19 +186,19 @@ public class CompareManager {
         SHIPS.add(shipID);
     }
 
-    public static void removeShipID(long shipID){
+    public static void removeShipID(long shipID) {
         SHIPS.remove(shipID);
     }
 
-    public static void clearShips(boolean clearShips){
-        if(clearShips)
+    public static void clearShips(boolean clearShips) {
+        if (clearShips)
             SHIPS = null;
         SHIP_INFORMATION = null;
         MODULE_LIST = null;
     }
 
-    public static void checkForDone(){
-        if(asyncTasks != null) {
+    public static void checkForDone() {
+        if (asyncTasks != null) {
             GRABBING_INFO = getShipInformation().size() != asyncTasks.size();
             Dlog.d("Checkfordone", "grabbing = " + GRABBING_INFO);
             if (GRABBING_INFO) {

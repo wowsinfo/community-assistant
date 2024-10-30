@@ -81,7 +81,7 @@ public class CompareActivity extends CABaseActivity {
         topDragContainer = (LinearLayout) findViewById(R.id.compare_top_title_bar);
         mScrollView = (ScrollView) findViewById(R.id.compare_scroll);
 
-        if(CAApp.isDarkTheme(getApplicationContext())){
+        if (CAApp.isDarkTheme(getApplicationContext())) {
             topDragContainer.setBackgroundResource(R.color.material_action_bar_dark);
         }
 
@@ -123,7 +123,7 @@ public class CompareActivity extends CABaseActivity {
             public void onScrollChanged() {
                 int scrollY = mScrollView.getScrollY(); //for verticalScrollView
                 //DO SOMETHING WITH THE SCROLL COORDINATES
-                if(scrollY > 80){
+                if (scrollY > 80) {
                     topDragContainer.setVisibility(View.VISIBLE);
                 } else {
                     topDragContainer.setVisibility(View.GONE);
@@ -194,7 +194,7 @@ public class CompareActivity extends CABaseActivity {
 
             Prefs prefs = new Prefs(getApplicationContext());
             boolean showCompare = prefs.getBoolean(SettingActivity.SHOW_COMPARE, true);
-            if(showCompare) {
+            if (showCompare) {
                 buildTitle(getString(R.string.compare_stats_average));
                 showCEDamageStats(larger, layoutId, details1, details2, details3);
                 showCEKillsStats(larger, layoutId, details1, details2, details3);
@@ -225,38 +225,38 @@ public class CompareActivity extends CABaseActivity {
         Map<String, Integer> captain1Achi = new HashMap<>();
         Map<String, Integer> captain2Achi = new HashMap<>();
         Map<String, Integer> captain3Achi = new HashMap<>();
-        for(Achievement achi : c1.getAchievements()){
+        for (Achievement achi : c1.getAchievements()) {
             captain1Achi.put(achi.getName(), achi.getNumber());
         }
-        for(Achievement achi : c2.getAchievements()){
+        for (Achievement achi : c2.getAchievements()) {
             captain2Achi.put(achi.getName(), achi.getNumber());
         }
-        if(c3 != null)
-            for(Achievement achi : c3.getAchievements()){
+        if (c3 != null)
+            for (Achievement achi : c3.getAchievements()) {
                 captain3Achi.put(achi.getName(), achi.getNumber());
             }
 
         AchievementsHolder achis = CAApp.getInfoManager().getAchievements(getApplicationContext());
-        for(AchievementInfo ach : achis.getItems().values()){
+        for (AchievementInfo ach : achis.getItems().values()) {
             Integer c1Achi = captain1Achi.get(ach.getId());
             Integer c2Achi = captain2Achi.get(ach.getId());
             Integer c3Achi = captain3Achi.get(ach.getId());
-            if(c1Achi == null){
+            if (c1Achi == null) {
                 c1Achi = 0;
             }
-            if(c2Achi == null){
+            if (c2Achi == null) {
                 c2Achi = 0;
             }
-            if(c3Achi == null){
+            if (c3Achi == null) {
                 c3Achi = 0;
             }
-            if(c1Achi > 0 || c2Achi > 0 || c3Achi > 0){
+            if (c1Achi > 0 || c2Achi > 0 || c3Achi > 0) {
                 showAchievement(larger, layoutId, c1Achi, c2Achi, c3Achi, ach.getName());
             }
         }
     }
 
-    private void buildTitle(String title){
+    private void buildTitle(String title) {
         View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_compare_title, container, false);
 
         TextView tvTitle = view.findViewById(R.id.list_compare_title);
@@ -266,11 +266,10 @@ public class CompareActivity extends CABaseActivity {
         container.addView(view);
     }
 
-    private void showAchievement(boolean larger, int layoutId, Integer c1,Integer c2,Integer c3, String name){
+    private void showAchievement(boolean larger, int layoutId, Integer c1, Integer c2, Integer c3, String name) {
         int highestPos = highest(c1, c2, c3);
         build(layoutId, larger, name, c1 + "", c2 + "", (larger ? (c3 + "") : ""), highestPos);
     }
-
 
 
     private void showBattles(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
@@ -1048,13 +1047,6 @@ public class CompareActivity extends CABaseActivity {
         new Thread(runnable).start();
     }
 
-    private class CaptainStatsCompareObject {
-        public Map<Integer, Long> averages;
-        public Map<Integer, Long> avgDamages;
-        public float averageTier;
-    }
-
-
     private int highest(int one, int two, int three) {
         int highestPos = POS_WRONG;
         if (one == 0 && two == 0 && (three == 0 || three == POS_WRONG)) {
@@ -1121,5 +1113,11 @@ public class CompareActivity extends CABaseActivity {
                 three.setBackgroundResource(background);
             }
         }
+    }
+
+    private class CaptainStatsCompareObject {
+        public Map<Integer, Long> averages;
+        public Map<Integer, Long> avgDamages;
+        public float averageTier;
     }
 }

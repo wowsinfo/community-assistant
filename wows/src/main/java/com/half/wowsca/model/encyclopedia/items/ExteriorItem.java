@@ -22,7 +22,7 @@ public class ExteriorItem extends CAItem {
 
     @Override
     public void parse(JSONObject object) {
-        if(object != null){
+        if (object != null) {
             setId(object.optLong("consumable_id"));
             setName(object.optString("name"));
             setDescription(object.optString("description"));
@@ -30,10 +30,10 @@ public class ExteriorItem extends CAItem {
             setImage(object.optString("image"));
 
             JSONObject coef = object.optJSONObject("profile");
-            if(coef != null){
+            if (coef != null) {
                 setCoef(new HashMap<String, Pair<String, Float>>());
                 Iterator<String> iter = coef.keys();
-                while (iter.hasNext()){
+                while (iter.hasNext()) {
                     String key = iter.next();
                     JSONObject factor = coef.optJSONObject(key);
                     double amount = factor.optDouble("value");

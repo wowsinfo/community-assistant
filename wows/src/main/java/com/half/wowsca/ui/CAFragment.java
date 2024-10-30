@@ -16,12 +16,12 @@ public class CAFragment extends Fragment {
 
     protected SwipeRefreshLayout mSwipeRefreshLayout;
 
-    protected void bindSwipe(View view){
+    protected void bindSwipe(View view) {
         mSwipeRefreshLayout = view.findViewById(R.id.swiperefresh);
     }
 
     protected void initSwipeLayout() {
-        if(mSwipeRefreshLayout != null)
+        if (mSwipeRefreshLayout != null)
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
@@ -30,9 +30,8 @@ public class CAFragment extends Fragment {
             });
     }
 
-    protected void refreshing(boolean refreshing)
-    {
-        if(mSwipeRefreshLayout != null)
+    protected void refreshing(boolean refreshing) {
+        if (mSwipeRefreshLayout != null)
             mSwipeRefreshLayout.setRefreshing(refreshing);
     }
 }

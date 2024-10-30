@@ -16,14 +16,14 @@ public class CARatingManager {
 
     /**
      * Creates a rating based off of performance on a ship
-     *
+     * <p>
      * You must check if there are no battles before calling this method.
      *
      * @param ship
      * @param info
      * @return
      */
-    public static float CalculateCAShipRating(Ship ship, ShipStat info){
+    public static float CalculateCAShipRating(Ship ship, ShipStat info) {
         float rating = 0;
         float battles = ship.getBattles();
 
@@ -33,13 +33,13 @@ public class CARatingManager {
         float cKills = ship.getFrags() / battles;
 
         float xDmg = ONE;
-        if(info.getDmg_dlt() > 0)
+        if (info.getDmg_dlt() > 0)
             xDmg = (cDmg / info.getDmg_dlt()); // c / e damage
         float xWR = ONE;
-        if(info.getWins() > 0)
+        if (info.getWins() > 0)
             xWR = (cWin / info.getWins()); // c / e wins
         float xKills = ONE;
-        if(info.getFrags() > 0)
+        if (info.getFrags() > 0)
             xKills = (cKills / info.getFrags());  // c / e kills
 
 //        Dlog.d("CalculateShipRating", "dmg = " + xDmg + " wr = " + xWR + " kills = " + xKills);

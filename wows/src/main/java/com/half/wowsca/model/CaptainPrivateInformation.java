@@ -15,7 +15,7 @@ public class CaptainPrivateInformation {
     private int slots;
     private long battleTime;
 
-    public void parse(JSONObject obj){
+    public void parse(JSONObject obj) {
         gold = obj.optInt("gold");
         freeExp = obj.optInt("free_exp");
         credits = obj.optDouble("credits");

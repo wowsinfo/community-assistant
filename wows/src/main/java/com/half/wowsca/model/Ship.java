@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by slai4 on 9/15/2015.
  */
-public class Ship{
+public class Ship {
 
     private long shipId;
 
@@ -362,12 +362,12 @@ public class Ship{
         this.rankedInfo = rankedInfo;
     }
 
-    public void setCARating(float CARating) {
-        this.CARating = CARating;
-    }
-
     public float getCARating() {
         return CARating;
+    }
+
+    public void setCARating(float CARating) {
+        this.CARating = CARating;
     }
 
     public Statistics getPvpSolo() {

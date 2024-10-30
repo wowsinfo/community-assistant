@@ -46,6 +46,16 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
 
     private Context ctx;
 
+    public static void addTierNumber(SparseArray<Float> array, int key, float value) {
+        Float cKill = array.get(key);
+        if (cKill == null) {
+            cKill = value;
+        } else {
+            cKill += value;
+        }
+        array.put(key, cKill);
+    }
+
     @Override
     protected CaptainResult doInBackground(CaptainQuery... params) {
         CaptainQuery query = params[0];
@@ -99,7 +109,7 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                 JSONObject data = playerDetailsResult.optJSONObject(DATA);
                 if (data != null && data.has("" + query.getId())) {
                     JSONObject playerObject = data.optJSONObject("" + query.getId());
-                    if(playerObject != null) {
+                    if (playerObject != null) {
                         boolean hidden = playerObject.optBoolean("hidden_profile");
                         if (!hidden) {
                             captain.setDetails(CaptainDetails.parse(playerObject));
@@ -142,11 +152,11 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(playerDetailsResult != null){
+        if (playerDetailsResult != null) {
             JSONObject data = playerDetailsResult.optJSONObject(DATA);
-            if(data != null){
+            if (data != null) {
                 JSONObject playerObject = data.optJSONObject(captain.getId() + "");
-                if(playerObject != null) {
+                if (playerObject != null) {
                     JSONObject clan = playerObject.optJSONObject("clan");
                     if (clan != null) {
                         captain.setClanName(clan.optString("tag"));
@@ -158,7 +168,7 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
 
     private void grabPrivateInformation(Captain captain, JSONObject playerObject) {
         JSONObject privInfo = playerObject.optJSONObject("private");
-        if(privInfo != null){
+        if (privInfo != null) {
             CaptainPrivateInformation information = new CaptainPrivateInformation();
             information.parse(privInfo);
             captain.setInformation(information);
@@ -233,7 +243,7 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                         float maxTBAccuracy = 0;
                         long maxTBAccuracyShipId = 0L;
 
-                        double maxSpotted  = 0;
+                        double maxSpotted = 0;
                         long maxSpottedShipId = 0L;
 
                         double maxDamageScouting = 0;
@@ -254,10 +264,10 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                             ShipStat stat = stats.get(s.getShipId());
                             ShipInfo shipInfo = shipsMap.get(s.getShipId());
                             float battles = s.getBattles();
-                            if(battles > 0 && shipInfo != null){
+                            if (battles > 0 && shipInfo != null) {
                                 int tier = shipInfo.getTier();
                                 tiers += (tier * battles);
-                                if(stat != null){
+                                if (stat != null) {
                                     float rating = CARatingManager.CalculateCAShipRating(s, stat);
                                     s.setCARating(rating);
                                     addTierNumber(ratingsPerTier, tier, rating);
@@ -325,17 +335,17 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                                     maxAvgDmg = avgDmg;
                                     maxAvgDmgShipId = s.getShipId();
                                 }
-                                if(s.getMainBattery().getShots() > 0){
+                                if (s.getMainBattery().getShots() > 0) {
                                     float mbAcc = s.getMainBattery().getHits() / (float) s.getMainBattery().getShots();
-                                    if(maxMBAccuracy < mbAcc){
+                                    if (maxMBAccuracy < mbAcc) {
                                         maxMBAccuracy = mbAcc;
                                         maxMBAccuracyShipId = s.getShipId();
                                     }
                                 }
 
-                                if(s.getTorpedoes().getShots() > 0){
+                                if (s.getTorpedoes().getShots() > 0) {
                                     float tbAcc = s.getTorpedoes().getHits() / (float) s.getTorpedoes().getShots();
-                                    if(maxTBAccuracy < tbAcc){
+                                    if (maxTBAccuracy < tbAcc) {
                                         maxTBAccuracy = tbAcc;
                                         maxTBAccuracyShipId = s.getShipId();
                                     }
@@ -421,7 +431,7 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                             details.setMaxArgoDamageShipId(maxArgoShipId);
 //                            float maxTorpArgo = 0;
 
-                            Dlog.d("GetCaptain","torp = " + maxTorpArgo + " id = " + maxTorpArgoShipId);
+                            Dlog.d("GetCaptain", "torp = " + maxTorpArgo + " id = " + maxTorpArgoShipId);
                             details.setMaxTorpTotalArgo(maxTorpArgo);
                             details.setMaxTorpArgoDamageShipId(maxTorpArgoShipId);
 //                            float maxSuppressionCount = 0;
@@ -454,17 +464,17 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                             // take ratio per tier of games and average rating per and times them.
 
                             float caRating = 0;
-                            for( int i = 1; i <= shipsPerTier.size(); i++ ){
+                            for (int i = 1; i <= shipsPerTier.size(); i++) {
                                 Float ratingTotal = ratingsPerTier.get(i);
                                 Float shipsTotal = shipsPerTier.get(i);
                                 Float battlesTotal = battlePerTier.get(i);
 
-                                if(ratingTotal != null && shipsTotal != null && battlesTotal != null && battlesTotal > 0){
+                                if (ratingTotal != null && shipsTotal != null && battlesTotal != null && battlesTotal > 0) {
                                     // avgRating = total rating per tier / ship per tier
                                     float tierRatingAverage = ratingTotal / shipsTotal;
                                     // percentageRatio = total battles per tier / total games
                                     float tierRatio = battlesTotal / battles;
-    //                                Dlog.d("CARating", tierRatingAverage + " ratio = " + tierRatio + " tier = " + i + " ratio = " + (tierRatingAverage * tierRatio));
+                                    //                                Dlog.d("CARating", tierRatingAverage + " ratio = " + tierRatio + " tier = " + i + " ratio = " + (tierRatingAverage * tierRatio));
 
                                     caRating += tierRatingAverage * tierRatio;
                                 }
@@ -484,7 +494,6 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
             }
         }
     }
-
 
     private void grabRankedShipsInfo(CaptainQuery query, String rankedShipsFeed, Captain captain) {
         if (!TextUtils.isEmpty(rankedShipsFeed)) {
@@ -533,16 +542,6 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                 }
             }
         }
-    }
-
-    public static void addTierNumber(SparseArray<Float> array, int key, float value){
-        Float cKill = array.get(key);
-        if(cKill == null){
-            cKill = value;
-        } else {
-            cKill += value;
-        }
-        array.put(key, cKill);
     }
 
     private void grabRankedInfo(CaptainQuery query, String rankedAccountFeed, Captain captain) {

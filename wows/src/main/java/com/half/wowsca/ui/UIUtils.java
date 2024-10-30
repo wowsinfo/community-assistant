@@ -44,6 +44,10 @@ import java.util.Map;
  */
 public class UIUtils {
 
+    public static final long MYOKO_SHIP_ID = 4286494416L;
+    public static final long KONGO_SHIP_ID = 4287575760L;
+    private static Map<Long, Long> arpShips;
+
     public static void createReviewDialog(final Activity act) {
         Prefs prefs = new Prefs(act);
         boolean hasReviewed = prefs.getBoolean("hasReviewed", false);
@@ -214,14 +218,14 @@ public class UIUtils {
         else
             card = (CardView) parent;
         int backgroundInt = R.color.transparent;
-        if(CAApp.isDarkTheme(parent.getContext()))
+        if (CAApp.isDarkTheme(parent.getContext()))
             backgroundInt = R.color.material_card_background_dark;
         card.setCardBackgroundColor(ContextCompat.getColor(parent.getContext(), backgroundInt));
         card.setRadius(6.0f);
         card.setCardElevation(4f);
     }
 
-    public static String getNationText(Context ctx, String nationCode){
+    public static String getNationText(Context ctx, String nationCode) {
         String nation = nationCode;
         if (nation.equals("ussr")) {
             nation = ctx.getString(R.string.russia);
@@ -235,26 +239,22 @@ public class UIUtils {
             nation = ctx.getString(R.string.japan);
         } else if (nation.equals("uk")) {
             nation = ctx.getString(R.string.uk);
-        } else if(nation.equals("pan_asia")){
+        } else if (nation.equals("pan_asia")) {
             nation = ctx.getString(R.string.pan_asia);
-        } else if(nation.equals("france")){
+        } else if (nation.equals("france")) {
             nation = ctx.getString(R.string.nation_france);
-        } else if(nation.equals("commonwealth")){
+        } else if (nation.equals("commonwealth")) {
             nation = ctx.getString(R.string.nation_commonwealth);
         }
         return nation;
     }
 
-    private static Map<Long, Long> arpShips;
-    public static final long MYOKO_SHIP_ID = 4286494416L;
-    public static final long KONGO_SHIP_ID = 4287575760L;
-
-    public static void setShipImage(@NonNull ImageView view, ShipInfo ship){
+    public static void setShipImage(@NonNull ImageView view, ShipInfo ship) {
         setShipImage(view, ship, false);
     }
 
-    public static void setShipImage(@NonNull ImageView view, ShipInfo ship, boolean forceBigImage){
-        if(arpShips == null) {
+    public static void setShipImage(@NonNull ImageView view, ShipInfo ship, boolean forceBigImage) {
+        if (arpShips == null) {
             arpShips = new HashMap<>();
             arpShips.put(3551442640L, MYOKO_SHIP_ID); // haguro
             arpShips.put(3552523984L, KONGO_SHIP_ID); // Hiei
@@ -264,15 +264,15 @@ public class UIUtils {
             arpShips.put(3555669712L, KONGO_SHIP_ID); // arp Kongo
         }
         boolean highDefImage = view.getContext().getResources().getBoolean(R.bool.high_def_images);
-        if(forceBigImage)
+        if (forceBigImage)
             highDefImage = true;
-        if(CAApp.isNoArp(view.getContext())) {
+        if (CAApp.isNoArp(view.getContext())) {
             Long arpShip = arpShips.get(ship.getShipId());
             if (arpShip != null) {
                 ship = CAApp.getInfoManager().getShipInfo(view.getContext()).get(arpShip);
             }
         }
-        if(ship != null)
+        if (ship != null)
             Picasso.get().load(highDefImage ? ship.getBestImage() : ship.getImage()).error(R.drawable.ic_missing_image).into(view, new Callback() {
                 @Override
                 public void onSuccess() {
@@ -281,14 +281,14 @@ public class UIUtils {
 
                 @Override
                 public void onError(Exception e) {
-                    Dlog.d(UIUtils.class.getName(),e.getMessage());
+                    Dlog.d(UIUtils.class.getName(), e.getMessage());
                 }
             });
     }
 
-    public static void createOtherStatsArea(LinearLayout area, List<String> listStrs, List<Statistics> list){
+    public static void createOtherStatsArea(LinearLayout area, List<String> listStrs, List<Statistics> list) {
         area.removeAllViews();
-        for(int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             String title = listStrs.get(i);
             Statistics stats = list.get(i);
 
@@ -377,25 +377,25 @@ public class UIUtils {
 
             Context ctx = area.getContext();
             String argoDamage = "" + stats.getTotalArgoDamage();
-            if(stats.getTotalArgoDamage() > 1000000){
+            if (stats.getTotalArgoDamage() > 1000000) {
                 argoDamage = Utils.getDefaultDecimalFormatter().format(stats.getTotalArgoDamage() / 1000000) + ctx.getString(R.string.million);
             }
             tvArgoDamage.setText(argoDamage);
 
             String argoTorpDamage = "" + stats.getTorpArgoDamage();
-            if(stats.getTotalArgoDamage() > 1000000){
+            if (stats.getTotalArgoDamage() > 1000000) {
                 argoTorpDamage = Utils.getDefaultDecimalFormatter().format(stats.getTotalArgoDamage() / 1000000) + ctx.getString(R.string.million);
             }
             tvArgoTorpDamage.setText(argoTorpDamage);
 
             String buildingDamage = "" + stats.getBuildingDamage();
-            if(stats.getBuildingDamage() > 1000000){
+            if (stats.getBuildingDamage() > 1000000) {
                 buildingDamage = Utils.getDefaultDecimalFormatter().format(stats.getBuildingDamage() / 1000000) + ctx.getString(R.string.million);
             }
             tvBuildingDamage.setText(buildingDamage);
 
             String scoutingDamage = "" + stats.getScoutingDamage();
-            if(stats.getScoutingDamage() > 1000000){
+            if (stats.getScoutingDamage() > 1000000) {
                 scoutingDamage = Utils.getDefaultDecimalFormatter().format(stats.getScoutingDamage() / 1000000) + ctx.getString(R.string.million);
             }
             tvSpottingDamage.setText(scoutingDamage);

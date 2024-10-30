@@ -376,7 +376,7 @@
     <!--These are optional-->
     <string name="ca_rating_explanation">El Community Assistant Rating es %1$s daño, %2$s bajas y %3$s el ratio de victorias, sobre una media de 1000.</string>
     <string name="ca_rating_overall_explanation">El rating Community Assistant general se calcula como la media ponderada del rating por tier y las batallas jugadas en cada tier.</string>
-<string name="ca_rating_reason">Cálculo detallado:\n%1$s daño, %2$s bajas y %3$s ratio de victorias son los números utilizados para calcular el rating CA por barco.
+    <string name="ca_rating_reason">Cálculo detallado:\n%1$s daño, %2$s bajas y %3$s ratio de victorias son los números utilizados para calcular el rating CA por barco.
    La fórmula es (rendimiento/rendimiento esperado) * coeficiente. Por ejemplo, si obtienes 22000 de daño en un barco que de media hace 20000 la fórmula es (22000/20000) * %1$s. Sumándolo todo y multiplicándolo por 1000 se obtiene el CA rating.\n\n
    El daño causado y las bajas son más relevantes para que un mal equipo no afecte a tu rating.
    Causar daño y bajas es muy importante para ganar una partida y hasta que podamos obtener datos de WG sobre las capturas y defensas de puntos, deberían funcionar.
@@ -386,7 +386,7 @@
     <!--end of optional area-->
 
     <!--This one would be nice to have done.-->
-    <string name="ca_rating_tl_dr" >Resumen:\n\nEl rating Community Assistant por barco es %1$s daño, %2$s bajas y %3$s ratio de victorias. El rating Community Assistant global se calcula como la suma de (rating CA medio por tier) * (partidas en esa tier / partidas totales). La media es 1000.</string>
+    <string name="ca_rating_tl_dr">Resumen:\n\nEl rating Community Assistant por barco es %1$s daño, %2$s bajas y %3$s ratio de victorias. El rating Community Assistant global se calcula como la suma de (rating CA medio por tier) * (partidas en esa tier / partidas totales). La media es 1000.</string>
 
     <string-array name="themes">
         <item>Ocean</item>

@@ -43,57 +43,39 @@ public class SettingActivity extends CABaseActivity {
     public static final String THEME_CHOICE = "themeChoice";
     public static final String LOGIN_USER = "login_user";
     public static final String AD_LAUNCH = "ad_launch";
+    private final String[] languages = {"en", "ru", "pl", "de", "fr", "es", "zh-cn", "tr", "cs", "th", "vi", "ja", "zh-tw", "pt-br", "es-mx"};
+    private final String[] languagesShow = {"English", "Русский", "Polski", "Deutsch", "Français", "Español", "简体中文", "Türkçe", "Čeština", "ไทย", "Tiếng Việt", "日本語", "繁體中文", "Português do Brasil", "Español (México)"};
+    private final String[] appLangauges = {"en", "ru", "de", "es", "hr", "nl"};
+    private final String[] appLangaugesShow = {"English", "Русский", "Deutsch", "Español", "Magyar", "Nederlands"};
+    private final String[] saveNumChoices = {"5", "10", "15", "20", "25"};
+    private final int[] saveNumbers = {5, 10, 15, 20, 25};
+    private final String[] themes = {"ocean", "dark"};
     private Toolbar mToolbar;
-
     private View aColorblind;
     private CheckBox cbColorblind;
-
     private View aCompare;
     private CheckBox cbCompare;
-
     private View aNoArp;
     private CheckBox cbNoArp;
-
     private View aLogin;
     private CheckBox cbLogin;
-
     private View aAdLaunch;
     private CheckBox cbAdLaunch;
-
     private View aClearPlayer;
-
     private View aVersion;
-
     private View aRefreshInfo;
-
-
     private TextView tvVersionText;
-
     private View aReview;
     private View aEmail;
     private View aTwitter;
     private View aWordPress;
     private View aWoTCom;
-
     private Spinner sServerLanguage;
     private Spinner sTheme;
     private Spinner sAppLanguage;
     private Spinner sServer;
-
     private Spinner sCaptainSaves;
     private Spinner sShipSaves;
-
-    private final String[] languages = {"en", "ru", "pl", "de", "fr", "es", "zh-cn", "tr", "cs", "th", "vi", "ja", "zh-tw", "pt-br", "es-mx"};
-    private final String[] languagesShow = {"English", "Русский", "Polski", "Deutsch", "Français", "Español", "简体中文", "Türkçe", "Čeština", "ไทย", "Tiếng Việt", "日本語", "繁體中文", "Português do Brasil", "Español (México)"};
-
-    private final String[] appLangauges = {"en", "ru", "de", "es", "hr", "nl"};
-    private final String[] appLangaugesShow = {"English", "Русский", "Deutsch", "Español", "Magyar", "Nederlands"};
-
-
-    private final String[] saveNumChoices = {"5", "10","15","20","25"};
-    private final int[] saveNumbers = {5, 10, 15, 20, 25};
-
-    private final String[] themes = {"ocean","dark"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,8 +173,8 @@ public class SettingActivity extends CABaseActivity {
         sCaptainSaves.setAdapter(adapter);
         int defaultSelected = 0;
         int numOfSaves = StorageManager.getStatsMax(getApplicationContext());
-        for(int i  = 0; i < saveNumbers.length; i++){
-            if(saveNumbers[i] == numOfSaves){
+        for (int i = 0; i < saveNumbers.length; i++) {
+            if (saveNumbers[i] == numOfSaves) {
                 defaultSelected = i;
                 break;
             }
@@ -205,8 +187,8 @@ public class SettingActivity extends CABaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int current = StorageManager.getStatsMax(getApplicationContext());
                 final int selected = saveNumbers[position];
-                if(current != selected){
-                    if(current > selected){
+                if (current != selected) {
+                    if (current > selected) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);
                         builder.setIcon(R.drawable.launcher_icon);
                         builder.setTitle(getString(R.string.settings_stats_number_dialog_title));
@@ -223,8 +205,8 @@ public class SettingActivity extends CABaseActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 int defaultSelected = 0;
                                 int numOfSaves = StorageManager.getStatsMax(getApplicationContext());
-                                for(int i  = 0; i < saveNumbers.length; i++){
-                                    if(saveNumbers[i] == numOfSaves){
+                                for (int i = 0; i < saveNumbers.length; i++) {
+                                    if (saveNumbers[i] == numOfSaves) {
                                         defaultSelected = i;
                                         break;
                                     }
@@ -252,8 +234,8 @@ public class SettingActivity extends CABaseActivity {
         sShipSaves.setAdapter(adapter2);
         int defaultSelected2 = 0;
         int numOfSaves2 = StorageManager.getShipsStatsMax(getApplicationContext());
-        for(int i  = 0; i < saveNumbers.length; i++){
-            if(saveNumbers[i] == numOfSaves2){
+        for (int i = 0; i < saveNumbers.length; i++) {
+            if (saveNumbers[i] == numOfSaves2) {
                 defaultSelected2 = i;
                 break;
             }
@@ -264,8 +246,8 @@ public class SettingActivity extends CABaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int current = StorageManager.getShipsStatsMax(getApplicationContext());
                 final int selected = saveNumbers[position];
-                if(current != selected){
-                    if(current > selected){
+                if (current != selected) {
+                    if (current > selected) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);
                         builder.setIcon(R.drawable.launcher_icon);
                         builder.setTitle(getString(R.string.settings_stats_number_dialog_title));
@@ -282,8 +264,8 @@ public class SettingActivity extends CABaseActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 int defaultSelected2 = 0;
                                 int numOfSaves2 = StorageManager.getShipsStatsMax(getApplicationContext());
-                                for(int i  = 0; i < saveNumbers.length; i++){
-                                    if(saveNumbers[i] == numOfSaves2){
+                                for (int i = 0; i < saveNumbers.length; i++) {
+                                    if (saveNumbers[i] == numOfSaves2) {
                                         defaultSelected2 = i;
                                         break;
                                     }
@@ -442,7 +424,7 @@ public class SettingActivity extends CABaseActivity {
         Prefs prefs = new Prefs(getApplicationContext());
         String current = prefs.getString(THEME_CHOICE, "ocean");
         int position = 0;
-        if(current.equals("dark")){
+        if (current.equals("dark")) {
             position = 1;
         }
 
@@ -464,6 +446,7 @@ public class SettingActivity extends CABaseActivity {
                     CAApp.relaunchApplication(SettingActivity.this);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -529,8 +512,8 @@ public class SettingActivity extends CABaseActivity {
         sServerLanguage.setAdapter(adapter);
         int defaultSelected = 0;
         String current = CAApp.getServerLanguage(getApplicationContext());
-        for(int i  = 0; i < languages.length; i++){
-            if(languages[i].equals(current)){
+        for (int i = 0; i < languages.length; i++) {
+            if (languages[i].equals(current)) {
                 defaultSelected = i;
                 break;
             }
@@ -543,10 +526,10 @@ public class SettingActivity extends CABaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String current = CAApp.getServerLanguage(getApplicationContext());
                 String selected = languages[position];
-                if(!current.equals(selected)){
+                if (!current.equals(selected)) {
                     CAApp.setServerLanguage(getApplicationContext(), selected);
                     Toast t = Toast.makeText(getApplicationContext(), R.string.settings_update_to_new_language, Toast.LENGTH_LONG);
-                    t.setGravity(Gravity.CENTER,0,0);
+                    t.setGravity(Gravity.CENTER, 0, 0);
                     t.show();
                     aRefreshInfo.callOnClick();
                 }
@@ -565,8 +548,8 @@ public class SettingActivity extends CABaseActivity {
         sAppLanguage.setAdapter(adapter);
         int defaultSelected = 0;
         String current = CAApp.getAppLanguage(getApplicationContext());
-        for(int i  = 0; i < appLangauges.length; i++){
-            if(appLangauges[i].equals(current)){
+        for (int i = 0; i < appLangauges.length; i++) {
+            if (appLangauges[i].equals(current)) {
                 defaultSelected = i;
                 break;
             }
@@ -579,7 +562,7 @@ public class SettingActivity extends CABaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String current = CAApp.getAppLanguage(getApplicationContext());
                 String selected = appLangauges[position];
-                if(!current.equals(selected)){
+                if (!current.equals(selected)) {
                     CAApp.setAppLanguage(getApplicationContext(), selected);
                     CAApp.relaunchApplication(SettingActivity.this);
                 }

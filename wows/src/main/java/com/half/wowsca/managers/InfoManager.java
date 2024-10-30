@@ -30,10 +30,9 @@ public class InfoManager {
     public static final String WARSHIP_STATS_INFO_FILE = "warshipStatsInfoFile";
     public static final String EQUIPMENT_INFO_FILE = "equipmentInfoFile";
     public static final String INFO_UPDATED_TIME = "info_updated_time";
-    private static final int DAYS_BETWEEN_DOWNLOAD = 5;
     public static final String EXTERIOR_ITEMS_FILE = "exterior_items";
     public static final String CAPTAIN_SKILLS_FILE = "captain_skills_file";
-
+    private static final int DAYS_BETWEEN_DOWNLOAD = 5;
     private ShipsHolder shipInfo;
 
     private UpgradeHolder upgrades;
@@ -45,6 +44,22 @@ public class InfoManager {
     private ExteriorHolder exteriorItems;
 
     private CaptainSkillHolder captainSkills;
+
+    public static void purge(Context ctx) {
+        File dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE);
+        File shipInfo = new File(dir, SHIP_INFO_FILE);
+        File achievementInfo = new File(dir, ACHIEVEMENT_INFO_FILE);
+        File warshipStatsFile = new File(dir, WARSHIP_STATS_INFO_FILE);
+        File upgradesFile = new File(dir, EQUIPMENT_INFO_FILE);
+        File exteriorFile = new File(dir, EXTERIOR_ITEMS_FILE);
+        File skillsFile = new File(dir, CAPTAIN_SKILLS_FILE);
+        shipInfo.delete();
+        achievementInfo.delete();
+        warshipStatsFile.delete();
+        upgradesFile.delete();
+        exteriorFile.delete();
+        skillsFile.delete();
+    }
 
     public boolean isInfoThere(Context ctx) {
         boolean isInfoThere = false;
@@ -84,7 +99,7 @@ public class InfoManager {
      *
      * @param ctx
      */
-    public void load(Context ctx){
+    public void load(Context ctx) {
         getAchievements(ctx);
         getShipInfo(ctx);
         getShipStats(ctx);
@@ -259,8 +274,8 @@ public class InfoManager {
         }
     }
 
-    public ExteriorHolder getExteriorItems(Context ctx){
-        if(exteriorItems == null || (exteriorItems.getItems() != null && exteriorItems.getItems().size() == 0)){
+    public ExteriorHolder getExteriorItems(Context ctx) {
+        if (exteriorItems == null || (exteriorItems.getItems() != null && exteriorItems.getItems().size() == 0)) {
             try {
                 File dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE);
                 File tempStats = new File(dir, EXTERIOR_ITEMS_FILE);
@@ -274,7 +289,7 @@ public class InfoManager {
             } catch (Exception e) {
             }
         }
-        if(exteriorItems == null){
+        if (exteriorItems == null) {
             exteriorItems = new ExteriorHolder();
         }
         return exteriorItems;
@@ -300,8 +315,8 @@ public class InfoManager {
         }
     }
 
-    public CaptainSkillHolder getCaptainSkills(Context ctx){
-        if(captainSkills == null || (captainSkills.getItems() != null && captainSkills.getItems().size() == 0)){
+    public CaptainSkillHolder getCaptainSkills(Context ctx) {
+        if (captainSkills == null || (captainSkills.getItems() != null && captainSkills.getItems().size() == 0)) {
             try {
                 File dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE);
                 File tempStats = new File(dir, CAPTAIN_SKILLS_FILE);
@@ -315,7 +330,7 @@ public class InfoManager {
             } catch (Exception e) {
             }
         }
-        if(captainSkills == null){
+        if (captainSkills == null) {
             captainSkills = new CaptainSkillHolder();
         }
         return captainSkills;
@@ -339,22 +354,5 @@ public class InfoManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-
-    public static void purge(Context ctx) {
-        File dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE);
-        File shipInfo = new File(dir, SHIP_INFO_FILE);
-        File achievementInfo = new File(dir, ACHIEVEMENT_INFO_FILE);
-        File warshipStatsFile = new File(dir, WARSHIP_STATS_INFO_FILE);
-        File upgradesFile = new File(dir, EQUIPMENT_INFO_FILE);
-        File exteriorFile = new File(dir, EXTERIOR_ITEMS_FILE);
-        File skillsFile = new File(dir, CAPTAIN_SKILLS_FILE);
-        shipInfo.delete();
-        achievementInfo.delete();
-        warshipStatsFile.delete();
-        upgradesFile.delete();
-        exteriorFile.delete();
-        skillsFile.delete();
     }
 }

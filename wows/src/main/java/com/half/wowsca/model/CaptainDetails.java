@@ -546,7 +546,7 @@ public class CaptainDetails {
         this.cDefReset = cDefReset;
     }
 
-//    public float getcXP() {
+    //    public float getcXP() {
 //        return cXP;
 //    }
 //

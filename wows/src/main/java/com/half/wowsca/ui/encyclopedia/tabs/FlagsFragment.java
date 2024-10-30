@@ -53,7 +53,7 @@ public class FlagsFragment extends CAFragment {
         super.onResume();
         CAApp.getEventBus().register(this);
         ExteriorHolder holder = CAApp.getInfoManager().getExteriorItems(getContext());
-        if(holder != null && holder.getItems() != null && recyclerView.getAdapter() == null){
+        if (holder != null && holder.getItems() != null && recyclerView.getAdapter() == null) {
             layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.shipopedia_upgrade_grid));
             layoutManager.setOrientation(GridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
@@ -86,26 +86,26 @@ public class FlagsFragment extends CAFragment {
     }
 
     @Subscribe
-    public void flagClickedEvent(FlagClickedEvent event){
+    public void flagClickedEvent(FlagClickedEvent event) {
         ExteriorHolder holder = CAApp.getInfoManager().getExteriorItems(getContext());
         ExteriorItem item = holder.get(event.getId());
         if (item != null) {
             StringBuilder sb = new StringBuilder();
             sb.append(item.getDescription());
-            if(item.getCoef() != null && !item.getCoef().isEmpty()){
+            if (item.getCoef() != null && !item.getCoef().isEmpty()) {
                 sb.append("\n\n");
                 Iterator<String> iter = item.getCoef().keySet().iterator();
-                while(iter.hasNext()){
+                while (iter.hasNext()) {
                     String key = iter.next();
                     Pair<String, Float> pair = item.getCoef().get(key);
                     sb.append(pair.first);
-                    if(iter.hasNext()){
+                    if (iter.hasNext()) {
                         sb.append("\n");
                     }
                 }
             }
             Drawable d = ContextCompat.getDrawable(getContext(), R.drawable.ic_flags);
-            if(!CAApp.isDarkTheme(getContext()))
+            if (!CAApp.isDarkTheme(getContext()))
                 d.setColorFilter(ContextCompat.getColor(getContext(), R.color.top_background), PorterDuff.Mode.MULTIPLY);
             Alert.createGeneralAlert(getActivity(), item.getName(), sb.toString(), getString(R.string.dismiss), d);
         } else {

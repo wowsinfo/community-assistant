@@ -70,7 +70,7 @@ import java.util.Map;
 /**
  * Created by slai4 on 12/12/2015.
  */
-public class ShipFragment extends Fragment{
+public class ShipFragment extends Fragment {
 
     public static final String TAG_AVERAGE_DAMAGE = "AverageDamage";
     public static final String TAG_BATTLES = "Battles";
@@ -169,7 +169,7 @@ public class ShipFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ship, container, false);
         bindView(view);
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             id = savedInstanceState.getLong(SHIP_ID);
         }
         return view;
@@ -211,7 +211,7 @@ public class ShipFragment extends Fragment{
         tvAvgPlanes = view.findViewById(R.id.fragment_ship_planes_destroyed);
         tvSurvivalRate = view.findViewById(R.id.fragment_ship_survived_battles);
         tvAvgCaps = view.findViewById(R.id.fragment_ship_capture_points);
-        tvAvgDropped  = view.findViewById(R.id.fragment_ship_dropped_capture_points);
+        tvAvgDropped = view.findViewById(R.id.fragment_ship_dropped_capture_points);
         tvTotalXp = view.findViewById(R.id.fragment_ship_total_exp);
         tvSurvivedWins = view.findViewById(R.id.fragment_ship_survived_wins);
 
@@ -283,10 +283,10 @@ public class ShipFragment extends Fragment{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(captain != null && captain.getShips() != null){
+        if (captain != null && captain.getShips() != null) {
             Ship ship = null;
-            for(Ship s : captain.getShips()){
-                if(s.getShipId() == id){
+            for (Ship s : captain.getShips()) {
+                if (s.getShipId() == id) {
                     ship = s;
                     Dlog.wtf("ShipInfo", " ship - " + s);
                     break;
@@ -308,7 +308,7 @@ public class ShipFragment extends Fragment{
                 tvNationTier.setText(R.string.unknown);
             }
 
-            if(ship != null){
+            if (ship != null) {
                 float battles = ship.getBattles();
                 Dlog.wtf("ShipFragment", "battles = " + battles);
 
@@ -316,7 +316,7 @@ public class ShipFragment extends Fragment{
                 boolean showCompare = prefs.getBoolean(SettingActivity.SHOW_COMPARE, true);
                 aCARatingArea.setVisibility(View.VISIBLE);
                 aTopCARatingArea.setVisibility(View.VISIBLE);
-                if(stat != null && showCompare && battles > 0) {
+                if (stat != null && showCompare && battles > 0) {
                     aCompare.setVisibility(View.VISIBLE);
                     List<ListAverages> averages = new ArrayList<ListAverages>();
                     averages.add(ListAverages.create(getString(R.string.damage), (float) (ship.getTotalDamage() / battles), stat.getDmg_dlt(), AverageType.LARGE_NUMBER));
@@ -364,10 +364,10 @@ public class ShipFragment extends Fragment{
                     BatteryStats aircraftStats = ship.getAircraft();
 
                     tvBatteryMain.setText("" + mainBatteryStats.getFrags());
-                    if(mainBatteryStats.getShots() > 0)
+                    if (mainBatteryStats.getShots() > 0)
                         tvBatteryAccMain.setText(Utils.getOneDepthDecimalFormatter().format(mainBatteryStats.getHits() / (float) mainBatteryStats.getShots() * 100) + "%");
                     tvBatteryTorps.setText("" + torpStats.getFrags());
-                    if(torpStats.getShots() > 0)
+                    if (torpStats.getShots() > 0)
                         tvBatteryAccTorps.setText(Utils.getOneDepthDecimalFormatter().format(torpStats.getHits() / (float) torpStats.getShots() * 100) + "%");
                     tvBatteryAircraft.setText("" + aircraftStats.getFrags());
 
@@ -396,25 +396,25 @@ public class ShipFragment extends Fragment{
                     tvTraveled.setText(ship.getDistanceTraveled() + " miles");
 
                     String argoDamage = "" + ship.getTotalArgoDamage();
-                    if(ship.getTotalArgoDamage() > 1000000){
+                    if (ship.getTotalArgoDamage() > 1000000) {
                         argoDamage = Utils.getDefaultDecimalFormatter().format(ship.getTotalArgoDamage() / 1000000) + getString(R.string.million);
                     }
                     tvArgoDamage.setText(argoDamage);
 
                     String argoTorpDamage = "" + ship.getTorpArgoDamage();
-                    if(ship.getTotalArgoDamage() > 1000000){
+                    if (ship.getTotalArgoDamage() > 1000000) {
                         argoTorpDamage = Utils.getDefaultDecimalFormatter().format(ship.getTotalArgoDamage() / 1000000) + getString(R.string.million);
                     }
                     tvArgoTorpDamage.setText(argoTorpDamage);
 
                     String buildingDamage = "" + ship.getBuildingDamage();
-                    if(ship.getBuildingDamage() > 1000000){
+                    if (ship.getBuildingDamage() > 1000000) {
                         buildingDamage = Utils.getDefaultDecimalFormatter().format(ship.getBuildingDamage() / 1000000) + getString(R.string.million);
                     }
                     tvBuildingDamage.setText(buildingDamage);
 
                     String scoutingDamage = "" + ship.getScoutingDamage();
-                    if(ship.getScoutingDamage() > 1000000){
+                    if (ship.getScoutingDamage() > 1000000) {
                         scoutingDamage = Utils.getDefaultDecimalFormatter().format(ship.getScoutingDamage() / 1000000) + getString(R.string.million);
                     }
                     tvSpottingDamage.setText(scoutingDamage);
@@ -436,7 +436,7 @@ public class ShipFragment extends Fragment{
                             //check background
                             checkBackgrounds(tag);
                             //setUpGraph
-                            if(savedShipsInfo != null)
+                            if (savedShipsInfo != null)
                                 setUpTopicalInfo(tag, savedShipsInfo, false);
                         }
                     };
@@ -470,42 +470,42 @@ public class ShipFragment extends Fragment{
                 - ship.getPvpDiv3().getBattles()
                 - ship.getTeamBattles().getBattles();
 
-        if(soloBattles > 0) {
+        if (soloBattles > 0) {
             String str = getString(R.string.solo_pvp);
             modeStrings.add(str);
             gamesPerMode.put(str, soloBattles);
         }
-        if(ship.getPve().getBattles() > 0) {
+        if (ship.getPve().getBattles() > 0) {
             String str = getString(R.string.pve);
             modeStrings.add(str);
             gamesPerMode.put(str, ship.getPve().getBattles());
         }
-        if(ship.getPvpDiv2().getBattles() > 0) {
+        if (ship.getPvpDiv2().getBattles() > 0) {
             String str = getString(R.string.pvp_2_div);
             modeStrings.add(str);
             gamesPerMode.put(str, ship.getPvpDiv2().getBattles());
         }
-        if(ship.getPvpDiv3().getBattles() > 0) {
+        if (ship.getPvpDiv3().getBattles() > 0) {
             String str = getString(R.string.pvp_3_div);
             modeStrings.add(str);
             gamesPerMode.put(str, ship.getPvpDiv3().getBattles());
         }
-        if(ship.getTeamBattles().getBattles() > 0) {
+        if (ship.getTeamBattles().getBattles() > 0) {
             String str = getString(R.string.team_battles);
             modeStrings.add(str);
             gamesPerMode.put(str, ship.getTeamBattles().getBattles());
         }
 
         int rankedBattles = 0;
-        if(ship.getRankedInfo() != null){
-            for(SeasonInfo info : ship.getRankedInfo()){
+        if (ship.getRankedInfo() != null) {
+            for (SeasonInfo info : ship.getRankedInfo()) {
                 try {
                     rankedBattles += info.getSolo().getBattles();
                 } catch (Exception e) {
                 }
             }
         }
-        if(rankedBattles > 0){
+        if (rankedBattles > 0) {
             String ranked = getString(R.string.ranked);
             modeStrings.add(ranked);
             gamesPerMode.put(ranked, rankedBattles);
@@ -520,7 +520,7 @@ public class ShipFragment extends Fragment{
     }
 
     private void setUpGamesPerModeChart(Map<String, Integer> gamesPerMode, List<String> modeStrings) {
-        if(gamesPerMode.size() > 0) {
+        if (gamesPerMode.size() > 0) {
             int textColor = CAApp.getTextColor(chartGameModes.getContext());
             boolean colorblind = CAApp.isColorblind(chartGameModes.getContext());
 
@@ -587,20 +587,20 @@ public class ShipFragment extends Fragment{
         final List<String> strStatistics = new ArrayList<>();
         final List<Statistics> statistics = new ArrayList<>();
 
-        if(ship.getTeamBattles() != null && ship.getTeamBattles().getBattles() > 0) {
+        if (ship.getTeamBattles() != null && ship.getTeamBattles().getBattles() > 0) {
             strStatistics.add(getString(R.string.team_battles_title));
             statistics.add(ship.getTeamBattles());
         }
-        if(ship.getPvpDiv2() != null && ship.getPvpDiv2().getBattles() > 0){
+        if (ship.getPvpDiv2() != null && ship.getPvpDiv2().getBattles() > 0) {
             strStatistics.add(getString(R.string.two_div_title));
             statistics.add(ship.getPvpDiv2());
 
         }
-        if(ship.getPvpDiv3() != null && ship.getPvpDiv3().getBattles() > 0) {
+        if (ship.getPvpDiv3() != null && ship.getPvpDiv3().getBattles() > 0) {
             strStatistics.add(getString(R.string.three_div_title));
             statistics.add(ship.getPvpDiv3());
         }
-        if(ship.getPve() != null && ship.getPve().getBattles() > 0) {
+        if (ship.getPve() != null && ship.getPve().getBattles() > 0) {
             strStatistics.add(getString(R.string.pve_title));
             statistics.add(ship.getPve());
         }
@@ -615,7 +615,7 @@ public class ShipFragment extends Fragment{
 
     private void setUpRankedArea(Ship ship) {
         llContainer.removeAllViews();
-        if(ship.getRankedInfo() != null){
+        if (ship.getRankedInfo() != null) {
             aRanked.setVisibility(View.VISIBLE);
 
             Collections.sort(ship.getRankedInfo(), new Comparator<SeasonInfo>() {
@@ -625,8 +625,8 @@ public class ShipFragment extends Fragment{
                 }
             });
 
-            for(SeasonInfo stats : ship.getRankedInfo()){
-                if(stats.getSolo() != null) {
+            for (SeasonInfo stats : ship.getRankedInfo()) {
+                if (stats.getSolo() != null) {
                     View view = LayoutInflater.from(getContext()).inflate(R.layout.list_ship_ranked, llContainer, false);
 
                     UIUtils.setUpCard(view, R.id.list_ship_ranked_card_area);
@@ -654,7 +654,7 @@ public class ShipFragment extends Fragment{
                     SeasonStats season = stats.getSolo();
                     float bat = season.getBattles();
                     tvBattles.setText(season.getBattles() + "");
-                    if(bat > 0){
+                    if (bat > 0) {
                         float avgExp = season.getXp() / bat;
                         tvAvgExp.setText(Utils.getDefaultDecimalFormatter().format(avgExp));
                         float wr = (season.getWins() / bat) * 100.0f;
@@ -691,7 +691,7 @@ public class ShipFragment extends Fragment{
     }
 
     private void getSavedData(final String accountId, final long shipId) {
-        if(savedShipsInfo == null) {
+        if (savedShipsInfo == null) {
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -740,7 +740,7 @@ public class ShipFragment extends Fragment{
             @Override
             public void run() {
                 checkBackgrounds(tag);
-                if(shipStats != null)
+                if (shipStats != null)
                     setUpTopicalInfo(tag, shipStats, firstLoad);
             }
         });
@@ -748,9 +748,9 @@ public class ShipFragment extends Fragment{
         tvCADiff.post(new Runnable() {
             @Override
             public void run() {
-                Object rating =  tvCARating.getTag();
+                Object rating = tvCARating.getTag();
                 try {
-                    if(rating != null && shipStats.size() > 0) {
+                    if (rating != null && shipStats.size() > 0) {
                         float fRating = Float.parseFloat((String) rating);
                         Ship lastShip = shipStats.get(shipStats.size() - 2);
                         float prevRating = lastShip.getCARating();
@@ -784,11 +784,11 @@ public class ShipFragment extends Fragment{
         });
     }
 
-    private void setUpTopicalInfo(final String tag, List<Ship> ships, boolean firstLoad){
+    private void setUpTopicalInfo(final String tag, List<Ship> ships, boolean firstLoad) {
         aChartArea.setVisibility(View.VISIBLE);
         final List<String> nameValues = new ArrayList<String>();
         List<Float> numbers = new ArrayList<Float>();
-        if(firstLoad)
+        if (firstLoad)
             Collections.reverse(ships);
         int strResId = R.string.captain_average_exp;
 
@@ -821,7 +821,7 @@ public class ShipFragment extends Fragment{
         for (int i = 0; i < numbers.size(); i++) {
             yVals.add(new Entry(numbers.get(i), i));
         }
-        if(yVals.size() > 0) {
+        if (yVals.size() > 0) {
             aChartArea.post(new Runnable() {
                 @Override
                 public void run() {
@@ -898,57 +898,6 @@ public class ShipFragment extends Fragment{
 
     }
 
-    private class MyFormatter implements ValueFormatter {
-
-        private DecimalFormat mFormat;
-        private boolean isPercent;
-
-        public MyFormatter() {
-            this.mFormat = new DecimalFormat("###,###,##0.0");
-        }
-
-        public void change(String tag) {
-            if (tag.equals(TAG_AVERAGE_EXP) || tag.equals(TAG_AVERAGE_DAMAGE)) {
-                this.mFormat = new DecimalFormat("###,###,##0");
-            } else {
-                this.mFormat = new DecimalFormat("###,###,##0.0");
-            }
-            isPercent = tag.equals(TAG_WIN_RATE) || tag.equals(TAG_BATTLES);
-        }
-
-        @Override
-        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-            return mFormat.format(value) + (isPercent ? "%" : "");
-        }
-    }
-
-    private class MyYFormatter implements YAxisValueFormatter {
-
-        private DecimalFormat mFormat;
-        private boolean isPercent;
-
-        public MyYFormatter() {
-            this.mFormat = new DecimalFormat("###,###,##0.0");
-        }
-
-        public void change(String tag) {
-            if (tag.equals(TAG_AVERAGE_EXP) || tag.equals(TAG_AVERAGE_DAMAGE)) {
-                this.mFormat = new DecimalFormat("###,###,##0");
-            } else if (tag.equals(TAG_KILL_DEATH)) {
-                this.mFormat = new DecimalFormat("###,###,##0.00");
-            } else {
-                this.mFormat = new DecimalFormat("###,###,##0.0");
-            }
-            isPercent = tag.equals(TAG_WIN_RATE) || tag.equals(TAG_BATTLES);
-        }
-
-        @Override
-        public String getFormattedValue(float value, YAxis yAxis) {
-            return mFormat.format(value) + (isPercent ? "%" : "");
-        }
-    }
-
-
     private void checkBackgrounds(String tag) {
         if (tag.equals(TAG_AVERAGE_EXP)) {
             aSavedChartExp.setBackgroundResource(R.color.captain_top_background);
@@ -980,10 +929,10 @@ public class ShipFragment extends Fragment{
     private void setUpAverages(final Ship ship, final ShipStat stat) {
         Runnable runnable = new Runnable() {
 
-            private String cleanTitleString(int id){
+            private String cleanTitleString(int id) {
                 String str = getString(id);
-                if(str.length() > 14){
-                    str = str.substring(0,15).trim() + "...";
+                if (str.length() > 14) {
+                    str = str.substring(0, 15).trim() + "...";
                 }
                 return str;
             }
@@ -1078,5 +1027,55 @@ public class ShipFragment extends Fragment{
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    private class MyFormatter implements ValueFormatter {
+
+        private DecimalFormat mFormat;
+        private boolean isPercent;
+
+        public MyFormatter() {
+            this.mFormat = new DecimalFormat("###,###,##0.0");
+        }
+
+        public void change(String tag) {
+            if (tag.equals(TAG_AVERAGE_EXP) || tag.equals(TAG_AVERAGE_DAMAGE)) {
+                this.mFormat = new DecimalFormat("###,###,##0");
+            } else {
+                this.mFormat = new DecimalFormat("###,###,##0.0");
+            }
+            isPercent = tag.equals(TAG_WIN_RATE) || tag.equals(TAG_BATTLES);
+        }
+
+        @Override
+        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+            return mFormat.format(value) + (isPercent ? "%" : "");
+        }
+    }
+
+    private class MyYFormatter implements YAxisValueFormatter {
+
+        private DecimalFormat mFormat;
+        private boolean isPercent;
+
+        public MyYFormatter() {
+            this.mFormat = new DecimalFormat("###,###,##0.0");
+        }
+
+        public void change(String tag) {
+            if (tag.equals(TAG_AVERAGE_EXP) || tag.equals(TAG_AVERAGE_DAMAGE)) {
+                this.mFormat = new DecimalFormat("###,###,##0");
+            } else if (tag.equals(TAG_KILL_DEATH)) {
+                this.mFormat = new DecimalFormat("###,###,##0.00");
+            } else {
+                this.mFormat = new DecimalFormat("###,###,##0.0");
+            }
+            isPercent = tag.equals(TAG_WIN_RATE) || tag.equals(TAG_BATTLES);
+        }
+
+        @Override
+        public String getFormattedValue(float value, YAxis yAxis) {
+            return mFormat.format(value) + (isPercent ? "%" : "");
+        }
     }
 }

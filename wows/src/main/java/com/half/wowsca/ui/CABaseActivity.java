@@ -17,7 +17,7 @@ import java.util.Locale;
 /**
  * Created by slai4 on 4/17/2016.
  */
-public class CABaseActivity extends SwipeBackBaseActivity{
+public class CABaseActivity extends SwipeBackBaseActivity {
 
     protected static boolean FORCE_REFRESH;
 
@@ -44,19 +44,19 @@ public class CABaseActivity extends SwipeBackBaseActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        if(mToolbar !=  null)
-            if(CAApp.isDarkTheme(getApplicationContext()))
+        if (mToolbar != null)
+            if (CAApp.isDarkTheme(getApplicationContext()))
                 mToolbar.setPopupTheme(R.style.WoWSCAThemeToolbarDarkOverflow);
     }
 
-    protected void initBackStackListener(){
+    protected void initBackStackListener() {
         backStackListener = new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
                 invalidateOptionsMenu();
                 Fragment current = getSupportFragmentManager().findFragmentById(R.id.container);
                 try {
-                    if(current instanceof ViewCaptainTabbedFragment){
+                    if (current instanceof ViewCaptainTabbedFragment) {
                         ((ViewCaptainTabbedFragment) current).fix();
                     }
                 } catch (Exception e) {

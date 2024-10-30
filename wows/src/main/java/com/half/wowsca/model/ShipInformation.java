@@ -11,25 +11,23 @@ import java.util.Iterator;
 
 public class ShipInformation {
 
+    public double torpBDistance;
     JSONObject armour;
     JSONObject hull;
     JSONObject fire_control;
     JSONObject weaponry;
     JSONObject concealment;
-    JSONObject atba ;
+    JSONObject atba;
     JSONObject mobility;
     JSONObject aa;
     JSONObject torps;
     JSONObject artillery;
-
     JSONObject flightControl;
     JSONObject torpedoBombers;
     JSONObject diveBombers;
-
     private int health;
     private int survivalHealth;
     private int planesAmount;
-
     //armor
     private int overallMin;
     private int overallMax;
@@ -41,22 +39,17 @@ public class ShipInformation {
     private int casemateMax;
     private int citadelMin;
     private int citadelMax;
-
     private int artilleryTotal;
     private int torpTotal;
     private int antiAirTotal;
     private int aircraftTotal;
     private int mobilityTotal;
     private int concealmentTotal;
-
     private double turningRadius;
-
     private double speed;
     private double rudderTime;
-
     private double artiDistance;
     private double secondaryRange;
-
     //torp
     private boolean hasTorps;
     private double torpDistance;
@@ -66,10 +59,8 @@ public class ShipInformation {
     private int torpSlots;
     private int torpBarrels;
     private int torpGuns;
-
     //Torp bommbers
     private boolean isCarrier;
-    public double torpBDistance;
     private double torpBprepareTime;
     private int torpBDamage;
     private double torpBMaxSpeed;
@@ -95,27 +86,27 @@ public class ShipInformation {
 
     private double topAARange;
 
-    public void parse(String string){
+    public void parse(String string) {
         JSONObject obj = null;
         try {
             obj = new JSONObject(string);
         } catch (JSONException e) {
         }
         if (obj != null) {
-             armour = obj.optJSONObject("armour");
-             hull = obj.optJSONObject("hull");
-             fire_control = obj.optJSONObject("fire_control");
-             weaponry = obj.optJSONObject("weaponry");
-             concealment = obj.optJSONObject("concealment");
-             atba = obj.optJSONObject("atba");
-             mobility = obj.optJSONObject("mobility");
-             aa = obj.optJSONObject("anti_aircraft");
-             torps = obj.optJSONObject("torpedoes");
-             artillery = obj.optJSONObject("artillery");
+            armour = obj.optJSONObject("armour");
+            hull = obj.optJSONObject("hull");
+            fire_control = obj.optJSONObject("fire_control");
+            weaponry = obj.optJSONObject("weaponry");
+            concealment = obj.optJSONObject("concealment");
+            atba = obj.optJSONObject("atba");
+            mobility = obj.optJSONObject("mobility");
+            aa = obj.optJSONObject("anti_aircraft");
+            torps = obj.optJSONObject("torpedoes");
+            artillery = obj.optJSONObject("artillery");
 
-             flightControl = obj.optJSONObject("flight_control");
-             torpedoBombers = obj.optJSONObject("torpedo_bomber");
-             diveBombers = obj.optJSONObject("dive_bomber");
+            flightControl = obj.optJSONObject("flight_control");
+            torpedoBombers = obj.optJSONObject("torpedo_bomber");
+            diveBombers = obj.optJSONObject("dive_bomber");
 
             //survival
             health = hull.optInt("health");
@@ -164,7 +155,7 @@ public class ShipInformation {
 
             rudderTime = mobility.optDouble("rudder_time");
 
-            if(fire_control != null)
+            if (fire_control != null)
                 artiDistance = fire_control.optDouble("distance");
 
             if (atba != null)

@@ -145,7 +145,7 @@ public class CaptainGraphsFragment extends CAFragment {
                 Map<String, Long> expClass = new HashMap<>();
                 Map<String, Long> survivalClass = new HashMap<>();
                 ShipsHolder shipsHolder = CAApp.getInfoManager().getShipInfo(getContext());
-                if(captain.getShips() != null) {
+                if (captain.getShips() != null) {
                     for (Ship s : captain.getShips()) {
                         ShipInfo info = shipsHolder.get(s.getShipId());
                         if (info != null) {
@@ -183,7 +183,7 @@ public class CaptainGraphsFragment extends CAFragment {
 
                             Long hits = accuracyHits.get(tier);
                             BatteryStats stats = s.getMainBattery();
-                            if(stats.getShots() > 0) {
+                            if (stats.getShots() > 0) {
                                 if (hits != null) {
                                     accuracyHits.put(tier, hits + stats.getHits());
                                 } else {
@@ -193,7 +193,7 @@ public class CaptainGraphsFragment extends CAFragment {
 
                             Long shots = accuracyShots.get(tier);
                             BatteryStats statsShots = s.getMainBattery();
-                            if(statsShots.getShots() > 0) {
+                            if (statsShots.getShots() > 0) {
                                 if (shots != null) {
                                     accuracyShots.put(tier, shots + statsShots.getShots());
                                 } else {
@@ -268,8 +268,8 @@ public class CaptainGraphsFragment extends CAFragment {
                         }
                         Long hits = accuracyHits.get(i);
                         Long shots = accuracyShots.get(i);
-                        if(hits != null && shots > 0){
-                            avgAccuracy.put(i, (long) ((hits / (float)shots) * 100));
+                        if (hits != null && shots > 0) {
+                            avgAccuracy.put(i, (long) ((hits / (float) shots) * 100));
                         } else {
                             avgAccuracy.put(i, 0L);
                         }
@@ -388,7 +388,7 @@ public class CaptainGraphsFragment extends CAFragment {
 
                         averageKDTen.names.add(name);
                         float deaths = s.getBattles() - s.getSurvivedBattles();
-                        if(deaths <= 1)
+                        if (deaths <= 1)
                             deaths = 1f;
                         float frags = s.getFrags();
                         averageKDTen.data.add(frags / deaths);
@@ -407,7 +407,7 @@ public class CaptainGraphsFragment extends CAFragment {
                         averageAccuracyTen.names.add(name);
                         float shots = s.getMainBattery().getShots();
                         float hits = s.getMainBattery().getHits();
-                        if(shots > 0)
+                        if (shots > 0)
                             averageAccuracyTen.data.add((hits / shots) * 100f);
                     }
                     averageAccuracyTen.reverse();
@@ -442,16 +442,16 @@ public class CaptainGraphsFragment extends CAFragment {
                         setUpTopTenCharts(chartTopTenKD, averageKDTen, false);
                     if (averageWRTen.count() > 0)
                         setUpTopTenCharts(chartTopTenWinRate, averageWRTen, true);
-                    if(averageAccuracyTen.count() > 0)
+                    if (averageAccuracyTen.count() > 0)
                         setUpTopTenCharts(chartTopTenAccuracy, averageAccuracyTen, true);
 
                     shipsClone = null;
                 }
             }
 
-            private Map<Long, Ship> grabTopTen(List<Ship> ships){
+            private Map<Long, Ship> grabTopTen(List<Ship> ships) {
                 Map<Long, Ship> topTen = new HashMap<>();
-                for(int i = 0; i < 10 && i < ships.size(); i++){
+                for (int i = 0; i < 10 && i < ships.size(); i++) {
                     topTen.put(ships.get(i).getShipId(), ships.get(i));
                 }
                 return topTen;
@@ -503,7 +503,7 @@ public class CaptainGraphsFragment extends CAFragment {
                         BarData data = new BarData(xVals, dataSets);
                         data.setValueTextSize(10f);
                         data.setValueTextColor(textColor);
-                        if(!percentage) {
+                        if (!percentage) {
 //                            data.setValueFormatter(new LargeValueFormatter());
                         } else {
                             data.setValueFormatter(new PercentFormatter());
@@ -517,7 +517,7 @@ public class CaptainGraphsFragment extends CAFragment {
 
             }
 
-            private void setUpBarChart(final BarChart chart, final Map<Integer, Long> averages, final boolean useLargeFormatter){
+            private void setUpBarChart(final BarChart chart, final Map<Integer, Long> averages, final boolean useLargeFormatter) {
                 chart.post(new Runnable() {
                     @Override
                     public void run() {
@@ -647,7 +647,7 @@ public class CaptainGraphsFragment extends CAFragment {
                         BarData data = new BarData(xVals, dataSets);
                         data.setValueTextSize(10f);
                         data.setValueTextColor(textColor);
-                        if(!percentage) {
+                        if (!percentage) {
                             data.setValueFormatter(new LargeValueFormatter());
                         } else {
                             data.setValueFormatter(new PercentFormatter());
@@ -687,36 +687,6 @@ public class CaptainGraphsFragment extends CAFragment {
         xAxis.setDrawGridLines(true);
     }
 
-    private class TopTenObj{
-
-        ArrayList<String> names;
-        ArrayList<Float> data;
-
-        public TopTenObj() {
-            this.names = new ArrayList<>();
-            this.data = new ArrayList<>();
-        }
-
-        public void reverse(){
-            Collections.reverse(names);
-            Collections.reverse(data);
-        }
-
-        public void print(){
-            Dlog.d("names", names.toString());
-            Dlog.d("data", data.toString());
-        }
-
-        public int count(){
-            int total = 0;
-            if(names != null)
-                total = names.size();
-            else if(data != null)
-                total = data.size();
-            return total;
-        }
-    }
-
     @Subscribe
     public void onReceive(CaptainReceivedEvent event) {
         initView();
@@ -736,9 +706,39 @@ public class CaptainGraphsFragment extends CAFragment {
     }
 
     @Subscribe
-    public void onProgressEvent(ProgressEvent event){
-        if(mSwipeRefreshLayout != null){
+    public void onProgressEvent(ProgressEvent event) {
+        if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(event.isRefreshing());
+        }
+    }
+
+    private class TopTenObj {
+
+        ArrayList<String> names;
+        ArrayList<Float> data;
+
+        public TopTenObj() {
+            this.names = new ArrayList<>();
+            this.data = new ArrayList<>();
+        }
+
+        public void reverse() {
+            Collections.reverse(names);
+            Collections.reverse(data);
+        }
+
+        public void print() {
+            Dlog.d("names", names.toString());
+            Dlog.d("data", data.toString());
+        }
+
+        public int count() {
+            int total = 0;
+            if (names != null)
+                total = names.size();
+            else if (data != null)
+                total = data.size();
+            return total;
         }
     }
 }

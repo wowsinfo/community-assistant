@@ -32,22 +32,22 @@ public class StorageManager {
 
     private static final String STATS_FOLDER = "wowscacaptains";
 
-    public static int getStatsMax(Context ctx){
+    public static int getStatsMax(Context ctx) {
         Prefs prefs = new Prefs(ctx);
         return prefs.getInt("stats_max", 10);
     }
 
-    public static void setStatsMax(Context ctx, int num){
+    public static void setStatsMax(Context ctx, int num) {
         Prefs prefs = new Prefs(ctx);
         prefs.setInt("stats_max", num);
     }
 
-    public static int getShipsStatsMax(Context ctx){
+    public static int getShipsStatsMax(Context ctx) {
         Prefs prefs = new Prefs(ctx);
         return prefs.getInt("ships_stats_max", 5);
     }
 
-    public static void setShipsStatsMax(Context ctx, int num){
+    public static void setShipsStatsMax(Context ctx, int num) {
         Prefs prefs = new Prefs(ctx);
         prefs.setInt("ships_stats_max", num);
     }
@@ -79,7 +79,7 @@ public class StorageManager {
                     addAchievements(achievements, p.getAchievements(), stats_max);
 
                     SavedShips ships = getPlayerShips(ctx, CaptainManager.getCapIdStr(p));
-                    if(p.getShips() != null && ships != null) {
+                    if (p.getShips() != null && ships != null) {
                         for (Ship s : p.getShips()) {
                             if (ships != null && ships.getSavedShips().get(s.getShipId()) != null) {
                                 Ship last = ships.getSavedShips().get(s.getShipId()).get(0);
@@ -125,7 +125,7 @@ public class StorageManager {
                         e.printStackTrace();
                     }
 
-                    if(p.getShips() != null) {
+                    if (p.getShips() != null) {
                         File shipsFile = new File(statsDir, "s" + CaptainManager.getCapIdStr(p));
                         try {
                             FileOutputStream fos = new FileOutputStream(shipsFile);
@@ -212,7 +212,7 @@ public class StorageManager {
     }
 
     private static void addAchievements(SavedAchievements stats, List<Achievement> stat, int stats_max) {
-        if(stats.getSavedAchievements() == null)
+        if (stats.getSavedAchievements() == null)
             stats = new SavedAchievements();
         stats.getSavedAchievements().add(0, stat);
         if (stats != null)

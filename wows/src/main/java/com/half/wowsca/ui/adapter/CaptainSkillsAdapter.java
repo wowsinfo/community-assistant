@@ -53,7 +53,7 @@ public class CaptainSkillsAdapter extends RecyclerView.Adapter<CaptainSkillsAdap
             return 0;
     }
 
-    public static class SkillsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class SkillsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvName;
         ImageView ivIcon;

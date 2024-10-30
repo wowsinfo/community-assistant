@@ -84,7 +84,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
 
         Server s = CAApp.getServerType(ctx);
         String prefix = "";
-        switch(s){
+        switch (s) {
             case NA:
                 prefix = "na";
                 break;
@@ -141,11 +141,11 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
             CAApp.getInfoManager().setUpgrades(ctx, e);
         }
 
-        if (result.getExteriorItem() != null && !result.getExteriorItem().getItems().isEmpty()){
+        if (result.getExteriorItem() != null && !result.getExteriorItem().getItems().isEmpty()) {
             CAApp.getInfoManager().setExteriorItems(ctx, result.getExteriorItem());
         }
 
-        if(result.getSkillHolder() != null && !result.getSkillHolder().getItems().isEmpty()){
+        if (result.getSkillHolder() != null && !result.getSkillHolder().getItems().isEmpty()) {
             CAApp.getInfoManager().setCaptainSkills(ctx, result.getSkillHolder());
         }
         Dlog.wtf("Infomanager", "done " + result);
@@ -158,10 +158,10 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
         try {
             Document doc = Jsoup.parse(wowsNumbers);
             Elements scriptTags = doc.getElementsByTag("script");
-            for (Element tag : scriptTags){
+            for (Element tag : scriptTags) {
                 for (DataNode node : tag.dataNodes()) {
                     String nodeData = node.getWholeData();
-                    if(nodeData.contains("var dataProvider")) {
+                    if (nodeData.contains("var dataProvider")) {
                         String[] dataSplit = nodeData.split("=");
                         String ships = dataSplit[2];
                         String[] secondSplit = ships.split(";");
@@ -183,7 +183,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
                                 shipStatMap.put(shipId, stat);
                         }
                         result.setShipStat(shipStatMap);
-                        if(shipStatMap.size() > 250){
+                        if (shipStatMap.size() > 250) {
                             try {
                                 Prefs prefs = new Prefs(ctx);
                                 prefs.setString(SAVED_FRESH_DATA, sb.toString());
@@ -200,11 +200,11 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
         }
     }
 
-    private void setupDefaultData(InfoResult result){
+    private void setupDefaultData(InfoResult result) {
         // last updated 9/5/18
         Server s = CAApp.getServerType(ctx);
         String fileName = "";
-        switch(s){
+        switch (s) {
             case NA:
                 fileName = "raw-data-na.txt";
                 break;
@@ -225,7 +225,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
         Prefs prefs = new Prefs(ctx);
         String lastOutput = prefs.getString(SAVED_FRESH_DATA, "");
         StringBuilder sb = new StringBuilder();
-        if(TextUtils.isEmpty(lastOutput)) {
+        if (TextUtils.isEmpty(lastOutput)) {
             BufferedReader reader = null;
             try {
                 reader = new BufferedReader(
@@ -252,7 +252,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
             sb.append(lastOutput);
         }
         String output = sb.toString();
-        if(!TextUtils.isEmpty(output)){
+        if (!TextUtils.isEmpty(output)) {
             try {
                 JSONArray body = new JSONArray(output);
                 Map<Long, ShipStat> shipStatMap = new HashMap<Long, ShipStat>();
@@ -274,7 +274,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
     }
 
     private void parseWarshipsToday(InfoResult result, String warships_today) {
-        if(warships_today != null) {
+        if (warships_today != null) {
             JSONObject object = null;
             try {
                 object = new JSONObject(warships_today);
@@ -282,34 +282,34 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
                 e.printStackTrace();
             }
             if (object != null) {
-                    JSONArray data = object.optJSONArray("expected");
-                    Map<Long, ShipStat> shipStatMap = new HashMap<Long, ShipStat>();
-                    for(int i = 0; i < data.length(); i++){
-                        JSONObject obj = data.optJSONObject(i);
-                        long shipId = obj.optLong("ship_id");
-                        ShipStat info = new ShipStat();
-                        info.parse(obj);
-                        shipStatMap.put(shipId, info);
-                    }
-                    result.setShipStat(shipStatMap);
+                JSONArray data = object.optJSONArray("expected");
+                Map<Long, ShipStat> shipStatMap = new HashMap<Long, ShipStat>();
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.optJSONObject(i);
+                    long shipId = obj.optLong("ship_id");
+                    ShipStat info = new ShipStat();
+                    info.parse(obj);
+                    shipStatMap.put(shipId, info);
+                }
+                result.setShipStat(shipStatMap);
             }
         }
     }
 
     private void parseCaptainSkills(InfoResult result, String captainSkillsFeed) {
-        if(captainSkillsFeed != null){
+        if (captainSkillsFeed != null) {
             JSONObject object = null;
             try {
                 object = new JSONObject(captainSkillsFeed);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            if(object != null){
+            if (object != null) {
                 JSONObject data = object.optJSONObject("data");
                 if (data != null) {
                     Iterator<String> iter = data.keys();
                     CaptainSkillHolder exteriorItems = new CaptainSkillHolder();
-                    while (iter.hasNext()){
+                    while (iter.hasNext()) {
                         String key = iter.next();
                         JSONObject item = data.optJSONObject(key);
                         CaptainSkill skill = new CaptainSkill();
@@ -324,19 +324,19 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
     }
 
     private void parseExteriorItems(InfoResult result, String exteriorItemsFeed) {
-        if(exteriorItemsFeed != null){
+        if (exteriorItemsFeed != null) {
             JSONObject object = null;
             try {
                 object = new JSONObject(exteriorItemsFeed);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            if(object != null){
+            if (object != null) {
                 JSONObject data = object.optJSONObject("data");
                 if (data != null) {
                     Iterator<String> iter = data.keys();
                     ExteriorHolder exteriorItems = new ExteriorHolder();
-                    while (iter.hasNext()){
+                    while (iter.hasNext()) {
                         String key = iter.next();
                         JSONObject item = data.optJSONObject(key);
                         ExteriorItem exteriorItem = new ExteriorItem();
@@ -417,7 +417,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
                 JSONObject data = object.optJSONObject("data");
                 if (data != null) {
                     JSONObject battle = data.optJSONObject("battle");
-                    if(battle != null) {
+                    if (battle != null) {
                         Map<String, AchievementInfo> achievementInfo = new HashMap<String, AchievementInfo>();
                         Iterator<String> keys = battle.keys();
                         while (keys.hasNext()) {
@@ -456,7 +456,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
                 List<JSONObject> feeds = new ArrayList<>();
                 JSONObject data = object.optJSONObject("data");
                 feeds.add(data);
-                while (page <= pageTotal){
+                while (page <= pageTotal) {
                     String url = CAApp.WOWS_API_SITE_ADDRESS + query.getServer().getSuffix() + "/wows/encyclopedia/ships/?application_id=" + query.getServer().getAppId() + languagePart + "&page_no=" + page;
                     Dlog.wtf("SHIPS URL AGAIN", url);
                     String feed = getURLResult(url);
@@ -466,14 +466,14 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    if(obj != null) {
+                    if (obj != null) {
                         JSONObject datum = obj.optJSONObject("data");
                         feeds.add(datum);
                     }
                     page++;
                 }
                 Map<Long, ShipInfo> ships = new HashMap<>();
-                for(JSONObject datum : feeds) {
+                for (JSONObject datum : feeds) {
                     if (datum != null) {
                         Iterator<String> keys = datum.keys();
                         while (keys.hasNext()) {

@@ -66,14 +66,14 @@ public class EncyclopediaShipsFragment extends CAFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_encyclopedia_list, container, false);
         bindView(view);
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             searchText = savedInstanceState.getString(SEARCH);
             searchTier = savedInstanceState.getInt(TIER);
-            if(searchTier == 0){
+            if (searchTier == 0) {
                 searchTier = EncyclopediaAdapter.EMPTY_FILTER;
             }
             searchNation = savedInstanceState.getInt(NATION);
-            if(searchNation == 0){
+            if (searchNation == 0) {
                 searchNation = EncyclopediaAdapter.EMPTY_FILTER;
             }
         }
@@ -160,7 +160,7 @@ public class EncyclopediaShipsFragment extends CAFragment {
     }
 
     private void setupCompareFeature() {
-        if(CAApp.getTheme(listView.getContext()).equals("ocean")){
+        if (CAApp.getTheme(listView.getContext()).equals("ocean")) {
             tvCompareText.setBackgroundColor(ContextCompat.getColor(listView.getContext(), R.color.bottom_background));
         } else {
             tvCompareText.setBackgroundColor(ContextCompat.getColor(listView.getContext(), R.color.material_background_dark));
@@ -169,7 +169,7 @@ public class EncyclopediaShipsFragment extends CAFragment {
     }
 
     private void setUpFiltering() {
-        if(!TextUtils.isEmpty(searchText)){
+        if (!TextUtils.isEmpty(searchText)) {
             etSearch.setText(searchText);
         }
         delete.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +217,7 @@ public class EncyclopediaShipsFragment extends CAFragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.ca_spinner_item_trans, nationList);
         adapter.setDropDownViewResource(!CAApp.isDarkTheme(sNation.getContext()) ? R.layout.ca_spinner_item : R.layout.ca_spinner_item_dark);
         sNation.setAdapter(adapter);
-        if(searchNation > EncyclopediaAdapter.EMPTY_FILTER){
+        if (searchNation > EncyclopediaAdapter.EMPTY_FILTER) {
             sNation.setSelection(searchNation + 1);
         } else {
             searchNation = EncyclopediaAdapter.EMPTY_FILTER;
@@ -238,13 +238,13 @@ public class EncyclopediaShipsFragment extends CAFragment {
     private void initTierSpinner() {
         List<String> tiersList = new ArrayList<>();
         tiersList.add(getString(R.string.encyclopedia_all));
-        for(int i = 1; i < 11; i++){
+        for (int i = 1; i < 11; i++) {
             tiersList.add(i + "");
         }
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), R.layout.ca_spinner_item_trans, tiersList);
         adapter2.setDropDownViewResource(!CAApp.isDarkTheme(sTier.getContext()) ? R.layout.ca_spinner_item : R.layout.ca_spinner_item_dark);
         sTier.setAdapter(adapter2);
-        if(searchTier > EncyclopediaAdapter.EMPTY_FILTER){
+        if (searchTier > EncyclopediaAdapter.EMPTY_FILTER) {
             sTier.setSelection(searchTier + 1);
         } else {
             searchTier = EncyclopediaAdapter.EMPTY_FILTER;
@@ -262,14 +262,14 @@ public class EncyclopediaShipsFragment extends CAFragment {
         });
     }
 
-    private void filter(){
-        if(adapter != null){
+    private void filter() {
+        if (adapter != null) {
             adapter.filter(etSearch.getText().toString(), searchNation, searchTier);
         }
     }
 
     @Subscribe
-    public void onShipCompare(ShipCompareEvent event){
+    public void onShipCompare(ShipCompareEvent event) {
         setCompareText();
         adapter.notifyDataSetChanged();
     }
@@ -277,7 +277,7 @@ public class EncyclopediaShipsFragment extends CAFragment {
     private void setCompareText() {
         ShipsHolder holder = new InfoManager().getShipInfo(tvCompareText.getContext());
         int size = CompareManager.getSHIPS().size();
-        if(size > 0) {
+        if (size > 0) {
             StringBuilder sb = new StringBuilder();
             int i = 0;
             for (long id : CompareManager.getSHIPS()) {

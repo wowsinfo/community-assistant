@@ -94,7 +94,7 @@ public class CaptainShipsFragment extends CAFragment {
             sSorter.setEnabled(true);
             etSearch.setEnabled(true);
 
-            if(recyclerView.getAdapter() == null) {
+            if (recyclerView.getAdapter() == null) {
                 recyclerView.setHasFixedSize(false);
 
                 layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.ship_rows));
@@ -103,18 +103,18 @@ public class CaptainShipsFragment extends CAFragment {
 
                 adapter = new ShipsAdapter(captain.getShips(), getContext());
                 recyclerView.setAdapter(adapter);
-            } else if (adapter != null){
+            } else if (adapter != null) {
                 Prefs pref = new Prefs(recyclerView.getContext());
                 adapter.notifyDataSetChanged();
             }
 
-            if(recyclerView.getAdapter() != null && CAApp.getLastShipPos() != 0){
+            if (recyclerView.getAdapter() != null && CAApp.getLastShipPos() != 0) {
                 recyclerView.scrollToPosition(CAApp.getLastShipPos());
             }
             setUpSearching();
             setUpSorting();
         } else {
-            if(captain != null && captain.getShips() == null)
+            if (captain != null && captain.getShips() == null)
                 refreshing(true);
             sSorter.setEnabled(false);
             etSearch.setEnabled(false);
@@ -142,7 +142,7 @@ public class CaptainShipsFragment extends CAFragment {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Dlog.wtf("OnItemSelected", "check = " + spinnerCheck + " pos = " + position);
-                    if(!spinnerCheck){
+                    if (!spinnerCheck) {
                     } else {
                         String sortType = (String) parent.getItemAtPosition(position);
                         Prefs prefs = new Prefs(getContext());
@@ -180,7 +180,7 @@ public class CaptainShipsFragment extends CAFragment {
             String[] sortTypes = getResources().getStringArray(R.array.ship_sorting);
             for (int i = 0; i < sortTypes.length; i++) {
                 if (sortTypes[i].equals(savedSort)) {
-                    if(clearCheck)
+                    if (clearCheck)
                         spinnerCheck = false; // because spinners suck
                     sSorter.setSelection(i);
                     break;
@@ -263,8 +263,8 @@ public class CaptainShipsFragment extends CAFragment {
     }
 
     @Subscribe
-    public void onProgressEvent(ProgressEvent event){
-        if(mSwipeRefreshLayout != null){
+    public void onProgressEvent(ProgressEvent event) {
+        if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(event.isRefreshing());
         }
     }

@@ -66,12 +66,12 @@ public class ShipsCompareAdapter extends RecyclerView.Adapter<ShipsCompareAdapte
 
         ArrayList<String> xVals = new ArrayList<String>();
         Iterator<String> itea = info.keySet().iterator();
-        while (itea.hasNext()){
+        while (itea.hasNext()) {
             xVals.add(itea.next());
         }
         int[] colors = new int[xVals.size()];
 
-        for(int i = 0; i < xVals.size(); i++){
+        for (int i = 0; i < xVals.size(); i++) {
             String shipName = xVals.get(i);
             colors[i] = shipColors.get(shipName);
         }
@@ -127,18 +127,6 @@ public class ShipsCompareAdapter extends RecyclerView.Adapter<ShipsCompareAdapte
         return ships.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        public BarChart barChart;
-        public TextView tvTitle;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            barChart = itemView.findViewById(R.id.list_compare_ship_graph);
-            tvTitle = itemView.findViewById(R.id.list_compare_ship_graph_text);
-        }
-    }
-
     public void setShips(List<Map<String, Float>> ships) {
         this.ships = ships;
         notifyDataSetChanged();
@@ -158,5 +146,17 @@ public class ShipsCompareAdapter extends RecyclerView.Adapter<ShipsCompareAdapte
 
     public void setShipColors(Map<String, Integer> shipColors) {
         this.shipColors = shipColors;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        public BarChart barChart;
+        public TextView tvTitle;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            barChart = itemView.findViewById(R.id.list_compare_ship_graph);
+            tvTitle = itemView.findViewById(R.id.list_compare_ship_graph_text);
+        }
     }
 }

@@ -64,7 +64,7 @@ public class CaptainManager {
     }
 
     public static void saveCaptain(Context ctx, Captain c) {
-        if(c != null) { // put in to prevent crash on line 59. If not fixed might be c.getServer is null
+        if (c != null) { // put in to prevent crash on line 59. If not fixed might be c.getServer is null
             if (CAPTAINS != null) {
                 CAPTAINS.put(getCapIdStr(c), c);
             } else {

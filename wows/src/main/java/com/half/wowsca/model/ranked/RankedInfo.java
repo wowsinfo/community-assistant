@@ -5,7 +5,7 @@ import org.json.JSONObject;
 /**
  * Created by slai4 on 11/29/2015.
  */
-public class RankedInfo extends SeasonInfo{
+public class RankedInfo extends SeasonInfo {
 
     private int maxRank;
     private int startRank;
@@ -13,11 +13,11 @@ public class RankedInfo extends SeasonInfo{
     private int rank;
     private int stage;
 
-    public static RankedInfo parse(JSONObject obj){
+    public static RankedInfo parse(JSONObject obj) {
         RankedInfo info = new RankedInfo();
-        if(obj != null){
+        if (obj != null) {
             JSONObject rank = obj.optJSONObject("rank_info");
-            if(rank != null) {
+            if (rank != null) {
                 info.setMaxRank(rank.optInt("max_rank"));
                 info.setStartRank(rank.optInt("start_rank"));
                 info.setStars(rank.optInt("stars"));
@@ -27,15 +27,15 @@ public class RankedInfo extends SeasonInfo{
             JSONObject solo = obj.optJSONObject("rank_solo");
             JSONObject div2 = obj.optJSONObject("rank_div2");
             JSONObject div3 = obj.optJSONObject("rank_div3");
-            if(solo != null){
+            if (solo != null) {
                 SeasonStats soloSeason = SeasonStats.parse(solo);
                 info.setSolo(soloSeason);
             }
-            if(div2 != null){
+            if (div2 != null) {
                 SeasonStats div2Season = SeasonStats.parse(div2);
                 info.setDiv2(div2Season);
             }
-            if(div3 != null){
+            if (div3 != null) {
                 SeasonStats div3Season = SeasonStats.parse(div3);
                 info.setDiv3(div3Season);
             }

@@ -54,7 +54,7 @@ public class ShipModuleListFragment extends CAFragment {
     }
 
     private void initView() {
-        if(adapter == null) {
+        if (adapter == null) {
             GridLayoutManager manager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.ship_rows));
             gridView.setLayoutManager(manager);
             adapter = new ShipModuleCompareAdapter(CompareManager.getSHIPS(), getContext());
@@ -65,12 +65,12 @@ public class ShipModuleListFragment extends CAFragment {
     }
 
     @Subscribe
-    public void onRefresh(Long shipId){
+    public void onRefresh(Long shipId) {
         Dlog.d("ShiModuleListFragment", "onRefresh = " + shipId);
-        if(adapter != null){
+        if (adapter != null) {
             int i;
-            for(i = 0 ; i < CompareManager.getSHIPS().size(); i++){
-                if(CompareManager.getSHIPS().get(i) == shipId)
+            for (i = 0; i < CompareManager.getSHIPS().size(); i++) {
+                if (CompareManager.getSHIPS().get(i) == shipId)
                     break;
             }
             adapter.notifyDataSetChanged();

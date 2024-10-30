@@ -8,7 +8,7 @@ public class ProgressEvent {
 
     private final boolean refreshing;
 
-    public ProgressEvent(boolean refreshing){
+    public ProgressEvent(boolean refreshing) {
         this.refreshing = refreshing;
     }
 

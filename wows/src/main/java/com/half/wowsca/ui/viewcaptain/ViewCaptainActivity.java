@@ -145,14 +145,14 @@ public class ViewCaptainActivity extends CABaseActivity implements ICaptain {
     }
 
     private void setTopTitle(Captain captain) {
-        if(captain != null){
+        if (captain != null) {
             StringBuilder sb = new StringBuilder();
-            if(!TextUtils.isEmpty(captain.getClanName())) {
+            if (!TextUtils.isEmpty(captain.getClanName())) {
                 sb.append("[" + captain.getClanName() + "] ");
             }
             sb.append(captain.getName());
             setTitle(sb.toString());
-        } else{
+        } else {
             setTitle(name);
         }
     }
@@ -170,7 +170,7 @@ public class ViewCaptainActivity extends CABaseActivity implements ICaptain {
         if (getSupportFragmentManager().findFragmentById(R.id.container) instanceof ViewCaptainTabbedFragment) {
             getMenuInflater().inflate(R.menu.menu_main, menu);
 //            if (CaptainManager.getCaptains(getApplicationContext()).size() > 1) {
-                menu.getItem(NumberVault.MENU_CAPTAINS).setVisible(false); // shows other captains
+            menu.getItem(NumberVault.MENU_CAPTAINS).setVisible(false); // shows other captains
 //            }
             menu.getItem(NumberVault.MENU_REFRESH).setVisible(true); // shows refresh
             menu.getItem(NumberVault.MENU_VIEW_AD).setVisible(false);
@@ -261,8 +261,8 @@ public class ViewCaptainActivity extends CABaseActivity implements ICaptain {
     }
 
     @Subscribe
-    public void onRefresh(RefreshEvent event){
-        if(event.isFromSwipe()){
+    public void onRefresh(RefreshEvent event) {
+        if (event.isFromSwipe()) {
             if (CaptainManager.fromSearch(getApplicationContext(), server, id)) {
                 CaptainManager.deleteTemp(getApplicationContext());
             }

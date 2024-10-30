@@ -48,7 +48,7 @@ public class EquipmentInfo extends CAItem {
 
     @Override
     public void parse(JSONObject jsonObject) {
-        if(jsonObject != null) {
+        if (jsonObject != null) {
             setName(jsonObject.optString("name"));
             setPrice(jsonObject.optInt("price_credit"));
             setType(jsonObject.optString("type"));

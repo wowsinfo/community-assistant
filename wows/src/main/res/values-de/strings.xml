@@ -118,7 +118,7 @@
     <string name="settings_write_a_review">Schreibe eine Bewertung</string>
     <string name="settings_contact_me">Kontaktiere via E-Mail (nur englisch)</string>
     <string name="settings_twitter">Kontaktiere via Twitter</string>
-    <string name="settings_glossary">GLOSSAR</string> 
+    <string name="settings_glossary">GLOSSAR</string>
     <string name="settings_avg_dmg">Durchschn.\nSchaden</string>
     <string name="battles">Gefechte</string>
     <string name="settings_avg_exp">Durchschn.\nErfahrung</string>
@@ -186,15 +186,15 @@
     <string name="action_server_info">Server Info</string>
     <string name="premium_ship_stats">Premium Statistiken</string>
     <string name="dialog_assist_title">Hilf mit bei der Entwicklung dieser App</string>
-    <string name="dialog_review_app">Hast Du diese App schon bewertet?</string> 
+    <string name="dialog_review_app">Hast Du diese App schon bewertet?</string>
     <string name="dialog_review_message">15 Sekunden Deiner Zeit können helfen diese App zu verbreiten. Verfasse eine kurze Review auf Google Play indem Du auf den \'Review\' Button drückst.</string>
     <string name="dialog_review_positive">Review</string>
     <string name="no">Nein</string>
-    <string name="dialog_view_ad">Werbung ansehen</string> 
+    <string name="dialog_view_ad">Werbung ansehen</string>
     <string name="dialog_follow_title">Möchtest Du über die Entwicklung informiert werden?</string>
     <string name="dialog_follow_message">Folge mir auf Twitter! Dort poste ich neue Bilder von neuen Features und spreche über neue Releases.</string>
-    <string name="dialog_bookmark_title">Möchtest Du Dir diesen Kapitän merken?</string> 
-    <string name="dialog_bookmark_message">Wenn Du Dir diesen Kapitän merkst, wird er diesen Kapitän beim öffnen der App anzeigen ohne dass Du ihn suchen musst.</string> 
+    <string name="dialog_bookmark_title">Möchtest Du Dir diesen Kapitän merken?</string>
+    <string name="dialog_bookmark_message">Wenn Du Dir diesen Kapitän merkst, wird er diesen Kapitän beim öffnen der App anzeigen ohne dass Du ihn suchen musst.</string>
     <string name="yes">Ja</string>
     <string name="dialog_assist_message">Möchtest Du mich bei der Entwicklung dieser App unterstützen? Spende oder sieh Dir eine kurze Werbung an. Die Werbung ist freiwillig und wird sonst nicht in der App plaziert. Diese Unterstützung hilft dabei Giveaways auf Twitter, Twitch und Youtube zu organisieren, sowie die Entwicklung der App zu fördern.</string>
     <string name="avg_dmg_c">Durchschn. Schaden:</string>
@@ -225,7 +225,7 @@
     <string name="clear_list">Liste löschen</string>
     <string name="compare_list">Liste Vergleichen</string>
     <string name="compare_add_title">Kapitän zur Liste hinzugefügt</string>
-    <string name="compare_dialog_message">Möchtest Du den gebookmarketen Kapitän ebenfalls in die Vergleichsliste mit aufnehmen?</string> 
+    <string name="compare_dialog_message">Möchtest Du den gebookmarketen Kapitän ebenfalls in die Vergleichsliste mit aufnehmen?</string>
     <string name="compare_max_message">Max. drei Kaptiäne können verglichen werden. Klicke auf den \'Vergleichen\' Button oder halte den gewünschten Kapitän gedrückt</string>
     <string name="compare_bottom_text_max">" Listenplatz #3"</string>
     <string name="compare_bottom_text_middle">" Listenplatz #2"</string>
@@ -375,7 +375,7 @@
     <!--These are optional-->
     <string name="ca_rating_explanation">Die Community Assistant Wertung setzt sich zusammen aus %1$s Schaden, %2$s Abschüssen and %3$s Sieg Rate. Basis entspricht 1000.</string>
     <string name="ca_rating_overall_explanation">Insgesamt setzt sich die Community Assistant Wertung zusammen aus der durchschnittlichen CA Wertung für jedes Tier. Diese wird multipliziert mit der Anzahl an Gefechten auf jenem Tier (Prozentsatz aller Gefechte dieses Spielers). Die auf das jeweilige Tier bezogene werden aufsummiert und ergeben so die Gesamte CA Wertung.</string>
-<string name="ca_rating_reason">Erklärung der Zahlen und Gleichungen:\n%1$s Schaden, %2$s Zerstörungen and %3$s Sieg Rate bilden die Basis  zur Berechnung der CA Wertung für ein Schiff.
+    <string name="ca_rating_reason">Erklärung der Zahlen und Gleichungen:\n%1$s Schaden, %2$s Zerstörungen and %3$s Sieg Rate bilden die Basis  zur Berechnung der CA Wertung für ein Schiff.
    Grundsätzlich: (Schiffswert / erwarteter Schiffswert) * Koeffizient der Gleichung. Beispielrechnung: (22000 Schaden / 20000 erwarteter Schaden) * %1$s. Zusammengezählt ergeben Schaden, Zerstörungen und Sieg Rate einen Wert und dieser wird multipliziert mit 1000.\n\n
    Schaden und Zerstörungen werden höher bewertet als Sieg Rate, da ein schlechtes Team die Wertung eines Spielers nicht beeinflussen sollte.
    Schaden verursachen und Schiffe zerstören sind sehr wichtig um Gefechte zu gewinnen. Zumindest solange bis genaue Zahlen von Wargaming veröffentlicht werden hinsichtlich der Punktevergabe für Basiseroberung und -verteidigung.
@@ -386,7 +386,7 @@
     <!--end of optional area-->
 
     <!--This one would be nice to have done.-->
-    <string name="ca_rating_tl_dr" >TL:DR:\n\nIndividuelle Community Assistant Schiffswertung ist %1$s Schaden, %2$s Zerstörungen und %3$s Sieg Rate. Die Gesamt Community Assistant Wertung berechnet sich wie folgt: (durchschnittliche CA Wertung pro Tier) * (Anzahl Gefechte pro Tier / Anzahl aller Gefechte). Basis entspricht 1000.</string>
+    <string name="ca_rating_tl_dr">TL:DR:\n\nIndividuelle Community Assistant Schiffswertung ist %1$s Schaden, %2$s Zerstörungen und %3$s Sieg Rate. Die Gesamt Community Assistant Wertung berechnet sich wie folgt: (durchschnittliche CA Wertung pro Tier) * (Anzahl Gefechte pro Tier / Anzahl aller Gefechte). Basis entspricht 1000.</string>
 
     <string-array name="themes">
         <item>Ocean</item>

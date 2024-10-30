@@ -64,7 +64,7 @@ public class ResourcesActivity extends CABaseActivity {
 
     //donation area
     private View aDonation;
-//    private WebView webView;
+    //    private WebView webView;
     private Button bPaypal;
     private Button bViewAd;
     private boolean viewAd;
@@ -163,7 +163,7 @@ public class ResourcesActivity extends CABaseActivity {
         ivWoWsReplays = (ImageView) findViewById(R.id.resources_website_wowsreplays_icon);
 
         UIUtils.setUpCard(aShipComrade, 0);
-        UIUtils.setUpCard(aWowsSite,0);
+        UIUtils.setUpCard(aWowsSite, 0);
         UIUtils.setUpCard(aReddit, 0);
         UIUtils.setUpCard(aDRMB, 0);
         UIUtils.setUpCard(aAP, 0);
@@ -307,7 +307,7 @@ public class ResourcesActivity extends CABaseActivity {
         }
     }
 
-    private void addYoutubeOnlyStar(){
+    private void addYoutubeOnlyStar() {
         TwitchObj obj = new TwitchObj("Jammin411");
         obj.setLive(TwitchStatus.YOUTUBE);
         streamers.add(obj);

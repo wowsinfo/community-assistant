@@ -52,9 +52,9 @@ public class AchievementsAdapter extends ArrayAdapter<Achievement> {
             tvNumber.setText(achievement.getNumber() + "");
         }
 
-        if(savedAchievements != null){
+        if (savedAchievements != null) {
             Integer achi = savedAchievements.get(achievement.getName());
-            if(achi != null) {
+            if (achi != null) {
                 int difference = achievement.getNumber() - achi;
                 tvDiff.setText("+" + difference);
                 tvDiff.setTextColor(ContextCompat.getColor(getContext(), R.color.average_up));

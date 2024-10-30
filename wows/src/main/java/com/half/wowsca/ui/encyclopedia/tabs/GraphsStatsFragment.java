@@ -62,7 +62,7 @@ public class GraphsStatsFragment extends Fragment {
         List<String> headers = new ArrayList<>();
         Map<String, List<EncyclopediaChild>> data = new HashMap<>();
 
-        if(listView.getAdapter() == null) {
+        if (listView.getAdapter() == null) {
             Map<Integer, List<ShipInfo>> shipsInfos = getShipInfos();
 
             createTierInfo(10, shipsInfos.get(10), headers, data);
@@ -83,8 +83,8 @@ public class GraphsStatsFragment extends Fragment {
         }
     }
 
-    private void createTierInfo(int tier, List<ShipInfo> ships, List<String> headers, Map<String, List<EncyclopediaChild>> data){
-        if(ships != null && !ships.isEmpty()) {
+    private void createTierInfo(int tier, List<ShipInfo> ships, List<String> headers, Map<String, List<EncyclopediaChild>> data) {
+        if (ships != null && !ships.isEmpty()) {
             List<EncyclopediaChild> children = new ArrayList<>();
 
             List<String> shipsTitles = new ArrayList<>();
@@ -147,7 +147,7 @@ public class GraphsStatsFragment extends Fragment {
         }
     }
 
-    private Map<Integer, List<ShipInfo>> getShipInfos(){
+    private Map<Integer, List<ShipInfo>> getShipInfos() {
         Map<Integer, List<ShipInfo>> ships = new HashMap<>();
         ships.put(1, new ArrayList<ShipInfo>());
         ships.put(2, new ArrayList<ShipInfo>());
@@ -164,7 +164,7 @@ public class GraphsStatsFragment extends Fragment {
         try {
             for (ShipInfo info : CAApp.getInfoManager().getShipInfo(listView.getContext()).getItems().values()) {
                 ships.get(info.getTier()).add(info);
-                if(info.isPremium())
+                if (info.isPremium())
                     ships.get(PREMIUM_KEY).add(info);
             }
         } catch (Exception e) {

@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:weightSum="1.0"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    >
+    android:weightSum="1.0">
 
     <LinearLayout
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="0.48"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <ImageView
+            android:id="@+id/encyclopedia_image"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:id="@+id/encyclopedia_image"
-            android:scaleType="fitCenter"
             android:clickable="true"
-            />
+            android:scaleType="fitCenter" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
             android:id="@+id/encyclopedia_price"
-            android:layout_gravity="center_horizontal" />
-
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/encyclopedia_nation_tier"
             android:layout_gravity="center_horizontal"
-            android:gravity="center" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
 
         <TextView
+            android:id="@+id/encyclopedia_nation_tier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/encyclopedia_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text=""
-            android:id="@+id/encyclopedia_description"
+            android:layout_margin="20dp"
             android:gravity="center"
-            android:layout_margin="20dp" />
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
         <!-- ship stats progress-->
@@ -55,97 +52,90 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="1.0"
-            >
+            android:weightSum="1.0">
+
             <LinearLayout
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="0.5"
-                >
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/white"
-                    android:text="@string/module_list"
                     android:layout_gravity="center_horizontal"
-                    />
+                    android:text="@string/module_list"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="1.0"
-                    >
+                    android:weightSum="1.0">
+
                     <LinearLayout
+                        android:id="@+id/encyclopedia_module_list_1"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:id="@+id/encyclopedia_module_list_1"
                         android:layout_weight="0.5"
-                        >
+                        android:orientation="vertical">
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/encyclopedia_module_list_2"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:id="@+id/encyclopedia_module_list_2"
                         android:layout_weight="0.5"
-                        >
+                        android:orientation="vertical">
 
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/encyclopedia_module_bottom_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/click_module_to_update_view"
-                    android:id="@+id/encyclopedia_module_bottom_text"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    />
+                    android:text="@string/click_module_to_update_view"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
 
             <androidx.legacy.widget.Space
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.04"
-                />
+                android:layout_weight="0.04" />
 
             <LinearLayout
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="0.46"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/white"
-                    android:text="@string/ship_characteristics"
                     android:layout_gravity="center_horizontal"
-                    />
+                    android:text="@string/ship_characteristics"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/white" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:id="@+id/encyclopedia_progress_survival_area"
-                    android:layout_marginTop="3dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/encyclopedia_survivability"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/white"
-                        android:text="@string/encyclopedia_survivability" />
+                        android:textColor="@color/white" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -154,35 +144,34 @@
                         android:weightSum="1.0">
 
                         <ProgressBar
-                            style="@style/Encyclopedia_Progress_Style"
                             android:id="@+id/encyclopedia_progress_survival"
-                            />
+                            style="@style/Encyclopedia_Progress_Style" />
 
                         <TextView
-                            android:layout_width="0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="0"
-                            android:gravity="right"
                             android:id="@+id/encyclopedia_progress_survival_text"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:text="0"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/encyclopedia_progress_artillery_area"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/encyclopedia_progress_artillery_area">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/encyclopedia_artillery"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/white"
-                        android:text="@string/encyclopedia_artillery" />
+                        android:textColor="@color/white" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -191,36 +180,35 @@
                         android:weightSum="1.0">
 
                         <ProgressBar
-                            style="@style/Encyclopedia_Progress_Style"
                             android:id="@+id/encyclopedia_progress_artillery"
-                            />
+                            style="@style/Encyclopedia_Progress_Style" />
 
                         <TextView
-                            android:layout_width="0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="0"
-                            android:gravity="right"
                             android:id="@+id/encyclopedia_progress_artillery_text"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:text="0"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:id="@+id/encyclopedia_progress_torps_area"
-                    android:layout_marginTop="3dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/encyclopedia_torps"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/white"
-                        android:text="@string/encyclopedia_torps" />
+                        android:textColor="@color/white" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -229,36 +217,35 @@
                         android:weightSum="1.0">
 
                         <ProgressBar
-                            style="@style/Encyclopedia_Progress_Style"
                             android:id="@+id/encyclopedia_progress_torps"
-                            />
+                            style="@style/Encyclopedia_Progress_Style" />
 
                         <TextView
-                            android:layout_width="0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="0"
-                            android:gravity="right"
                             android:id="@+id/encyclopedia_progress_torps_text"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:text="0"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:id="@+id/encyclopedia_progress_aa_area"
-                    android:layout_marginTop="3dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/encyclopedia_aa_def"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/white"
-                        android:text="@string/encyclopedia_aa_def" />
+                        android:textColor="@color/white" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -267,36 +254,35 @@
                         android:weightSum="1.0">
 
                         <ProgressBar
-                            style="@style/Encyclopedia_Progress_Style"
                             android:id="@+id/encyclopedia_progress_aa"
-                            />
+                            style="@style/Encyclopedia_Progress_Style" />
 
                         <TextView
-                            android:layout_width="0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="0"
-                            android:gravity="right"
                             android:id="@+id/encyclopedia_progress_aa_text"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:text="0"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:id="@+id/encyclopedia_progress_aircraft_area"
-                    android:layout_marginTop="3dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/encyclopedia_aircraft"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/white"
-                        android:text="@string/encyclopedia_aircraft" />
+                        android:textColor="@color/white" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -305,36 +291,35 @@
                         android:weightSum="1.0">
 
                         <ProgressBar
-                            style="@style/Encyclopedia_Progress_Style"
                             android:id="@+id/encyclopedia_progress_aircraft"
-                            />
+                            style="@style/Encyclopedia_Progress_Style" />
 
                         <TextView
-                            android:layout_width="0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="0"
-                            android:gravity="right"
                             android:id="@+id/encyclopedia_progress_aircraft_text"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:text="0"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:id="@+id/encyclopedia_progress_mobility_area"
-                    android:layout_marginTop="3dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/encyclopedia_mobility"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/white"
-                        android:text="@string/encyclopedia_mobility" />
+                        android:textColor="@color/white" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -343,36 +328,35 @@
                         android:weightSum="1.0">
 
                         <ProgressBar
-                            style="@style/Encyclopedia_Progress_Style"
                             android:id="@+id/encyclopedia_progress_mobility"
-                            />
+                            style="@style/Encyclopedia_Progress_Style" />
 
                         <TextView
+                            android:id="@+id/encyclopedia_progress_mobility_text"
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="0"
-                            android:gravity="right"
-                            android:id="@+id/encyclopedia_progress_mobility_text"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:text="0"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/encyclopedia_progress_concealment_area"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/encyclopedia_progress_concealment_area"
-                    android:layout_marginTop="3dp">
+                    android:layout_marginTop="3dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/encyclopedia_concealment"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/white"
-                        android:text="@string/encyclopedia_concealment" />
+                        android:textColor="@color/white" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -381,19 +365,18 @@
                         android:weightSum="1.0">
 
                         <ProgressBar
-                            style="@style/Encyclopedia_Progress_Style"
                             android:id="@+id/encyclopedia_progress_concealment"
-                            />
+                            style="@style/Encyclopedia_Progress_Style" />
 
                         <TextView
+                            android:id="@+id/encyclopedia_progress_concealment_text"
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="0"
-                            android:gravity="right"
-                            android:id="@+id/encyclopedia_progress_concealment_text"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:text="0"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
@@ -405,30 +388,30 @@
 
         <!-- Upgrades area-->
         <LinearLayout
+            android:id="@+id/encyclopedia_upgrades_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/encyclopedia_upgrades_area"
-            android:orientation="vertical"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/encyclopedia_upgrades"
-                android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+                android:text="@string/encyclopedia_upgrades"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/encyclopedia_upgrades_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/encyclopedia_upgrades_container"
                     android:orientation="horizontal">
 
                 </LinearLayout>
@@ -437,26 +420,26 @@
 
         <!-- Next Ship Area-->
         <LinearLayout
+            android:id="@+id/encyclopedia_next_ship_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/encyclopedia_next_ship_area"
-            android:orientation="vertical"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/encyclopedia_next_ship"
-                android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="5dp" />
+                android:layout_marginBottom="5dp"
+                android:text="@string/encyclopedia_next_ship"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white" />
 
             <LinearLayout
+                android:id="@+id/encyclopedia_next_ship_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/encyclopedia_next_ship_container"
                 android:orientation="horizontal">
 
             </LinearLayout>
@@ -467,14 +450,13 @@
     <View
         android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:layout_weight="0.04"/>
+        android:layout_weight="0.04" />
 
     <LinearLayout
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="0.48"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <include layout="@layout/snippet_encyclopedia_ship_stats" />
 

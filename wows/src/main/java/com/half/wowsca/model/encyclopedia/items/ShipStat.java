@@ -7,11 +7,11 @@ import org.json.JSONObject;
  */
 public class ShipStat {
 
-//    private float cap_pts;
+    //    private float cap_pts;
     private float wins;
     private float dmg_dlt;
     private float frags;
-//    private float dr_cap_pts;
+    //    private float dr_cap_pts;
     private float pls_kd;
 
 //    private float battles;

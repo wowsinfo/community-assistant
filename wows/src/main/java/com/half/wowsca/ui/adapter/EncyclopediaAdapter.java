@@ -32,57 +32,15 @@ import java.util.Locale;
 public class EncyclopediaAdapter extends RecyclerView.Adapter<EncyclopediaAdapter.ShipViewHolder> {
 
     public static final int EMPTY_FILTER = -1;
-    private List<ShipInfo> ships;
-
     private final ArrayList<ShipInfo> backupShips;
-
     private final Context ctx;
+    private List<ShipInfo> ships;
 
 
     public EncyclopediaAdapter(List<ShipInfo> ships, Context context) {
         this.ships = ships;
         backupShips = (ArrayList<ShipInfo>) ships;
         this.ctx = context;
-    }
-
-    public static class ShipViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView img;
-        TextView name;
-        View area;
-
-        long shipId;
-        String shipName;
-
-        public ShipViewHolder(View itemView) {
-            super(itemView);
-            this.img = itemView.findViewById(R.id.list_encyclopedia_ship_image);
-            this.name = itemView.findViewById(R.id.list_encyclopedia_ship_name);
-            this.area = itemView.findViewById(R.id.list_encyclopedia_area);
-            area.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //send to encyclopedia page
-                    Intent i = new Intent(img.getContext(), ShipProfileActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.putExtra(ShipProfileActivity.SHIP_ID, shipId);
-                    ShipProfileActivity.MODULE_LIST = null;
-                    img.getContext().startActivity(i);
-                }
-            });
-            area.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    //go to activity
-                    if(!CompareManager.getSHIPS().contains(shipId))
-                        CompareManager.addShipID(shipId);
-                    else
-                        CompareManager.removeShipID(shipId);
-                    CAApp.getEventBus().post(new ShipCompareEvent(shipId));
-                    return true;
-                }
-            });
-        }
     }
 
     @Override
@@ -113,7 +71,7 @@ public class EncyclopediaAdapter extends RecyclerView.Adapter<EncyclopediaAdapte
 //        } else if (nation.equals("uk")) {
 //            nation = "UK";
 //        }
-        if(CompareManager.getSHIPS().contains(info.getShipId())){
+        if (CompareManager.getSHIPS().contains(info.getShipId())) {
             holder.area.setBackgroundResource(R.drawable.compare_top_grid);
         } else {
             TypedValue outValue = new TypedValue();
@@ -170,6 +128,46 @@ public class EncyclopediaAdapter extends RecyclerView.Adapter<EncyclopediaAdapte
         } else {
             ships = backupShips;
             notifyDataSetChanged();
+        }
+    }
+
+    public static class ShipViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView img;
+        TextView name;
+        View area;
+
+        long shipId;
+        String shipName;
+
+        public ShipViewHolder(View itemView) {
+            super(itemView);
+            this.img = itemView.findViewById(R.id.list_encyclopedia_ship_image);
+            this.name = itemView.findViewById(R.id.list_encyclopedia_ship_name);
+            this.area = itemView.findViewById(R.id.list_encyclopedia_area);
+            area.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //send to encyclopedia page
+                    Intent i = new Intent(img.getContext(), ShipProfileActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.putExtra(ShipProfileActivity.SHIP_ID, shipId);
+                    ShipProfileActivity.MODULE_LIST = null;
+                    img.getContext().startActivity(i);
+                }
+            });
+            area.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    //go to activity
+                    if (!CompareManager.getSHIPS().contains(shipId))
+                        CompareManager.addShipID(shipId);
+                    else
+                        CompareManager.removeShipID(shipId);
+                    CAApp.getEventBus().post(new ShipCompareEvent(shipId));
+                    return true;
+                }
+            });
         }
     }
 }

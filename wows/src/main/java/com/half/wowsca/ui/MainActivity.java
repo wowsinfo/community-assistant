@@ -95,9 +95,9 @@ public class MainActivity extends CABaseActivity implements ICaptain {
     }
 
     private void routeShortcuts() {
-        if(CAApp.ROUTING != null){
+        if (CAApp.ROUTING != null) {
             Intent i = null;
-            switch (CAApp.ROUTING){
+            switch (CAApp.ROUTING) {
                 case ENCYCLOPEDIA:
                     i = new Intent(getApplicationContext(), EncyclopediaTabbedActivity.class);
                     break;
@@ -112,7 +112,7 @@ public class MainActivity extends CABaseActivity implements ICaptain {
                     requestNewInterstitial();
                     break;
             }
-            if(i != null) {
+            if (i != null) {
                 startActivity(i);
             }
             CAApp.ROUTING = null;
@@ -145,7 +145,7 @@ public class MainActivity extends CABaseActivity implements ICaptain {
                     FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
                     trans.replace(R.id.container, fragment).commit();
                 } catch (IllegalStateException e) {
-                } catch (Exception e){
+                } catch (Exception e) {
                 }
             }
             if (captain.getShips() == null || FORCE_REFRESH) {
@@ -154,7 +154,7 @@ public class MainActivity extends CABaseActivity implements ICaptain {
                 boolean connected = Utils.hasInternetConnection(this);
                 if (connected) {
                     boolean useLogin = new Prefs(getApplicationContext()).getBoolean(SettingActivity.LOGIN_USER, false);
-                    if(useLogin) {
+                    if (useLogin) {
                         AuthInfo info = AuthInfo.getAuthInfo(getApplicationContext());
                         boolean sameUser = captain.getName().equals(info.getUsername());
                         if (sameUser && !info.isExpired()) {
@@ -182,7 +182,7 @@ public class MainActivity extends CABaseActivity implements ICaptain {
 
     private void setCaptainTitle(Captain captain) {
         StringBuilder sb = new StringBuilder();
-        if(!TextUtils.isEmpty(captain.getClanName())) {
+        if (!TextUtils.isEmpty(captain.getClanName())) {
             sb.append("[" + captain.getClanName() + "] ");
         }
         sb.append(captain.getName());
@@ -398,8 +398,8 @@ public class MainActivity extends CABaseActivity implements ICaptain {
     }
 
     @Subscribe
-    public void onRefresh(RefreshEvent event){
-        if(event.isFromSwipe()){
+    public void onRefresh(RefreshEvent event) {
+        if (event.isFromSwipe()) {
             FORCE_REFRESH = true;
             initView();
         }

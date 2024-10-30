@@ -60,41 +60,32 @@ public class ShipProfileActivity extends CABaseActivity {
     public static final String SHIP_ID = "shipid";
     public static final String SHIP_DATA = "shipData";
     public static final String PATTERN = "###,###,###";
-
+    public static Map<String, Long> MODULE_LIST;
     private Toolbar mToolbar;
     private View progress;
-
     private ImageView imageView;
     private TextView tvPrice;
     private TextView tvNationTier;
     private TextView tvDescirption;
-
     //progress stats
     private View aArtillery;
     private TextView modArtilery;
     private ProgressBar progArtillery;
-
     private TextView modSurvival;
     private ProgressBar progSurvival;
-
     private View aTorps;
     private TextView modTorps;
     private ProgressBar progTorps;
-
     private View aAA;
     private TextView modAA;
     private ProgressBar progAA;
-
     private View aAircraft;
     private TextView modAircraft;
     private ProgressBar progAircraft;
-
     private TextView modMobility;
     private ProgressBar progMobility;
-
     private TextView modConcealmeat;
     private ProgressBar progConcealment;
-
     // ship stats
     private TextView statsGunRange;
     private TextView statstorpRange;
@@ -118,7 +109,6 @@ public class ShipProfileActivity extends CABaseActivity {
     private TextView statsRotation;
     private TextView statsArmor;
     private TextView statsAAGun;
-
     //ship stats text
     private TextView statsGunRangeText;
     private TextView statstorpRangeText;
@@ -141,28 +131,21 @@ public class ShipProfileActivity extends CABaseActivity {
     private TextView statsRotationText;
     private TextView statsArmorText;
     private TextView statsAAGunText;
-
     //average stats
     private TextView avgDamage;
     private TextView avgWinRate;
     private TextView avgKills;
     private TextView avgPlanes;
-
     //upgrades
     private View aUpgrades;
     private LinearLayout llUpgrades;
-
     //next ship
     private View aNextShip;
     private LinearLayout llNextShips;
-
     private long shipId;
     private String shipServerInfo;
-
     private LinearLayout llModule1;
     private LinearLayout llModule2;
-
-    public static Map<String,Long> MODULE_LIST;
     private TextView tvModulesBottomText;
 
     private ScrollView scroll;
@@ -299,7 +282,6 @@ public class ShipProfileActivity extends CABaseActivity {
     }
 
 
-
     private void initView() {
         if (shipId != 0) {
             ShipInfo shipInfo = CAApp.getInfoManager().getShipInfo(getApplicationContext()).get(shipId);
@@ -431,7 +413,7 @@ public class ShipProfileActivity extends CABaseActivity {
                     modConcealmeat.setText("" + concealTotal);
                     animate(progConcealment, concealTotal);
 
-                    statsSpeed.setText(info.getSpeed()+ "");
+                    statsSpeed.setText(info.getSpeed() + "");
                     statsRudderShiftTime.setText(info.getRudderTime() + getString(R.string.seconds));
 
                     if (info.getFire_control() != null) {
@@ -490,7 +472,7 @@ public class ShipProfileActivity extends CABaseActivity {
                         int turrets = info.getArtiTurrets();
                         statsNumGuns.setText((barrels * turrets) + " " + barrels + "x" + turrets);
                         statsDispersion.setText(info.getArtiMaxDispersion() + "m");
-                        statsRotation.setText(info.getArtiRotation()+"s");
+                        statsRotation.setText(info.getArtiRotation() + "s");
                         JSONObject shells = info.getArtillery().optJSONObject("shells");
                         if (shells != null) {
                             JSONObject ap = shells.optJSONObject("AP");
@@ -542,7 +524,7 @@ public class ShipProfileActivity extends CABaseActivity {
                                     double avgDmg = aSlot.optDouble("avg_damage");
                                     double caliber = aSlot.optDouble("caliber");
                                     int guns = aSlot.optInt("guns");
-                                    strb.append(guns + "  " + Math.round(caliber) + getString(R.string.millimeters) + "  " + Math.round(avgDmg)+ " " + getString(R.string.damage_per_second) + "  " + aaRange + getString(R.string.kilometers));
+                                    strb.append(guns + "  " + Math.round(caliber) + getString(R.string.millimeters) + "  " + Math.round(avgDmg) + " " + getString(R.string.damage_per_second) + "  " + aaRange + getString(R.string.kilometers));
                                     strb.append("\n");
                                 }
                                 statsAAGun.setText(strb.toString().trim());
@@ -575,14 +557,14 @@ public class ShipProfileActivity extends CABaseActivity {
         }
     }
 
-    private String grabMinMax(JSONObject overall, String value, String text){
+    private String grabMinMax(JSONObject overall, String value, String text) {
         JSONObject armorPack = overall.optJSONObject(value);
         String min = armorPack.optString("min");
         String max = armorPack.optString("max");
         return text + " " + min + "-" + max;
     }
 
-    private void animate(ProgressBar bar, int value){
+    private void animate(ProgressBar bar, int value) {
         ProgressBarAnimation anim = new ProgressBarAnimation(bar, 0, value);
         anim.setDuration(1500);
         bar.startAnimation(anim);
@@ -621,7 +603,7 @@ public class ShipProfileActivity extends CABaseActivity {
 
                 boolean hasAnOption = buildModuleLists(hasOptions, items);
 
-                if(hasAnOption){
+                if (hasAnOption) {
                     tvModulesBottomText.setVisibility(View.VISIBLE);
                 } else {
                     tvModulesBottomText.setVisibility(View.GONE);
@@ -629,46 +611,46 @@ public class ShipProfileActivity extends CABaseActivity {
             }
 
             private void addNecessaryModules(ShipInfo shipInfo, ShipModuleItem artillery, ShipModuleItem torps, ShipModuleItem fireControl, ShipModuleItem flightControl, ShipModuleItem hull, ShipModuleItem engine, ShipModuleItem fighter, ShipModuleItem diveBomber, ShipModuleItem torpBomber, List<Boolean> hasOptions, List<ShipModuleItem> items) {
-                if(artillery != null) {
+                if (artillery != null) {
                     items.add(artillery);
                     hasOptions.add(shipInfo.getArtillery().size() > 1);
                 }
-                if(torps != null) {
+                if (torps != null) {
                     items.add(torps);
                     hasOptions.add(shipInfo.getTorps().size() > 1);
                 }
-                if(fireControl != null) {
+                if (fireControl != null) {
                     items.add(fireControl);
                     hasOptions.add(shipInfo.getFireControl().size() > 1);
                 }
-                if(flightControl != null) {
+                if (flightControl != null) {
                     items.add(flightControl);
                     hasOptions.add(shipInfo.getFlightControl().size() > 1);
                 }
-                if(hull != null) {
+                if (hull != null) {
                     items.add(hull);
                     hasOptions.add(shipInfo.getHull().size() > 1);
                 }
-                if(engine != null) {
+                if (engine != null) {
                     items.add(engine);
                     hasOptions.add(shipInfo.getEngine().size() > 1);
                 }
-                if(fighter != null) {
+                if (fighter != null) {
                     items.add(fighter);
                     hasOptions.add(shipInfo.getFighter().size() > 1);
                 }
-                if(diveBomber != null) {
+                if (diveBomber != null) {
                     items.add(diveBomber);
                     hasOptions.add(shipInfo.getDiveBomber().size() > 1);
                 }
-                if(torpBomber != null) {
+                if (torpBomber != null) {
                     items.add(torpBomber);
                     hasOptions.add(shipInfo.getTorpBomb().size() > 1);
                 }
             }
 
             private void buildDefaultModuleList(ShipInfo shipInfo) {
-                if(MODULE_LIST == null){
+                if (MODULE_LIST == null) {
                     MODULE_LIST = new HashMap<>();
                     MODULE_LIST.put(GetShipEncyclopediaInfo.ARTILLERY, getBaseModuleToList(shipInfo, shipInfo.getArtillery()));
                     MODULE_LIST.put(GetShipEncyclopediaInfo.TORPEDOES, getBaseModuleToList(shipInfo, shipInfo.getTorps()));
@@ -684,10 +666,10 @@ public class ShipProfileActivity extends CABaseActivity {
 
             private boolean buildModuleLists(List<Boolean> hasOptions, List<ShipModuleItem> items) {
                 boolean hasAnOption = false;
-                for(int i = 0; i < items.size(); i++){
+                for (int i = 0; i < items.size(); i++) {
 
                     LinearLayout parent = llModule1;
-                    if(i % 2 == 1)
+                    if (i % 2 == 1)
                         parent = llModule2;
 
                     View convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_ship_module, parent, false);
@@ -697,7 +679,7 @@ public class ShipProfileActivity extends CABaseActivity {
                     ShipModuleItem item = items.get(i);
                     boolean hasOpt = hasOptions.get(i);
 
-                    if(hasOpt){
+                    if (hasOpt) {
                         hasAnOption = true;
                         convertView.setBackgroundResource(R.drawable.encyclopedia_module_white);
                     } else {
@@ -706,12 +688,12 @@ public class ShipProfileActivity extends CABaseActivity {
 
                     StringBuilder sb = new StringBuilder();
                     sb.append(item.getName());
-                    if(!item.isDefault()){
+                    if (!item.isDefault()) {
                         DecimalFormat format = new DecimalFormat(PATTERN);
-                        if(item.getPrice_xp() > 0)
-                            sb.append("\n"+ format.format(item.getPrice_xp()) + "xp");
-                        if(item.getPrice_credits() > 0)
-                            sb.append("\n"+ format.format(item.getPrice_credits()) + "c");
+                        if (item.getPrice_xp() > 0)
+                            sb.append("\n" + format.format(item.getPrice_xp()) + "xp");
+                        if (item.getPrice_credits() > 0)
+                            sb.append("\n" + format.format(item.getPrice_credits()) + "c");
                     }
 
                     tvText.setText(sb.toString());
@@ -724,11 +706,11 @@ public class ShipProfileActivity extends CABaseActivity {
                         @Override
                         public void onClick(View v) {
                             Long id = (Long) v.getTag();
-                            if(id != null){
+                            if (id != null) {
                                 final ShipInfo shipInfo = CAApp.getInfoManager().getShipInfo(getApplicationContext()).get(shipId);
                                 ShipModuleItem item = shipInfo.getItems().get(id);
                                 List<Long> typeIds = new ArrayList<Long>();
-                                switch (item.getType()){
+                                switch (item.getType()) {
                                     case "Suo":
                                         typeIds = shipInfo.getFireControl();
                                         break;
@@ -765,14 +747,14 @@ public class ShipProfileActivity extends CABaseActivity {
                                         return lhsItem.getName().compareToIgnoreCase(rhsItem.getName());
                                     }
                                 });
-                                if(typeIds.size() > 1) {
+                                if (typeIds.size() > 1) {
                                     PopupMenu menu = new PopupMenu(ShipProfileActivity.this, v);
                                     menu.setGravity(Gravity.CENTER);
                                     final Map<String, ShipModuleItem> mapOfItems = new HashMap<String, ShipModuleItem>();
                                     Menu m = menu.getMenu();
-                                    for (int i = 0; i < typeIds.size(); i++){
+                                    for (int i = 0; i < typeIds.size(); i++) {
                                         ShipModuleItem it = shipInfo.getItems().get(typeIds.get(i));
-                                        if(it != null) {
+                                        if (it != null) {
                                             m.add(it.getName());
                                             mapOfItems.put(it.getName(), it);
                                         }
@@ -782,7 +764,7 @@ public class ShipProfileActivity extends CABaseActivity {
                                         @Override
                                         public boolean onMenuItemClick(MenuItem item) {
                                             ShipModuleItem i = mapOfItems.get(item.getTitle());
-                                            switch (i.getType()){
+                                            switch (i.getType()) {
                                                 case "Suo":
                                                     MODULE_LIST.put(GetShipEncyclopediaInfo.FIRE_CONTROL, i.getId());
                                                     break;
@@ -835,7 +817,7 @@ public class ShipProfileActivity extends CABaseActivity {
 
     private void clearScreen() {
         try {
-            scroll.smoothScrollTo(0,0);
+            scroll.smoothScrollTo(0, 0);
         } catch (Exception e) {
         }
 
@@ -884,8 +866,8 @@ public class ShipProfileActivity extends CABaseActivity {
         statsArmor.setText("");
     }
 
-    private void cleanModuleTitle(TextView tv, String title){
-        switch (title){
+    private void cleanModuleTitle(TextView tv, String title) {
+        switch (title) {
             case "Suo":
                 title = getString(R.string.fire_control);
                 break;
@@ -902,8 +884,8 @@ public class ShipProfileActivity extends CABaseActivity {
         tv.setText(title);
     }
 
-    private long getBaseModuleToList(ShipInfo info, List<Long> modules){
-        if(modules != null && modules.size() > 0) {
+    private long getBaseModuleToList(ShipInfo info, List<Long> modules) {
+        if (modules != null && modules.size() > 0) {
             for (int i = 0; i < modules.size(); i++) {
                 ShipModuleItem item = info.getItems().get(modules.get(i));
                 if (item.isDefault()) {
@@ -1018,7 +1000,7 @@ public class ShipProfileActivity extends CABaseActivity {
                     initView();
                 }
             });
-        } else if(result.getShipId() == shipId){
+        } else if (result.getShipId() == shipId) {
             progress.post(new Runnable() {
                 @Override
                 public void run() {

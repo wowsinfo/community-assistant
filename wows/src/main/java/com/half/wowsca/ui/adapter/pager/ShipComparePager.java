@@ -21,9 +21,9 @@ public class ShipComparePager extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Fragment frag = null;
-        if (position == 0){
+        if (position == 0) {
             frag = new ShipModuleListFragment();
-        } else if(position == 1){
+        } else if (position == 1) {
             frag = new ShipCompareGraphFragment();
         } else {
             frag = new ShipCompareDifFragment();

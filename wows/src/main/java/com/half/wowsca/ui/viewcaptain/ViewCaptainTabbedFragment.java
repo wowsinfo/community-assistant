@@ -43,7 +43,7 @@ public class ViewCaptainTabbedFragment extends Fragment {
         pagerTabs.setIconTintColor(0);
 
         int indicatorColor = R.color.selected_tab_color;
-        if(!CAApp.isOceanTheme(view.getContext()))
+        if (!CAApp.isOceanTheme(view.getContext()))
             indicatorColor = R.color.top_background;
 
         pagerTabs.setSelectedIndicatorColors(ContextCompat.getColor(getContext(), indicatorColor));
@@ -54,8 +54,8 @@ public class ViewCaptainTabbedFragment extends Fragment {
         pagerTabs.setViewPager(mViewPager);
     }
 
-    public void fix(){
-        if(mViewPager != null){
+    public void fix() {
+        if (mViewPager != null) {
             int item = mViewPager.getCurrentItem();
             pager = new ViewCaptainPager(getChildFragmentManager());
             mViewPager.setAdapter(pager);

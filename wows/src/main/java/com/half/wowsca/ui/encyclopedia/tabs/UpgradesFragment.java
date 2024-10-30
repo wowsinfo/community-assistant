@@ -50,7 +50,7 @@ public class UpgradesFragment extends CAFragment {
         super.onResume();
         CAApp.getEventBus().register(this);
         UpgradeHolder holder = CAApp.getInfoManager().getUpgrades(getContext());
-        if(holder != null && holder.getItems() != null && recyclerView.getAdapter() == null){
+        if (holder != null && holder.getItems() != null && recyclerView.getAdapter() == null) {
             layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.shipopedia_upgrade_grid));
             layoutManager.setOrientation(GridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
@@ -83,7 +83,7 @@ public class UpgradesFragment extends CAFragment {
     }
 
     @Subscribe
-    public void upgradeClicked(UpgradeClickEvent event){
+    public void upgradeClicked(UpgradeClickEvent event) {
         UpgradeHolder holder = CAApp.getInfoManager().getUpgrades(getContext());
         EquipmentInfo info = holder.get(event.getId());
         if (info != null) {
@@ -94,7 +94,6 @@ public class UpgradesFragment extends CAFragment {
         }
 
     }
-
 
 
 }

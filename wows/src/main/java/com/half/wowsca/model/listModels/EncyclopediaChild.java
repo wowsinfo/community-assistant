@@ -15,7 +15,7 @@ public class EncyclopediaChild {
     private List<String> types;
     private String title;
 
-    public static EncyclopediaChild create(EncyclopediaType type, List<Float> val, List<String> titles, List<String> types, String title){
+    public static EncyclopediaChild create(EncyclopediaType type, List<Float> val, List<String> titles, List<String> types, String title) {
         EncyclopediaChild child = new EncyclopediaChild();
         child.setType(type);
         child.setValues(val);

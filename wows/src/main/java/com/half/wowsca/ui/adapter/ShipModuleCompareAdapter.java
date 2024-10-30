@@ -17,8 +17,8 @@ import java.util.List;
 
 public class ShipModuleCompareAdapter extends RecyclerView.Adapter<ShipModuleCompareAdapter.ViewHolder> {
 
-    private List<Long> ids;
     private final Context ctx;
+    private List<Long> ids;
 
     public ShipModuleCompareAdapter(List<Long> ids, Context ctx) {
         this.ids = ids;
@@ -49,7 +49,11 @@ public class ShipModuleCompareAdapter extends RecyclerView.Adapter<ShipModuleCom
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public void setIds(List<Long> ids) {
+        this.ids = ids;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ShipModuleView view;
 
@@ -57,9 +61,5 @@ public class ShipModuleCompareAdapter extends RecyclerView.Adapter<ShipModuleCom
             super(itemView);
             view = (ShipModuleView) itemView;
         }
-    }
-
-    public void setIds(List<Long> ids) {
-        this.ids = ids;
     }
 }

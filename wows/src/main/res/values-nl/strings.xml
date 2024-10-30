@@ -376,7 +376,7 @@
     <!--These are optional-->
     <string name="ca_rating_explanation">Community Assistant Indicatie is %1$s schade, %2$s gedood en %3$s overwinningsratio. Basis is 1000.</string>
     <string name="ca_rating_overall_explanation">De algemene Community Assistant Indicatie is berekend door de gemiddelde CA indicatie voor ieder niveau te vinden en dat te vermenigvuldigen met het percentage gevechten dat niveau heeft uit het totaal aantal gevechten gespeeld door de speler. Het totaal van deze getallen geeft de algemene CA Indicatie.</string>
-<string name="ca_rating_reason">Basis voor de getallen en indicatie.:\n%1$s damage, %2$s gedood en %3$s winratio zijn de getallen gebruikt om de CA Indicatie voor een schip te creëren.
+    <string name="ca_rating_reason">Basis voor de getallen en indicatie.:\n%1$s damage, %2$s gedood en %3$s winratio zijn de getallen gebruikt om de CA Indicatie voor een schip te creëren.
    Standaard (scheepsstat / verwachte scheepsstat) * stat coef vergelijking. Bijvoorbeeld: (22000 schade / 20000 verwacht) * %1$s. Tel bij elkaar op, schade, gedood en winratio aantallen, en vermenigvuldig met 1000.\n\n
    Schade en gedood worden hoger gewaardeerd dan het winratio omdat een slecht team je Indicatie niet moet beïnvloeden.
    Toebrengen van schade en doden van tegenstanders zijn erg belangrijk voor het winnen van een gevecht en to we precieze informatie van Wargaming krijgen over Veroverings- en Verdedigingspunten, moeten we het hiermee doen.
@@ -386,7 +386,7 @@
     <!--end of optional area-->
 
     <!--This one would be nice to have done.-->
-    <string name="ca_rating_tl_dr" >TL:DR:\n\nIndividuele Scheeps Community Assistant Indicatie is %1$s schade, %2$s gedood en %3$s winratio. Algemene Community Assistant Indicatie is berekend door het totaal van(gemiddelde CA Indicatie van het Niveau) * (aantal gevechten van het niveau / totaal gevechten). Basis van 1000.</string>
+    <string name="ca_rating_tl_dr">TL:DR:\n\nIndividuele Scheeps Community Assistant Indicatie is %1$s schade, %2$s gedood en %3$s winratio. Algemene Community Assistant Indicatie is berekend door het totaal van(gemiddelde CA Indicatie van het Niveau) * (aantal gevechten van het niveau / totaal gevechten). Basis van 1000.</string>
 
     <string-array name="themes">
         <item>Oceaan</item>

@@ -21,7 +21,7 @@ public class AuthInfo {
     private String username;
     private boolean isExpired;
 
-    public static AuthInfo getAuthInfo(Context ctx){
+    public static AuthInfo getAuthInfo(Context ctx) {
         AuthInfo info = new AuthInfo();
         Prefs prefs = new Prefs(ctx);
         info.setAccount_id(prefs.getLong(LOGIN_ACCOUNT_ID, 0));
@@ -35,7 +35,7 @@ public class AuthInfo {
         return info;
     }
 
-    public static void setAuthInfo(Context ctx, String token, long expireTime, long account_id, String username){
+    public static void setAuthInfo(Context ctx, String token, long expireTime, long account_id, String username) {
         Prefs prefs = new Prefs(ctx);
         prefs.setString(LOGIN_TOKEN, token);
         prefs.setLong(LOGIN_EXPIRES, expireTime * 1000);
@@ -43,16 +43,16 @@ public class AuthInfo {
         prefs.setString(LOGIN_USERNAME, username);
     }
 
-    public void save(Context ctx){
-        setAuthInfo(ctx, getToken(), getExpires(), getAccount_id(), getUsername());
-    }
-
-    public static void delete(Context ctx){
+    public static void delete(Context ctx) {
         Prefs prefs = new Prefs(ctx);
         prefs.remove(LOGIN_ACCOUNT_ID);
         prefs.remove(LOGIN_EXPIRES);
         prefs.remove(LOGIN_TOKEN);
         prefs.remove(LOGIN_USERNAME);
+    }
+
+    public void save(Context ctx) {
+        setAuthInfo(ctx, getToken(), getExpires(), getAccount_id(), getUsername());
     }
 
     @Override

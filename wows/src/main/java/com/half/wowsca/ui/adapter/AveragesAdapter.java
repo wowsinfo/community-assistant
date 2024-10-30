@@ -30,7 +30,7 @@ public class AveragesAdapter extends ArrayAdapter<ListAverages> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_averages, parent, false);
         }
         TextView title = convertView.findViewById(R.id.list_average_title);
@@ -42,9 +42,9 @@ public class AveragesAdapter extends ArrayAdapter<ListAverages> {
         title.setText(avg.getTitle());
         DecimalFormat formatter;
 
-        if(avg.getType() == AverageType.LARGE_NUMBER){
+        if (avg.getType() == AverageType.LARGE_NUMBER) {
             formatter = new DecimalFormat("#");
-        } else if(avg.getType() == AverageType.PERCENT) {
+        } else if (avg.getType() == AverageType.PERCENT) {
             formatter = new DecimalFormat("#.#%");
         } else {
             formatter = new DecimalFormat("#.#");
@@ -55,10 +55,10 @@ public class AveragesAdapter extends ArrayAdapter<ListAverages> {
 
 
         StringBuilder sb = new StringBuilder();
-        if(number > 0){
+        if (number > 0) {
             text.setTextColor(ContextCompat.getColor(getContext(), R.color.average_up));
             sb.append("+");
-        } else if(number < 0){
+        } else if (number < 0) {
             text.setTextColor(ContextCompat.getColor(getContext(), R.color.average_down));
         } else {
             text.setTextColor(ContextCompat.getColor(getContext(), R.color.white));

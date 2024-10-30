@@ -38,8 +38,8 @@ public class ShipCompareGraphFragment extends CAFragment {
 
 
     /**
-    * this will produce all the graphs from the ship data grabbed
-    */
+     * this will produce all the graphs from the ship data grabbed
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class ShipCompareGraphFragment extends CAFragment {
 
     private void onBind(View view) {
         recyclerView = view.findViewById(R.id.compare_ships_list);
-        GridLayoutManager manager = new GridLayoutManager(view.getContext() , getResources().getInteger(R.integer.twitch_cols));
+        GridLayoutManager manager = new GridLayoutManager(view.getContext(), getResources().getInteger(R.integer.twitch_cols));
         recyclerView.setLayoutManager(manager);
     }
 
@@ -147,9 +147,9 @@ public class ShipCompareGraphFragment extends CAFragment {
         int[] colors = ColorTemplate.PASTEL_COLORS;
         int i = 0;
 
-        for(Long shipId : CompareManager.getSHIPS()) {
+        for (Long shipId : CompareManager.getSHIPS()) {
             String shipInfo = CompareManager.getShipInformation().get(shipId);
-            if(shipInfo != null) {
+            if (shipInfo != null) {
                 ShipInformation ship = new ShipInformation();
                 ship.parse(shipInfo);
                 String shipName = holder.get(shipId).getName();
@@ -224,7 +224,7 @@ public class ShipCompareGraphFragment extends CAFragment {
                 addGraphInfo(topAARange, shipName, (float) ship.getTopAARange());
 
                 ShipStat stats = CAApp.getInfoManager().getShipStats(getContext()).get(shipId);
-                if(stats != null) {
+                if (stats != null) {
                     addGraphInfo(warshipStatsDmg, shipName, stats.getDmg_dlt());
                     addGraphInfo(warshipStatsWR, shipName, (stats.getWins() * 100));
                     addGraphInfo(warshipStatsKills, shipName, stats.getFrags());
@@ -300,37 +300,37 @@ public class ShipCompareGraphFragment extends CAFragment {
         setGraphInfo(graphsList, graphNames, diveBMaxDmg, getString(R.string.encyclopedia_db_damage));
         setGraphInfo(graphsList, graphNames, diveBBurnProbably, getString(R.string.db_burn_chance));
 
-        setGraphInfo(graphsList,graphNames, warshipStatsDmg, getString(R.string.damage));
-        setGraphInfo(graphsList,graphNames, warshipStatsWR, getString(R.string.win_rate));
-        setGraphInfo(graphsList,graphNames, warshipStatsKills, getString(R.string.kills_game));
-        setGraphInfo(graphsList,graphNames, warshipStatsPlanes, getString(R.string.planes_downed_game));
+        setGraphInfo(graphsList, graphNames, warshipStatsDmg, getString(R.string.damage));
+        setGraphInfo(graphsList, graphNames, warshipStatsWR, getString(R.string.win_rate));
+        setGraphInfo(graphsList, graphNames, warshipStatsKills, getString(R.string.kills_game));
+        setGraphInfo(graphsList, graphNames, warshipStatsPlanes, getString(R.string.planes_downed_game));
 
-        if(adapter == null)
+        if (adapter == null)
             adapter = new ShipsCompareAdapter();
 
         adapter.setShips(graphsList);
         adapter.setGraphNames(graphNames);
         adapter.setShipColors(shipColors);
 
-        if(recyclerView.getAdapter() == null)
+        if (recyclerView.getAdapter() == null)
             recyclerView.setAdapter(adapter);
     }
 
-    private void setGraphInfo(List<Map<String, Float>> graphs, List<String> graphNames, Map<String, Float> graphInfo, String title){
-        if(graphInfo.size() > 0) {
+    private void setGraphInfo(List<Map<String, Float>> graphs, List<String> graphNames, Map<String, Float> graphInfo, String title) {
+        if (graphInfo.size() > 0) {
             graphs.add(graphInfo);
             graphNames.add(title);
         }
     }
 
-    private void addGraphInfo(Map<String, Float> map, String shipName, Float value){
-        if(value != 0.0f){
+    private void addGraphInfo(Map<String, Float> map, String shipName, Float value) {
+        if (value != 0.0f) {
             map.put(shipName, value);
         }
     }
 
     @Subscribe
-    public void onRefresh(Long shipId){
+    public void onRefresh(Long shipId) {
         initView();
     }
 }

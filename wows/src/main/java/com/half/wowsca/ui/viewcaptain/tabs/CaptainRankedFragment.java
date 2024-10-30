@@ -51,6 +51,16 @@ public class CaptainRankedFragment extends CAFragment {
 
     private LinearLayout aShips;
 
+    public static String createBatteryString(BatteryStats stats) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(stats.getFrags());
+        if (stats.getShots() > 0) {
+            sb.append("\n");
+            sb.append(Utils.getOneDepthDecimalFormatter().format(((float) stats.getHits() / (float) stats.getShots()) * 100) + "%");
+        }
+        return sb.toString();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,7 +99,7 @@ public class CaptainRankedFragment extends CAFragment {
         }
 
         if (captain != null && captain.getRankedSeasons() != null && captain.getShips() != null) {
-            Dlog.wtf("Ranked","seasons = " + captain.getRankedSeasons());
+            Dlog.wtf("Ranked", "seasons = " + captain.getRankedSeasons());
             refreshing(false);
             createSeasonList(aSeasons, captain.getRankedSeasons(), captain.getShips());
 
@@ -109,13 +119,13 @@ public class CaptainRankedFragment extends CAFragment {
         }
     }
 
-    private void createSeasonList(LinearLayout container, List<RankedInfo> seasons, List<Ship> ships){
+    private void createSeasonList(LinearLayout container, List<RankedInfo> seasons, List<Ship> ships) {
         container.removeAllViews();
 
         Collections.sort(seasons, new Comparator<RankedInfo>() {
             @Override
             public int compare(RankedInfo lhs, RankedInfo rhs) {
-                if(lhs.getSeasonInt() != null && rhs.getSeasonInt() != null)
+                if (lhs.getSeasonInt() != null && rhs.getSeasonInt() != null)
                     return rhs.getSeasonInt().compareTo(lhs.getSeasonInt());
                 else
                     return rhs.getSeasonNum().compareToIgnoreCase(lhs.getSeasonNum());
@@ -123,16 +133,16 @@ public class CaptainRankedFragment extends CAFragment {
         });
         Map<String, List<Ship>> shipMap = new HashMap<>();
         final Map<String, SeasonStats> seasonMap = new HashMap<>();
-        for(RankedInfo info : seasons){
+        for (RankedInfo info : seasons) {
             shipMap.put(info.getSeasonNum(), new ArrayList<Ship>());
         }
 
-        for(Ship s : ships){
-            if(s.getRankedInfo() != null){
-                for(SeasonInfo info : s.getRankedInfo()){
-                    if(info.getSolo() != null){
+        for (Ship s : ships) {
+            if (s.getRankedInfo() != null) {
+                for (SeasonInfo info : s.getRankedInfo()) {
+                    if (info.getSolo() != null) {
                         List<Ship> seasonShips = shipMap.get(info.getSeasonNum());
-                        if(seasonShips == null){
+                        if (seasonShips == null) {
                             seasonShips = new ArrayList<>();
                             shipMap.put(info.getSeasonNum(), seasonShips);
                         }
@@ -143,7 +153,7 @@ public class CaptainRankedFragment extends CAFragment {
             }
         }
 
-        for(final RankedInfo info : seasons){
+        for (final RankedInfo info : seasons) {
             View view = LayoutInflater.from(getContext()).inflate(R.layout.list_season, aSeasons, false);
 
             View aHas = view.findViewById(R.id.list_season_has_info);
@@ -183,7 +193,7 @@ public class CaptainRankedFragment extends CAFragment {
 
             aShips.setTag(ivShipsArea);
             aShipsTop.setTag(aShips);
-            if(ivShipsArea.getVisibility() == View.VISIBLE)
+            if (ivShipsArea.getVisibility() == View.VISIBLE)
                 aShipsTop.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -199,7 +209,7 @@ public class CaptainRankedFragment extends CAFragment {
                     }
                 });
 
-            if(info.getSolo() != null) {
+            if (info.getSolo() != null) {
                 aHas.setVisibility(View.VISIBLE);
                 aNo.setVisibility(View.GONE);
 
@@ -210,9 +220,9 @@ public class CaptainRankedFragment extends CAFragment {
                 tvMaxRank.setText(" / " + info.getStartRank());
 
                 llStars.removeAllViews();
-                for(int i = 0; i < info.getStars(); i++){
+                for (int i = 0; i < info.getStars(); i++) {
                     ImageView iv = new ImageView(getContext());
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(30,30);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(30, 30);
                     iv.setLayoutParams(params);
                     iv.setImageResource(R.drawable.ic_star);
                     iv.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getContext(), R.color.premium_shade), PorterDuff.Mode.MULTIPLY));
@@ -224,7 +234,7 @@ public class CaptainRankedFragment extends CAFragment {
 
                 SeasonStats stats = info.getSolo();
                 float battles = stats.getBattles();
-                if(battles > 0) {
+                if (battles > 0) {
                     float winrate = stats.getWins() / battles * 100;
                     float survival = stats.getSurvived() / battles * 100;
                     float avgDmg = stats.getDamage() / battles;
@@ -256,7 +266,7 @@ public class CaptainRankedFragment extends CAFragment {
                     int otherTotal = stats.getFrags() - stats.getMain().getFrags() - stats.getAircraft().getFrags() - stats.getTorps().getFrags();
                     tvBatteryOther.setText(otherTotal + "");
 
-                    if(ships != null){
+                    if (ships != null) {
                         List<Ship> seasonsShips = shipMap.get(info.getSeasonNum());
                         final String seasonName = info.getSeasonNum();
                         Collections.sort(seasonsShips, new Comparator<Ship>() {
@@ -269,9 +279,9 @@ public class CaptainRankedFragment extends CAFragment {
                                 return shipStats2.getBattles() - shipStats.getBattles();
                             }
                         });
-                        if(seasons.size() > 0){
+                        if (seasons.size() > 0) {
                             aShipsTop.setVisibility(View.VISIBLE);
-                            if(ivShipsArea.getVisibility() == View.GONE){
+                            if (ivShipsArea.getVisibility() == View.GONE) {
                                 aShips.setVisibility(View.VISIBLE);
                             } else {
                                 aShips.setVisibility(View.GONE);
@@ -281,11 +291,11 @@ public class CaptainRankedFragment extends CAFragment {
                             View shipViewTitle = LayoutInflater.from(getContext()).inflate(R.layout.list_ranked_ships_title, llShips, false);
                             llShips.addView(shipViewTitle);
 
-                            for(Ship s : seasonsShips){
+                            for (Ship s : seasonsShips) {
                                 String id = info.getSeasonNum() + s.getShipId();
                                 SeasonStats shipStats = seasonMap.get(id);
                                 ShipInfo shipInfo = CAApp.getInfoManager().getShipInfo(getContext()).get(s.getShipId());
-                                if(shipInfo != null && shipStats.getBattles() > 0) {
+                                if (shipInfo != null && shipStats.getBattles() > 0) {
                                     View shipView = LayoutInflater.from(getContext()).inflate(R.layout.list_ranked_ships, llShips, false);
                                     TextView title = shipView.findViewById(R.id.list_ranked_ships_title);
                                     TextView one = shipView.findViewById(R.id.list_ranked_ships_1);
@@ -306,7 +316,7 @@ public class CaptainRankedFragment extends CAFragment {
                                         @Override
                                         public void onClick(View v) {
                                             Long s = (Long) v.getTag();
-                                            if(s != null){
+                                            if (s != null) {
                                                 CAApp.getEventBus().post(new ShipClickedEvent(s));
                                             }
                                         }
@@ -331,17 +341,7 @@ public class CaptainRankedFragment extends CAFragment {
         }
     }
 
-    public static String createBatteryString(BatteryStats stats){
-        StringBuilder sb = new StringBuilder();
-        sb.append(stats.getFrags());
-        if(stats.getShots() > 0){
-            sb.append("\n");
-            sb.append(Utils.getOneDepthDecimalFormatter().format(((float) stats.getHits()/ (float)stats.getShots()) * 100) + "%");
-        }
-        return sb.toString();
-    }
-
-    private void createShipList(){
+    private void createShipList() {
         aShips.removeAllViews();
     }
 
@@ -358,8 +358,8 @@ public class CaptainRankedFragment extends CAFragment {
     }
 
     @Subscribe
-    public void onProgressEvent(ProgressEvent event){
-        if(mSwipeRefreshLayout != null){
+    public void onProgressEvent(ProgressEvent event) {
+        if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(event.isRefreshing());
         }
     }

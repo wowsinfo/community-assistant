@@ -18,12 +18,12 @@ public class CaptainSkill extends CAItem {
 
     @Override
     public void parse(JSONObject jsonObject) {
-        if(jsonObject != null){
+        if (jsonObject != null) {
             setTier(jsonObject.optInt("tier"));
             setName(jsonObject.optString("name"));
             setImage(jsonObject.optString("icon"));
             JSONArray perks = jsonObject.optJSONArray("perks");
-            if(perks != null) {
+            if (perks != null) {
                 setAbilities(new ArrayList<String>());
                 for (int i = 0; i < perks.length(); i++) {
                     JSONObject item = perks.optJSONObject(i);

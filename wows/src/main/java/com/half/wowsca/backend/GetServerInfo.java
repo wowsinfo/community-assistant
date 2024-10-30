@@ -49,13 +49,13 @@ public class GetServerInfo extends AsyncTask<String, Void, ServerResult> {
         String ruFeed = getURLResult(url3);
         String seaFeed = getURLResult(url4);
 
-        if(!TextUtils.isEmpty(naFeed))
+        if (!TextUtils.isEmpty(naFeed))
             parseRegion(naFeed, result, Server.NA);
-        if(!TextUtils.isEmpty(euFeed))
+        if (!TextUtils.isEmpty(euFeed))
             parseRegion(euFeed, result, Server.EU);
-        if(!TextUtils.isEmpty(ruFeed))
+        if (!TextUtils.isEmpty(ruFeed))
             parseRegion(ruFeed, result, Server.RU);
-        if(!TextUtils.isEmpty(seaFeed))
+        if (!TextUtils.isEmpty(seaFeed))
             parseRegion(seaFeed, result, Server.SEA);
 
         return result;

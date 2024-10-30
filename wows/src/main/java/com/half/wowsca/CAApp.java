@@ -25,52 +25,20 @@ public class CAApp extends Application {
 
     public static final String FORCE_UPDATE_DATA = "forceUpdateData5";
     public static final String APP_LANGUAGE = "appLanguage";
-    public static boolean DEVELOPMENT_MODE = false;
-
     public static final String PREF_FILE = "caapp";
-
     public static final String WOWS_API_SITE_ADDRESS = "https://api.worldofwarships";
-
     public static final String SELECTED_SERVER = "selected_server";
     public static final String SELECTED_SERVER_LANGUAGE = "selected_server_language";
     public static final String SELECTED_ID = "selectedId";
     public static final String COLORBLIND_MODE = "colorblindMode";
     public static final String LAUNCH_COUNT = "launchCount";
-
+    public static boolean DEVELOPMENT_MODE = false;
     public static boolean HAS_SHOWN_FIRST_DIALOG = false;
-
+    public static ShortcutRoutes ROUTING;
     private static int lastShipPos;
-
     private static InfoManager infoManager;
 
-    public static ShortcutRoutes ROUTING;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-//        AuthInfo.delete(getApplicationContext());
-//        InfoManager.purge(getApplicationContext());
-        // TODO: review what this does
-//        DEVELOPMENT_MODE = !BuildConfig.BUILD_TYPE.equals("release");
-        Dlog.LOGGING_MODE = DEVELOPMENT_MODE;
-        Prefs pref = new Prefs(getApplicationContext());
-        int launchNumber = pref.getInt(LAUNCH_COUNT, 0);
-        launchNumber++;
-        pref.setInt(LAUNCH_COUNT, launchNumber);
-        boolean refreshedData = pref.getBoolean(FORCE_UPDATE_DATA, false);
-        if(!refreshedData){
-            Dlog.d("CAApp", "refreshing data");
-            InfoManager.purge(getApplicationContext());
-            pref.setBoolean(FORCE_UPDATE_DATA, true);
-        }
-
-        // this is a temp fix to remove ko from the settings page. This isn't always supported across servers
-        if(CAApp.getServerLanguage(getApplicationContext()).equals("ko")){
-            CAApp.setServerLanguage(getApplicationContext(), getString(R.string.base_server_language));
-        }
-    }
-
-    public static void relaunchApplication(Activity act){
+    public static void relaunchApplication(Activity act) {
         act.finish();
         CompareManager.clear();
         Intent i = act.getBaseContext().getPackageManager()
@@ -87,38 +55,38 @@ public class CAApp extends Application {
 //        else if(theme.equals("light")){ // light theme
 //            act.setTheme(R.style.Theme_CA_Material_Light);
 //        }
-        else if(theme.equals("dark")){
+        else if (theme.equals("dark")) {
             act.setTheme(R.style.Theme_CA_Material_Dark);
         }
     }
 
-    public static boolean isOceanTheme(Context ctx){
+    public static boolean isOceanTheme(Context ctx) {
         String theme = getTheme(ctx);
         return theme.equals("ocean");
     }
 
-    public static boolean isDarkTheme(Context ctx){
+    public static boolean isDarkTheme(Context ctx) {
         String theme = getTheme(ctx);
         return theme.equals("dark");
     }
 
-    public static String getTheme(Context ctx){
+    public static String getTheme(Context ctx) {
         Prefs prefs = new Prefs(ctx);
         return prefs.getString(SettingActivity.THEME_CHOICE, "ocean");
     }
 
-    public static boolean isNoArp(Context ctx){
+    public static boolean isNoArp(Context ctx) {
         Prefs prefs = new Prefs(ctx);
         return prefs.getBoolean(SettingActivity.NO_ARP, false);
     }
 
-    public static int getTextColor(Context ctx){
+    public static int getTextColor(Context ctx) {
 //        CAApp.isLightTheme(ctx) ? ContextCompat.getColor(ctx, R.color.material_text_primary_light) : for a different theme
         return ContextCompat.getColor(ctx, R.color.material_text_primary);
     }
 
     public static InfoManager getInfoManager() {
-        if(infoManager == null){
+        if (infoManager == null) {
             infoManager = new InfoManager();
         }
         return infoManager;
@@ -185,15 +153,39 @@ public class CAApp extends Application {
         pref.setBoolean(COLORBLIND_MODE, mode);
     }
 
+    public static int getLastShipPos() {
+        return lastShipPos;
+    }
+
     /**
-     *
      * @param pos sending 0 clears out the previous number
      */
-    public static void setLastShipPos(int pos){
+    public static void setLastShipPos(int pos) {
         lastShipPos = pos;
     }
 
-    public static int getLastShipPos() {
-        return lastShipPos;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+//        AuthInfo.delete(getApplicationContext());
+//        InfoManager.purge(getApplicationContext());
+        // TODO: review what this does
+//        DEVELOPMENT_MODE = !BuildConfig.BUILD_TYPE.equals("release");
+        Dlog.LOGGING_MODE = DEVELOPMENT_MODE;
+        Prefs pref = new Prefs(getApplicationContext());
+        int launchNumber = pref.getInt(LAUNCH_COUNT, 0);
+        launchNumber++;
+        pref.setInt(LAUNCH_COUNT, launchNumber);
+        boolean refreshedData = pref.getBoolean(FORCE_UPDATE_DATA, false);
+        if (!refreshedData) {
+            Dlog.d("CAApp", "refreshing data");
+            InfoManager.purge(getApplicationContext());
+            pref.setBoolean(FORCE_UPDATE_DATA, true);
+        }
+
+        // this is a temp fix to remove ko from the settings page. This isn't always supported across servers
+        if (CAApp.getServerLanguage(getApplicationContext()).equals("ko")) {
+            CAApp.setServerLanguage(getApplicationContext(), getString(R.string.base_server_language));
+        }
     }
 }

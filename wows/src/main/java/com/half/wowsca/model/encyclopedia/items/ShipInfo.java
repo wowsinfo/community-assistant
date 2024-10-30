@@ -43,10 +43,10 @@ public class ShipInfo {
 
     private Map<Long, ShipModuleItem> items;
 
-    public void parse(JSONObject ship){
+    public void parse(JSONObject ship) {
         setName(ship.optString("name"));
-        if(!TextUtils.isEmpty(name)){
-            name = name.replaceAll("\\[","").replaceAll("]","");
+        if (!TextUtils.isEmpty(name)) {
+            name = name.replaceAll("\\[", "").replaceAll("]", "");
         }
         setGoldPrice(ship.optInt("price_gold"));
         setIsPremium(ship.optBoolean("is_premium"));
@@ -120,14 +120,14 @@ public class ShipInfo {
         }
     }
 
-    private void getModuleList(JSONObject obj, String key, List<Long> array){
+    private void getModuleList(JSONObject obj, String key, List<Long> array) {
         JSONArray object = obj.optJSONArray(key);
-        if(object != null && object.length() > 0){
+        if (object != null && object.length() > 0) {
             addModuleToList(array, object);
         }
     }
 
-    private void addModuleToList(List<Long> list, JSONArray array){
+    private void addModuleToList(List<Long> list, JSONArray array) {
         for (int i = 0; i < array.length(); i++) {
             list.add(array.optLong(i));
         }
@@ -260,11 +260,11 @@ public class ShipInfo {
         this.largeImage = largeImage;
     }
 
-    public String getBestImage(){
+    public String getBestImage() {
         String imageUrl = "";
-        if(!TextUtils.isEmpty(largeImage)){
+        if (!TextUtils.isEmpty(largeImage)) {
             imageUrl = largeImage;
-        } else if(!TextUtils.isEmpty(mediumImage)){
+        } else if (!TextUtils.isEmpty(mediumImage)) {
             imageUrl = mediumImage;
         } else {
             imageUrl = image;

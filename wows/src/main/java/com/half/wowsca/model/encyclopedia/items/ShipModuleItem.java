@@ -14,8 +14,8 @@ public class ShipModuleItem {
     private long price_credits;
     private boolean isDefault;
 
-    public static ShipModuleItem parse(JSONObject json){
-        if(json != null) {
+    public static ShipModuleItem parse(JSONObject json) {
+        if (json != null) {
             ShipModuleItem item = new ShipModuleItem();
             item.setId(json.optLong("module_id"));
             item.setName(json.optString("name"));

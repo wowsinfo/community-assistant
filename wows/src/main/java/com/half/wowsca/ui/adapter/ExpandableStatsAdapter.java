@@ -54,7 +54,7 @@ public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         String header = (String) getGroup(groupPosition);
 
-        if(convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(ctx).inflate(R.layout.list_group_stats, parent, false);
         }
 
@@ -82,7 +82,7 @@ public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
 
         TextView text = view.findViewById(R.id.list_child_title);
         View chart = view.findViewById(R.id.list_child_graph);
-        if(premium){
+        if (premium) {
             int size = child.getValues().size() * 18;
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(chart.getLayoutParams());
@@ -127,9 +127,9 @@ public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
         yAxis2.setLabelCount(6, false);
         yAxis2.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         yAxis2.setTextColor(textColor);
-        if(child.getType() == EncyclopediaType.LARGE_NUMBER) {
+        if (child.getType() == EncyclopediaType.LARGE_NUMBER) {
             yAxis2.setValueFormatter(new LargeValueFormatter());
-        } else if(child.getType() == EncyclopediaType.PERCENT) {
+        } else if (child.getType() == EncyclopediaType.PERCENT) {
             yAxis2.setValueFormatter(new MyYFormatter());
         }
 
@@ -137,7 +137,7 @@ public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
         l.setEnabled(false);
         List<String> xVals = new ArrayList<String>();
         List<Integer> colorList = new ArrayList<Integer>();
-        for (int i = 0; i < child.getTitles().size(); i++){
+        for (int i = 0; i < child.getTitles().size(); i++) {
             xVals.add(child.getTitles().get(i));
             String key = child.getTypes().get(i);
             if (key.equalsIgnoreCase("cruiser")) {
@@ -155,7 +155,7 @@ public class ExpandableStatsAdapter extends BaseExpandableListAdapter {
         for (int i = 0; i < child.getValues().size(); i++) {
             yVals.add(new BarEntry(child.getValues().get(i), i));
         }
-        if(yVals.size() > 0) {
+        if (yVals.size() > 0) {
             BarDataSet set1 = new BarDataSet(yVals, "");
             set1.setColors(colorList);
             set1.setBarSpacePercent(20f);

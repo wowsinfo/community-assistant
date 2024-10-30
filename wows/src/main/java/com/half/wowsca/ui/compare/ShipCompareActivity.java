@@ -73,12 +73,12 @@ public class ShipCompareActivity extends CABaseActivity {
     }
 
     private void initView() {
-        if(CompareManager.getSHIPS().size() == 0){
+        if (CompareManager.getSHIPS().size() == 0) {
             finish();
         } else {
             Dlog.d("initView", "getSHIPS = " + CompareManager.getSHIPS().size() + " si = " + CompareManager.getShipInformation().size());
-            if(CompareManager.getSHIPS().size() != CompareManager.getShipInformation().size()){
-                if(!CompareManager.GRABBING_INFO){
+            if (CompareManager.getSHIPS().size() != CompareManager.getShipInformation().size()) {
+                if (!CompareManager.GRABBING_INFO) {
                     grabInfo();
                 } else {
                 }
@@ -91,7 +91,7 @@ public class ShipCompareActivity extends CABaseActivity {
     }
 
     private void setupView() {
-        if(pager == null){
+        if (pager == null) {
             int indicatorColor = R.color.selected_tab_color;
             if (!CAApp.isOceanTheme(getApplicationContext()))
                 indicatorColor = R.color.top_background;
@@ -108,13 +108,13 @@ public class ShipCompareActivity extends CABaseActivity {
             mViewPager.setAdapter(pager);
             pagerTabs.setViewPager(mViewPager);
         }
-        if(lastUpdated != null) {
+        if (lastUpdated != null) {
             CAApp.getEventBus().post(lastUpdated.getShipId());
             lastUpdated = null;
         }
     }
 
-    private void grabInfo(){
+    private void grabInfo() {
         progress.setVisibility(View.VISIBLE);
         CompareManager.searchShips(getApplicationContext());
     }
@@ -143,9 +143,9 @@ public class ShipCompareActivity extends CABaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             onBackPressed();
-        } else if (item.getItemId() == R.id.action_refresh){
+        } else if (item.getItemId() == R.id.action_refresh) {
             //refresh all fragments
             //send out calls again
         }

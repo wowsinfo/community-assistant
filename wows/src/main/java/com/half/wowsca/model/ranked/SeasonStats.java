@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * Created by slai4 on 11/29/2015.
  */
 public class SeasonStats {
-    
+
     private int maxFrags;
     private int capPts;
     private int draws;
@@ -31,9 +31,9 @@ public class SeasonStats {
     private int survived;
     private int drpCapPts;
 
-    public static SeasonStats parse(JSONObject obj){
+    public static SeasonStats parse(JSONObject obj) {
         SeasonStats stats = new SeasonStats();
-        if(obj != null){
+        if (obj != null) {
             stats.setMaxFrags(obj.optInt("max_frags_battle"));
             stats.setCapPts(obj.optInt("capture_points"));
             stats.setDraws(obj.optInt("draws"));

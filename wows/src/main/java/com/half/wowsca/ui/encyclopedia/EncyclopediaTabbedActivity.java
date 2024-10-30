@@ -67,7 +67,7 @@ public class EncyclopediaTabbedActivity extends CABaseActivity {
         pagerTabs.setIconTintColor(0);
 
         int indicatorColor = R.color.selected_tab_color;
-        if(!CAApp.isOceanTheme(getApplicationContext()))
+        if (!CAApp.isOceanTheme(getApplicationContext()))
             indicatorColor = R.color.material_primary;
         setTitle("");
 
@@ -115,22 +115,22 @@ public class EncyclopediaTabbedActivity extends CABaseActivity {
     }
 
     @Subscribe
-    public void onShipCompare(ShipCompareEvent event){
+    public void onShipCompare(ShipCompareEvent event) {
         toggleTopArea();
     }
 
-    private void setUpButtons(){
+    private void setUpButtons() {
         bCompare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(CompareManager.getSHIPS().size() > 1) {
-                    Context ctx  = EncyclopediaTabbedActivity.this;
+                if (CompareManager.getSHIPS().size() > 1) {
+                    Context ctx = EncyclopediaTabbedActivity.this;
                     AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
                     builder.setTitle("Compare these ships?");
 
                     ShipsHolder info = new InfoManager().getShipInfo(getApplicationContext());
                     StringBuilder sb = new StringBuilder();
-                    for(long id : CompareManager.getSHIPS()){
+                    for (long id : CompareManager.getSHIPS()) {
                         String name = info.get(id).getName();
                         sb.append(name);
                         sb.append("\n");
@@ -183,8 +183,8 @@ public class EncyclopediaTabbedActivity extends CABaseActivity {
         CAApp.getEventBus().post(event);
     }
 
-    private void toggleTopArea(){
-        if(!CompareManager.getSHIPS().isEmpty()){
+    private void toggleTopArea() {
+        if (!CompareManager.getSHIPS().isEmpty()) {
             pagerTabs.setVisibility(View.GONE);
             bClear.setVisibility(View.VISIBLE);
             bCompare.setVisibility(View.VISIBLE);

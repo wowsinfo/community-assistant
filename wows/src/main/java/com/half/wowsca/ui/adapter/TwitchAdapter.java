@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Created by slai4 on 12/3/2015.
  */
-public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHolder>  {
+public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHolder> {
 
     private List<TwitchObj> twitchObjs;
 
@@ -48,33 +48,33 @@ public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHold
         holder.url = obj.getUrl();
         holder.name = obj.getName();
 
-        if(obj.isLive() == TwitchStatus.LIVE){
+        if (obj.isLive() == TwitchStatus.LIVE) {
             holder.alert.setText(ctx.getString(R.string.live));
-        } else if(obj.isLive() == TwitchStatus.OFFLINE){
+        } else if (obj.isLive() == TwitchStatus.OFFLINE) {
             holder.alert.setText(ctx.getString(R.string.offline));
         } else {
             holder.alert.setText("");
         }
 
-        if(!TextUtils.isEmpty(obj.getStreamName()))
+        if (!TextUtils.isEmpty(obj.getStreamName()))
             holder.status.setText(obj.getStreamName());
 
-        if(!TextUtils.isEmpty(obj.getLogo())){
+        if (!TextUtils.isEmpty(obj.getLogo())) {
             Picasso.get().load(obj.getLogo()).resize(800, 600).centerInside().error(R.drawable.ic_missing_image).into(holder.logo);
         }
 
-        if(!TextUtils.isEmpty(obj.getThumbnail())){
+        if (!TextUtils.isEmpty(obj.getThumbnail())) {
             Picasso.get().load(obj.getThumbnail()).error(R.drawable.ic_missing_image).into(holder.background);
         }
         //check for youtube only
-        if(obj.getName().equals("Jammin411")){
+        if (obj.getName().equals("Jammin411")) {
             holder.logo.setImageResource(R.drawable.ic_twitch_wowsreplay_icon);
             holder.background.setImageResource(R.drawable.ic_twitch_wowsreplay);
             holder.url = "http://wowreplays.com/";
             holder.status.setText("");
-        } else if (obj.getName().equals("crysantos") || obj.getName().equals("kamisamurai")){
+        } else if (obj.getName().equals("crysantos") || obj.getName().equals("kamisamurai")) {
             holder.youtube.setVisibility(View.GONE);
-        } else if (obj.getName().equals("notser")){
+        } else if (obj.getName().equals("notser")) {
             holder.twitter.setVisibility(View.GONE);
         } else {
             holder.youtube.setVisibility(View.VISIBLE);
@@ -91,6 +91,38 @@ public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHold
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    public void sort() {
+        Collections.sort(getTwitchObjs(), new Comparator<TwitchObj>() {
+            @Override
+            public int compare(TwitchObj lhs, TwitchObj rhs) {
+                return lhs.getName().compareToIgnoreCase(rhs.getName());
+            }
+        });
+        Collections.sort(getTwitchObjs(), new Comparator<TwitchObj>() {
+            @Override
+            public int compare(TwitchObj lhs, TwitchObj rhs) {
+                return lhs.isLive().getOrder() - rhs.isLive().getOrder();
+            }
+        });
+        notifyDataSetChanged();
+    }
+
+    public List<TwitchObj> getTwitchObjs() {
+        return twitchObjs;
+    }
+
+    public void setTwitchObjs(List<TwitchObj> twitchObjs) {
+        this.twitchObjs = twitchObjs;
+    }
+
+    public Context getCtx() {
+        return ctx;
+    }
+
+    public void setCtx(Context ctx) {
+        this.ctx = ctx;
     }
 
     public static class TwitchHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -227,37 +259,5 @@ public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHold
             Dlog.d("Twitch", "url = " + url);
             CAApp.getEventBus().post(url);
         }
-    }
-
-    public void sort(){
-        Collections.sort(getTwitchObjs(), new Comparator<TwitchObj>() {
-            @Override
-            public int compare(TwitchObj lhs, TwitchObj rhs) {
-                return lhs.getName().compareToIgnoreCase(rhs.getName());
-            }
-        });
-        Collections.sort(getTwitchObjs(), new Comparator<TwitchObj>() {
-            @Override
-            public int compare(TwitchObj lhs, TwitchObj rhs) {
-                return lhs.isLive().getOrder() - rhs.isLive().getOrder();
-            }
-        });
-        notifyDataSetChanged();
-    }
-
-    public List<TwitchObj> getTwitchObjs() {
-        return twitchObjs;
-    }
-
-    public void setTwitchObjs(List<TwitchObj> twitchObjs) {
-        this.twitchObjs = twitchObjs;
-    }
-
-    public Context getCtx() {
-        return ctx;
-    }
-
-    public void setCtx(Context ctx) {
-        this.ctx = ctx;
     }
 }

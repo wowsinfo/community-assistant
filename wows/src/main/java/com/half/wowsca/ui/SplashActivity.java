@@ -44,17 +44,17 @@ public class SplashActivity extends CABaseActivity {
             grabbingInfo = savedInstanceState.getBoolean(GRABBING_INFO);
         }
         bindView();
-        if(getIntent() != null && !TextUtils.isEmpty(getIntent().getAction())){
+        if (getIntent() != null && !TextUtils.isEmpty(getIntent().getAction())) {
             String action = getIntent().getAction();
-            if(action.equals("com.half.wowsca.VIEW_SHIPOPEDIA")){
+            if (action.equals("com.half.wowsca.VIEW_SHIPOPEDIA")) {
                 CAApp.ROUTING = ShortcutRoutes.ENCYCLOPEDIA;
-            } else if (action.equals("com.half.wowsca.VIEW_TWITCH")){
+            } else if (action.equals("com.half.wowsca.VIEW_TWITCH")) {
                 CAApp.ROUTING = ShortcutRoutes.TWITCH;
-            } else if (action.equals("com.half.wowsca.VIEW_SEARCH")){
+            } else if (action.equals("com.half.wowsca.VIEW_SEARCH")) {
                 CAApp.ROUTING = ShortcutRoutes.SEARCH;
             } else {
                 Prefs prefs = new Prefs(getApplicationContext());
-                if(prefs.getBoolean(SettingActivity.AD_LAUNCH, false))
+                if (prefs.getBoolean(SettingActivity.AD_LAUNCH, false))
                     CAApp.ROUTING = ShortcutRoutes.AD_LAUNCH;
                 else
                     CAApp.ROUTING = null;

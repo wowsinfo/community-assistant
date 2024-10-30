@@ -48,7 +48,7 @@ public class CaptainSkillsFragment extends CAFragment {
         super.onResume();
         CAApp.getEventBus().register(this);
         CaptainSkillHolder holder = CAApp.getInfoManager().getCaptainSkills(getContext());
-        if(holder != null && holder.getItems() != null && recyclerView.getAdapter() == null){
+        if (holder != null && holder.getItems() != null && recyclerView.getAdapter() == null) {
             layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.shipopedia_upgrade_grid));
             layoutManager.setOrientation(GridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
@@ -81,16 +81,16 @@ public class CaptainSkillsFragment extends CAFragment {
     }
 
     @Subscribe
-    public void captainClickedEvent(CaptainSkillClickedEvent event){
+    public void captainClickedEvent(CaptainSkillClickedEvent event) {
         CaptainSkillHolder holder = CAApp.getInfoManager().getCaptainSkills(getContext());
         CaptainSkill skill = holder.get(event.getId() + "");
         if (skill != null) {
             StringBuilder sb = new StringBuilder();
-            sb.append(getString(R.string.encyclopedia_tier_start)+ " " + skill.getTier() + "\n\n");
-            if(skill.getAbilities() != null && !skill.getAbilities().isEmpty()){
-                for(int i = 0; i < skill.getAbilities().size(); i++){
+            sb.append(getString(R.string.encyclopedia_tier_start) + " " + skill.getTier() + "\n\n");
+            if (skill.getAbilities() != null && !skill.getAbilities().isEmpty()) {
+                for (int i = 0; i < skill.getAbilities().size(); i++) {
                     sb.append(skill.getAbilities().get(i));
-                    if(i < (skill.getAbilities().size() - 1)){
+                    if (i < (skill.getAbilities().size() - 1)) {
                         sb.append("\n");
                     }
                 }

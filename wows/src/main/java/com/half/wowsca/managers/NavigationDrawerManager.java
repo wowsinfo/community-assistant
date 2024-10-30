@@ -45,7 +45,7 @@ public class NavigationDrawerManager {
     public static int SERVER = 900;
 
 
-    public static Drawer createDrawer(AppCompatActivity act, Toolbar bar, Drawer.OnDrawerItemClickListener listener){
+    public static Drawer createDrawer(AppCompatActivity act, Toolbar bar, Drawer.OnDrawerItemClickListener listener) {
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(act)
@@ -70,7 +70,7 @@ public class NavigationDrawerManager {
         PrimaryDrawerItem item = new PrimaryDrawerItem();
         item.withName(name);
         item.withIdentifier(identifier);
-        if (!isGroup){
+        if (!isGroup) {
             DrawerChild child = new DrawerChild();
             child.setTitle(name);
             child.setType(type);
@@ -78,7 +78,7 @@ public class NavigationDrawerManager {
         }
         if (icon > 0) {
             item.withIcon(icon);
-            if(!isDarkTheme) {
+            if (!isDarkTheme) {
                 item.withIconColorRes(R.color.material_primary);
                 item.withIconTintingEnabled(true);
             }
@@ -99,7 +99,7 @@ public class NavigationDrawerManager {
 
         if (icon > 0) {
             item.withIcon(icon);
-            if(!isDarkTheme) {
+            if (!isDarkTheme) {
                 item.withIconColorRes(R.color.material_primary);
                 item.withIconTintingEnabled(true);
             }
