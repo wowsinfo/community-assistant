@@ -98,8 +98,12 @@ public class CAApp extends Application {
 
     public static Server getServerType(Context ctx) {
         Prefs pref = new Prefs(ctx);
-        Server s = Server.valueOf(pref.getString(SELECTED_SERVER, Server.NA.toString()));
-        return s;
+        // have to handle removed region
+        try {
+            return Server.valueOf(pref.getString(SELECTED_SERVER, Server.NA.toString()));
+        } catch (IllegalArgumentException e) {
+            return Server.SEA;
+        }
     }
 
     public static void setServerType(Context ctx, Server s) {

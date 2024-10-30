@@ -38,23 +38,18 @@ public class GetServerInfo extends AsyncTask<String, Void, ServerResult> {
         String url2 = startUrl + Server.EU.getSuffix() + "/wgn/servers/info/?application_id=" + Server.EU.getAppId();
         Dlog.wtf("server URL", url2);
 
-        String url3 = startUrl + Server.RU.getSuffix() + "/wgn/servers/info/?application_id=" + Server.RU.getAppId();
-        Dlog.wtf("server URL", url3);
 
         String url4 = startUrl + Server.SEA.getSuffix() + "/wgn/servers/info/?application_id=" + Server.SEA.getAppId();
         Dlog.wtf("server URL", url4);
 
         String naFeed = getURLResult(url);
         String euFeed = getURLResult(url2);
-        String ruFeed = getURLResult(url3);
         String seaFeed = getURLResult(url4);
 
         if (!TextUtils.isEmpty(naFeed))
             parseRegion(naFeed, result, Server.NA);
         if (!TextUtils.isEmpty(euFeed))
             parseRegion(euFeed, result, Server.EU);
-        if (!TextUtils.isEmpty(ruFeed))
-            parseRegion(ruFeed, result, Server.RU);
         if (!TextUtils.isEmpty(seaFeed))
             parseRegion(seaFeed, result, Server.SEA);
 

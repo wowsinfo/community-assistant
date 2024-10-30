@@ -90,13 +90,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
                 break;
             case EU:
                 break;
-            case RU:
-                prefix = "ru";
-                break;
             case SEA:
-                prefix = "asia";
-                break;
-            case KR:
                 prefix = "asia";
                 break;
         }
@@ -211,13 +205,7 @@ public class GetNeededInfoTask extends AsyncTask<InfoQuery, Void, InfoResult> {
             case EU:
                 fileName = "raw-data-eu.txt";
                 break;
-            case RU:
-                fileName = "raw-data-ru.txt";
-                break;
             case SEA:
-                fileName = "raw-data-asia.txt";
-                break;
-            case KR:
                 fileName = "raw-data-asia.txt";
                 break;
         }
