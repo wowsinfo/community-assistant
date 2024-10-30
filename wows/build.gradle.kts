@@ -1,6 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.jetbrainsKotlin)
 }
 
 buildscript {
@@ -14,21 +16,22 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
-val wowsMinSdk: String by project
-val wowsTargetSdk: String by project
-val wowsCompileSdk: String by project
-
 android {
     namespace = "com.half.wowsca"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
+
+    buildFeatures {
+        compose = true
+    }
 
     signingConfigs {
         create("release")
     }
 
     defaultConfig {
-        minSdk = wowsMinSdk.toInt()
-        targetSdkVersion(wowsTargetSdk.toInt())
-        compileSdk = wowsCompileSdk.toInt()
+        applicationId = "com.half.wowsca"
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 57
         versionName = "1.3.1.3"
     }
@@ -61,16 +64,21 @@ android {
 
 dependencies {
     api(project(":common"))
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.gridlayout:gridlayout:1.0.0")
-    implementation("androidx.core:core:1.13.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("com.github.PhilJay:MPAndroidChart:v2.2.4")
+    implementation(libs.google.material)
+    implementation(libs.androidx.cardview)
+    implementation(libs.androidx.gridlayout)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.mpandroidchart)
     implementation("com.mikepenz:materialdrawer:5.2.6@aar") {
         isTransitive = true
     }
-    implementation("androidx.core:core-ktx:1.13.1")
+    implementation(libs.androidx.core.ktx)
+
+    // Compose
+    implementation(libs.compose.material3)
+    implementation(libs.compose.runtime)
+
     // Uncomment the line below if you want to include Google Play Services Ads, make sure to use a different version
     // implementation("com.google.android.gms:play-services-ads:17.1.1")
 }

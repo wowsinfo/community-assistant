@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.jetbrainsKotlin)
 }
 
 buildscript {
@@ -9,18 +9,15 @@ buildscript {
         google()
     }
 }
-
-val wowsMinSdk: String by project
-val wowsTargetSdk: String by project
-val wowsCompileSdk: String by project
-
 android {
     namespace = "com.half.common"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = wowsMinSdk.toInt()
-        targetSdkVersion(wowsTargetSdk.toInt())
-        compileSdk = wowsCompileSdk.toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+    lint {
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
     }
 
     buildTypes {
@@ -42,12 +39,12 @@ android {
 dependencies {
     // NOTE: api is needed here, because common is not in the same module as wows
     api(files("libs/gson-2.2.4.jar"))
-    api("com.squareup.picasso:picasso:2.71828")
-    api("org.greenrobot:eventbus:3.1.1")
-    api("com.squareup.okhttp3:okhttp:4.12.0")
-    api("androidx.core:core:1.13.1")
-    api("androidx.appcompat:appcompat:1.7.0")
-    api("org.jsoup:jsoup:1.13.1")
-    api("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
-    implementation("androidx.core:core-ktx:1.13.1")
+    api(libs.picasso)
+    api(libs.eventbus)
+    api(libs.okhttp)
+    api(libs.androidx.core)
+    api(libs.appcompat)
+    api(libs.jsoup)
+    api(libs.picasso.downloader)
+    implementation(libs.androidx.core.ktx)
 }
