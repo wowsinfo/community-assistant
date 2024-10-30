@@ -183,21 +183,21 @@ public class CaptainGraphsFragment extends CAFragment {
 
                             Long hits = accuracyHits.get(tier);
                             BatteryStats stats = s.getMainBattery();
-                            if (stats.getShots() > 0) {
+                            if (stats.shots > 0) {
                                 if (hits != null) {
-                                    accuracyHits.put(tier, hits + stats.getHits());
+                                    accuracyHits.put(tier, hits + stats.hits);
                                 } else {
-                                    accuracyHits.put(tier, (long) stats.getHits());
+                                    accuracyHits.put(tier, (long) stats.hits);
                                 }
                             }
 
                             Long shots = accuracyShots.get(tier);
                             BatteryStats statsShots = s.getMainBattery();
-                            if (statsShots.getShots() > 0) {
+                            if (statsShots.shots > 0) {
                                 if (shots != null) {
-                                    accuracyShots.put(tier, shots + statsShots.getShots());
+                                    accuracyShots.put(tier, shots + statsShots.shots);
                                 } else {
-                                    accuracyShots.put(tier, (long) statsShots.getShots());
+                                    accuracyShots.put(tier, (long) statsShots.shots);
                                 }
                             }
 
@@ -312,7 +312,7 @@ public class CaptainGraphsFragment extends CAFragment {
                     }
 
                     ShipCompare compare = new ShipCompare();
-                    compare.setShipsHolder(shipsHolder);
+                    compare.shipsHolder = shipsHolder;
 
                     List<Ship> shipsClone = new ArrayList<>();
                     for (Ship s : captain.getShips()) {
@@ -405,8 +405,8 @@ public class CaptainGraphsFragment extends CAFragment {
                             name = info.getName();
 
                         averageAccuracyTen.names.add(name);
-                        float shots = s.getMainBattery().getShots();
-                        float hits = s.getMainBattery().getHits();
+                        float shots = s.getMainBattery().shots;
+                        float hits = s.getMainBattery().hits;
                         if (shots > 0)
                             averageAccuracyTen.data.add((hits / shots) * 100f);
                     }

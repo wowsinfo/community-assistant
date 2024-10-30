@@ -124,7 +124,7 @@ public class ShipsAdapter extends RecyclerView.Adapter<ShipsAdapter.ShipViewHold
 //        }
 //        Dlog.d("Sort1", sb.toString());
 
-        compare.setShipsHolder(CAApp.getInfoManager().getShipInfo(ctx));
+        compare.shipsHolder = CAApp.getInfoManager().getShipInfo(ctx);
         try {
             switch (i) {
                 case 0: //Battles
@@ -265,7 +265,7 @@ public class ShipsAdapter extends RecyclerView.Adapter<ShipsAdapter.ShipViewHold
         @Override
         public void onClick(View v) {
             CAApp.getEventBus().post(new ShipClickedEvent(ship));
-            CAApp.setLastShipPos(pos);
+            CAApp.lastShipPos = pos;
         }
     }
 

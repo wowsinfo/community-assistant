@@ -363,15 +363,15 @@ public class ShipFragment extends Fragment {
                     BatteryStats torpStats = ship.getTorpedoes();
                     BatteryStats aircraftStats = ship.getAircraft();
 
-                    tvBatteryMain.setText("" + mainBatteryStats.getFrags());
-                    if (mainBatteryStats.getShots() > 0)
-                        tvBatteryAccMain.setText(Utils.getOneDepthDecimalFormatter().format(mainBatteryStats.getHits() / (float) mainBatteryStats.getShots() * 100) + "%");
-                    tvBatteryTorps.setText("" + torpStats.getFrags());
-                    if (torpStats.getShots() > 0)
-                        tvBatteryAccTorps.setText(Utils.getOneDepthDecimalFormatter().format(torpStats.getHits() / (float) torpStats.getShots() * 100) + "%");
-                    tvBatteryAircraft.setText("" + aircraftStats.getFrags());
+                    tvBatteryMain.setText("" + mainBatteryStats.frags);
+                    if (mainBatteryStats.shots > 0)
+                        tvBatteryAccMain.setText(Utils.getOneDepthDecimalFormatter().format(mainBatteryStats.hits / (float) mainBatteryStats.shots * 100) + "%");
+                    tvBatteryTorps.setText("" + torpStats.frags);
+                    if (torpStats.shots > 0)
+                        tvBatteryAccTorps.setText(Utils.getOneDepthDecimalFormatter().format(torpStats.hits / (float) torpStats.shots * 100) + "%");
+                    tvBatteryAircraft.setText("" + aircraftStats.frags);
 
-                    int others = ship.getFrags() - mainBatteryStats.getFrags() - torpStats.getFrags() - aircraftStats.getFrags();
+                    int others = ship.getFrags() - mainBatteryStats.frags - torpStats.frags - aircraftStats.frags;
                     tvBatteryOther.setText("" + others);
 
                     tvMaxKills.setText("" + ship.getMaxFragsInBattle());
@@ -670,7 +670,7 @@ public class ShipFragment extends Fragment {
                         tvBatteryMain.setText(CaptainRankedFragment.createBatteryString(mainBatteryStats));
                         tvBatteryTorps.setText(CaptainRankedFragment.createBatteryString(torpStats));
                         tvBatteryPlanes.setText(CaptainRankedFragment.createBatteryString(aircraftStats));
-                        int others = season.getFrags() - mainBatteryStats.getFrags() - torpStats.getFrags() - aircraftStats.getFrags();
+                        int others = season.getFrags() - mainBatteryStats.frags - torpStats.frags - aircraftStats.frags;
                         tvBatteryOther.setText("" + others);
 
                         tvAvgPlanes.setText(Utils.getOneDepthDecimalFormatter().format(season.getPlanesKilled() / bat));

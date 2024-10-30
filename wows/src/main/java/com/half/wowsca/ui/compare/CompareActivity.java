@@ -297,11 +297,11 @@ public class CompareActivity extends CABaseActivity {
     }
 
     private void showMainBatteryStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
-        int num1 = details1.getMainBattery().getFrags();
-        int num2 = details2.getMainBattery().getFrags();
+        int num1 = details1.getMainBattery().frags;
+        int num2 = details2.getMainBattery().frags;
         int num3 = POS_WRONG;
         if (larger)
-            num3 = details3.getMainBattery().getFrags();
+            num3 = details3.getMainBattery().frags;
         int highestPos = highest(num1, num2, num3);
         if (num3 == POS_WRONG)
             num3 = 0;
@@ -400,11 +400,11 @@ public class CompareActivity extends CABaseActivity {
 //    }
 
     private void showTorpBatteryStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
-        int num1 = details1.getTorpedoes().getFrags();
-        int num2 = details2.getTorpedoes().getFrags();
+        int num1 = details1.getTorpedoes().frags;
+        int num2 = details2.getTorpedoes().frags;
         int num3 = POS_WRONG;
         if (larger)
-            num3 = details3.getTorpedoes().getFrags();
+            num3 = details3.getTorpedoes().frags;
         int highestPos = highest(num1, num2, num3);
         if (num3 == POS_WRONG)
             num3 = 0;
@@ -412,11 +412,11 @@ public class CompareActivity extends CABaseActivity {
     }
 
     private void showPlaneStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
-        int battles1 = details1.getAircraft().getFrags();
-        int battles2 = details2.getAircraft().getFrags();
+        int battles1 = details1.getAircraft().frags;
+        int battles2 = details2.getAircraft().frags;
         int battles3 = POS_WRONG;
         if (larger)
-            battles3 = details3.getAircraft().getFrags();
+            battles3 = details3.getAircraft().frags;
         int highestPos = highest(battles1, battles2, battles3);
         if (battles3 == POS_WRONG)
             battles3 = 0;
@@ -424,11 +424,11 @@ public class CompareActivity extends CABaseActivity {
     }
 
     private void showOtherKillStats(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
-        int battles1 = details1.getFrags() - details1.getAircraft().getFrags() - details1.getTorpedoes().getFrags() - details1.getMainBattery().getFrags();
-        int battles2 = details2.getFrags() - details2.getAircraft().getFrags() - details2.getTorpedoes().getFrags() - details2.getMainBattery().getFrags();
+        int battles1 = details1.getFrags() - details1.getAircraft().frags - details1.getTorpedoes().frags - details1.getMainBattery().frags;
+        int battles2 = details2.getFrags() - details2.getAircraft().frags - details2.getTorpedoes().frags - details2.getMainBattery().frags;
         int battles3 = POS_WRONG;
         if (larger)
-            battles3 = details3.getFrags() - details3.getAircraft().getFrags() - details3.getTorpedoes().getFrags() - details3.getMainBattery().getFrags();
+            battles3 = details3.getFrags() - details3.getAircraft().frags - details3.getTorpedoes().frags - details3.getMainBattery().frags;
         int highestPos = highest(battles1, battles2, battles3);
         if (battles3 == POS_WRONG)
             battles3 = 0;
@@ -436,21 +436,21 @@ public class CompareActivity extends CABaseActivity {
     }
 
     private void showMainBatteryHitRate(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
-        int shots1 = details1.getMainBattery().getShots();
-        int shots2 = details2.getMainBattery().getShots();
+        int shots1 = details1.getMainBattery().shots;
+        int shots2 = details2.getMainBattery().shots;
         int shots3 = 0;
         if (larger)
-            shots3 = details3.getMainBattery().getShots();
+            shots3 = details3.getMainBattery().shots;
 
         float wn1 = 0, wn2 = 0, wn3 = POS_WRONG;
         if (shots1 > 0) {
-            wn1 = ((float) details1.getMainBattery().getHits() / shots1) * 100;
+            wn1 = ((float) details1.getMainBattery().hits / shots1) * 100;
         }
         if (shots2 > 0) {
-            wn2 = ((float) details2.getMainBattery().getHits() / shots2) * 100;
+            wn2 = ((float) details2.getMainBattery().hits / shots2) * 100;
         }
         if (shots3 > 0) {
-            wn3 = ((float) details3.getMainBattery().getHits() / shots3) * 100;
+            wn3 = ((float) details3.getMainBattery().hits / shots3) * 100;
         }
 
         int highestPos = highest(wn1, wn2, wn3);
@@ -462,21 +462,21 @@ public class CompareActivity extends CABaseActivity {
     }
 
     private void showTorpHitRate(boolean larger, int layoutId, CaptainDetails details1, CaptainDetails details2, CaptainDetails details3) {
-        int shots1 = details1.getTorpedoes().getShots();
-        int shots2 = details2.getTorpedoes().getShots();
+        int shots1 = details1.getTorpedoes().shots;
+        int shots2 = details2.getTorpedoes().shots;
         int shots3 = 0;
         if (larger)
-            shots3 = details3.getTorpedoes().getShots();
+            shots3 = details3.getTorpedoes().shots;
 
         float wn1 = 0, wn2 = 0, wn3 = POS_WRONG;
         if (shots1 > 0) {
-            wn1 = ((float) details1.getTorpedoes().getHits() / shots1) * 100;
+            wn1 = ((float) details1.getTorpedoes().hits / shots1) * 100;
         }
         if (shots2 > 0) {
-            wn2 = ((float) details2.getTorpedoes().getHits() / shots2) * 100;
+            wn2 = ((float) details2.getTorpedoes().hits / shots2) * 100;
         }
         if (shots3 > 0) {
-            wn3 = ((float) details3.getTorpedoes().getHits() / shots3) * 100;
+            wn3 = ((float) details3.getTorpedoes().hits / shots3) * 100;
         }
 
         int highestPos = highest(wn1, wn2, wn3);

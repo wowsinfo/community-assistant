@@ -335,16 +335,16 @@ public class GetCaptainTask extends AsyncTask<CaptainQuery, Integer, CaptainResu
                                     maxAvgDmg = avgDmg;
                                     maxAvgDmgShipId = s.getShipId();
                                 }
-                                if (s.getMainBattery().getShots() > 0) {
-                                    float mbAcc = s.getMainBattery().getHits() / (float) s.getMainBattery().getShots();
+                                if (s.getMainBattery().shots > 0) {
+                                    float mbAcc = s.getMainBattery().hits / (float) s.getMainBattery().shots;
                                     if (maxMBAccuracy < mbAcc) {
                                         maxMBAccuracy = mbAcc;
                                         maxMBAccuracyShipId = s.getShipId();
                                     }
                                 }
 
-                                if (s.getTorpedoes().getShots() > 0) {
-                                    float tbAcc = s.getTorpedoes().getHits() / (float) s.getTorpedoes().getShots();
+                                if (s.getTorpedoes().shots > 0) {
+                                    float tbAcc = s.getTorpedoes().hits / (float) s.getTorpedoes().shots;
                                     if (maxTBAccuracy < tbAcc) {
                                         maxTBAccuracy = tbAcc;
                                         maxTBAccuracyShipId = s.getShipId();

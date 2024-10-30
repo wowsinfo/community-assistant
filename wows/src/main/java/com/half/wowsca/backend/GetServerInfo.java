@@ -78,9 +78,9 @@ public class GetServerInfo extends AsyncTask<String, Void, ServerResult> {
                     for (int i = 0; i < wot.length(); i++) {
                         JSONObject obj = wot.optJSONObject(i);
                         ServerInfo info = new ServerInfo();
-                        info.setName(obj.optString("server"));
-                        info.setPlayers(obj.optInt("players_online"));
-                        info.setServer(s);
+                        info.name = obj.optString("server");
+                        info.players = obj.optInt("players_online");
+                        info.server = s;
                         result.getWotNumbers().add(info);
                     }
                 }
@@ -88,9 +88,9 @@ public class GetServerInfo extends AsyncTask<String, Void, ServerResult> {
                     for (int i = 0; i < wows.length(); i++) {
                         JSONObject obj = wows.optJSONObject(i);
                         ServerInfo info = new ServerInfo();
-                        info.setName(obj.optString("server"));
-                        info.setPlayers(obj.optInt("players_online"));
-                        info.setServer(s);
+                        info.name = obj.optString("server");
+                        info.players = obj.optInt("players_online");
+                        info.server = s;
                         result.getWowsNumbers().add(info);
                     }
                 }

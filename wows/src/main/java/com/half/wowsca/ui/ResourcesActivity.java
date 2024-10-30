@@ -247,11 +247,11 @@ public class ResourcesActivity extends CABaseActivity {
             int totalWot = 0, totalWoWs = 0;
 
             for (ServerInfo serInfo : serverResult.getWotNumbers()) {
-                totalWot += serInfo.getPlayers();
+                totalWot += serInfo.players;
             }
 
             for (ServerInfo serInfo : serverResult.getWowsNumbers()) {
-                totalWoWs += serInfo.getPlayers();
+                totalWoWs += serInfo.players;
             }
 
             tvWoTServerNumber.setText("" + totalWot);
@@ -367,16 +367,16 @@ public class ResourcesActivity extends CABaseActivity {
         int totalWot = 0, totalWoWs = 0;
 
         for (ServerInfo serInfo : serverResult.getWotNumbers()) {
-            if (serInfo.getServer().ordinal() == s.ordinal()) {
+            if (serInfo.server.ordinal() == s.ordinal()) {
                 currentServerWoT.add(serInfo);
-                totalWot += serInfo.getPlayers();
+                totalWot += serInfo.players;
             }
         }
 
         for (ServerInfo serInfo : serverResult.getWowsNumbers()) {
-            if (serInfo.getServer().ordinal() == s.ordinal()) {
+            if (serInfo.server.ordinal() == s.ordinal()) {
                 currentServerWoWs.add(serInfo);
-                totalWoWs += serInfo.getPlayers();
+                totalWoWs += serInfo.players;
             }
         }
 
@@ -396,14 +396,14 @@ public class ResourcesActivity extends CABaseActivity {
         for (ServerInfo info : currentServerWoT) {
             View server = LayoutInflater.from(getApplicationContext()).inflate(layoutId, wotContainer, false);
             TextView text = server.findViewById(R.id.list_server_text);
-            text.setText(info.getName() + " - " + info.getPlayers());
+            text.setText(info.name + " - " + info.players);
             wotContainer.addView(server);
         }
 
         for (ServerInfo info : currentServerWoWs) {
             View server = LayoutInflater.from(getApplicationContext()).inflate(layoutId, wowsContainer, false);
             TextView text = server.findViewById(R.id.list_server_text);
-            text.setText(info.getName() + " - " + info.getPlayers());
+            text.setText(info.name + " - " + info.players);
             wowsContainer.addView(server);
         }
         llServerContainer.addView(serverInfo);

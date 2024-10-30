@@ -395,10 +395,10 @@ public class CaptainFragment extends CAFragment {
 
                 tvTierAverage.setText(getString(R.string.average_tier) + ": " + Utils.getDefaultDecimalFormatter().format(details.getAverageTier()));
 
-                if (details.getMainBattery().getShots() > 0)
-                    tvMainBatteryAcc.setText(Utils.getOneDepthDecimalFormatter().format(details.getMainBattery().getHits() / (float) details.getMainBattery().getShots() * 100f) + "%");
-                if (details.getTorpedoes().getShots() > 0)
-                    tvTorpAcc.setText(Utils.getOneDepthDecimalFormatter().format(details.getTorpedoes().getHits() / (float) details.getTorpedoes().getShots() * 100f) + "%");
+                if (details.getMainBattery().shots > 0)
+                    tvMainBatteryAcc.setText(Utils.getOneDepthDecimalFormatter().format(details.getMainBattery().hits / (float) details.getMainBattery().shots * 100f) + "%");
+                if (details.getTorpedoes().shots > 0)
+                    tvTorpAcc.setText(Utils.getOneDepthDecimalFormatter().format(details.getTorpedoes().hits / (float) details.getTorpedoes().shots * 100f) + "%");
 
                 tvWins.setText("" + details.getWins());
                 tvLosses.setText("" + details.getLosses());
@@ -559,13 +559,13 @@ public class CaptainFragment extends CAFragment {
         if (captain.getInformation() != null) {
             aPrivateArea.setVisibility(View.VISIBLE);
             CaptainPrivateInformation info = captain.getInformation();
-            int filledSlots = info.getSlots() - info.getEmptySlots();
-            tvPrivateSlots.setText(filledSlots + " / " + info.getSlots());
-            tvPrivateFreeExp.setText(bigNumFormatter.format(info.getFreeExp()));
-            tvPrivateCredits.setText(bigNumFormatter.format(info.getCredits()));
-            tvPrivateGold.setText(bigNumFormatter.format(info.getGold()));
+            int filledSlots = info.slots - info.emptySlots;
+            tvPrivateSlots.setText(filledSlots + " / " + info.slots);
+            tvPrivateFreeExp.setText(bigNumFormatter.format(info.freeExp));
+            tvPrivateCredits.setText(bigNumFormatter.format(info.credits));
+            tvPrivateGold.setText(bigNumFormatter.format(info.gold));
 
-            long battleTimeS = info.getBattleTime();
+            long battleTimeS = info.battleTime;
 
             int battleTimeM = (int) (battleTimeS / 60);
             int battleTimeH = battleTimeM / 60;
@@ -604,7 +604,7 @@ public class CaptainFragment extends CAFragment {
             tvPrivateBattleTime.setText(sb.toString());
 
             Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(info.getPremiumExpiresAt());
+            calendar.setTimeInMillis(info.premiumExpiresAt);
             tvPrivatePremiumExpiresOn.setText(Utils.getDayMonthYearFormatter(tvPrivatePremiumExpiresOn.getContext()).format(calendar.getTime()));
         } else {
             aPrivateArea.setVisibility(View.GONE);

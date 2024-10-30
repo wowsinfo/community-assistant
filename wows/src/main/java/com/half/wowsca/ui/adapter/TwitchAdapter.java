@@ -44,9 +44,9 @@ public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHold
     public void onBindViewHolder(TwitchHolder holder, int position) {
         TwitchObj obj = twitchObjs.get(position);
         UIUtils.setUpCard(holder.view, R.id.twitch_area);
-        holder.title.setText(obj.getName());
-        holder.url = obj.getUrl();
-        holder.name = obj.getName();
+        holder.title.setText(obj.name);
+        holder.url = obj.url;
+        holder.name = obj.name;
 
         if (obj.isLive() == TwitchStatus.LIVE) {
             holder.alert.setText(ctx.getString(R.string.live));
@@ -56,25 +56,25 @@ public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHold
             holder.alert.setText("");
         }
 
-        if (!TextUtils.isEmpty(obj.getStreamName()))
-            holder.status.setText(obj.getStreamName());
+        if (!TextUtils.isEmpty(obj.streamName))
+            holder.status.setText(obj.streamName);
 
-        if (!TextUtils.isEmpty(obj.getLogo())) {
-            Picasso.get().load(obj.getLogo()).resize(800, 600).centerInside().error(R.drawable.ic_missing_image).into(holder.logo);
+        if (!TextUtils.isEmpty(obj.logo)) {
+            Picasso.get().load(obj.logo).resize(800, 600).centerInside().error(R.drawable.ic_missing_image).into(holder.logo);
         }
 
-        if (!TextUtils.isEmpty(obj.getThumbnail())) {
-            Picasso.get().load(obj.getThumbnail()).error(R.drawable.ic_missing_image).into(holder.background);
+        if (!TextUtils.isEmpty(obj.thumbnail)) {
+            Picasso.get().load(obj.thumbnail).error(R.drawable.ic_missing_image).into(holder.background);
         }
         //check for youtube only
-        if (obj.getName().equals("Jammin411")) {
+        if (obj.name.equals("Jammin411")) {
             holder.logo.setImageResource(R.drawable.ic_twitch_wowsreplay_icon);
             holder.background.setImageResource(R.drawable.ic_twitch_wowsreplay);
             holder.url = "http://wowreplays.com/";
             holder.status.setText("");
-        } else if (obj.getName().equals("crysantos") || obj.getName().equals("kamisamurai")) {
+        } else if (obj.name.equals("crysantos") || obj.name.equals("kamisamurai")) {
             holder.youtube.setVisibility(View.GONE);
-        } else if (obj.getName().equals("notser")) {
+        } else if (obj.name.equals("notser")) {
             holder.twitter.setVisibility(View.GONE);
         } else {
             holder.youtube.setVisibility(View.VISIBLE);
@@ -97,7 +97,7 @@ public class TwitchAdapter extends RecyclerView.Adapter<TwitchAdapter.TwitchHold
         Collections.sort(getTwitchObjs(), new Comparator<TwitchObj>() {
             @Override
             public int compare(TwitchObj lhs, TwitchObj rhs) {
-                return lhs.getName().compareToIgnoreCase(rhs.getName());
+                return lhs.name.compareToIgnoreCase(rhs.name);
             }
         });
         Collections.sort(getTwitchObjs(), new Comparator<TwitchObj>() {

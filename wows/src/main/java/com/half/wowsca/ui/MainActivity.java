@@ -294,7 +294,7 @@ public class MainActivity extends CABaseActivity implements ICaptain {
                                             break;
                                     }
                                     if (i != null) {
-                                        CAApp.setLastShipPos(0);
+                                        CAApp.lastShipPos = 0;
                                         startActivity(i);
                                         drawer.closeDrawer();
                                     }

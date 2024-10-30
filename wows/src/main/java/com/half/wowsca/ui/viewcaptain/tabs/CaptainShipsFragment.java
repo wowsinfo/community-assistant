@@ -108,8 +108,8 @@ public class CaptainShipsFragment extends CAFragment {
                 adapter.notifyDataSetChanged();
             }
 
-            if (recyclerView.getAdapter() != null && CAApp.getLastShipPos() != 0) {
-                recyclerView.scrollToPosition(CAApp.getLastShipPos());
+            if (recyclerView.getAdapter() != null && CAApp.lastShipPos != 0) {
+                recyclerView.scrollToPosition(CAApp.lastShipPos);
             }
             setUpSearching();
             setUpSorting();
@@ -155,7 +155,7 @@ public class CaptainShipsFragment extends CAFragment {
                         }
                         if (adapter != null) {
                             adapter.sort(sortType);
-                            CAApp.setLastShipPos(0);
+                            CAApp.lastShipPos = 0;
                             sSorter.setEnabled(false);
                         } else {
                             Toast.makeText(getContext(), "Oops something went wrong. Refresh the view to fix.", Toast.LENGTH_SHORT).show();

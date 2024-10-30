@@ -53,10 +53,10 @@ public class CaptainRankedFragment extends CAFragment {
 
     public static String createBatteryString(BatteryStats stats) {
         StringBuilder sb = new StringBuilder();
-        sb.append(stats.getFrags());
-        if (stats.getShots() > 0) {
+        sb.append(stats.frags);
+        if (stats.shots > 0) {
             sb.append("\n");
-            sb.append(Utils.getOneDepthDecimalFormatter().format(((float) stats.getHits() / (float) stats.getShots()) * 100) + "%");
+            sb.append(Utils.getOneDepthDecimalFormatter().format(((float) stats.hits / (float) stats.shots) * 100) + "%");
         }
         return sb.toString();
     }
@@ -263,7 +263,7 @@ public class CaptainRankedFragment extends CAFragment {
                     tvBatteryMain.setText(createBatteryString(stats.getMain()));
                     tvBatteryTorps.setText(createBatteryString(stats.getTorps()));
                     tvBatteryAircraft.setText(createBatteryString(stats.getAircraft()));
-                    int otherTotal = stats.getFrags() - stats.getMain().getFrags() - stats.getAircraft().getFrags() - stats.getTorps().getFrags();
+                    int otherTotal = stats.getFrags() - stats.getMain().frags - stats.getAircraft().frags - stats.getTorps().frags;
                     tvBatteryOther.setText(otherTotal + "");
 
                     if (ships != null) {

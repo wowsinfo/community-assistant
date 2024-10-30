@@ -358,10 +358,10 @@ public class CaptainTopShipInfoFragment extends CAFragment {
             BatteryStats torpStats = captain.getDetails().getTorpedoes();
             BatteryStats aircraftStats = captain.getDetails().getAircraft();
 
-            tvArmamentMain.setText("" + mainBatteryStats.getFrags());
-            tvArmamentTorps.setText("" + torpStats.getFrags());
-            tvArmamentAircraft.setText("" + aircraftStats.getFrags());
-            int others = captain.getDetails().getFrags() - mainBatteryStats.getFrags() - torpStats.getFrags() - aircraftStats.getFrags();
+            tvArmamentMain.setText("" + mainBatteryStats.frags);
+            tvArmamentTorps.setText("" + torpStats.frags);
+            tvArmamentAircraft.setText("" + aircraftStats.frags);
+            int others = captain.getDetails().getFrags() - mainBatteryStats.frags - torpStats.frags - aircraftStats.frags;
             tvArmamentOthers.setText("" + others);
             setUpTopArea(captain);
             setUpBatteryInfo(captain);
@@ -506,15 +506,15 @@ public class CaptainTopShipInfoFragment extends CAFragment {
     }
 
     private void setBatteryStatistics(BatteryStats batteryStats, TextView destroyed, TextView hitratio, TextView shots, ImageView imageView, TextView shipName, TextView shipNumber) {
-        destroyed.setText("" + batteryStats.getFrags());
+        destroyed.setText("" + batteryStats.frags);
         float hitRatio = 0;
-        if (batteryStats.getShots() != 0) {
-            hitRatio = (batteryStats.getHits() / (float) batteryStats.getShots()) * 100;
+        if (batteryStats.shots != 0) {
+            hitRatio = (batteryStats.hits / (float) batteryStats.shots) * 100;
         }
         hitratio.setText(Utils.getOneDepthDecimalFormatter().format(hitRatio) + "%");
-        shots.setText("" + batteryStats.getShots());
-        shipNumber.setText("" + batteryStats.getMaxFrags());
-        ShipInfo ship = CAApp.getInfoManager().getShipInfo(getContext()).get(batteryStats.getMaxFragsShipId());
+        shots.setText("" + batteryStats.shots);
+        shipNumber.setText("" + batteryStats.maxFrags);
+        ShipInfo ship = CAApp.getInfoManager().getShipInfo(getContext()).get(batteryStats.maxFragsShipId);
         if (ship != null) {
             UIUtils.setShipImage(imageView, ship);
             shipName.setText(ship.getName());

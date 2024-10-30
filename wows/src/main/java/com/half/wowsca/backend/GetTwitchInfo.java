@@ -39,14 +39,14 @@ public class GetTwitchInfo extends AsyncTask<String, Void, TwitchObj> {
                 JSONObject stream = result.optJSONObject("stream");
                 if (stream != null) {
                     obj.setLive(TwitchStatus.LIVE);
-                    obj.setGamePlaying(stream.optString("game"));
+                    obj.gamePlaying = stream.optString("game");
 
                     JSONObject preview = stream.optJSONObject("preview");
-                    obj.setThumbnail(preview.optString("large"));
+                    obj.thumbnail = preview.optString("large");
 
                     JSONObject channel = stream.optJSONObject("channel");
-                    obj.setLogo(channel.optString("logo"));
-                    obj.setStreamName(channel.optString("status"));
+                    obj.logo = channel.optString("logo");
+                    obj.streamName = channel.optString("status");
 
                 } else {
                     obj.setLive(TwitchStatus.OFFLINE);
@@ -59,8 +59,8 @@ public class GetTwitchInfo extends AsyncTask<String, Void, TwitchObj> {
                         e.printStackTrace();
                     }
                     if (channelInfoFeed != null) {
-                        obj.setThumbnail(channelResult.optString("video_banner"));
-                        obj.setLogo(channelResult.optString("logo"));
+                        obj.thumbnail = channelResult.optString("video_banner");
+                        obj.logo = channelResult.optString("logo");
                     } else {
                     }
                 }
