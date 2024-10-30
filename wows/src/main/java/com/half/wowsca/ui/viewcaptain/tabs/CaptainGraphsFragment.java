@@ -2,12 +2,13 @@ package com.half.wowsca.ui.viewcaptain.tabs;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -33,8 +34,9 @@ import com.half.wowsca.model.events.CaptainReceivedEvent;
 import com.half.wowsca.model.events.ProgressEvent;
 import com.half.wowsca.model.events.RefreshEvent;
 import com.half.wowsca.ui.CAFragment;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.logging.Dlog;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.Collections;

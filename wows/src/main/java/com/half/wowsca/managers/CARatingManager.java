@@ -1,12 +1,7 @@
 package com.half.wowsca.managers;
 
-import com.half.wowsca.model.Captain;
 import com.half.wowsca.model.Ship;
-import com.half.wowsca.model.encyclopedia.items.ShipInfo;
 import com.half.wowsca.model.encyclopedia.items.ShipStat;
-import com.utilities.logging.Dlog;
-
-import java.util.Map;
 
 /**
  * Created by slai4 on 1/17/2016.

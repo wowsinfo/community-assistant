@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-
-
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.managers.CaptainManager;

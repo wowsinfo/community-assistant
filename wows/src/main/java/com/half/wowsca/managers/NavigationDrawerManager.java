@@ -2,7 +2,7 @@ package com.half.wowsca.managers;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import androidx.core.content.ContextCompat;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 

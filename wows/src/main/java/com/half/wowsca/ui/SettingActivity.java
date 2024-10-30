@@ -7,8 +7,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
@@ -29,9 +28,10 @@ import com.half.wowsca.managers.StorageManager;
 import com.half.wowsca.model.enums.Server;
 import com.half.wowsca.model.queries.InfoQuery;
 import com.half.wowsca.model.result.InfoResult;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.preferences.Prefs;
 import com.utilities.views.SwipeBackLayout;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;

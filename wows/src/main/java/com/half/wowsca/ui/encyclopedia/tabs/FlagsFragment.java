@@ -3,17 +3,16 @@ package com.half.wowsca.ui.encyclopedia.tabs;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.core.util.Pair;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
@@ -23,6 +22,7 @@ import com.half.wowsca.model.encyclopedia.items.ExteriorItem;
 import com.half.wowsca.model.events.FlagClickedEvent;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.adapter.FlagsAdapter;
+
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;

@@ -2,9 +2,10 @@ package com.half.wowsca.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.appcompat.widget.Toolbar;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;

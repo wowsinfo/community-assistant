@@ -1,8 +1,9 @@
 package com.half.wowsca.ui;
 
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import android.view.View;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;

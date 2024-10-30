@@ -1,10 +1,6 @@
 package com.half.wowsca.ui.encyclopedia.tabs;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -18,6 +14,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.managers.CompareManager;
@@ -27,6 +28,7 @@ import com.half.wowsca.model.encyclopedia.items.ShipInfo;
 import com.half.wowsca.model.events.ShipCompareEvent;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.adapter.EncyclopediaAdapter;
+
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;

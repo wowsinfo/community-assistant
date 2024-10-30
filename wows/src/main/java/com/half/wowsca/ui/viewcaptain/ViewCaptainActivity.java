@@ -5,15 +5,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.NumberVault;
@@ -35,11 +34,12 @@ import com.half.wowsca.model.result.CaptainResult;
 import com.half.wowsca.ui.CABaseActivity;
 import com.half.wowsca.ui.UIUtils;
 import com.half.wowsca.ui.viewcaptain.tabs.CaptainShipsFragment;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.Utils;
 import com.utilities.logging.Dlog;
 import com.utilities.preferences.Prefs;
 import com.utilities.views.SwipeBackLayout;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.Map;
 

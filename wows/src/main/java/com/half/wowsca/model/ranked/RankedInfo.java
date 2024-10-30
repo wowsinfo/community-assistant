@@ -2,8 +2,6 @@ package com.half.wowsca.model.ranked;
 
 import org.json.JSONObject;
 
-import java.util.List;
-
 /**
  * Created by slai4 on 11/29/2015.
  */

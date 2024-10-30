@@ -1,8 +1,6 @@
 package com.half.wowsca.ui.views;
 
 import android.content.Context;
-import androidx.gridlayout.widget.GridLayout;
-import androidx.appcompat.widget.PopupMenu;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.PopupMenu;
+import androidx.gridlayout.widget.GridLayout;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;

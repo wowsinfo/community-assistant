@@ -1,20 +1,22 @@
 package com.half.wowsca.ui.compare;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.managers.CompareManager;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.adapter.ShipModuleCompareAdapter;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.logging.Dlog;
+
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by slai47 on 5/21/2017.

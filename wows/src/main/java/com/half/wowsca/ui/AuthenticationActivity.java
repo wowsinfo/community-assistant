@@ -3,7 +3,6 @@ package com.half.wowsca.ui;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -12,6 +11,8 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;

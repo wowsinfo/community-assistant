@@ -1,8 +1,6 @@
 package com.half.wowsca.ui.compare;
 
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -11,6 +9,9 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -35,10 +36,11 @@ import com.half.wowsca.model.encyclopedia.items.ShipInfo;
 import com.half.wowsca.model.result.CaptainResult;
 import com.half.wowsca.ui.CABaseActivity;
 import com.half.wowsca.ui.SettingActivity;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.Utils;
 import com.utilities.preferences.Prefs;
 import com.utilities.views.SwipeBackLayout;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

@@ -1,10 +1,11 @@
 package com.half.wowsca.ui.adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.half.wowsca.ui.views.ShipModuleView;
 

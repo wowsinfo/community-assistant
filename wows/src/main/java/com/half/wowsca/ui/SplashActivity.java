@@ -14,10 +14,11 @@ import com.half.wowsca.backend.GetNeededInfoTask;
 import com.half.wowsca.model.enums.ShortcutRoutes;
 import com.half.wowsca.model.queries.InfoQuery;
 import com.half.wowsca.model.result.InfoResult;
-import org.greenrobot.eventbus.Subscribe;
 import com.squareup.picasso.Picasso;
 import com.utilities.Utils;
 import com.utilities.preferences.Prefs;
+
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by slai4 on 10/31/2015.

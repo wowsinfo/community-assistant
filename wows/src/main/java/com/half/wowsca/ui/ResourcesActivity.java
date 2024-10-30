@@ -3,9 +3,6 @@ package com.half.wowsca.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.backend.GetServerInfo;
@@ -27,10 +28,11 @@ import com.half.wowsca.model.enums.Server;
 import com.half.wowsca.model.enums.TwitchStatus;
 import com.half.wowsca.model.result.ServerResult;
 import com.half.wowsca.ui.adapter.TwitchAdapter;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.logging.Dlog;
 import com.utilities.preferences.Prefs;
 import com.utilities.views.SwipeBackLayout;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;

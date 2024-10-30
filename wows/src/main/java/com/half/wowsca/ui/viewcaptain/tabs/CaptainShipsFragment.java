@@ -1,9 +1,6 @@
 package com.half.wowsca.ui.viewcaptain.tabs;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -17,6 +14,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
 import com.half.wowsca.interfaces.ICaptain;
@@ -28,9 +29,10 @@ import com.half.wowsca.model.events.ScrollToEvent;
 import com.half.wowsca.model.events.SortingDoneEvent;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.adapter.ShipsAdapter;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.logging.Dlog;
 import com.utilities.preferences.Prefs;
+
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by slai4 on 9/15/2015.

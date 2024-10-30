@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -23,7 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
@@ -40,10 +39,11 @@ import com.half.wowsca.ui.adapter.CompareAdapter;
 import com.half.wowsca.ui.adapter.SearchAdapter;
 import com.half.wowsca.ui.compare.CompareActivity;
 import com.half.wowsca.ui.viewcaptain.ViewCaptainActivity;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.Utils;
 import com.utilities.logging.Dlog;
 import com.utilities.views.SwipeBackLayout;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;

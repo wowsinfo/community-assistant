@@ -3,8 +3,6 @@ package com.half.wowsca.ui.viewcaptain.tabs;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
@@ -29,6 +28,7 @@ import com.half.wowsca.model.events.RefreshEvent;
 import com.half.wowsca.model.saveobjects.SavedAchievements;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.adapter.AchievementsAdapter;
+
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;

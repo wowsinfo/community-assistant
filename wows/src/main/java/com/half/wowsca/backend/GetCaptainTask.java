@@ -5,9 +5,6 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
-
-
-
 import com.half.wowsca.CAApp;
 import com.half.wowsca.managers.CARatingManager;
 import com.half.wowsca.model.Achievement;

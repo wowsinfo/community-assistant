@@ -1,8 +1,9 @@
 package com.half.wowsca.ui;
 
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.half.wowsca.R;
 import com.half.wowsca.managers.CARatingManager;

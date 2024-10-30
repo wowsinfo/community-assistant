@@ -1,11 +1,11 @@
 package com.half.wowsca.model.result;
 
+import com.half.wowsca.model.encyclopedia.holders.CaptainSkillHolder;
+import com.half.wowsca.model.encyclopedia.holders.ExteriorHolder;
 import com.half.wowsca.model.encyclopedia.items.AchievementInfo;
 import com.half.wowsca.model.encyclopedia.items.EquipmentInfo;
-import com.half.wowsca.model.encyclopedia.holders.ExteriorHolder;
 import com.half.wowsca.model.encyclopedia.items.ShipInfo;
 import com.half.wowsca.model.encyclopedia.items.ShipStat;
-import com.half.wowsca.model.encyclopedia.holders.CaptainSkillHolder;
 
 import java.util.Map;
 

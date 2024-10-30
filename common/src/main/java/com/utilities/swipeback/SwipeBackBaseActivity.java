@@ -3,9 +3,11 @@ package com.utilities.swipeback;
 /**
  * Created by slai4 on 4/17/2016.
  */
+
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.half.common.R;
 import com.utilities.views.SwipeBackLayout;

@@ -5,11 +5,11 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.half.wowsca.model.encyclopedia.holders.AchievementsHolder;
+import com.half.wowsca.model.encyclopedia.holders.CaptainSkillHolder;
+import com.half.wowsca.model.encyclopedia.holders.ExteriorHolder;
 import com.half.wowsca.model.encyclopedia.holders.ShipsHolder;
 import com.half.wowsca.model.encyclopedia.holders.UpgradeHolder;
-import com.half.wowsca.model.encyclopedia.holders.ExteriorHolder;
 import com.half.wowsca.model.encyclopedia.holders.WarshipsStats;
-import com.half.wowsca.model.encyclopedia.holders.CaptainSkillHolder;
 import com.utilities.logging.Dlog;
 import com.utilities.preferences.Prefs;
 

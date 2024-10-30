@@ -3,7 +3,6 @@ package com.half.wowsca.backend;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 
-
 import com.half.wowsca.CAApp;
 import com.half.wowsca.model.Captain;
 import com.half.wowsca.model.queries.SearchQuery;

@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
@@ -21,9 +22,10 @@ import com.half.wowsca.model.events.ShipCompareEvent;
 import com.half.wowsca.ui.CABaseActivity;
 import com.half.wowsca.ui.adapter.pager.ShipopediaPager;
 import com.half.wowsca.ui.compare.ShipCompareActivity;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.views.SlidingTabLayout;
 import com.utilities.views.SwipeBackLayout;
+
+import org.greenrobot.eventbus.Subscribe;
 
 
 /**

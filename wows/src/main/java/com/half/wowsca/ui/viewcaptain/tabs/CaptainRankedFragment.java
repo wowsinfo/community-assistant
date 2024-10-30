@@ -3,14 +3,15 @@ package com.half.wowsca.ui.viewcaptain.tabs;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
@@ -28,9 +29,10 @@ import com.half.wowsca.model.ranked.SeasonInfo;
 import com.half.wowsca.model.ranked.SeasonStats;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.UIUtils;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.Utils;
 import com.utilities.logging.Dlog;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

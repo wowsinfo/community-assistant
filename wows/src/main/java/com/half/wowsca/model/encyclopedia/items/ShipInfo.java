@@ -2,8 +2,6 @@ package com.half.wowsca.model.encyclopedia.items;
 
 import android.text.TextUtils;
 
-import com.utilities.logging.Dlog;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 

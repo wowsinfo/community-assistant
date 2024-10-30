@@ -1,12 +1,13 @@
 package com.half.wowsca.ui.compare;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.half.wowsca.CAApp;
@@ -18,6 +19,7 @@ import com.half.wowsca.model.encyclopedia.holders.ShipsHolder;
 import com.half.wowsca.model.encyclopedia.items.ShipStat;
 import com.half.wowsca.ui.CAFragment;
 import com.half.wowsca.ui.adapter.ShipsCompareAdapter;
+
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;

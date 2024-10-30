@@ -4,10 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -18,7 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -75,10 +74,11 @@ import com.half.wowsca.ui.UIUtils;
 import com.half.wowsca.ui.adapter.AveragesAdapter;
 import com.half.wowsca.ui.views.NonScrollableGridView;
 import com.half.wowsca.ui.views.RadarMarkerView;
-import org.greenrobot.eventbus.Subscribe;
 import com.utilities.Utils;
 import com.utilities.logging.Dlog;
 import com.utilities.preferences.Prefs;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;

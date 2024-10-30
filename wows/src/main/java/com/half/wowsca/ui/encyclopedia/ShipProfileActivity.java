@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,7 +17,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
@@ -36,12 +35,12 @@ import com.half.wowsca.model.queries.ShipQuery;
 import com.half.wowsca.model.result.ShipResult;
 import com.half.wowsca.ui.CABaseActivity;
 import com.half.wowsca.ui.UIUtils;
-import org.greenrobot.eventbus.Subscribe;
 import com.squareup.picasso.Picasso;
 import com.utilities.Utils;
 import com.utilities.logging.Dlog;
 import com.utilities.views.SwipeBackLayout;
 
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;

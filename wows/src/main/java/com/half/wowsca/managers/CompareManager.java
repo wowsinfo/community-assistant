@@ -2,8 +2,9 @@ package com.half.wowsca.managers;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import androidx.collection.LongSparseArray;
 import android.widget.Toast;
+
+import androidx.collection.LongSparseArray;
 
 import com.half.wowsca.CAApp;
 import com.half.wowsca.R;
