@@ -1,4 +1,4 @@
-package com.utilities.vaults;
+package com.utilities.vaults
 
 
 /**
@@ -6,6 +6,4 @@ package com.utilities.vaults;
  *
  * @author Obsidian47
  */
-public class NumberVault {
-
-}
+class NumberVault
