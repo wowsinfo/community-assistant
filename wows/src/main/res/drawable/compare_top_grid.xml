@@ -3,7 +3,7 @@
     android:shape="rectangle">
 
     <stroke
-        android:color="@color/compare_highest"
-        android:width="2dp" />
+        android:width="2dp"
+        android:color="@color/compare_highest" />
 
 </shape>

@@ -6,37 +6,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text=""
             android:id="@+id/list_average_title"
-            android:layout_marginTop="3dp"
-            android:singleLine="true" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginTop="3dp"
+            android:singleLine="true"
             android:text=""
-            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
             android:id="@+id/list_average_avg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/list_average_mid_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:singleLine="true"
             android:text=""
-            android:id="@+id/list_average_mid_text"
-            android:singleLine="true" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <!--<TextView-->
         <!--android:layout_width="wrap_content"-->

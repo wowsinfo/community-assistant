@@ -14,18 +14,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="5dp"
+            android:orientation="vertical"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_gravity="center"
-                android:text="@string/armament_use"
                 android:layout_marginBottom="3dp"
+                android:text="@string/armament_use"
+                android:textAppearance="?android:attr/textAppearanceMedium"
 
                 />
 
@@ -44,90 +44,90 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_turret"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_turret" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text=""
                         android:id="@+id/fragment_ship_battery_kills_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="3dp" />
+                        android:layout_marginTop="3dp"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_torps"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_torps" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text=""
                         android:id="@+id/fragment_ship_battery_kills_torps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="3dp" />
+                        android:layout_marginTop="3dp"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_aircraft"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_aircraft" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text=""
                         android:id="@+id/fragment_ship_battery_kills_aircraft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="3dp" />
+                        android:layout_marginTop="3dp"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_destroyed_other"
                         android:layout_gravity="center"
-                        android:scaleType="fitXY" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_destroyed_other" />
 
                     <TextView
+                        android:id="@+id/fragment_ship_battery_kills_other"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text=""
-                        android:id="@+id/fragment_ship_battery_kills_other"
                         android:layout_gravity="center"
-                        android:layout_marginTop="3dp" />
+                        android:layout_marginTop="3dp"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -136,15 +136,15 @@
 
 
         <LinearLayout
+            android:id="@+id/fragment_ship_saved_chart_area"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:id="@+id/fragment_ship_saved_chart_area"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            >
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -152,129 +152,124 @@
                 android:weightSum="1.0">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dip"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:clickable="true"
                     android:id="@+id/fragment_ship_saved_chart_damage_area"
-                    android:padding="10dp"
-                    >
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
+                        android:id="@+id/fragment_ship_saved_chart_damage_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_crosshair"
-                        android:id="@+id/fragment_ship_saved_chart_damage_iv" />
+                        android:src="@drawable/ic_crosshair" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dip"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:clickable="true"
                     android:id="@+id/fragment_ship_saved_chart_battles_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:padding="10dp">
 
                     <ImageView
+                        android:id="@+id/fragment_ship_saved_chart_battles_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_battles"
-                        android:id="@+id/fragment_ship_saved_chart_battles_iv" />
+                        android:src="@drawable/ic_battles" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dip"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:clickable="true"
                     android:id="@+id/fragment_ship_saved_chart_experience_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:padding="10dp">
 
                     <ImageView
+                        android:id="@+id/fragment_ship_saved_chart_avg_exp_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_experience"
-                        android:id="@+id/fragment_ship_saved_chart_avg_exp_iv" />
+                        android:src="@drawable/ic_experience" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dip"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:clickable="true"
                     android:id="@+id/fragment_ship_saved_chart_winning_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:padding="10dp">
 
                     <ImageView
+                        android:id="@+id/fragment_ship_saved_chart_win_rate_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_winning"
-                        android:id="@+id/fragment_ship_saved_chart_win_rate_iv" />
+                        android:src="@drawable/ic_winning" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/fragment_ship_saved_chart_kills_area"
                     android:layout_width="wrap_content"
                     android:layout_height="0dip"
                     android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:clickable="true"
-                    android:id="@+id/fragment_ship_saved_chart_kills_area"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:padding="10dp">
 
                     <ImageView
+                        android:id="@+id/fragment_ship_saved_chart_k_d_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_explosion"
-                        android:id="@+id/fragment_ship_saved_chart_k_d_iv" />
+                        android:src="@drawable/ic_explosion" />
 
                 </LinearLayout>
             </LinearLayout>
+
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/captain_top_background"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                />
+                android:background="@color/captain_top_background" />
 
             <LinearLayout
+                android:id="@+id/fragment_ship_saved_chart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/fragment_ship_saved_chart"
                 android:layout_gravity="center_vertical"
-                >
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/fragment_ship_saved_chart_graph_topical_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/average_experience"
-                    android:id="@+id/fragment_ship_saved_chart_graph_topical_text"
-                    android:textColor="@color/white"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="3dp"
-                    />
+                    android:text="@string/average_experience"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/white" />
 
                 <com.github.mikephil.charting.charts.LineChart
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/graph_size"
                     android:id="@+id/fragment_ship_saved_chart_graph_topical_line"
-                    >
-                </com.github.mikephil.charting.charts.LineChart>
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/graph_size"></com.github.mikephil.charting.charts.LineChart>
             </LinearLayout>
         </LinearLayout>
 
@@ -284,71 +279,71 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/general_stats"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center" />
+            android:text="@string/general_stats"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!--general stats-->
         <include layout="@layout/snippet_ship_general_stats" />
 
         <LinearLayout
+            android:id="@+id/fragment_ship_ranked_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/fragment_ship_ranked_area"
             android:padding="5dp"
             android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/ranked_stats"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_gravity="center" />
+                android:text="@string/ranked_stats"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <LinearLayout
+                android:id="@+id/fragment_ship_ranked_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/fragment_ship_ranked_container"
-                android:layout_marginBottom="20dp"></LinearLayout>
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"></LinearLayout>
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/fragment_ship_game_mode_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/game_mode_statistics"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/fragment_ship_game_mode_title"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:text="@string/game_mode_statistics"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/games_per_gamemode"
-            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:text="@string/games_per_gamemode"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white" />
 
         <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/fragment_ship_graphs_games_per_mode"
             android:layout_width="match_parent"
             android:layout_height="@dimen/graph_size"
-            android:id="@+id/fragment_ship_graphs_games_per_mode"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin">
 
         </com.github.mikephil.charting.charts.PieChart>
 
         <LinearLayout
+            android:id="@+id/fragment_ship_other_stats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/fragment_ship_other_stats"
             android:padding="5dp"></LinearLayout>
 
     </LinearLayout>

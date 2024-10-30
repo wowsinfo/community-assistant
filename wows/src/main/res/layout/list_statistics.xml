@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/list_statistics_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/list_statistics_area"
-        android:layout_marginBottom="15dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        >
+        android:layout_marginBottom="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
 
             <TextView
+                android:id="@+id/list_statistics_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/list_statistics_title"
-                android:text=""
                 android:layout_marginTop="3dp"
                 android:padding="3dp"
-                />
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/list_divider_color"
                 android:layout_marginTop="5dp"
-                />
+                android:background="@color/list_divider_color" />
 
             <!-- Top score area-->
             <LinearLayout
@@ -45,122 +41,122 @@
                 android:weightSum="1.0">
 
                 <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:clickable="true"
                     android:id="@+id/list_statistics_damage_area"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">
 
                     <ImageView
+                        android:id="@+id/captain_damage_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_crosshair"
-                        android:id="@+id/captain_damage_iv" />
+                        android:src="@drawable/ic_crosshair" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/list_statistics_avg_dmg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:clickable="true"
                     android:id="@+id/captain_battles_area"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">
 
                     <ImageView
+                        android:id="@+id/captain_battles_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_battles"
-                        android:id="@+id/captain_battles_iv" />
+                        android:src="@drawable/ic_battles" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/list_statistics_battles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:clickable="true"
                     android:id="@+id/captain_experience_area"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">
 
                     <ImageView
+                        android:id="@+id/captain_avg_exp_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_experience"
-                        android:id="@+id/captain_avg_exp_iv" />
+                        android:src="@drawable/ic_experience" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/list_statistics_avg_exp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:clickable="true"
                     android:id="@+id/captain_winning_area"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">
 
                     <ImageView
+                        android:id="@+id/captain_win_rate_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_winning"
-                        android:id="@+id/captain_win_rate_iv" />
+                        android:src="@drawable/ic_winning" />
 
                     <TextView
+                        android:id="@+id/list_statistics_win_rate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/list_statistics_win_rate"
                         android:layout_marginTop="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/captain_kills_area"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:clickable="true"
-                    android:id="@+id/captain_kills_area"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">
 
                     <ImageView
+                        android:id="@+id/captain_k_d_iv"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_explosion"
-                        android:id="@+id/captain_k_d_iv" />
+                        android:src="@drawable/ic_explosion" />
 
                     <TextView
+                        android:id="@+id/list_statistics_k_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/list_statistics_k_d"
                         android:layout_marginTop="5dp" />
                 </LinearLayout>
             </LinearLayout>
@@ -171,120 +167,117 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                >
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/kills_by_armament_type"
                     android:layout_gravity="center"
-                    />
+                    android:text="@string/kills_by_armament_type"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="1.0"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    android:weightSum="1.0">
 
                     <LinearLayout
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:orientation="vertical"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp">
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.25"
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_turret"
-                            android:layout_gravity="center"
                             android:id="@+id/list_statistics_battery_kills_main_iv"
-                            />
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_turret" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:id="@+id/list_statistics_battery_kills_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="3dp" />
+                            android:layout_marginTop="3dp"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:orientation="vertical"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp">
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.25"
+                        android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/list_statistics_battery_kills_torps_iv"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_torps"
                             android:layout_gravity="center"
-                            android:id="@+id/list_statistics_battery_kills_torps_iv"/>
+                            android:src="@drawable/ic_torps" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:id="@+id/list_statistics_battery_kills_torps"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="3dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dip"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:orientation="vertical"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_aircraft"
-                            android:layout_gravity="center"
-                            android:id="@+id/list_statistics_battery_kills_aircraft_iv"/>
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:id="@+id/list_statistics_battery_kills_aircraft"
                             android:layout_gravity="center"
-                            android:layout_marginTop="3dp" />
+                            android:layout_marginTop="3dp"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:orientation="vertical"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp">
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.25"
+                        android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/list_statistics_battery_kills_aircraft_iv"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_destroyed_other"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_aircraft" />
+
+                        <TextView
+                            android:id="@+id/list_statistics_battery_kills_aircraft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="3dp"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.25"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/list_statistics_battery_kills_other_iv"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
                             android:layout_gravity="center"
                             android:scaleType="fitXY"
-                            android:id="@+id/list_statistics_battery_kills_other_iv"/>
+                            android:src="@drawable/ic_destroyed_other" />
 
                         <TextView
+                            android:id="@+id/list_statistics_battery_kills_other"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:id="@+id/list_statistics_battery_kills_other"
                             android:layout_gravity="center"
-                            android:layout_marginTop="3dp" />
+                            android:layout_marginTop="3dp"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -294,169 +287,161 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="1.0"
                 android:padding="5dp"
-                >
+                android:weightSum="1.0">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_weight="0.5"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/max_kills"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_max_kills"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_max_kills" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/max_damage"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_max_dmg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_max_dmg" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/max_planes_killed"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_max_planes_killed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_max_planes_killed" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/max_xp"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_max_xp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_max_xp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/survival_rate"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_survival_rate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_survival_rate" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/survived_wins"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_survived_wins"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_survived_wins" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/caps_game"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_captures"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_captures" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginTop="3dp"
                         android:text="@string/total_torp_tanking_damage"
-                        android:layout_marginTop="3dp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_total_torp_argo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text=""
-                        android:id="@+id/list_statistics_total_torp_argo" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginTop="3dp"
                         android:text="@string/total_damage_to_buildings"
-                        android:layout_marginTop="3dp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_total_building"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text=""
-                        android:id="@+id/list_statistics_total_building" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginTop="3dp"
                         android:text="@string/total_suppressions"
-                        android:layout_marginTop="3dp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_total_supressions"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text=""
-                        android:id="@+id/list_statistics_total_supressions" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginTop="3dp"
                         android:text="@string/max_spots"
-                        android:layout_marginTop="3dp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_max_spots"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text=""
-                        android:id="@+id/list_statistics_max_spots" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 </LinearLayout>
 
@@ -464,149 +449,141 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_weight="0.5"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/total_kills"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_kills"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_kills" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/total_damage"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_total_dmg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_total_dmg" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/total_planes_downed"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_planes_downed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_planes_downed" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/total_xp"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_total_xp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_total_xp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/main_battery_accuracy"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_main_battery_accuracy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_main_battery_accuracy" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/torp_accuracy"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_torp_battery_accuracy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_torp_battery_accuracy" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/def_reset_game"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_drp_captures"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="0"
-                        android:id="@+id/list_statistics_drp_captures" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginTop="3dp"
                         android:text="@string/total_tanking_damage"
-                        android:layout_marginTop="3dp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_total_argo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text=""
-                        android:id="@+id/list_statistics_total_argo" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginTop="3dp"
                         android:text="@string/total_spotting_damage"
-                        android:layout_marginTop="3dp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_total_spotting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text=""
-                        android:id="@+id/list_statistics_total_spotting" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginTop="3dp"
                         android:text="@string/total_spots"
-                        android:layout_marginTop="3dp" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/list_statistics_total_spots"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text=""
-                        android:id="@+id/list_statistics_total_spots" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 </LinearLayout>
 

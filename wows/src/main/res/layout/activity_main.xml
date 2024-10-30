@@ -6,8 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <FrameLayout
             android:id="@+id/container"
@@ -16,40 +15,38 @@
             android:layout_below="@+id/toolbar"></FrameLayout>
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:id="@+id/toolbar"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            app:popupTheme="@style/WoWSCAThemeToolbarLightOverflow"
-            >
+            app:popupTheme="@style/WoWSCAThemeToolbarLightOverflow">
 
             <!--<ImageView-->
-                <!--android:layout_width="20dp"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:id="@+id/toolbar_icon"-->
-                <!--android:src="@drawable/ic_thumbs_up"-->
-                <!--android:visibility="gone"-->
-                <!--android:layout_marginLeft="4dp"-->
-                <!--/>-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:id="@+id/toolbar_icon"-->
+            <!--android:src="@drawable/ic_thumbs_up"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_marginLeft="4dp"-->
+            <!--/>-->
 
             <TextView
+                android:id="@+id/toolbar_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/toolbar_text"
-                android:visibility="gone"
                 android:layout_marginLeft="4dp"
                 android:textStyle="bold"
-                />
+                android:visibility="gone" />
 
         </androidx.appcompat.widget.Toolbar>
 
         <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
             android:layout_centerInParent="true"
-            android:visibility="gone"
-            style="?android:attr/progressBarStyle" />
+            android:visibility="gone" />
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

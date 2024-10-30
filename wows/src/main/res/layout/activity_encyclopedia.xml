@@ -4,18 +4,17 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize">
 
         <RelativeLayout
+            android:id="@+id/encyclopedia_tabs"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/encyclopedia_tabs"
-            android:animateLayoutChanges="true"
-            >
+            android:animateLayoutChanges="true">
 
             <com.utilities.views.SlidingTabLayout
                 android:id="@+id/encyclopedia_pager_tab"
@@ -25,43 +24,41 @@
                 android:elevation="6dp" />
 
             <ImageView
+                android:id="@+id/encyclopedia_clear"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/encyclopedia_clear"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/encyclopedia_compare"
-                android:padding="10dp"
-                android:src="@drawable/ic_action_trash"
-                android:visibility="gone"
-                android:clickable="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/encyclopedia_compare"
                 android:background="?android:attr/selectableItemBackground"
-                />
+                android:clickable="true"
+                android:padding="10dp"
+                android:src="@drawable/ic_action_trash"
+                android:visibility="gone" />
 
             <ImageView
+                android:id="@+id/encyclopedia_compare"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/encyclopedia_compare"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:padding="15dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/ic_stats"
-                android:visibility="gone"
-                android:clickable="true"
                 android:background="?android:attr/selectableItemBackground"
-                />
+                android:clickable="true"
+                android:padding="15dp"
+                android:src="@drawable/ic_stats"
+                android:visibility="gone" />
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/encyclopedia_pager"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@id/toolbar">
 
     </androidx.viewpager.widget.ViewPager>

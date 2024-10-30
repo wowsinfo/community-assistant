@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    >
+    android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/list_next_ship_image"
         android:layout_width="125dp"
-        android:layout_height="75dp"
-        android:id="@+id/list_next_ship_image" />
+        android:layout_height="75dp" />
 
     <TextView
+        android:id="@+id/list_next_ship_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
         android:text=""
-        android:id="@+id/list_next_ship_text"
-        android:layout_gravity="center_horizontal" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/white" />
 </LinearLayout>

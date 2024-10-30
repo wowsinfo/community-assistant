@@ -2,26 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.half.wowsca.ui.viewcaptain.ViewCaptainTabbedFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.half.wowsca.ui.viewcaptain.ViewCaptainTabbedFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="1.0"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:gravity="center">
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:weightSum="1.0">
 
         <Spinner
+            android:id="@+id/ships_spinner"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:id="@+id/ships_spinner"
-            android:spinnerMode="dropdown"
             android:layout_weight="0.5"
-            />
+            android:spinnerMode="dropdown" />
 
         <RelativeLayout
             android:layout_width="0dip"
@@ -30,22 +29,22 @@
             android:animateLayoutChanges="true">
 
             <EditText
+                android:id="@+id/ships_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/ships_search"
-                android:imeOptions="actionDone"
-                android:hint="@string/ships_hint" />
+                android:hint="@string/ships_hint"
+                android:imeOptions="actionDone" />
 
             <ImageView
+                android:id="@+id/ships_delete"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:id="@+id/ships_delete"
-                android:padding="10dp"
-                android:src="@drawable/ic_delete"
-                android:clickable="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:clickable="true"
+                android:padding="10dp"
+                android:src="@drawable/ic_delete"
                 android:visibility="gone" />
         </RelativeLayout>
     </LinearLayout>
@@ -54,15 +53,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/white_transparent" />
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ships_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/ships_list" />
+            android:layout_height="match_parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

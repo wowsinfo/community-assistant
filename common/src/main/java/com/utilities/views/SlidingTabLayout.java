@@ -56,38 +56,20 @@ import com.half.common.R;
  * providing the layout ID of your custom layout.
  */
 public class SlidingTabLayout extends HorizontalScrollView {
-    /**
-     * Allows complete control over the colors drawn in the tab layout. Set with
-     * {@link #setCustomTabColorizer(TabColorizer)}.
-     */
-    public interface TabColorizer {
-
-        /**
-         * @return return the color of the indicator used when {@code position} is selected.
-         */
-        int getIndicatorColor(int position);
-
-    }
-
-    private Integer[] mIconResourceArray;
-
     private static final int TITLE_OFFSET_DIPS = 24;
     private static final int TAB_VIEW_PADDING_DIPS = 16;
     private static final int TAB_VIEW_TEXT_SIZE_SP = 12;
-
     private final int mTitleOffset;
-
+    private final SparseArray<String> mContentDescriptions = new SparseArray<String>();
+    private final SlidingTabStrip mTabStrip;
+    private Integer[] mIconResourceArray;
     private int mTabViewLayoutId;
     private int mTabViewTextViewId;
     private boolean mDistributeEvenly;
     private int textColor;
     private int tintColor;
-
     private ViewPager mViewPager;
-    private final SparseArray<String> mContentDescriptions = new SparseArray<String>();
     private ViewPager.OnPageChangeListener mViewPagerPageChangeListener;
-
-    private final SlidingTabStrip mTabStrip;
 
     public SlidingTabLayout(Context context) {
         this(context, null);
@@ -219,7 +201,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
 //                tabImageView = (TextView) tabView;
 //            }
             tabImageView.setImageResource(getIconResourceArray()[i]);
-            if(tintColor != 0){
+            if (tintColor != 0) {
                 tabImageView.setColorFilter(tintColor, PorterDuff.Mode.MULTIPLY);
             }
 
@@ -275,6 +257,35 @@ public class SlidingTabLayout extends HorizontalScrollView {
         }
     }
 
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
+
+    public Integer[] getIconResourceArray() {
+        return mIconResourceArray;
+    }
+
+    public void setIconResourceArray(Integer[] mIconResourceArray) {
+        this.mIconResourceArray = mIconResourceArray;
+    }
+
+    public void setIconTintColor(int tintColor) {
+        this.tintColor = tintColor;
+    }
+
+    /**
+     * Allows complete control over the colors drawn in the tab layout. Set with
+     * {@link #setCustomTabColorizer(TabColorizer)}.
+     */
+    public interface TabColorizer {
+
+        /**
+         * @return return the color of the indicator used when {@code position} is selected.
+         */
+        int getIndicatorColor(int position);
+
+    }
+
     private class InternalViewPagerListener implements ViewPager.OnPageChangeListener {
         private int mScrollState;
 
@@ -324,10 +335,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     }
 
-    public void setTextColor(int textColor) {
-        this.textColor = textColor;
-    }
-
     private class TabClickListener implements OnClickListener {
         @Override
         public void onClick(View v) {
@@ -338,18 +345,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 }
             }
         }
-    }
-
-    public Integer[] getIconResourceArray() {
-        return mIconResourceArray;
-    }
-
-    public void setIconResourceArray(Integer[] mIconResourceArray) {
-        this.mIconResourceArray = mIconResourceArray;
-    }
-
-    public void setIconTintColor(int tintColor){
-        this.tintColor = tintColor;
     }
 
 }

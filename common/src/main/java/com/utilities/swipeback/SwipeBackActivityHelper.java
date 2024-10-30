@@ -13,10 +13,8 @@ import com.utilities.views.SwipeBackLayout;
  */
 public class SwipeBackActivityHelper {
     private final Activity mActivity;
-
-    private SwipeBackLayout mSwipeBackLayout;
-
     private final int resource;
+    private SwipeBackLayout mSwipeBackLayout;
 
     public SwipeBackActivityHelper(Activity activity, int resource) {
         mActivity = activity;

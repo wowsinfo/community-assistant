@@ -66,48 +66,48 @@
 
     <!-- LIGHT THEME -->
     <!--<style name="Theme.CA.Material.Light" parent="MaterialDrawerTheme">-->
-        <!--<item name="colorPrimary">@color/material_primary</item>-->
-        <!--<item name="colorPrimaryDark">@color/material_primary_dark</item>-->
-        <!--<item name="colorAccent">@color/material_accent</item>-->
+    <!--<item name="colorPrimary">@color/material_primary</item>-->
+    <!--<item name="colorPrimaryDark">@color/material_primary_dark</item>-->
+    <!--<item name="colorAccent">@color/material_accent</item>-->
 
-        <!--<item name="android:windowBackground">@color/white</item>-->
-        <!--<item name="android:textColorPrimary">@color/material_text_primary_light</item>-->
-        <!--<item name="android:textColorSecondary">@color/material_text_secondary_light</item>-->
+    <!--<item name="android:windowBackground">@color/white</item>-->
+    <!--<item name="android:textColorPrimary">@color/material_text_primary_light</item>-->
+    <!--<item name="android:textColorSecondary">@color/material_text_secondary_light</item>-->
 
-        <!--<item name="android:divider">@color/material_divider_color</item>-->
-        <!--<item name="android:childDivider">@color/material_divider_color</item>-->
+    <!--<item name="android:divider">@color/material_divider_color</item>-->
+    <!--<item name="android:childDivider">@color/material_divider_color</item>-->
 
-        <!--<item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>-->
-        <!--<item name="colorButtonNormal">@color/material_button_color</item>-->
+    <!--<item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>-->
+    <!--<item name="colorButtonNormal">@color/material_button_color</item>-->
 
-        <!--<item name="android:windowIsTranslucent">true</item>-->
-        <!--&lt;!&ndash;<item name="android:windowActionBarOverlay">true</item>&ndash;&gt;-->
-        <!--&lt;!&ndash;&lt;!&ndash; Support library compatibility &ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;<item name="windowActionBarOverlay">true</item>&ndash;&gt;-->
+    <!--<item name="android:windowIsTranslucent">true</item>-->
+    <!--&lt;!&ndash;<item name="android:windowActionBarOverlay">true</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash; Support library compatibility &ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="windowActionBarOverlay">true</item>&ndash;&gt;-->
 
-        <!--<item name="popupMenuStyle">@style/WoWSCAThemeToolbarLightOverflow</item>-->
-        <!--<item name="android:popupMenuStyle">@style/WoWSCAThemeToolbarLightOverflow</item>-->
-        <!--<item name="android:popupBackground">@color/white</item>-->
-        <!--<item name="textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>-->
-        <!--<item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge-->
-        <!--</item>-->
+    <!--<item name="popupMenuStyle">@style/WoWSCAThemeToolbarLightOverflow</item>-->
+    <!--<item name="android:popupMenuStyle">@style/WoWSCAThemeToolbarLightOverflow</item>-->
+    <!--<item name="android:popupBackground">@color/white</item>-->
+    <!--<item name="textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>-->
+    <!--<item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge-->
+    <!--</item>-->
 
-        <!--<item name="textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>-->
-        <!--<item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall-->
-        <!--</item>-->
+    <!--<item name="textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>-->
+    <!--<item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall-->
+    <!--</item>-->
 
-        <!--&lt;!&ndash; MaterialDrawer specific values &ndash;&gt;-->
-        <!--<item name="material_drawer_background">@color/material_drawer_background</item>-->
-        <!--<item name="material_drawer_primary_text">@color/top_background</item>-->
-        <!--<item name="material_drawer_primary_icon">@color/top_background</item>-->
-        <!--<item name="material_drawer_secondary_text">@color/top_background</item>-->
-        <!--<item name="material_drawer_hint_text">@color/top_background</item>-->
-        <!--<item name="material_drawer_divider">@color/material_divider_color</item>-->
-        <!--<item name="material_drawer_selected">@color/material_drawer_selected</item>-->
-        <!--<item name="material_drawer_selected_text">@color/bottom_background</item>-->
-        <!--<item name="material_drawer_header_selection_text">-->
-            <!--@color/material_drawer_header_selection_text-->
-        <!--</item>-->
+    <!--&lt;!&ndash; MaterialDrawer specific values &ndash;&gt;-->
+    <!--<item name="material_drawer_background">@color/material_drawer_background</item>-->
+    <!--<item name="material_drawer_primary_text">@color/top_background</item>-->
+    <!--<item name="material_drawer_primary_icon">@color/top_background</item>-->
+    <!--<item name="material_drawer_secondary_text">@color/top_background</item>-->
+    <!--<item name="material_drawer_hint_text">@color/top_background</item>-->
+    <!--<item name="material_drawer_divider">@color/material_divider_color</item>-->
+    <!--<item name="material_drawer_selected">@color/material_drawer_selected</item>-->
+    <!--<item name="material_drawer_selected_text">@color/bottom_background</item>-->
+    <!--<item name="material_drawer_header_selection_text">-->
+    <!--@color/material_drawer_header_selection_text-->
+    <!--</item>-->
     <!--</style>-->
 
     <!-- DARK THEME-->
@@ -139,18 +139,23 @@
         </item>
 
         <item name="textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmallDark</item>
-        <item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmallDark</item>
+        <item name="android:textAppearanceSmallPopupMenu">
+            @style/myPopupMenuTextAppearanceSmallDark
+        </item>
 
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_background">@color/material_drawer_dark_background</item>
         <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
         <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
-        <item name="material_drawer_secondary_text">@color/material_drawer_dark_secondary_text</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_dark_secondary_text
+        </item>
         <item name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</item>
         <item name="material_drawer_divider">@color/material_drawer_dark_divider</item>
         <item name="material_drawer_selected">@color/material_drawer_dark_selected</item>
         <item name="material_drawer_selected_text">@color/material_primary</item>
-        <item name="material_drawer_header_selection_text">@color/material_drawer_dark_header_selection_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_dark_header_selection_text
+        </item>
     </style>
 
     <!-- Light Theme && Ocean Theme-->
@@ -159,6 +164,7 @@
         <item name="android:textColorPrimary">@color/material_card_text</item>
         <item name="android:background">@color/material_card_background</item>
     </style>
+
     <style name="WoWSCAThemeToolbarLightOverflow" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- android:textColorPrimary is the  color of the title text
              in the Toolbar, in the Theme.AppCompat theme:  -->
@@ -185,9 +191,11 @@
               even if we define popupTheme for our <Toolbar> -->
         <!-- <item name="android:background">@color/color_primary</item> -->
     </style>
+
     <style name="myPopupMenuTextAppearanceSmall" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
         <item name="android:textColor">@color/top_background</item>
     </style>
+
     <style name="myPopupMenuTextAppearanceLarge" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large">
         <item name="android:textColor">@color/top_background</item>
     </style>
@@ -199,12 +207,15 @@
         <item name="android:textColorPrimary">@color/material_card_background</item>
         <item name="android:background">@color/material_action_bar_dark</item>
     </style>
+
     <style name="myPopupMenuTextAppearanceSmallDark" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="myPopupMenuTextAppearanceLargeDark" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large">
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="WoWSCAThemeToolbarDarkOverflow" parent="Theme.AppCompat.NoActionBar">
         <!-- android:textColorPrimary is the  color of the title text
              in the Toolbar, in the Theme.AppCompat theme:  -->
@@ -229,7 +240,7 @@
         <!-- This would set the toolbar's background color,
               but setting this also changes the popup menu's background,
               even if we define popupTheme for our <Toolbar> -->
-         <!--<item name="android:background">@color/material_background_dark</item>-->
+        <!--<item name="android:background">@color/material_background_dark</item>-->
     </style>
 
 

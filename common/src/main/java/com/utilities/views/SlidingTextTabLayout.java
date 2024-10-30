@@ -53,25 +53,20 @@ import androidx.viewpager.widget.ViewPager;
  */
 public class SlidingTextTabLayout extends HorizontalScrollView {
 
-    private Integer[] mIconResourceArray;
-
     private static final int TITLE_OFFSET_DIPS = 24;
     private static final int TAB_VIEW_PADDING_DIPS = 16;
     private static final int TAB_VIEW_TEXT_SIZE_SP = 12;
-
     private final int mTitleOffset;
-
+    private final SparseArray<String> mContentDescriptions = new SparseArray<String>();
+    private final SlidingTabStrip mTabStrip;
+    private Integer[] mIconResourceArray;
     private int mTabViewLayoutId;
     private int mTabViewTextViewId;
     private boolean mDistributeEvenly;
     private int textColor;
     private int tintColor;
-
     private ViewPager mViewPager;
-    private final SparseArray<String> mContentDescriptions = new SparseArray<String>();
     private ViewPager.OnPageChangeListener mViewPagerPageChangeListener;
-
-    private final SlidingTabStrip mTabStrip;
 
     public SlidingTextTabLayout(Context context) {
         this(context, null);
@@ -256,6 +251,22 @@ public class SlidingTextTabLayout extends HorizontalScrollView {
         }
     }
 
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
+
+    public Integer[] getIconResourceArray() {
+        return mIconResourceArray;
+    }
+
+    public void setIconResourceArray(Integer[] mIconResourceArray) {
+        this.mIconResourceArray = mIconResourceArray;
+    }
+
+    public void setIconTintColor(int tintColor) {
+        this.tintColor = tintColor;
+    }
+
     private class InternalViewPagerListener implements ViewPager.OnPageChangeListener {
         private int mScrollState;
 
@@ -305,10 +316,6 @@ public class SlidingTextTabLayout extends HorizontalScrollView {
 
     }
 
-    public void setTextColor(int textColor) {
-        this.textColor = textColor;
-    }
-
     private class TabClickListener implements OnClickListener {
         @Override
         public void onClick(View v) {
@@ -319,18 +326,6 @@ public class SlidingTextTabLayout extends HorizontalScrollView {
                 }
             }
         }
-    }
-
-    public Integer[] getIconResourceArray() {
-        return mIconResourceArray;
-    }
-
-    public void setIconResourceArray(Integer[] mIconResourceArray) {
-        this.mIconResourceArray = mIconResourceArray;
-    }
-
-    public void setIconTintColor(int tintColor){
-        this.tintColor = tintColor;
     }
 
 }

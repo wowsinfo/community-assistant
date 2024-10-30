@@ -1,59 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/encyclopedia_list_top_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1.0"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:id="@+id/encyclopedia_list_top_area"
         android:background="?attr/colorPrimary"
         android:elevation="6dp"
-        >
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:weightSum="1.0">
 
         <FrameLayout
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:animateLayoutChanges="true"
             android:layout_weight="0.4"
-            >
+            android:animateLayoutChanges="true">
+
             <EditText
+                android:id="@+id/encyclopedia_list_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName|textAutoCorrect"
-                android:id="@+id/encyclopedia_list_et"
+                android:hint="@string/encyclopedia_hint"
                 android:imeOptions="actionDone"
-                android:hint="@string/encyclopedia_hint" />
+                android:inputType="textPersonName|textAutoCorrect" />
 
             <ImageView
+                android:id="@+id/encyclopedia_list_et_delete"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:id="@+id/encyclopedia_list_et_delete"
+                android:layout_gravity="right|center_vertical"
+                android:clickable="true"
                 android:padding="10dp"
                 android:src="@drawable/ic_delete"
-                android:clickable="true"
-                android:layout_gravity="right|center_vertical"
                 android:visibility="gone" />
         </FrameLayout>
 
         <Spinner
+            android:id="@+id/encyclopedia_list_nation_selector"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:id="@+id/encyclopedia_list_nation_selector"
-            android:layout_weight="0.3"
-            />
+            android:layout_weight="0.3" />
 
         <Spinner
+            android:id="@+id/encyclopedia_list_tier_selector"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:id="@+id/encyclopedia_list_tier_selector"
-            android:layout_weight="0.3"
-            />
+            android:layout_weight="0.3" />
 
     </LinearLayout>
 
@@ -64,8 +61,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/encyclopedia_list_listview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -90,12 +86,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:paddingBottom="5dp"
             android:paddingLeft="12dp"
-            android:paddingRight="12dp"
             android:paddingTop="5dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="5dp"
             android:text="@string/long_click_to_add_ship_to_compare_list"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="12dp" />
     </FrameLayout>
 </LinearLayout>

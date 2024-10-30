@@ -393,7 +393,7 @@
     <!--end of optional area-->
 
     <!--This one would be nice to have done.-->
-    <string name="ca_rating_tl_dr" >TL:DR:\n\nIndividual Ship Community Assistant Rating is %1$s damage, %2$s kills and %3$s win rate. Overall Community Assistant Rating is calculated by the summation of (average CA Rating for Tier) * (number games for Tier / total games). Baseline of 1000.</string>
+    <string name="ca_rating_tl_dr">TL:DR:\n\nIndividual Ship Community Assistant Rating is %1$s damage, %2$s kills and %3$s win rate. Overall Community Assistant Rating is calculated by the summation of (average CA Rating for Tier) * (number games for Tier / total games). Baseline of 1000.</string>
 
     <string-array name="themes">
         <item>Ocean</item>

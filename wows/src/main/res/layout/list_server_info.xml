@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:orientation="vertical"
-        android:id="@+id/linearLayout">
+        android:padding="10dp">
 
         <TextView
+            android:id="@+id/server_info_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/server_info_name"
-            android:textColor="@color/white"
-            android:layout_gravity="center" />
+            android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,30 +26,30 @@
             android:weightSum="1.0">
 
             <LinearLayout
+                android:id="@+id/server_info_container_1"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:orientation="vertical"
-                android:id="@+id/server_info_container_1">
+                android:orientation="vertical">
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/server_info_container_2"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:orientation="vertical"
-                android:id="@+id/server_info_container_2">
+                android:orientation="vertical">
 
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
     <View
-        android:layout_height="1dp"
         android:layout_width="match_parent"
-        android:background="@color/list_divider_color"
-        android:layout_below="@+id/linearLayout" />
+        android:layout_height="1dp"
+        android:layout_below="@+id/linearLayout"
+        android:background="@color/list_divider_color" />
 
 
 </RelativeLayout>
