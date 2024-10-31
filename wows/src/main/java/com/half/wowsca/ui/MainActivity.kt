@@ -256,7 +256,7 @@ class MainActivity() : CABaseActivity(), ICaptain {
                 mToolbar,
                 Drawer.OnDrawerItemClickListener { view, position, drawerItem ->
                     if (drawerItem != null) {
-                        val drawerObj: DrawerChild? = drawerItem.tag as DrawerChild
+                        val drawerObj: DrawerChild? = drawerItem.tag as? DrawerChild
                         var i: Intent? = null
                         if (drawerObj != null) {
                             when (drawerObj.type) {
