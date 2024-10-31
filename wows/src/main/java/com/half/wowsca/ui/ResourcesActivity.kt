@@ -242,7 +242,7 @@ class ResourcesActivity : CABaseActivity() {
                 }
             }
         } else {
-            val info = GetServerInfo(applicationContext)
+            val info = GetServerInfo()
             info.execute("")
             serverProgress!!.visibility = View.VISIBLE
             llServerContainer!!.visibility = View.GONE
