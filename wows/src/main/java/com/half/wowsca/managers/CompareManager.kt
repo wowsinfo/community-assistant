@@ -28,7 +28,7 @@ object CompareManager {
      */
     private var SHIPS: MutableList<Long>? = null
     private var SHIP_INFORMATION: LongSparseArray<String>? = null
-    private var MODULE_LIST: LongSparseArray<Map<String, Long>>? = null
+    private var MODULE_LIST: LongSparseArray<MutableMap<String, Long>>? = null
     private var asyncTasks: MutableList<GetShipEncyclopediaInfo>? = null
 
     @JvmStatic
@@ -170,7 +170,7 @@ object CompareManager {
         }
 
     @JvmStatic
-    val moduleList: LongSparseArray<Map<String, Long>>?
+    val moduleList: LongSparseArray<MutableMap<String, Long>>?
         get() {
             if (MODULE_LIST == null) MODULE_LIST = LongSparseArray()
             return MODULE_LIST

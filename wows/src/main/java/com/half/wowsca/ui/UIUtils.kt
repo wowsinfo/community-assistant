@@ -44,78 +44,78 @@ object UIUtils {
 
     @JvmStatic
     fun createReviewDialog(act: Activity) {
-        val prefs = Prefs(act)
-        val hasReviewed = prefs.getBoolean("hasReviewed", false)
-        if (!hasReviewed) {
-            val builder = AlertDialog.Builder(act)
-            builder.setTitle(act.getString(R.string.dialog_review_app))
-            builder.setMessage(act.getString(R.string.dialog_review_message))
-            builder.setPositiveButton(act.getString(R.string.dialog_review_positive)) { dialog, which ->
-                val prefs = Prefs(act)
-                prefs.setBoolean("hasReviewed", true)
-                val url = "https://play.google.com/store/apps/details?id=com.half.wowsca"
-                val i = Intent(Intent.ACTION_VIEW)
-                i.setData(Uri.parse(url))
-                act.startActivity(i)
-                dialog.dismiss()
-            }
-            builder.setNegativeButton(act.getString(R.string.no)) { dialog, which -> dialog.dismiss() }
-            builder.show()
-            CAApp.HAS_SHOWN_FIRST_DIALOG = true
-        }
+//        val prefs = Prefs(act)
+//        val hasReviewed = prefs.getBoolean("hasReviewed", false)
+//        if (!hasReviewed) {
+//            val builder = AlertDialog.Builder(act)
+//            builder.setTitle(act.getString(R.string.dialog_review_app))
+//            builder.setMessage(act.getString(R.string.dialog_review_message))
+//            builder.setPositiveButton(act.getString(R.string.dialog_review_positive)) { dialog, which ->
+//                val prefs = Prefs(act)
+//                prefs.setBoolean("hasReviewed", true)
+//                val url = "https://play.google.com/store/apps/details?id=com.half.wowsca"
+//                val i = Intent(Intent.ACTION_VIEW)
+//                i.setData(Uri.parse(url))
+//                act.startActivity(i)
+//                dialog.dismiss()
+//            }
+//            builder.setNegativeButton(act.getString(R.string.no)) { dialog, which -> dialog.dismiss() }
+//            builder.show()
+//            CAApp.HAS_SHOWN_FIRST_DIALOG = true
+//        }
     }
 
     @JvmStatic
     fun createDonationDialog(act: Activity) {
-        val prefs = Prefs(act)
-        val hasDonated = prefs.getBoolean("hasDonated2", false)
-        if (!hasDonated) {
-            val builder = AlertDialog.Builder(act)
-            builder.setTitle(act.getString(R.string.dialog_assist_title))
-            builder.setMessage(act.getString(R.string.dialog_assist_message))
-            builder.setPositiveButton(act.getString(R.string.patreon)) { dialog, which ->
-                val prefs = Prefs(act)
-                prefs.setBoolean("hasDonated2", true)
-                val url = "https://patreon.com/slai47"
-                val i = Intent(Intent.ACTION_VIEW)
-                i.setData(Uri.parse(url))
-                act.startActivity(i)
-                dialog.dismiss()
-            }
-            builder.setNegativeButton(R.string.dismiss) { dialog, which -> dialog.dismiss() }
-            builder.setNeutralButton(act.getString(R.string.dialog_view_ad)) { dialog, which ->
-                val i = Intent(act.applicationContext, ResourcesActivity::class.java)
-                i.putExtra(ResourcesActivity.EXTRA_TYPE, ResourcesActivity.EXTRA_DONATE)
-                i.putExtra(ResourcesActivity.EXTRA_VIEW_AD, true)
-                act.startActivity(i)
-                dialog.dismiss()
-            }
-            builder.show()
-            CAApp.HAS_SHOWN_FIRST_DIALOG = true
-        }
+//        val prefs = Prefs(act)
+//        val hasDonated = prefs.getBoolean("hasDonated2", false)
+//        if (!hasDonated) {
+//            val builder = AlertDialog.Builder(act)
+//            builder.setTitle(act.getString(R.string.dialog_assist_title))
+//            builder.setMessage(act.getString(R.string.dialog_assist_message))
+//            builder.setPositiveButton(act.getString(R.string.patreon)) { dialog, which ->
+//                val prefs = Prefs(act)
+//                prefs.setBoolean("hasDonated2", true)
+//                val url = "https://patreon.com/slai47"
+//                val i = Intent(Intent.ACTION_VIEW)
+//                i.setData(Uri.parse(url))
+//                act.startActivity(i)
+//                dialog.dismiss()
+//            }
+//            builder.setNegativeButton(R.string.dismiss) { dialog, which -> dialog.dismiss() }
+//            builder.setNeutralButton(act.getString(R.string.dialog_view_ad)) { dialog, which ->
+//                val i = Intent(act.applicationContext, ResourcesActivity::class.java)
+//                i.putExtra(ResourcesActivity.EXTRA_TYPE, ResourcesActivity.EXTRA_DONATE)
+//                i.putExtra(ResourcesActivity.EXTRA_VIEW_AD, true)
+//                act.startActivity(i)
+//                dialog.dismiss()
+//            }
+//            builder.show()
+//            CAApp.HAS_SHOWN_FIRST_DIALOG = true
+//        }
     }
 
     @JvmStatic
     fun createFollowDialog(act: Activity) {
-        val prefs = Prefs(act)
-        val hasFollowed = prefs.getBoolean("hasFollowed", false)
-        if (!hasFollowed) {
-            val builder = AlertDialog.Builder(act)
-            builder.setTitle(act.getString(R.string.dialog_follow_title))
-            builder.setMessage(act.getString(R.string.dialog_follow_message))
-            builder.setPositiveButton("Twitter") { dialog, which ->
-                val prefs = Prefs(act)
-                prefs.setBoolean("hasFollowed", true)
-                val url = "https://twitter.com/slai47"
-                val i = Intent(Intent.ACTION_VIEW)
-                i.setData(Uri.parse(url))
-                act.startActivity(i)
-                dialog.dismiss()
-            }
-            builder.setNegativeButton(R.string.dismiss) { dialog, which -> dialog.dismiss() }
-            builder.show()
-            CAApp.HAS_SHOWN_FIRST_DIALOG = true
-        }
+//        val prefs = Prefs(act)
+//        val hasFollowed = prefs.getBoolean("hasFollowed", false)
+//        if (!hasFollowed) {
+//            val builder = AlertDialog.Builder(act)
+//            builder.setTitle(act.getString(R.string.dialog_follow_title))
+//            builder.setMessage(act.getString(R.string.dialog_follow_message))
+//            builder.setPositiveButton("Twitter") { dialog, which ->
+//                val prefs = Prefs(act)
+//                prefs.setBoolean("hasFollowed", true)
+//                val url = "https://twitter.com/slai47"
+//                val i = Intent(Intent.ACTION_VIEW)
+//                i.setData(Uri.parse(url))
+//                act.startActivity(i)
+//                dialog.dismiss()
+//            }
+//            builder.setNegativeButton(R.string.dismiss) { dialog, which -> dialog.dismiss() }
+//            builder.show()
+//            CAApp.HAS_SHOWN_FIRST_DIALOG = true
+//        }
     }
 
     @JvmStatic

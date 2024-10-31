@@ -84,7 +84,7 @@ class InfoManager {
     }
 
     fun getShipInfo(ctx: Context): ShipsHolder {
-        if (shipInfo == null || (shipInfo!!.items != null && shipInfo!!.items.size == 0)) {
+        if (shipInfo == null || (shipInfo?.items != null && shipInfo?.items?.size == 0)) {
             try {
                 val dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE)
                 val tempStats = File(dir, SHIP_INFO_FILE)
@@ -125,7 +125,7 @@ class InfoManager {
     }
 
     fun getAchievements(ctx: Context): AchievementsHolder {
-        if (achievementInfo == null || (achievementInfo!!.items != null && achievementInfo!!.items.size == 0)) {
+        if (achievementInfo == null || (achievementInfo?.items != null && achievementInfo?.items?.size == 0)) {
             try {
                 val dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE)
                 val tempStats = File(dir, ACHIEVEMENT_INFO_FILE)
@@ -203,7 +203,7 @@ class InfoManager {
     }
 
     fun getUpgrades(ctx: Context): UpgradeHolder {
-        if (upgrades == null || (upgrades!!.items != null && upgrades!!.items.size == 0)) {
+        if (upgrades == null || (upgrades!!.items != null && upgrades?.items?.size == 0)) {
             try {
                 val dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE)
                 val tempStats = File(dir, EQUIPMENT_INFO_FILE)
@@ -244,7 +244,7 @@ class InfoManager {
     }
 
     fun getExteriorItems(ctx: Context): ExteriorHolder {
-        if (exteriorItems == null || (exteriorItems!!.items != null && exteriorItems!!.items.size == 0)) {
+        if (exteriorItems == null || (exteriorItems?.items != null && exteriorItems?.items?.size == 0)) {
             try {
                 val dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE)
                 val tempStats = File(dir, EXTERIOR_ITEMS_FILE)
@@ -285,7 +285,7 @@ class InfoManager {
     }
 
     fun getCaptainSkills(ctx: Context): CaptainSkillHolder {
-        if (captainSkills == null || (captainSkills!!.items != null && captainSkills!!.items.size == 0)) {
+        if (captainSkills == null || (captainSkills?.items != null && captainSkills?.items?.size == 0)) {
             try {
                 val dir = ctx.getDir(CaptainManager.DIRECTORY_NAME, Context.MODE_PRIVATE)
                 val tempStats = File(dir, CAPTAIN_SKILLS_FILE)
