@@ -73,7 +73,7 @@ class CaptainAchievementsFragment : CAFragment() {
                 captainAchievements[achievement.name] = achievement.number
             }
 
-            if (achievementsHolder?.items != null) {
+            if (achievementsHolder.items != null) {
                 for (info in achievementsHolder.items!!.values) {
                     val ach = Achievement()
                     if (info != null) {
@@ -120,7 +120,7 @@ class CaptainAchievementsFragment : CAFragment() {
                 val achievements = getPlayerAchievements(
                     requireContext(), accountId
                 )
-                if (achievements?.savedAchievements != null && achievements.savedAchievements.size > 1 && battleGrid!!.adapter != null) {
+                if (achievements.savedAchievements != null && achievements.savedAchievements.size > 1 && battleGrid!!.adapter != null) {
                     val adapter = battleGrid!!.adapter as AchievementsAdapter
                     val achis = achievements.savedAchievements[1]
                     val mapAchi: MutableMap<String?, Int> = HashMap()

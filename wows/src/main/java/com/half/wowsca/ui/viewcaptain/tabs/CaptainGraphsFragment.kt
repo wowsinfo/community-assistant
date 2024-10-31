@@ -39,7 +39,7 @@ import java.util.Collections
 /**
  * Created by slai4 on 9/15/2015.
  */
-class CaptainGraphsFragment() : CAFragment() {
+class CaptainGraphsFragment : CAFragment() {
     private var chartAverageExperience: BarChart? = null
     private var chartAverageDamage: BarChart? = null
     private var chartAverageWinRate: BarChart? = null
@@ -314,12 +314,12 @@ class CaptainGraphsFragment() : CAFragment() {
                         var i: Int = 0
                         while (i < 10 && i < shipsClone!!.size) {
                             val s: Ship = shipsClone!!.get(i)
-                            val info: ShipInfo? = shipsHolder.get(s.getShipId())
-                            var name: String? = s.getShipId().toString() + ""
-                            if (info != null) name = info.getName()
+                            val info: ShipInfo? = shipsHolder.get(s.shipId)
+                            var name: String? = s.shipId.toString() + ""
+                            if (info != null) name = info.name
 
                             battlesTen.names!!.add(name)
-                            battlesTen.data!!.add(s.getBattles().toFloat())
+                            battlesTen.data!!.add(s.battles.toFloat())
                             i++
                         }
                     }
@@ -331,12 +331,12 @@ class CaptainGraphsFragment() : CAFragment() {
                         var i: Int = 0
                         while (i < 10 && i < shipsClone!!.size) {
                             val s: Ship = shipsClone!!.get(i)
-                            val info: ShipInfo? = shipsHolder.get(s.getShipId())
-                            var name: String? = s.getShipId().toString() + ""
-                            if (info != null) name = info.getName()
+                            val info: ShipInfo? = shipsHolder.get(s.shipId)
+                            var name: String? = s.shipId.toString() + ""
+                            if (info != null) name = info.name
 
                             averageExpTen.names!!.add(name)
-                            averageExpTen.data!!.add((s.getTotalXP() / s.getBattles().toFloat()))
+                            averageExpTen.data!!.add((s.totalXP / s.battles.toFloat()))
                             i++
                         }
                     }
@@ -348,13 +348,13 @@ class CaptainGraphsFragment() : CAFragment() {
                         var i: Int = 0
                         while (i < 10 && i < shipsClone!!.size) {
                             val s: Ship = shipsClone!!.get(i)
-                            val info: ShipInfo? = shipsHolder.get(s.getShipId())
-                            var name: String? = s.getShipId().toString() + ""
-                            if (info != null) name = info.getName()
+                            val info: ShipInfo? = shipsHolder.get(s.shipId)
+                            var name: String? = s.shipId.toString() + ""
+                            if (info != null) name = info.name
 
                             averageDmgTen.names!!.add(name)
                             averageDmgTen.data!!.add(
-                                (s.getTotalDamage() / s.getBattles().toFloat()).toFloat()
+                                (s.totalDamage / s.battles.toFloat()).toFloat()
                             )
                             i++
                         }
@@ -367,14 +367,14 @@ class CaptainGraphsFragment() : CAFragment() {
                         var i: Int = 0
                         while (averageWRTen.names!!.size < 10 && i < shipsClone!!.size) {
                             val s: Ship = shipsClone!!.get(i)
-                            if (s.getBattles() > 4) {
-                                val info: ShipInfo? = shipsHolder.get(s.getShipId())
-                                var name: String? = s.getShipId().toString() + ""
-                                if (info != null) name = info.getName()
+                            if (s.battles > 4) {
+                                val info: ShipInfo? = shipsHolder.get(s.shipId)
+                                var name: String? = s.shipId.toString() + ""
+                                if (info != null) name = info.name
 
                                 averageWRTen.names!!.add(name)
                                 averageWRTen.data!!.add(
-                                    ((s.getWins().toFloat() / s.getBattles().toFloat()) * 100f)
+                                    ((s.wins.toFloat() / s.battles.toFloat()) * 100f)
                                 )
                             }
                             i++
@@ -388,14 +388,14 @@ class CaptainGraphsFragment() : CAFragment() {
                         var i: Int = 0
                         while (i < 10 && i < shipsClone!!.size) {
                             val s: Ship = shipsClone!!.get(i)
-                            val info: ShipInfo? = shipsHolder.get(s.getShipId())
-                            var name: String? = s.getShipId().toString() + ""
-                            if (info != null) name = info.getName()
+                            val info: ShipInfo? = shipsHolder.get(s.shipId)
+                            var name: String? = s.shipId.toString() + ""
+                            if (info != null) name = info.name
 
                             averageKDTen.names!!.add(name)
-                            var deaths: Float = (s.getBattles() - s.getSurvivedBattles()).toFloat()
+                            var deaths: Float = (s.battles - s.survivedBattles).toFloat()
                             if (deaths <= 1) deaths = 1f
-                            val frags: Float = s.getFrags().toFloat()
+                            val frags: Float = s.frags.toFloat()
                             averageKDTen.data!!.add(frags / deaths)
                             i++
                         }
@@ -762,7 +762,7 @@ class CaptainGraphsFragment() : CAFragment() {
         }
     }
 
-    private inner class TopTenObj() {
+    private inner class TopTenObj {
         var names: ArrayList<String?>?
         var data: ArrayList<Float?>?
 

@@ -57,7 +57,7 @@ import com.utilities.logging.Dlog.wtf
 import com.utilities.preferences.Prefs
 import org.greenrobot.eventbus.Subscribe
 
-class MainActivity() : CABaseActivity(), ICaptain {
+class MainActivity : CABaseActivity(), ICaptain {
     private var selectedId: String? = null
 
     private var drawer: Drawer? = null

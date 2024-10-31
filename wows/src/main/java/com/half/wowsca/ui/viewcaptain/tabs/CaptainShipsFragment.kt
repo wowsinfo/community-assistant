@@ -35,7 +35,7 @@ import org.greenrobot.eventbus.Subscribe
 /**
  * Created by slai4 on 9/15/2015.
  */
-class CaptainShipsFragment() : CAFragment() {
+class CaptainShipsFragment : CAFragment() {
     private var sSorter: Spinner? = null
 
     private var etSearch: EditText? = null
@@ -51,7 +51,7 @@ class CaptainShipsFragment() : CAFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_captain_ships, container, false)
         bindView(view)
         return view
@@ -81,55 +81,55 @@ class CaptainShipsFragment() : CAFragment() {
     private fun initView() {
         var captain: Captain? = null
         try {
-            captain = (getActivity() as ICaptain?)!!.getCaptain(getContext())
+            captain = (activity as ICaptain?)!!.getCaptain(context)
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        if (captain != null && captain.getShips() != null) {
+        if (captain != null && captain.ships != null) {
             refreshing(false)
-            sSorter!!.setEnabled(true)
-            etSearch!!.setEnabled(true)
+            sSorter!!.isEnabled = true
+            etSearch!!.isEnabled = true
 
-            if (recyclerView!!.getAdapter() == null) {
+            if (recyclerView!!.adapter == null) {
                 recyclerView!!.setHasFixedSize(false)
 
                 layoutManager =
-                    GridLayoutManager(getContext(), getResources().getInteger(R.integer.ship_rows))
+                    GridLayoutManager(context, resources.getInteger(R.integer.ship_rows))
                 layoutManager!!.setOrientation(GridLayoutManager.VERTICAL)
                 recyclerView!!.setLayoutManager(layoutManager)
 
                 adapter = context?.let { ShipsAdapter(captain.ships, it) }
                 recyclerView!!.setAdapter(adapter)
             } else if (adapter != null) {
-                val pref: Prefs = Prefs(recyclerView!!.getContext())
+                val pref: Prefs = Prefs(recyclerView!!.context)
                 adapter!!.notifyDataSetChanged()
             }
 
-            if (recyclerView!!.getAdapter() != null && CAApp.lastShipPos != 0) {
+            if (recyclerView!!.adapter != null && CAApp.lastShipPos != 0) {
                 recyclerView!!.scrollToPosition(CAApp.lastShipPos)
             }
             setUpSearching()
             setUpSorting()
         } else {
-            if (captain != null && captain.getShips() == null) refreshing(true)
-            sSorter!!.setEnabled(false)
-            etSearch!!.setEnabled(false)
+            if (captain != null && captain.ships == null) refreshing(true)
+            sSorter!!.isEnabled = false
+            etSearch!!.isEnabled = false
         }
     }
 
     private fun setUpSorting() {
-        if (sSorter!!.getAdapter() == null) {
+        if (sSorter!!.adapter == null) {
             spinnerCheck = false
             val sortAdapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(
                 requireActivity(),
                 R.array.ship_sorting,
                 R.layout.ca_spinner_item_trans
             )
-            sortAdapter.setDropDownViewResource(if (!isDarkTheme(sSorter!!.getContext())) R.layout.ca_spinner_item else R.layout.ca_spinner_item_dark)
-            sSorter!!.setAdapter(sortAdapter)
+            sortAdapter.setDropDownViewResource(if (!isDarkTheme(sSorter!!.context)) R.layout.ca_spinner_item else R.layout.ca_spinner_item_dark)
+            sSorter!!.adapter = sortAdapter
             refreshSortingChoice(true)
-            sSorter!!.setEnabled(true)
-            sSorter!!.setEnabled(true)
+            sSorter!!.isEnabled = true
+            sSorter!!.isEnabled = true
             sSorter!!.setOnTouchListener(object : View.OnTouchListener {
                 override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
                     spinnerCheck = true
@@ -137,7 +137,7 @@ class CaptainShipsFragment() : CAFragment() {
                 }
             })
 
-            sSorter!!.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            sSorter!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>,
                     view: View,
@@ -148,21 +148,21 @@ class CaptainShipsFragment() : CAFragment() {
                     if (!spinnerCheck) {
                     } else {
                         val sortType: String = parent.getItemAtPosition(position) as String
-                        val prefs: Prefs = Prefs(getContext())
+                        val prefs: Prefs = Prefs(context)
                         prefs.setString(SAVED_SORT, sortType)
                         try {
                             if (adapter == null) adapter =
-                                recyclerView!!.getAdapter() as ShipsAdapter?
+                                recyclerView!!.adapter as ShipsAdapter?
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
                         if (adapter != null) {
                             adapter!!.sort(sortType)
                             CAApp.lastShipPos = 0
-                            sSorter!!.setEnabled(false)
+                            sSorter!!.isEnabled = false
                         } else {
                             Toast.makeText(
-                                getContext(),
+                                context,
                                 "Oops something went wrong. Refresh the view to fix.",
                                 Toast.LENGTH_SHORT
                             ).show()
@@ -172,17 +172,17 @@ class CaptainShipsFragment() : CAFragment() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
-            })
+            }
         } else {
             refreshSortingChoice(false)
         }
     }
 
     private fun refreshSortingChoice(clearCheck: Boolean) {
-        val prefs: Prefs = Prefs(getContext())
+        val prefs: Prefs = Prefs(context)
         val savedSort: String? = prefs.getString(SAVED_SORT, "")
         if (!TextUtils.isEmpty(savedSort)) {
-            val sortTypes: Array<String> = getResources().getStringArray(R.array.ship_sorting)
+            val sortTypes: Array<String> = resources.getStringArray(R.array.ship_sorting)
             for (i in sortTypes.indices) {
                 if ((sortTypes.get(i) == savedSort)) {
                     if (clearCheck) spinnerCheck = false // because spinners suck
@@ -208,24 +208,24 @@ class CaptainShipsFragment() : CAFragment() {
                 if (adapter != null) {
                     adapter!!.filter(s)
                 }
-                if (!TextUtils.isEmpty(etSearch!!.getText().toString())) {
-                    sSorter!!.setEnabled(false)
-                    delete!!.setVisibility(View.VISIBLE)
+                if (!TextUtils.isEmpty(etSearch!!.text.toString())) {
+                    sSorter!!.isEnabled = false
+                    delete!!.visibility = View.VISIBLE
                 } else {
-                    sSorter!!.setEnabled(true)
-                    delete!!.setVisibility(View.GONE)
+                    sSorter!!.isEnabled = true
+                    delete!!.visibility = View.GONE
                 }
             }
 
             override fun afterTextChanged(s: Editable) {
             }
         })
-        if (!TextUtils.isEmpty(etSearch!!.getText().toString())) {
-            sSorter!!.setEnabled(false)
-            delete!!.setVisibility(View.VISIBLE)
+        if (!TextUtils.isEmpty(etSearch!!.text.toString())) {
+            sSorter!!.isEnabled = false
+            delete!!.visibility = View.VISIBLE
         } else {
-            sSorter!!.setEnabled(true)
-            delete!!.setVisibility(View.GONE)
+            sSorter!!.isEnabled = true
+            delete!!.visibility = View.GONE
         }
     }
 
@@ -238,7 +238,7 @@ class CaptainShipsFragment() : CAFragment() {
     fun onSortDone(event: SortingDoneEvent?) {
         sSorter!!.post(object : Runnable {
             override fun run() {
-                sSorter!!.setEnabled(true)
+                sSorter!!.isEnabled = true
             }
         })
     }
@@ -249,7 +249,7 @@ class CaptainShipsFragment() : CAFragment() {
         adapter = null
         recyclerView!!.setAdapter(null)
         etSearch!!.setText("")
-        sSorter!!.setAdapter(null)
+        sSorter!!.adapter = null
     }
 
     @Subscribe
@@ -265,7 +265,7 @@ class CaptainShipsFragment() : CAFragment() {
     @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         if (mSwipeRefreshLayout != null) {
-            mSwipeRefreshLayout!!.setRefreshing(event.isRefreshing)
+            mSwipeRefreshLayout!!.isRefreshing = event.isRefreshing
         }
     }
 

@@ -25,7 +25,7 @@ class ShipopediaPager(fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
         return f!!
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         var title = ""
         when (position) {
             0 -> title = "Encyclopedia"

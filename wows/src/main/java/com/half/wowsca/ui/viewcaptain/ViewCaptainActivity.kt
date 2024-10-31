@@ -49,7 +49,7 @@ import com.utilities.preferences.Prefs
 import com.utilities.views.SwipeBackLayout
 import org.greenrobot.eventbus.Subscribe
 
-class ViewCaptainActivity() : CABaseActivity(), ICaptain {
+class ViewCaptainActivity : CABaseActivity(), ICaptain {
     private var id: Long = 0
     private var name: String? = null
     private var server: Server? = null
@@ -322,10 +322,6 @@ class ViewCaptainActivity() : CABaseActivity(), ICaptain {
             captain = getCaptains(applicationContext)!![createCapIdStr(server, id)]
         }
         return captain
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
     }
 
     @Subscribe

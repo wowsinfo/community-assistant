@@ -32,7 +32,7 @@ class UpgradesFragment : CAFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = inflater.inflate(R.layout.view_recycler_view, container, false)
         recyclerView = view as RecyclerView
         return view
@@ -42,7 +42,7 @@ class UpgradesFragment : CAFragment() {
         super.onResume()
         eventBus.register(this)
         val holder = infoManager!!.getUpgrades(requireContext())
-        if (holder?.items != null && recyclerView!!.adapter == null) {
+        if (holder.items != null && recyclerView!!.adapter == null) {
             layoutManager =
                 GridLayoutManager(context, resources.getInteger(R.integer.shipopedia_upgrade_grid))
             layoutManager!!.orientation = GridLayoutManager.VERTICAL

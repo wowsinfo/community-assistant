@@ -27,7 +27,7 @@ import java.text.DecimalFormat
 /**
  * Created by slai4 on 1/20/2016.
  */
-class CaptainTopShipInfoFragment() : CAFragment() {
+class CaptainTopShipInfoFragment : CAFragment() {
     private var tvArmamentMain: TextView? = null
     private var tvArmamentTorps: TextView? = null
     private var tvArmamentAircraft: TextView? = null
@@ -156,7 +156,7 @@ class CaptainTopShipInfoFragment() : CAFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_captain_top_ship_info, container, false)
         bindView(view)
         return view
@@ -340,26 +340,26 @@ class CaptainTopShipInfoFragment() : CAFragment() {
     private fun initView() {
         var captain: Captain? = null
         try {
-            captain = (getActivity() as ICaptain?)!!.getCaptain(getContext())
+            captain = (activity as ICaptain?)!!.getCaptain(context)
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        if ((captain != null) && (captain.getDetails() != null) && (captain.getDetails()
-                .getBattles() > 0)
+        if ((captain != null) && (captain.details != null) && (captain.details
+                .battles > 0)
         ) {
             refreshing(false)
 
             //armament used
-            val mainBatteryStats: BatteryStats = captain.getDetails().getMainBattery()
-            val torpStats: BatteryStats = captain.getDetails().getTorpedoes()
-            val aircraftStats: BatteryStats = captain.getDetails().getAircraft()
+            val mainBatteryStats: BatteryStats = captain.details.mainBattery
+            val torpStats: BatteryStats = captain.details.torpedoes
+            val aircraftStats: BatteryStats = captain.details.aircraft
 
-            tvArmamentMain!!.setText("" + mainBatteryStats.frags)
-            tvArmamentTorps!!.setText("" + torpStats.frags)
-            tvArmamentAircraft!!.setText("" + aircraftStats.frags)
-            val others: Int = captain.getDetails()
-                .getFrags() - mainBatteryStats.frags - torpStats.frags - aircraftStats.frags
-            tvArmamentOthers!!.setText("" + others)
+            tvArmamentMain!!.text = "" + mainBatteryStats.frags
+            tvArmamentTorps!!.text = "" + torpStats.frags
+            tvArmamentAircraft!!.text = "" + aircraftStats.frags
+            val others: Int = captain.details
+                .frags - mainBatteryStats.frags - torpStats.frags - aircraftStats.frags
+            tvArmamentOthers!!.text = "" + others
             setUpTopArea(captain)
             setUpBatteryInfo(captain)
         }
@@ -367,174 +367,154 @@ class CaptainTopShipInfoFragment() : CAFragment() {
 
     private fun setUpTopArea(captain: Captain) {
         val highDefImage: Boolean =
-            tvTopKillsName!!.getContext().getResources().getBoolean(R.bool.high_def_images)
+            tvTopKillsName!!.context.resources.getBoolean(R.bool.high_def_images)
 
         //kills
         val topKillsShip: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxFragsInBattleShipId())
+            .get(captain.details.maxFragsInBattleShipId)
         setTopShipImageName(topKillsShip, tvTopKillsName, ivTopKills, highDefImage)
-        tvTopKills!!.setText("" + captain.getDetails().getMaxFragsInBattle())
+        tvTopKills!!.text = "" + captain.details.maxFragsInBattle
 
         //damage
         val topDamageShip: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxDamageShipId())
+            .get(captain.details.maxDamageShipId)
         setTopShipImageName(topDamageShip, tvTopDamageName, ivTopDamage, highDefImage)
-        tvTopDamage!!.setText("" + captain.getDetails().getMaxDamage())
+        tvTopDamage!!.text = "" + captain.details.maxDamage
 
         //xp
         val topXPShip: ShipInfo? =
-            infoManager!!.getShipInfo(requireContext()).get(captain.getDetails().getMaxXPShipId())
+            infoManager!!.getShipInfo(requireContext()).get(captain.details.maxXPShipId)
         setTopShipImageName(topXPShip, tvTopXPName, ivTopXP, highDefImage)
-        tvTopXP!!.setText("" + captain.getDetails().getMaxXP())
+        tvTopXP!!.text = "" + captain.details.maxXP
 
         //planes
         val topPlanesShip: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxPlanesKilledShipId())
+            .get(captain.details.maxPlanesKilledShipId)
         setTopShipImageName(topPlanesShip, tvTopPlanesName, ivTopPlanes, highDefImage)
-        tvTopPlanes!!.setText("" + captain.getDetails().getMaxPlanesKilled())
+        tvTopPlanes!!.text = "" + captain.details.maxPlanesKilled
 
         // survival Rate
         val topSurvivalRate: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxSurvivalRateShipId())
+            .get(captain.details.maxSurvivalRateShipId)
         setTopShipImageName(topSurvivalRate, tvTopSurvivalRateName, ivTopSurvivalRate, highDefImage)
-        tvTopSurvivalRate!!.setText(
-            oneDepthDecimalFormatter.format(
-                (captain.getDetails().getMaxSurvivalRate() * 100).toDouble()
-            ) + "%"
-        )
+        tvTopSurvivalRate!!.text = oneDepthDecimalFormatter.format(
+            (captain.details.maxSurvivalRate * 100).toDouble()
+        ) + "%"
 
         // win rate
         val topWinRate: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxWinRateShipId())
+            .get(captain.details.maxWinRateShipId)
         setTopShipImageName(topWinRate, tvTopWinRateName, ivTopWinRate, highDefImage)
-        tvTopWinRate!!.setText(
-            oneDepthDecimalFormatter.format(
-                (captain.getDetails().getMaxWinRate() * 100).toDouble()
-            ) + "%"
-        )
+        tvTopWinRate!!.text = oneDepthDecimalFormatter.format(
+            (captain.details.maxWinRate * 100).toDouble()
+        ) + "%"
 
         // average dmg
         val topAvgDmg: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxAvgDmgShipId())
+            .get(captain.details.maxAvgDmgShipId)
         setTopShipImageName(topAvgDmg, tvTopAvgDmgName, ivTopAvgDmg, highDefImage)
-        tvTopAvgDmg!!.setText((captain.getDetails().getMaxAvgDmg().toInt()).toString() + "")
+        tvTopAvgDmg!!.text = (captain.details.maxAvgDmg.toInt()).toString() + ""
 
         // total kills
         val topKills: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxTotalKillsShipId())
+            .get(captain.details.maxTotalKillsShipId)
         setTopShipImageName(topKills, tvTopTotalKillsName, ivTopTotalKills, highDefImage)
-        tvTopTotalKills!!.setText(captain.getDetails().getMaxTotalKills().toString() + "")
+        tvTopTotalKills!!.text = captain.details.maxTotalKills.toString() + ""
 
         // total battles
         val topPlayed: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxPlayedShipId())
+            .get(captain.details.maxPlayedShipId)
         setTopShipImageName(topPlayed, tvTopPlayedName, ivTopPlayed, highDefImage)
-        tvTopPlayed!!.setText(captain.getDetails().getMaxPlayed().toString() + "")
+        tvTopPlayed!!.text = captain.details.maxPlayed.toString() + ""
 
         // total planes
         val topPlanes: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxTotalPlanesShipId())
+            .get(captain.details.maxTotalPlanesShipId)
         setTopShipImageName(topPlanes, tvTopTotalPlanesName, ivTopTotalPlanes, highDefImage)
-        tvTopTotalPlanes!!.setText(
-            (captain.getDetails().getMaxTotalPlanes().toInt()).toString() + ""
-        )
+        tvTopTotalPlanes!!.text = (captain.details.maxTotalPlanes.toInt()).toString() + ""
 
         // total damage
         val topDamage: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxTotalDmgShipId())
+            .get(captain.details.maxTotalDmgShipId)
         setTopShipImageName(topDamage, tvTopTotalDmgName, ivTopTotalDmg, highDefImage)
-        tvTopTotalDmg!!.setText((captain.getDetails().getMaxTotalDamage().toInt()).toString() + "")
+        tvTopTotalDmg!!.text = (captain.details.maxTotalDamage.toInt()).toString() + ""
 
         // total exp
         val topXp: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxTotalExpShipId())
+            .get(captain.details.maxTotalExpShipId)
         setTopShipImageName(topXp, tvTopTotalExpName, ivTopTotalExp, highDefImage)
-        tvTopTotalExp!!.setText((captain.getDetails().getMaxTotalExp().toInt()).toString() + "")
+        tvTopTotalExp!!.text = (captain.details.maxTotalExp.toInt()).toString() + ""
 
         // total exp
         val topSurvivedWins: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxSurvivedWinsShipId())
+            .get(captain.details.maxSurvivedWinsShipId)
         setTopShipImageName(topSurvivedWins, tvTopSurvivedWinsName, ivTopSurvivedWins, highDefImage)
-        tvTopSurvivedWins!!.setText(
-            oneDepthDecimalFormatter.format(
-                (captain.getDetails().getMaxSurvivedWins() * 100).toDouble()
-            ) + "%"
-        )
+        tvTopSurvivedWins!!.text = oneDepthDecimalFormatter.format(
+            (captain.details.maxSurvivedWins * 100).toDouble()
+        ) + "%"
 
         // distance
         val topDistanceTraveled: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxMostTraveledShipId())
+            .get(captain.details.maxMostTraveledShipId)
         setTopShipImageName(topDistanceTraveled, tvTopDistanceName, ivTopDistance, highDefImage)
-        val kilos: Float = captain.getDetails().getMaxMostTraveled() * 1.60934f //kilos
+        val kilos: Float = captain.details.maxMostTraveled * 1.60934f //kilos
         val format: DecimalFormat = DecimalFormat("###,###,###")
-        tvTopDistance!!.setText(format.format(kilos.toDouble()) + "km")
+        tvTopDistance!!.text = format.format(kilos.toDouble()) + "km"
 
         // total ca
         val topCARating: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxCARatingShipId())
+            .get(captain.details.maxCARatingShipId)
         setTopShipImageName(topCARating, tvTopCARatingName, ivTopCARating, highDefImage)
-        tvTopCaRating!!.setText((captain.getDetails().getMaxCARating().toInt()).toString() + "")
+        tvTopCaRating!!.text = (captain.details.maxCARating.toInt()).toString() + ""
 
         // total mb accuracy
         val topMBAccRating: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxMBAccuracyShipId())
+            .get(captain.details.maxMBAccuracyShipId)
         setTopShipImageName(topMBAccRating, tvTopMBAccuracyName, ivTopMBAccuracy, highDefImage)
-        tvTopMBAccuracy!!.setText(
-            oneDepthDecimalFormatter.format(
-                (captain.getDetails().getMaxMBAccuracy() * 100).toDouble()
-            ) + "%"
-        )
+        tvTopMBAccuracy!!.text = oneDepthDecimalFormatter.format(
+            (captain.details.maxMBAccuracy * 100).toDouble()
+        ) + "%"
 
         // total tb accuracy
         val topTBAccRating: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxTBAccuracyShipId())
+            .get(captain.details.maxTBAccuracyShipId)
         setTopShipImageName(topTBAccRating, tvTopTBAccuracyName, ivTopTBAccuracy, highDefImage)
-        tvTopTBAccuracy!!.setText(
-            oneDepthDecimalFormatter.format(
-                (captain.getDetails().getMaxTBAccuracy() * 100).toDouble()
-            ) + "%"
-        )
+        tvTopTBAccuracy!!.text = oneDepthDecimalFormatter.format(
+            (captain.details.maxTBAccuracy * 100).toDouble()
+        ) + "%"
 
         val topSpottingRating: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxSpottedShipId())
+            .get(captain.details.maxSpottedShipId)
         setTopShipImageName(topSpottingRating, tvTopSpottedName, ivTopSpotted, highDefImage)
-        tvTopSpotted!!.setText(
-            oneDepthDecimalFormatter.format(
-                captain.getDetails().getMaxSpotted()
-            )
+        tvTopSpotted!!.text = oneDepthDecimalFormatter.format(
+            captain.details.maxSpotted
         )
 
         val topSpottingDamage: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxDamageScoutingShipId())
+            .get(captain.details.maxDamageScoutingShipId)
         setTopShipImageName(
             topSpottingDamage,
             tvTopScoutingDamageName,
             ivTopScoutingDamage,
             highDefImage
         )
-        tvTopScoutingDamage!!.setText(
-            oneDepthDecimalFormatter.format(
-                captain.getDetails().getMaxDamageScouting()
-            )
+        tvTopScoutingDamage!!.text = oneDepthDecimalFormatter.format(
+            captain.details.maxDamageScouting
         )
 
         val topTanking: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxArgoDamageShipId())
+            .get(captain.details.maxArgoDamageShipId)
         setTopShipImageName(topTanking, tvTopTankingName, ivTopTanking, highDefImage)
-        tvTopTanking!!.setText(
-            oneDepthDecimalFormatter.format(
-                captain.getDetails().getMaxTotalArgo()
-            )
+        tvTopTanking!!.text = oneDepthDecimalFormatter.format(
+            captain.details.maxTotalArgo
         )
 
-        d("CaptainTopShip", "torp = " + captain.getDetails().getMaxTorpArgoDamageShipId())
+        d("CaptainTopShip", "torp = " + captain.details.maxTorpArgoDamageShipId)
         val topTropArgo: ShipInfo? = infoManager!!.getShipInfo(requireContext())
-            .get(captain.getDetails().getMaxTorpArgoDamageShipId())
+            .get(captain.details.maxTorpArgoDamageShipId)
         setTopShipImageName(topTropArgo, tvTopTorpTankingName, ivTopTorpTanking, highDefImage)
-        tvTopTorpTanking!!.setText(
-            oneDepthDecimalFormatter.format(
-                captain.getDetails().getMaxTorpTotalArgo()
-            )
+        tvTopTorpTanking!!.text = oneDepthDecimalFormatter.format(
+            captain.details.maxTorpTotalArgo
         )
     }
 
@@ -546,20 +526,20 @@ class CaptainTopShipInfoFragment() : CAFragment() {
     ) {
         if (shipInfo != null) {
             setShipImage((image)!!, shipInfo)
-            shipName!!.setText(shipInfo.getName())
+            shipName!!.text = shipInfo.name
         }
     }
 
     private fun setUpBatteryInfo(captain: Captain) {
         //main battery
         setBatteryStatistics(
-            captain.getDetails().getMainBattery(), tvBatteryMainDestroyed, tvBatteryMainHitRatio,
+            captain.details.mainBattery, tvBatteryMainDestroyed, tvBatteryMainHitRatio,
             tvBatteryMainShots, ivBatteryMain, tvBatteryMainShipName, tvBatteryMainShipNumber
         )
 
         //secondaries
         setBatteryStatistics(
-            captain.getDetails().getSecondaryBattery(),
+            captain.details.secondaryBattery,
             tvBatterySecondaryDestroyed,
             tvBatterySecondaryHitRatio,
             tvBatterySecondaryShots,
@@ -570,13 +550,13 @@ class CaptainTopShipInfoFragment() : CAFragment() {
 
         //torpedoes
         setBatteryStatistics(
-            captain.getDetails().getTorpedoes(), tvBatteryTorpsDestroyed, tvBatteryTorpsHitRatio,
+            captain.details.torpedoes, tvBatteryTorpsDestroyed, tvBatteryTorpsHitRatio,
             tvBatteryTorpsShots, ivBatteryTorps, tvBatteryTorpsShipName, tvBatteryTorpsShipNumber
         )
 
         //aircraft
         setBatteryStatistics(
-            captain.getDetails().getAircraft(),
+            captain.details.aircraft,
             tvBatteryAircraftDestroyed,
             tvBatteryAircraftHitRatio,
             tvBatteryAircraftShots,
@@ -587,7 +567,7 @@ class CaptainTopShipInfoFragment() : CAFragment() {
 
         //ramming
         setBatteryStatistics(
-            captain.getDetails().getRamming(),
+            captain.details.ramming,
             tvBatteryRammingDestroyed,
             tvBatteryRammingHitRatio,
             tvBatteryRammingShots,
@@ -606,22 +586,22 @@ class CaptainTopShipInfoFragment() : CAFragment() {
         shipName: TextView?,
         shipNumber: TextView?
     ) {
-        destroyed!!.setText("" + batteryStats.frags)
+        destroyed!!.text = "" + batteryStats.frags
         var hitRatio: Float = 0f
         if (batteryStats.shots != 0) {
             hitRatio = (batteryStats.hits / batteryStats.shots.toFloat()) * 100
         }
-        hitratio!!.setText(oneDepthDecimalFormatter.format(hitRatio.toDouble()) + "%")
-        shots!!.setText("" + batteryStats.shots)
-        shipNumber!!.setText("" + batteryStats.maxFrags)
+        hitratio!!.text = oneDepthDecimalFormatter.format(hitRatio.toDouble()) + "%"
+        shots!!.text = "" + batteryStats.shots
+        shipNumber!!.text = "" + batteryStats.maxFrags
         val ship: ShipInfo? =
             infoManager!!.getShipInfo(requireContext()).get(batteryStats.maxFragsShipId)
         if (ship != null) {
             setShipImage((imageView)!!, ship)
-            shipName!!.setText(ship.getName())
+            shipName!!.text = ship.name
         } else {
             imageView!!.setImageResource(R.color.transparent)
-            shipNumber.setText("")
+            shipNumber.text = ""
         }
     }
 
@@ -633,12 +613,12 @@ class CaptainTopShipInfoFragment() : CAFragment() {
         shipName: TextView?,
         shipNumber: TextView?
     ) {
-        destroyed!!.setText("")
-        hitratio!!.setText("0%")
-        shots!!.setText("")
-        shipNumber!!.setText("")
+        destroyed!!.text = ""
+        hitratio!!.text = "0%"
+        shots!!.text = ""
+        shipNumber!!.text = ""
         imageView!!.setImageResource(R.color.transparent)
-        shipNumber.setText("")
+        shipNumber.text = ""
     }
 
     override fun onPause() {
@@ -655,10 +635,10 @@ class CaptainTopShipInfoFragment() : CAFragment() {
     fun onRefresh(event: RefreshEvent?) {
         refreshing(true)
 
-        tvArmamentMain!!.setText("")
-        tvArmamentTorps!!.setText("")
-        tvArmamentAircraft!!.setText("")
-        tvArmamentOthers!!.setText("")
+        tvArmamentMain!!.text = ""
+        tvArmamentTorps!!.text = ""
+        tvArmamentAircraft!!.text = ""
+        tvArmamentOthers!!.text = ""
 
         clearTopInfo(ivTopKills, tvTopKillsName, tvTopKills)
         clearTopInfo(ivTopDamage, tvTopDamageName, tvTopDamage)
@@ -728,14 +708,14 @@ class CaptainTopShipInfoFragment() : CAFragment() {
 
     private fun clearTopInfo(iv: ImageView?, tv: TextView?, tv1: TextView?) {
         iv!!.setImageResource(R.color.transparent)
-        tv!!.setText("")
-        tv1!!.setText("")
+        tv!!.text = ""
+        tv1!!.text = ""
     }
 
     @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         if (mSwipeRefreshLayout != null) {
-            mSwipeRefreshLayout!!.setRefreshing(event.isRefreshing)
+            mSwipeRefreshLayout!!.isRefreshing = event.isRefreshing
         }
     }
 }

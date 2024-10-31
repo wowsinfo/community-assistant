@@ -36,7 +36,4 @@ class DefaultFragment : CAFragment() {
         tvText!!.text = getString(R.string.patch_notes) + getString(R.string.update_notes_achieve)
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
 }

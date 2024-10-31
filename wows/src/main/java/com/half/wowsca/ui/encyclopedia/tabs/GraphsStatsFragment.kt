@@ -41,10 +41,6 @@ class GraphsStatsFragment : Fragment() {
         initView()
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
     private fun initView() {
         val headers: MutableList<String> = ArrayList()
         val data: MutableMap<String, List<EncyclopediaChild>> = HashMap()

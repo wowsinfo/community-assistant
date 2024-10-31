@@ -37,7 +37,7 @@ import java.util.Collections
 /**
  * Created by slai4 on 11/29/2015.
  */
-class CaptainRankedFragment() : CAFragment() {
+class CaptainRankedFragment : CAFragment() {
     private var aSeasons: LinearLayout? = null
 
     private var aShips: LinearLayout? = null
@@ -46,7 +46,7 @@ class CaptainRankedFragment() : CAFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_ranked, container, false)
         bindView(view)
         return view
@@ -74,26 +74,26 @@ class CaptainRankedFragment() : CAFragment() {
     private fun initView() {
         var captain: Captain? = null
         try {
-            captain = (getActivity() as ICaptain?)!!.getCaptain(getContext())
+            captain = (activity as ICaptain?)!!.getCaptain(context)
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
-        if ((captain != null) && (captain.getRankedSeasons() != null) && (captain.getShips() != null)) {
-            wtf("Ranked", "seasons = " + captain.getRankedSeasons())
+        if ((captain != null) && (captain.rankedSeasons != null) && (captain.ships != null)) {
+            wtf("Ranked", "seasons = " + captain.rankedSeasons)
             refreshing(false)
-            createSeasonList(aSeasons, captain.getRankedSeasons(), captain.getShips())
+            createSeasonList(aSeasons, captain.rankedSeasons, captain.ships)
         } else {
             aSeasons!!.removeAllViews()
             val view: View =
-                LayoutInflater.from(getContext()).inflate(R.layout.list_season, aSeasons, false)
+                LayoutInflater.from(context).inflate(R.layout.list_season, aSeasons, false)
 
             val aHas: View = view.findViewById(R.id.list_season_has_info)
             val aNo: View = view.findViewById(R.id.list_season_no_info)
             val tvNoInfo: TextView = view.findViewById(R.id.list_season_no_info_text)
-            aNo.setVisibility(View.VISIBLE)
-            aHas.setVisibility(View.GONE)
-            tvNoInfo.setText(getString(R.string.search_no_results))
+            aNo.visibility = View.VISIBLE
+            aHas.visibility = View.GONE
+            tvNoInfo.text = getString(R.string.search_no_results)
             setUpCard(view, R.id.list_season_no_info_card)
 
             aSeasons!!.addView(view)
@@ -109,28 +109,28 @@ class CaptainRankedFragment() : CAFragment() {
 
         Collections.sort(seasons, object : Comparator<RankedInfo> {
             override fun compare(lhs: RankedInfo, rhs: RankedInfo): Int {
-                if (lhs.getSeasonInt() != null && rhs.getSeasonInt() != null) return rhs.getSeasonInt()
-                    .compareTo(lhs.getSeasonInt())
-                else return rhs.getSeasonNum().compareTo(lhs.getSeasonNum(), ignoreCase = true)
+                if (lhs.seasonInt != null && rhs.seasonInt != null) return rhs.seasonInt
+                    .compareTo(lhs.seasonInt)
+                else return rhs.seasonNum.compareTo(lhs.seasonNum, ignoreCase = true)
             }
         })
         val shipMap: MutableMap<String, MutableList<Ship>> = HashMap()
         val seasonMap: MutableMap<String, SeasonStats> = HashMap()
         for (info: RankedInfo in seasons) {
-            shipMap.put(info.getSeasonNum(), ArrayList())
+            shipMap.put(info.seasonNum, ArrayList())
         }
 
         for (s: Ship in ships!!) {
-            if (s.getRankedInfo() != null) {
-                for (info: SeasonInfo in s.getRankedInfo()) {
-                    if (info.getSolo() != null) {
-                        var seasonShips: MutableList<Ship>? = shipMap.get(info.getSeasonNum())
+            if (s.rankedInfo != null) {
+                for (info: SeasonInfo in s.rankedInfo) {
+                    if (info.solo != null) {
+                        var seasonShips: MutableList<Ship>? = shipMap.get(info.seasonNum)
                         if (seasonShips == null) {
                             seasonShips = ArrayList()
-                            shipMap.put(info.getSeasonNum(), seasonShips)
+                            shipMap.put(info.seasonNum, seasonShips)
                         }
                         seasonShips.add(s)
-                        seasonMap.put(info.getSeasonNum() + s.getShipId(), info.getSolo())
+                        seasonMap.put(info.seasonNum + s.shipId, info.solo)
                     }
                 }
             }
@@ -138,7 +138,7 @@ class CaptainRankedFragment() : CAFragment() {
 
         for (info: RankedInfo in seasons) {
             val view: View =
-                LayoutInflater.from(getContext()).inflate(R.layout.list_season, aSeasons, false)
+                LayoutInflater.from(context).inflate(R.layout.list_season, aSeasons, false)
 
             val aHas: View = view.findViewById(R.id.list_season_has_info)
             val aNo: View = view.findViewById(R.id.list_season_no_info)
@@ -176,120 +176,118 @@ class CaptainRankedFragment() : CAFragment() {
             val llShips: LinearLayout = view.findViewById(R.id.list_season_ships_container)
             val ivShipsArea: ImageView = view.findViewById(R.id.list_season_ships_image)
 
-            aShips.setTag(ivShipsArea)
-            aShipsTop.setTag(aShips)
-            if (ivShipsArea.getVisibility() == View.VISIBLE) aShipsTop.setOnClickListener(object :
+            aShips.tag = ivShipsArea
+            aShipsTop.tag = aShips
+            if (ivShipsArea.visibility == View.VISIBLE) aShipsTop.setOnClickListener(object :
                 View.OnClickListener {
                 override fun onClick(v: View) {
-                    val ships: View = v.getTag() as View
-                    val iv: ImageView = ships.getTag() as ImageView
-                    if (ships.getVisibility() == View.VISIBLE) {
+                    val ships: View = v.tag as View
+                    val iv: ImageView = ships.tag as ImageView
+                    if (ships.visibility == View.VISIBLE) {
                         iv.setImageResource(R.drawable.ic_expand)
-                        ships.setVisibility(View.GONE)
+                        ships.visibility = View.GONE
                     } else {
                         iv.setImageResource(R.drawable.ic_collapse)
-                        ships.setVisibility(View.VISIBLE)
+                        ships.visibility = View.VISIBLE
                     }
                 }
             })
 
-            if (info.getSolo() != null) {
-                aHas.setVisibility(View.VISIBLE)
-                aNo.setVisibility(View.GONE)
+            if (info.solo != null) {
+                aHas.visibility = View.VISIBLE
+                aNo.visibility = View.GONE
 
                 setUpCard(view, R.id.list_season_info_card)
 
-                tvRank.setText(info.getRank().toString() + "")
+                tvRank.text = info.rank.toString() + ""
 
-                tvMaxRank.setText(" / " + info.getStartRank())
+                tvMaxRank.text = " / " + info.startRank
 
                 llStars.removeAllViews()
-                for (i in 0 until info.getStars()) {
-                    val iv: ImageView = ImageView(getContext())
+                for (i in 0 until info.stars) {
+                    val iv: ImageView = ImageView(context)
                     val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(30, 30)
-                    iv.setLayoutParams(params)
+                    iv.layoutParams = params
                     iv.setImageResource(R.drawable.ic_star)
-                    iv.setColorFilter(
-                        PorterDuffColorFilter(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.premium_shade
-                            ), PorterDuff.Mode.MULTIPLY
-                        )
+                    iv.colorFilter = PorterDuffColorFilter(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.premium_shade
+                        ), PorterDuff.Mode.MULTIPLY
                     )
                     llStars.addView(iv)
                 }
 
-                tvTitle.setText(getString(R.string.ranked_season) + " " + info.getSeasonNum())
+                tvTitle.text = getString(R.string.ranked_season) + " " + info.seasonNum
 
 
-                val stats: SeasonStats = info.getSolo()
-                val battles: Float = stats.getBattles().toFloat()
+                val stats: SeasonStats = info.solo
+                val battles: Float = stats.battles.toFloat()
                 if (battles > 0) {
-                    val winrate: Float = stats.getWins() / battles * 100
-                    val survival: Float = stats.getSurvived() / battles * 100
-                    val avgDmg: Float = stats.getDamage() / battles
-                    val avgCaps: Float = stats.getCapPts() / battles
-                    val avgResets: Float = stats.getDrpCapPts() / battles
-                    val avgKills: Float = stats.getFrags() / battles
-                    val avgPlanes: Float = stats.getPlanesKilled() / battles
-                    val avgXP: Float = stats.getXp() / battles
+                    val winrate: Float = stats.wins / battles * 100
+                    val survival: Float = stats.survived / battles * 100
+                    val avgDmg: Float = stats.damage / battles
+                    val avgCaps: Float = stats.capPts / battles
+                    val avgResets: Float = stats.drpCapPts / battles
+                    val avgKills: Float = stats.frags / battles
+                    val avgPlanes: Float = stats.planesKilled / battles
+                    val avgXP: Float = stats.xp / battles
 
                     val format: DecimalFormat = DecimalFormat("###,###,###")
-                    tvTopDamage.setText(format.format(stats.getMaxDamage().toLong()))
-                    tvTopExp.setText(stats.getMaxXP().toString() + "")
+                    tvTopDamage.text = format.format(stats.maxDamage.toLong())
+                    tvTopExp.text = stats.maxXP.toString() + ""
 
-                    tvBattles.setText((battles.toInt()).toString() + "")
+                    tvBattles.text = (battles.toInt()).toString() + ""
 
-                    tvWinRate.setText(defaultDecimalFormatter.format(winrate.toDouble()) + "%")
-                    tvSurvivalRate.setText(defaultDecimalFormatter.format(survival.toDouble()) + "%")
+                    tvWinRate.text = defaultDecimalFormatter.format(winrate.toDouble()) + "%"
+                    tvSurvivalRate.text = defaultDecimalFormatter.format(survival.toDouble()) + "%"
 
-                    tvAvgDmg.setText(oneDepthDecimalFormatter.format(avgDmg.toDouble()))
-                    tvAvgKills.setText(oneDepthDecimalFormatter.format(avgKills.toDouble()))
-                    tvAvgCaps.setText(oneDepthDecimalFormatter.format(avgCaps.toDouble()))
-                    tvAvgResets.setText(oneDepthDecimalFormatter.format(avgResets.toDouble()))
-                    tvAvgPlanes.setText(oneDepthDecimalFormatter.format(avgPlanes.toDouble()))
-                    tvAvgXP.setText(oneDepthDecimalFormatter.format(avgXP.toDouble()))
+                    tvAvgDmg.text = oneDepthDecimalFormatter.format(avgDmg.toDouble())
+                    tvAvgKills.text = oneDepthDecimalFormatter.format(avgKills.toDouble())
+                    tvAvgCaps.text = oneDepthDecimalFormatter.format(avgCaps.toDouble())
+                    tvAvgResets.text = oneDepthDecimalFormatter.format(avgResets.toDouble())
+                    tvAvgPlanes.text = oneDepthDecimalFormatter.format(avgPlanes.toDouble())
+                    tvAvgXP.text = oneDepthDecimalFormatter.format(avgXP.toDouble())
 
-                    tvBatteryMain.setText(createBatteryString(stats.getMain()))
-                    tvBatteryTorps.setText(createBatteryString(stats.getTorps()))
-                    tvBatteryAircraft.setText(createBatteryString(stats.getAircraft()))
+                    tvBatteryMain.text = createBatteryString(stats.main)
+                    tvBatteryTorps.text = createBatteryString(stats.torps)
+                    tvBatteryAircraft.text = createBatteryString(stats.aircraft)
                     val otherTotal: Int =
-                        stats.getFrags() - stats.getMain().frags - stats.getAircraft().frags - stats.getTorps().frags
-                    tvBatteryOther.setText(otherTotal.toString() + "")
+                        stats.frags - stats.main.frags - stats.aircraft.frags - stats.torps.frags
+                    tvBatteryOther.text = otherTotal.toString() + ""
 
                     if (ships != null) {
-                        val seasonsShips: List<Ship> = (shipMap.get(info.getSeasonNum()))!!
-                        val seasonName: String = info.getSeasonNum()
+                        val seasonsShips: List<Ship> = (shipMap.get(info.seasonNum))!!
+                        val seasonName: String = info.seasonNum
                         Collections.sort<Ship>(seasonsShips, object : Comparator<Ship> {
                             override fun compare(lhs: Ship, rhs: Ship): Int {
-                                val id: String = seasonName + lhs.getShipId()
+                                val id: String = seasonName + lhs.shipId
                                 val shipStats: SeasonStats? = seasonMap.get(id)
-                                val id2: String = seasonName + rhs.getShipId()
+                                val id2: String = seasonName + rhs.shipId
                                 val shipStats2: SeasonStats? = seasonMap.get(id2)
-                                return shipStats2!!.getBattles() - shipStats!!.getBattles()
+                                return shipStats2!!.battles - shipStats!!.battles
                             }
                         })
                         if (seasons.size > 0) {
-                            aShipsTop.setVisibility(View.VISIBLE)
-                            if (ivShipsArea.getVisibility() == View.GONE) {
-                                aShips.setVisibility(View.VISIBLE)
+                            aShipsTop.visibility = View.VISIBLE
+                            if (ivShipsArea.visibility == View.GONE) {
+                                aShips.visibility = View.VISIBLE
                             } else {
-                                aShips.setVisibility(View.GONE)
+                                aShips.visibility = View.GONE
                             }
                             llShips.removeAllViews()
 
-                            val shipViewTitle: View = LayoutInflater.from(getContext())
+                            val shipViewTitle: View = LayoutInflater.from(context)
                                 .inflate(R.layout.list_ranked_ships_title, llShips, false)
                             llShips.addView(shipViewTitle)
 
                             for (s: Ship in seasonsShips) {
-                                val id: String = info.getSeasonNum() + s.getShipId()
+                                val id: String = info.seasonNum + s.shipId
                                 val shipStats: SeasonStats? = seasonMap.get(id)
                                 val shipInfo: ShipInfo? =
-                                    infoManager!!.getShipInfo(requireContext()).get(s.getShipId())
-                                if (shipInfo != null && shipStats!!.getBattles() > 0) {
-                                    val shipView: View = LayoutInflater.from(getContext())
+                                    infoManager!!.getShipInfo(requireContext()).get(s.shipId)
+                                if (shipInfo != null && shipStats!!.battles > 0) {
+                                    val shipView: View = LayoutInflater.from(context)
                                         .inflate(R.layout.list_ranked_ships, llShips, false)
                                     val title: TextView =
                                         shipView.findViewById(R.id.list_ranked_ships_title)
@@ -300,29 +298,25 @@ class CaptainRankedFragment() : CAFragment() {
                                     val three: TextView =
                                         shipView.findViewById(R.id.list_ranked_ships_3)
 
-                                    title.setText(shipInfo.getName())
-                                    one.setText(shipStats.getBattles().toString() + "")
+                                    title.text = shipInfo.name
+                                    one.text = shipStats.battles.toString() + ""
 
                                     val formatter: DecimalFormat = oneDepthDecimalFormatter
 
-                                    two.setText(
-                                        formatter.format(
-                                            ((shipStats.getWins() / shipStats.getBattles()
-                                                .toFloat()) * 100).toDouble()
-                                        ) + "%"
-                                    )
-                                    three.setText(
-                                        formatter.format(
-                                            ((shipStats.getSurvived() / shipStats.getBattles()
-                                                .toFloat()) * 100).toDouble()
-                                        ) + "%"
-                                    )
+                                    two.text = formatter.format(
+                                        ((shipStats.wins / shipStats.battles
+                                            .toFloat()) * 100).toDouble()
+                                    ) + "%"
+                                    three.text = formatter.format(
+                                        ((shipStats.survived / shipStats.battles
+                                            .toFloat()) * 100).toDouble()
+                                    ) + "%"
 
-                                    shipView.setClickable(true)
-                                    shipView.setTag(s.getShipId())
+                                    shipView.isClickable = true
+                                    shipView.tag = s.shipId
                                     shipView.setOnClickListener(object : View.OnClickListener {
                                         override fun onClick(v: View) {
-                                            val s: Long? = v.getTag() as Long?
+                                            val s: Long? = v.tag as Long?
                                             if (s != null) {
                                                 eventBus.post(ShipClickedEvent(s))
                                             }
@@ -333,15 +327,15 @@ class CaptainRankedFragment() : CAFragment() {
                                 }
                             }
                         } else {
-                            aShipsTop.setVisibility(View.GONE)
-                            aShips.setVisibility(View.GONE)
+                            aShipsTop.visibility = View.GONE
+                            aShips.visibility = View.GONE
                         }
                     }
                 }
             } else {
-                aNo.setVisibility(View.VISIBLE)
-                aHas.setVisibility(View.GONE)
-                tvNoInfo.setText(getString(R.string.no_data_for_season) + info.getSeasonNum())
+                aNo.visibility = View.VISIBLE
+                aHas.visibility = View.GONE
+                tvNoInfo.text = getString(R.string.no_data_for_season) + info.seasonNum
                 setUpCard(view, R.id.list_season_no_info_card)
             }
             container.addView(view)
@@ -367,7 +361,7 @@ class CaptainRankedFragment() : CAFragment() {
     @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         if (mSwipeRefreshLayout != null) {
-            mSwipeRefreshLayout!!.setRefreshing(event.isRefreshing)
+            mSwipeRefreshLayout!!.isRefreshing = event.isRefreshing
         }
     }
 
