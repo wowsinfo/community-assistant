@@ -1,6 +1,6 @@
 # Community Assistant
 
-![WoWS and WoT Community Assistant logo](https://i.imgur.com/yhy0ELe.png)
+<img src="https://i.imgur.com/yhy0ELe.png" width="534" height="300" alt="WoWS and WoT Community Assistant logo" align="right"/>
 
 Statistic applications for World of Warship & World of Tanks Players profiles to view changes over time, other players, individual vehicle information and other provided information.
 
@@ -8,17 +8,20 @@ Statistic applications for World of Warship & World of Tanks Players profiles to
 
 Applications built using the [Wargaming players API](https://developers.wargaming.net/). Specifically the World of Tanks PC and WoWS PC APIs. Using multiple player owned third party apis like Warships-today, tanks.gg, wot-numbers and more to compare player data too. Used community or similar methods to develop scores for players to evaluate a players record and ability into one number. Used threading and other optimizations to fix for slowdowns with the app's amount of data it needed to show. Used [Picasso](https://square.github.io/picasso/) for image loading, [Otto](https://square.github.io/otto/) and eventually [GreenRobot.Eventbus](https://github.com/greenrobot/EventBus) for communication needs from backend to frontend and in between UI elements of the code bases. Both projects were built using MVI patterns using an eventbus.
 
-
 ## Community Assistant for WoWS
 
-![Image of WoWS Community Assistant](https://i.imgur.com/Mgc8Ihh.png)
+<img src="https://i.imgur.com/Mgc8Ihh.png" align="left" alt="Image of WoWS Community Assistant"/>
 
-Currently published on Google Play Store [here](https://play.google.com/store/apps/details?id=com.half.wowsca).
+~~Currently published on Google Play Store [here](https://play.google.com/store/apps/details?id=com.half.wowsca).~~ 
+
+Please get the latest version [here](https://github.com/wowsinfo/community-assistant/releases/latest) on Github. The app can be published again after getting approval from HALF.
 
 Stats application built using MVI with multiple activities/fragments and [GreenRobot.Eventbus](https://github.com/greenrobot/EventBus). Uses my old file storage process instead of a database for ease of creation at the time. Uses a third party api for average player data and has base files inside the app for default use. All backend communication code is in the `backend` package, business logic is in `managers` package and models tend to parse for themselves.
 
 This project could use a lot of improvements. UI could get a better material design and have data shown in different manners. The backend code could be chopped up and have less code duplication along with the files being split for readability. Adding animations for better UX would be nice along with better use of styles and images to give the app a more concise look. The view layout files could be split up into snippets and potentially made reusable.
 
+<details>
+<summary>Community Assistant for WoT won't get maintained anymore</summary>
 
 ## Community Assistant for WoT
 
@@ -30,6 +33,10 @@ Build using a one activity to rule them all architecture with Otto Eventbus for 
 
 The app is currently not runnable but needs to have its API code updated with new elements, WN8 data updated, otto updated to [GreenRobot.Eventbus](https://github.com/greenrobot/EventBus) and general updates from not being touched for 2+ years.
 
+</details>
+
+<details>
+<summary>See additional information by HALF</summary>
 
 ## Utils
 
@@ -53,5 +60,4 @@ This was home code in the end. Not always the best but it works and did what it 
 
 slai47/HALF
 
-
-
+</details>
