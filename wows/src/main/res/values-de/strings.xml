@@ -389,6 +389,7 @@
     <string name="ca_rating_tl_dr">TL:DR:\n\nIndividuelle Community Assistant Schiffswertung ist %1$s Schaden, %2$s Zerstörungen und %3$s Sieg Rate. Die Gesamt Community Assistant Wertung berechnet sich wie folgt: (durchschnittliche CA Wertung pro Tier) * (Anzahl Gefechte pro Tier / Anzahl aller Gefechte). Basis entspricht 1000.</string>
 
     <string-array name="themes">
+        <item>Dynamic</item>
         <item>Ocean</item>
         <item>Dark</item>
     </string-array>

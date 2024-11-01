@@ -91,23 +91,26 @@ class CAApp : Application() {
         @JvmStatic
         fun setTheme(act: FragmentActivity) {
             val theme = getTheme(act)
-            if (theme == "ocean") { //dark theme
-                act.setTheme(R.style.AppTheme)
-            } else if (theme == "dark") {
-                act.setTheme(R.style.AppTheme)
+            when (theme) {
+                "ocean" -> act.setTheme(R.style.Theme_CA_Material_Ocean)
+                "dark" -> act.setTheme(R.style.Theme_CA_Material_Dark)
+                else -> act.setTheme(R.style.AppTheme) // dynamic color 12+
             }
         }
 
-        @JvmStatic
         fun isOceanTheme(ctx: Context?): Boolean {
             val theme = getTheme(ctx)
             return theme == "ocean"
         }
 
-        @JvmStatic
         fun isDarkTheme(ctx: Context?): Boolean {
             val theme = getTheme(ctx)
             return theme == "dark"
+        }
+
+        fun isDynamicTheme(ctx: Context?): Boolean {
+            val theme = getTheme(ctx)
+            return theme == "dynamic"
         }
 
         @JvmStatic

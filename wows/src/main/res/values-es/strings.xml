@@ -389,6 +389,7 @@
     <string name="ca_rating_tl_dr">Resumen:\n\nEl rating Community Assistant por barco es %1$s daño, %2$s bajas y %3$s ratio de victorias. El rating Community Assistant global se calcula como la suma de (rating CA medio por tier) * (partidas en esa tier / partidas totales). La media es 1000.</string>
 
     <string-array name="themes">
+        <item>Dynamic</item>
         <item>Ocean</item>
         <item>Dark</item>
     </string-array>

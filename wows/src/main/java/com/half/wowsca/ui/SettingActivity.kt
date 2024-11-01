@@ -85,7 +85,7 @@ class SettingActivity : CABaseActivity() {
         arrayOf("English", "Русский", "Deutsch", "Español", "Magyar", "Nederlands")
     private val saveNumChoices = arrayOf("5", "10", "15", "20", "25")
     private val saveNumbers = intArrayOf(5, 10, 15, 20, 25)
-    private val themes = arrayOf("ocean", "dark")
+    private val themes = arrayOf("dynamic", "ocean", "dark")
     private var aColorblind: View? = null
     private var cbColorblind: CheckBox? = null
     private var aCompare: View? = null
@@ -182,19 +182,12 @@ class SettingActivity : CABaseActivity() {
 
     private fun initView() {
         initCheckBoxes()
-
         initOnClickVersionRefresh()
-
         initLinks()
-
         initServerLangauge()
-
         initTheme()
-
         initServer()
-
         initSaveOptions()
-
         initAppLangauge()
     }
 
@@ -448,11 +441,8 @@ class SettingActivity : CABaseActivity() {
     private fun initTheme() {
         val themesList = resources.getStringArray(R.array.themes)
         val prefs = Prefs(applicationContext)
-        val current = prefs.getString(THEME_CHOICE, "ocean")
-        var position = 0
-        if (current == "dark") {
-            position = 1
-        }
+        val current = prefs.getString(THEME_CHOICE, "dynamic")
+        val position = themes.indexOf(current)
 
         val adapter = ArrayAdapter(applicationContext, R.layout.ca_spinner_item_trans, themesList)
         adapter.setDropDownViewResource(if (!isDarkTheme(sTheme!!.context)) R.layout.ca_spinner_item else R.layout.ca_spinner_item_dark)
@@ -468,7 +458,7 @@ class SettingActivity : CABaseActivity() {
                 id: Long
             ) {
                 val prefs = Prefs(applicationContext)
-                val current = prefs.getString(THEME_CHOICE, "ocean")
+                val current = prefs.getString(THEME_CHOICE, "dynamic")
                 val selected = themes[position]
                 if (current != selected) {
                     prefs.setString(THEME_CHOICE, selected)

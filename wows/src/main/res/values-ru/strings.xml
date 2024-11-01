@@ -388,6 +388,7 @@
     <string name="ca_rating_tl_dr">Вкратце:\n\nИндивидуальный Community Assistant рейтинг корабля — %1$s урона, %2$s фрагов и %3$s побед. Общий Community Assistant рейтинг высчитывается по формуле (средний CA рейтинг по уровню) * (количество битв на уровне/ общее количество битв). Базовая линия равна 1000.</string>
 
     <string-array name="themes">
+        <item>Dynamic</item>
         <item>Океан</item>
         <item>Темнота</item>
     </string-array>

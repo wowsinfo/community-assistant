@@ -390,6 +390,7 @@
     <string name="ca_rating_tl_dr">TL:DR:\n\n Community Assistant Rejting za individualne brodove je %1$s šteta, %2$s uništeni brodovi i %3$s stopa pobjeđivanja. Sveukupno Community Assistant Rejting je računan Sumom (prosječnim CA Rejtingom po razini) * (broj partija po Razini / ukupan broj partija). Standard je 1000.</string>
 
     <string-array name="themes">
+        <item>Dynamic</item>
         <item>Ocean</item>
         <item>Dark</item>
     </string-array>

@@ -389,6 +389,7 @@
     <string name="ca_rating_tl_dr">TL:DR:\n\nIndividuele Scheeps Community Assistant Indicatie is %1$s schade, %2$s gedood en %3$s winratio. Algemene Community Assistant Indicatie is berekend door het totaal van(gemiddelde CA Indicatie van het Niveau) * (aantal gevechten van het niveau / totaal gevechten). Basis van 1000.</string>
 
     <string-array name="themes">
+        <item>Dynamic</item>
         <item>Oceaan</item>
         <item>Donker</item>
     </string-array>
