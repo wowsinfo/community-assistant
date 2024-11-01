@@ -89,9 +89,9 @@ class CAApp : Application() {
         fun setTheme(act: FragmentActivity) {
             val theme = getTheme(act)
             if (theme == "ocean") { //dark theme
-                act.setTheme(R.style.Theme_CA_Material_Ocean)
+                act.setTheme(R.style.AppTheme)
             } else if (theme == "dark") {
-                act.setTheme(R.style.Theme_CA_Material_Dark)
+                act.setTheme(R.style.AppTheme)
             }
         }
 
