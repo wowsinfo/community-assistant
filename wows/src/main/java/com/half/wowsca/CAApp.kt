@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import com.google.android.material.color.DynamicColors
 import com.half.wowsca.managers.CompareManager
 import com.half.wowsca.managers.InfoManager
 import com.half.wowsca.model.enums.Server
@@ -42,6 +43,8 @@ class CAApp : Application() {
         if (getServerLanguage(applicationContext) == "ko") {
             setServerLanguage(applicationContext, getString(R.string.base_server_language))
         }
+
+        DynamicColors.applyToActivitiesIfAvailable(this);
     }
 
     companion object {
