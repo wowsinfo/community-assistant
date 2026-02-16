@@ -145,13 +145,13 @@ class ExpandableStatsAdapter(
             xVals.add(child.titles[i])
             val key = child.types[i]
             if (key.equals("cruiser", ignoreCase = true)) {
-                colorList.add(Color.parseColor("#4CAF50"))
+                colorList.add(ContextCompat.getColor(ctx, R.color.chart_green))
             } else if (key.equals("battleship", ignoreCase = true)) {
-                colorList.add(Color.parseColor("#F44336"))
+                colorList.add(ContextCompat.getColor(ctx, R.color.chart_red))
             } else if (key.equals("aircarrier", ignoreCase = true)) {
-                colorList.add(Color.parseColor("#673AB7"))
+                colorList.add(ContextCompat.getColor(ctx, R.color.chart_purple))
             } else if (key.equals("destroyer", ignoreCase = true)) {
-                colorList.add(Color.parseColor("#FDD835"))
+                colorList.add(ContextCompat.getColor(ctx, R.color.chart_yellow))
             }
         }
 

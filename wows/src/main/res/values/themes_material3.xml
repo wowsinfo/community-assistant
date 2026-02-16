@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Material 3 - Navy Theme (Ocean) -->
+    <style name="Theme.CA.Material3.Navy" parent="Theme.Material3.Dark">
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/md_theme_navy_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_navy_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_navy_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_navy_onPrimaryContainer</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/md_theme_navy_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_navy_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_navy_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_navy_onSecondaryContainer</item>
+
+        <!-- Tertiary colors -->
+        <item name="colorTertiary">@color/md_theme_navy_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_navy_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_navy_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_navy_onTertiaryContainer</item>
+
+        <!-- Error colors -->
+        <item name="colorError">@color/md_theme_navy_error</item>
+        <item name="colorErrorContainer">@color/md_theme_navy_errorContainer</item>
+        <item name="colorOnError">@color/md_theme_navy_onError</item>
+        <item name="colorOnErrorContainer">@color/md_theme_navy_onErrorContainer</item>
+
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/md_theme_navy_background</item>
+        <item name="colorOnBackground">@color/md_theme_navy_onBackground</item>
+
+        <!-- Surface colors -->
+        <item name="colorSurface">@color/md_theme_navy_surface</item>
+        <item name="colorOnSurface">@color/md_theme_navy_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_navy_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_navy_onSurfaceVariant</item>
+
+        <!-- Outline colors -->
+        <item name="colorOutline">@color/md_theme_navy_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_navy_outlineVariant</item>
+
+        <!-- Other colors -->
+        <item name="colorSurfaceInverse">@color/md_theme_navy_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_navy_inverseOnSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_navy_inversePrimary</item>
+
+        <!-- Additional attributes -->
+        <item name="android:windowBackground">@drawable/background</item>
+        <item name="android:textColorPrimary">@color/material_text_primary</item>
+        <item name="android:textColorSecondary">@color/material_text_secondary</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/top_background</item>
+        <item name="material_drawer_primary_icon">@color/top_background</item>
+        <item name="material_drawer_secondary_text">@color/top_background</item>
+        <item name="material_drawer_hint_text">@color/top_background</item>
+        <item name="material_drawer_divider">@color/material_divider_color</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_text">@color/bottom_background</item>
+        <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
+    </style>
+
+    <!-- Material 3 - Black Theme (Pure Dark) -->
+    <style name="Theme.CA.Material3.Black" parent="Theme.Material3.Dark">
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/md_theme_black_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_black_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_black_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_black_onPrimaryContainer</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/md_theme_black_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_black_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_black_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_black_onSecondaryContainer</item>
+
+        <!-- Tertiary colors -->
+        <item name="colorTertiary">@color/md_theme_black_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_black_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_black_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_black_onTertiaryContainer</item>
+
+        <!-- Error colors -->
+        <item name="colorError">@color/md_theme_black_error</item>
+        <item name="colorErrorContainer">@color/md_theme_black_errorContainer</item>
+        <item name="colorOnError">@color/md_theme_black_onError</item>
+        <item name="colorOnErrorContainer">@color/md_theme_black_onErrorContainer</item>
+
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/md_theme_black_background</item>
+        <item name="colorOnBackground">@color/md_theme_black_onBackground</item>
+
+        <!-- Surface colors -->
+        <item name="colorSurface">@color/md_theme_black_surface</item>
+        <item name="colorOnSurface">@color/md_theme_black_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_black_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_black_onSurfaceVariant</item>
+
+        <!-- Outline colors -->
+        <item name="colorOutline">@color/md_theme_black_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_black_outlineVariant</item>
+
+        <!-- Other colors -->
+        <item name="colorSurfaceInverse">@color/md_theme_black_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_black_inverseOnSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_black_inversePrimary</item>
+
+        <!-- Additional attributes -->
+        <item name="android:windowBackground">@color/material_background_dark</item>
+        <item name="android:textColorPrimary">@color/material_text_primary</item>
+        <item name="android:textColorSecondary">@color/material_text_secondary</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_dark_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_dark_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</item>
+        <item name="material_drawer_divider">@color/material_drawer_dark_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_dark_selected</item>
+        <item name="material_drawer_selected_text">@color/material_primary</item>
+        <item name="material_drawer_header_selection_text">@color/material_drawer_dark_header_selection_text</item>
+    </style>
+
+    <!-- Material 3 - White Theme (Light) -->
+    <style name="Theme.CA.Material3.White" parent="Theme.Material3.Light">
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/md_theme_white_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_white_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_white_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_white_onPrimaryContainer</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/md_theme_white_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_white_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_white_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_white_onSecondaryContainer</item>
+
+        <!-- Tertiary colors -->
+        <item name="colorTertiary">@color/md_theme_white_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_white_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_white_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_white_onTertiaryContainer</item>
+
+        <!-- Error colors -->
+        <item name="colorError">@color/md_theme_white_error</item>
+        <item name="colorErrorContainer">@color/md_theme_white_errorContainer</item>
+        <item name="colorOnError">@color/md_theme_white_onError</item>
+        <item name="colorOnErrorContainer">@color/md_theme_white_onErrorContainer</item>
+
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/md_theme_white_background</item>
+        <item name="colorOnBackground">@color/md_theme_white_onBackground</item>
+
+        <!-- Surface colors -->
+        <item name="colorSurface">@color/md_theme_white_surface</item>
+        <item name="colorOnSurface">@color/md_theme_white_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_white_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_white_onSurfaceVariant</item>
+
+        <!-- Outline colors -->
+        <item name="colorOutline">@color/md_theme_white_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_white_outlineVariant</item>
+
+        <!-- Other colors -->
+        <item name="colorSurfaceInverse">@color/md_theme_white_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_white_inverseOnSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_white_inversePrimary</item>
+
+        <!-- Additional attributes -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/black_transparent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/top_background</item>
+        <item name="material_drawer_primary_icon">@color/top_background</item>
+        <item name="material_drawer_secondary_text">@color/top_background</item>
+        <item name="material_drawer_hint_text">@color/top_background</item>
+        <item name="material_drawer_divider">@color/material_divider_color</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_text">@color/bottom_background</item>
+        <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
+    </style>
+
+</resources>
