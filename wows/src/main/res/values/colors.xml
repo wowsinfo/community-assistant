@@ -24,6 +24,10 @@
     <color name="top_background">#FF3E95DC</color>
     <color name="bottom_background">#FF163F6E</color>
 
+    <!-- Semantic color aliases for MaterialDrawer -->
+    <color name="drawer_text_primary">@color/top_background</color>
+    <color name="drawer_text_selected">@color/bottom_background</color>
+
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="transparent">#00000000</color>

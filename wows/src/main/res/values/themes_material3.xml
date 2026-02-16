@@ -53,13 +53,13 @@
 
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_background">@color/material_drawer_background</item>
-        <item name="material_drawer_primary_text">@color/top_background</item>
-        <item name="material_drawer_primary_icon">@color/top_background</item>
-        <item name="material_drawer_secondary_text">@color/top_background</item>
-        <item name="material_drawer_hint_text">@color/top_background</item>
+        <item name="material_drawer_primary_text">@color/drawer_text_primary</item>
+        <item name="material_drawer_primary_icon">@color/drawer_text_primary</item>
+        <item name="material_drawer_secondary_text">@color/drawer_text_primary</item>
+        <item name="material_drawer_hint_text">@color/drawer_text_primary</item>
         <item name="material_drawer_divider">@color/material_divider_color</item>
         <item name="material_drawer_selected">@color/material_drawer_selected</item>
-        <item name="material_drawer_selected_text">@color/bottom_background</item>
+        <item name="material_drawer_selected_text">@color/drawer_text_selected</item>
         <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
     </style>
 
@@ -177,13 +177,13 @@
 
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_background">@color/material_drawer_background</item>
-        <item name="material_drawer_primary_text">@color/top_background</item>
-        <item name="material_drawer_primary_icon">@color/top_background</item>
-        <item name="material_drawer_secondary_text">@color/top_background</item>
-        <item name="material_drawer_hint_text">@color/top_background</item>
+        <item name="material_drawer_primary_text">@color/drawer_text_primary</item>
+        <item name="material_drawer_primary_icon">@color/drawer_text_primary</item>
+        <item name="material_drawer_secondary_text">@color/drawer_text_primary</item>
+        <item name="material_drawer_hint_text">@color/drawer_text_primary</item>
         <item name="material_drawer_divider">@color/material_divider_color</item>
         <item name="material_drawer_selected">@color/material_drawer_selected</item>
-        <item name="material_drawer_selected_text">@color/bottom_background</item>
+        <item name="material_drawer_selected_text">@color/drawer_text_selected</item>
         <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
     </style>
 
