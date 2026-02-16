@@ -191,4 +191,14 @@
     <color name="chart_brown">#795548</color>
     <color name="chart_teal">#009688</color>
 
+    <!-- Progress bar colors -->
+    <color name="progress_bg_start">#ff9d9e9d</color>
+    <color name="progress_bg_center">#ff5a5d5a</color>
+    <color name="progress_bg_end">#ff747674</color>
+    <color name="progress_secondary_start">#80ffd300</color>
+    <color name="progress_secondary_center">#80ffb600</color>
+    <color name="progress_secondary_end">#a0ffcb00</color>
+    <color name="progress_start">#4CAF50</color>
+    <color name="progress_end">#43A047</color>
+
 </resources>

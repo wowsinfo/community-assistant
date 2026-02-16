@@ -19,10 +19,28 @@
 <resources>
 
     <!-- OCEAN THEME-->
-    <style name="Theme.CA.Material.Ocean" parent="MaterialDrawerTheme">
-        <item name="colorPrimary">@color/transparent</item>
+    <style name="Theme.CA.Material.Ocean" parent="Theme.Material3.Dark">
+        <!-- Material 3 Primary colors -->
+        <item name="colorPrimary">@color/md_theme_navy_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_navy_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_navy_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_navy_onPrimaryContainer</item>
+        
+        <!-- Legacy Material 2 compatibility -->
         <item name="colorPrimaryDark">@color/material_primary_dark</item>
         <item name="colorAccent">@color/material_accent</item>
+
+        <!-- Material 3 Secondary colors -->
+        <item name="colorSecondary">@color/md_theme_navy_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_navy_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_navy_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_navy_onSecondaryContainer</item>
+
+        <!-- Material 3 Surface colors -->
+        <item name="colorSurface">@color/md_theme_navy_surface</item>
+        <item name="colorOnSurface">@color/md_theme_navy_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_navy_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_navy_onSurfaceVariant</item>
 
         <item name="android:windowBackground">@drawable/background</item>
         <item name="android:textColorPrimary">@color/material_text_primary</item>
@@ -111,10 +129,28 @@
     <!--</style>-->
 
     <!-- DARK THEME-->
-    <style name="Theme.CA.Material.Dark" parent="MaterialDrawerTheme">
-        <item name="colorPrimary">@color/material_action_bar_dark</item>
+    <style name="Theme.CA.Material.Dark" parent="Theme.Material3.Dark">
+        <!-- Material 3 Primary colors -->
+        <item name="colorPrimary">@color/md_theme_black_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_black_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_black_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_black_onPrimaryContainer</item>
+        
+        <!-- Legacy Material 2 compatibility -->
         <item name="colorPrimaryDark">@color/material_primary_dark</item>
         <item name="colorAccent">@color/material_accent</item>
+
+        <!-- Material 3 Secondary colors -->
+        <item name="colorSecondary">@color/md_theme_black_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_black_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_black_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_black_onSecondaryContainer</item>
+
+        <!-- Material 3 Surface colors -->
+        <item name="colorSurface">@color/md_theme_black_surface</item>
+        <item name="colorOnSurface">@color/md_theme_black_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_black_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_black_onSurfaceVariant</item>
 
         <item name="android:windowBackground">@color/material_background_dark</item>
         <item name="android:textColorPrimary">@color/material_text_primary</item>
