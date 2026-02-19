@@ -90,11 +90,7 @@ class CAApp : Application() {
             // For Android 12+ (API 31+), use dynamic colors with system theme detection
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
                 // Use system theme (light or dark) with dynamic colors
-                val isSystemDark = (act.resources.configuration.uiMode and 
-                    android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
-                    android.content.res.Configuration.UI_MODE_NIGHT_YES
-                
-                if (isSystemDark) {
+                if (isSystemInDarkMode(act)) {
                     act.setTheme(R.style.Theme_CA_Material_Dark)
                 } else {
                     act.setTheme(R.style.Theme_CA_Material3_White)
@@ -103,6 +99,15 @@ class CAApp : Application() {
                 // For older Android versions, use navy (ocean) theme as fallback
                 act.setTheme(R.style.Theme_CA_Material_Ocean)
             }
+        }
+
+        /**
+         * Helper method to check if system is in dark mode
+         */
+        private fun isSystemInDarkMode(ctx: Context): Boolean {
+            return (ctx.resources.configuration.uiMode and 
+                android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
+                android.content.res.Configuration.UI_MODE_NIGHT_YES
         }
 
         @JvmStatic
@@ -116,9 +121,7 @@ class CAApp : Application() {
             if (ctx == null) return true
             // For Android 12+, check system theme
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-                return (ctx.resources.configuration.uiMode and 
-                    android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
-                    android.content.res.Configuration.UI_MODE_NIGHT_YES
+                return isSystemInDarkMode(ctx)
             }
             // For older versions, navy theme is considered dark
             return true
@@ -129,10 +132,7 @@ class CAApp : Application() {
             if (ctx == null) return "ocean"
             // For Android 12+, return based on system theme
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-                val isSystemDark = (ctx.resources.configuration.uiMode and 
-                    android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
-                    android.content.res.Configuration.UI_MODE_NIGHT_YES
-                return if (isSystemDark) "dark" else "light"
+                return if (isSystemInDarkMode(ctx)) "dark" else "light"
             }
             // For older versions, always use ocean
             return "ocean"

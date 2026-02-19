@@ -55,13 +55,19 @@ open class CABaseActivity : SwipeBackBaseActivity() {
      */
     protected fun applyEdgeToEdgeInsets() {
         mToolbar?.let { toolbar ->
+            // Capture original padding
+            val originalPaddingLeft = toolbar.paddingLeft
+            val originalPaddingTop = toolbar.paddingTop
+            val originalPaddingRight = toolbar.paddingRight
+            val originalPaddingBottom = toolbar.paddingBottom
+            
             androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(toolbar) { view, windowInsets ->
                 val insets = windowInsets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
                 view.setPadding(
-                    view.paddingLeft,
-                    insets.top,
-                    view.paddingRight,
-                    view.paddingBottom
+                    originalPaddingLeft + insets.left,
+                    originalPaddingTop + insets.top,
+                    originalPaddingRight + insets.right,
+                    originalPaddingBottom
                 )
                 windowInsets
             }
@@ -74,13 +80,19 @@ open class CABaseActivity : SwipeBackBaseActivity() {
      */
     protected fun applyEdgeToEdgeInsetsToContainer(containerView: android.view.View?) {
         containerView?.let { view ->
+            // Capture original padding
+            val originalPaddingLeft = view.paddingLeft
+            val originalPaddingTop = view.paddingTop
+            val originalPaddingRight = view.paddingRight
+            val originalPaddingBottom = view.paddingBottom
+            
             androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
                 val insets = windowInsets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
                 v.setPadding(
-                    v.paddingLeft,
-                    v.paddingTop,
-                    v.paddingRight,
-                    insets.bottom
+                    originalPaddingLeft + insets.left,
+                    originalPaddingTop,
+                    originalPaddingRight + insets.right,
+                    originalPaddingBottom + insets.bottom
                 )
                 windowInsets
             }
