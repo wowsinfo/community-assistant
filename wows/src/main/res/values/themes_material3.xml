@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Material 3 - Navy Theme (Ocean) -->
-    <style name="Theme.CA.Material3.Navy" parent="Theme.Material3.Dark">
+    <style name="Theme.CA.Material3.Navy" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Primary colors -->
         <item name="colorPrimary">@color/md_theme_navy_primary</item>
         <item name="colorOnPrimary">@color/md_theme_navy_onPrimary</item>
@@ -64,7 +64,7 @@
     </style>
 
     <!-- Material 3 - Black Theme (Pure Dark) -->
-    <style name="Theme.CA.Material3.Black" parent="Theme.Material3.Dark">
+    <style name="Theme.CA.Material3.Black" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Primary colors -->
         <item name="colorPrimary">@color/md_theme_black_primary</item>
         <item name="colorOnPrimary">@color/md_theme_black_onPrimary</item>
@@ -126,7 +126,7 @@
     </style>
 
     <!-- Material 3 - White Theme (Light) -->
-    <style name="Theme.CA.Material3.White" parent="Theme.Material3.Light">
+    <style name="Theme.CA.Material3.White" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary colors -->
         <item name="colorPrimary">@color/md_theme_white_primary</item>
         <item name="colorOnPrimary">@color/md_theme_white_onPrimary</item>

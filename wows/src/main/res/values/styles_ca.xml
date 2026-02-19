@@ -19,7 +19,7 @@
 <resources>
 
     <!-- OCEAN THEME-->
-    <style name="Theme.CA.Material.Ocean" parent="Theme.Material3.Dark">
+    <style name="Theme.CA.Material.Ocean" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Material 3 Primary colors -->
         <item name="colorPrimary">@color/md_theme_navy_primary</item>
         <item name="colorOnPrimary">@color/md_theme_navy_onPrimary</item>
@@ -129,7 +129,7 @@
     <!--</style>-->
 
     <!-- DARK THEME-->
-    <style name="Theme.CA.Material.Dark" parent="Theme.Material3.Dark">
+    <style name="Theme.CA.Material.Dark" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Material 3 Primary colors -->
         <item name="colorPrimary">@color/md_theme_black_primary</item>
         <item name="colorOnPrimary">@color/md_theme_black_onPrimary</item>
