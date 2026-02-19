@@ -95,6 +95,11 @@ class SearchActivity : CABaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val container = findViewById<View>(R.id.search_container)
+        applyEdgeToEdgeInsetsToContainer(container)
+
         etSearch = findViewById<View>(R.id.search_et) as EditText?
         delete = findViewById<View>(R.id.search_et_delete)
         sServers = findViewById<View>(R.id.search_server_spinner) as Spinner?
