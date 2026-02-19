@@ -102,6 +102,11 @@ class ResourcesActivity : CABaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val container = findViewById<View>(R.id.resources_main_container)
+        applyEdgeToEdgeInsetsToContainer(container)
+
         if (!TextUtils.isEmpty(type)) {
             if (type == EXTRA_WEBSITES_TOOLS) {
                 title = getString(R.string.resources_websites)

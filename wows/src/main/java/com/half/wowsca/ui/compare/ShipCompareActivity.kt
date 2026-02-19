@@ -52,6 +52,11 @@ class ShipCompareActivity : CABaseActivity() {
         supportActionBar!!.setHomeButtonEnabled(true)
         supportActionBar!!.setTitle(R.string.ship_compare_title)
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val container = findViewById<View>(R.id.ship_compare_container)
+        applyEdgeToEdgeInsetsToContainer(container)
+
         progress = findViewById<View>(R.id.activity_compare_ships_progress)
         pagerTabs = findViewById<View>(R.id.ship_compare_pager_tab) as SlidingTabLayout?
         mViewPager = findViewById<View>(R.id.ship_compare_tabbed_pager) as ViewPager?

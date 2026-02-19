@@ -42,6 +42,11 @@ class AuthenticationActivity : CABaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         title = getString(R.string.login)
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val container = findViewById<View>(R.id.auth_container)
+        applyEdgeToEdgeInsetsToContainer(container)
+
         swipeBackLayout!!.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT)
     }
 
