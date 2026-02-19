@@ -49,6 +49,44 @@ open class CABaseActivity : SwipeBackBaseActivity() {
             R.style.WoWSCAThemeToolbarDarkOverflow
     }
 
+    /**
+     * Apply window insets to a toolbar to handle Edge-to-Edge properly.
+     * Call this after setting the toolbar in your activity.
+     */
+    protected fun applyEdgeToEdgeInsets() {
+        mToolbar?.let { toolbar ->
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(toolbar) { view, windowInsets ->
+                val insets = windowInsets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+                view.setPadding(
+                    view.paddingLeft,
+                    insets.top,
+                    view.paddingRight,
+                    view.paddingBottom
+                )
+                windowInsets
+            }
+        }
+    }
+
+    /**
+     * Apply window insets to the container/content view to handle Edge-to-Edge properly.
+     * @param containerView The main content view that should respect navigation bar insets
+     */
+    protected fun applyEdgeToEdgeInsetsToContainer(containerView: android.view.View?) {
+        containerView?.let { view ->
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
+                val insets = windowInsets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+                v.setPadding(
+                    v.paddingLeft,
+                    v.paddingTop,
+                    v.paddingRight,
+                    insets.bottom
+                )
+                windowInsets
+            }
+        }
+    }
+
     protected fun initBackStackListener() {
         backStackListener = FragmentManager.OnBackStackChangedListener {
             invalidateOptionsMenu()

@@ -77,6 +77,13 @@ class MainActivity : CABaseActivity(), ICaptain {
 //        tvKarma = (TextView) findViewById(R.id.toolbar_text);
         setSupportActionBar(mToolbar)
 
+        // Apply Edge-to-Edge insets to toolbar
+        applyEdgeToEdgeInsets()
+
+        // Apply Edge-to-Edge insets to container for navigation bar
+        val container = findViewById<View>(R.id.container)
+        applyEdgeToEdgeInsetsToContainer(container)
+
         setUpDrawer()
 
         initBackStackListener()
