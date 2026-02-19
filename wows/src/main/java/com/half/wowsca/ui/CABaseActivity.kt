@@ -1,14 +1,9 @@
 package com.half.wowsca.ui
 
 import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.WindowInsetsController
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentManager
 import com.half.wowsca.CAApp.Companion.getAppLanguage
 import com.half.wowsca.CAApp.Companion.isDarkTheme
