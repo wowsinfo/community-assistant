@@ -51,7 +51,16 @@
 
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
         <item name="colorButtonNormal">@color/material_button_color</item>
-        <item name="android:windowIsTranslucent">true</item>
+        
+        <!-- Edge-to-Edge Support -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+        <item name="android:enforceNavigationBarContrast">true</item>
+        
         <item name="android:windowActionBarOverlay">true</item>
         <!-- Support library compatibility -->
         <item name="windowActionBarOverlay">true</item>
@@ -161,7 +170,15 @@
 
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyleDark</item>
         <item name="colorButtonNormal">@color/material_button_color</item>
-        <item name="android:windowIsTranslucent">true</item>
+        
+        <!-- Edge-to-Edge Support -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+        <item name="android:enforceNavigationBarContrast">true</item>
 
         <!--<item name="android:windowActionBarOverlay">true</item>-->
         <!--&lt;!&ndash; Support library compatibility &ndash;&gt;-->
