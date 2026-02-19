@@ -97,7 +97,7 @@ class SearchActivity : CABaseActivity() {
 
         // Apply Edge-to-Edge insets
         applyEdgeToEdgeInsets()
-        val container = findViewById<View>(R.id.search_container)
+        val container = findViewById<View>(R.id.search_content_container)
         applyEdgeToEdgeInsetsToContainer(container)
 
         etSearch = findViewById<View>(R.id.search_et) as EditText?
