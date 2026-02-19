@@ -87,30 +87,55 @@ class CAApp : Application() {
 
         @JvmStatic
         fun setTheme(act: FragmentActivity) {
-            val theme = getTheme(act)
-            if (theme == "ocean") { //dark theme
+            // For Android 12+ (API 31+), use dynamic colors with system theme detection
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                // Use system theme (light or dark) with dynamic colors
+                val isSystemDark = (act.resources.configuration.uiMode and 
+                    android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
+                    android.content.res.Configuration.UI_MODE_NIGHT_YES
+                
+                if (isSystemDark) {
+                    act.setTheme(R.style.Theme_CA_Material_Dark)
+                } else {
+                    act.setTheme(R.style.Theme_CA_Material3_White)
+                }
+            } else {
+                // For older Android versions, use navy (ocean) theme as fallback
                 act.setTheme(R.style.Theme_CA_Material_Ocean)
-            } else if (theme == "dark") {
-                act.setTheme(R.style.Theme_CA_Material_Dark)
             }
         }
 
         @JvmStatic
         fun isOceanTheme(ctx: Context?): Boolean {
-            val theme = getTheme(ctx)
-            return theme == "ocean"
+            // Ocean theme is only used on older Android versions
+            return android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.S
         }
 
         @JvmStatic
         fun isDarkTheme(ctx: Context?): Boolean {
-            val theme = getTheme(ctx)
-            return theme == "dark"
+            if (ctx == null) return true
+            // For Android 12+, check system theme
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                return (ctx.resources.configuration.uiMode and 
+                    android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
+                    android.content.res.Configuration.UI_MODE_NIGHT_YES
+            }
+            // For older versions, navy theme is considered dark
+            return true
         }
 
         @JvmStatic
         fun getTheme(ctx: Context?): String? {
-            val prefs = Prefs(ctx)
-            return prefs.getString(SettingActivity.THEME_CHOICE, "ocean")
+            if (ctx == null) return "ocean"
+            // For Android 12+, return based on system theme
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                val isSystemDark = (ctx.resources.configuration.uiMode and 
+                    android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
+                    android.content.res.Configuration.UI_MODE_NIGHT_YES
+                return if (isSystemDark) "dark" else "light"
+            }
+            // For older versions, always use ocean
+            return "ocean"
         }
 
         @JvmStatic

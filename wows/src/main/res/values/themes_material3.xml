@@ -143,8 +143,10 @@
         <item name="material_drawer_header_selection_text">@color/material_drawer_dark_header_selection_text</item>
     </style>
 
-    <!-- Material 3 - White Theme (Light) -->
-    <style name="Theme.CA.Material3.White" parent="Theme.Material3.Light.NoActionBar">
+    <!-- Material 3 - White Theme (Light) with Dynamic Colors -->
+    <style name="Theme.CA.Material3.White" parent="Theme.Material3.DynamicColors.Light.NoActionBar">
+        <!-- Dynamic colors will be used on Android 12+, fallback colors below for older versions -->
+        
         <!-- Primary colors -->
         <item name="colorPrimary">@color/md_theme_white_primary</item>
         <item name="colorOnPrimary">@color/md_theme_white_onPrimary</item>

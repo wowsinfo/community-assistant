@@ -137,8 +137,10 @@
     <!--</item>-->
     <!--</style>-->
 
-    <!-- DARK THEME-->
-    <style name="Theme.CA.Material.Dark" parent="Theme.Material3.Dark.NoActionBar">
+    <!-- DARK THEME - Material 3 with Dynamic Colors -->
+    <style name="Theme.CA.Material.Dark" parent="Theme.Material3.DynamicColors.Dark.NoActionBar">
+        <!-- Dynamic colors will be used on Android 12+, fallback colors below for older versions -->
+        
         <!-- Material 3 Primary colors -->
         <item name="colorPrimary">@color/md_theme_black_primary</item>
         <item name="colorOnPrimary">@color/md_theme_black_onPrimary</item>
