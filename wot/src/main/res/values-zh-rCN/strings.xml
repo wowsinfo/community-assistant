@@ -286,7 +286,7 @@
 
     <string name="unknown">未知</string>
 
-    <string name="translator_text">简体中文翻译 </string>
+    <string name="translator_text">简体中文翻译由 Community Assistant 提供 </string>
 
     <string name="info_theme_mode">浅色主题</string>
     <string name="no_tier_10s_found">未找到 10 级坦克</string>
