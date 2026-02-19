@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Night mode (dark theme) specific colors -->
+    <!-- These colors ensure proper visibility in dark mode -->
+
+    <!-- Text colors for dark mode -->
+    <color name="chart_text_color">@color/material_text_primary</color>
+    <color name="chart_secondary_text_color">@color/material_text_secondary</color>
+
+    <!-- Ensure white text is visible on dark backgrounds -->
+    <color name="icon_tint_color">@color/material_text_primary</color>
+
+</resources>

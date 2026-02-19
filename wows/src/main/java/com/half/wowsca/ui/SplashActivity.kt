@@ -66,6 +66,21 @@ class SplashActivity : CABaseActivity() {
         iv = findViewById<View>(R.id.imageView) as ImageView?
         Picasso.get().load(R.drawable.web_hi_res_512).into(iv)
 
+        // Apply Edge-to-Edge insets to root layout
+        val rootView = findViewById<View>(android.R.id.content)
+        rootView?.let { view ->
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
+                val insets = windowInsets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+                v.setPadding(
+                    insets.left,
+                    insets.top,
+                    insets.right,
+                    insets.bottom
+                )
+                windowInsets
+            }
+        }
+
         swipeBackLayout!!.setEnableGesture(false)
     }
 

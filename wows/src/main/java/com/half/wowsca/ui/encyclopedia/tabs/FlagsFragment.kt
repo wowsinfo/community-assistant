@@ -94,11 +94,12 @@ class FlagsFragment : CAFragment() {
                 }
             }
             val d = ContextCompat.getDrawable(requireContext(), R.drawable.ic_flags)
-            if (!isDarkTheme(context)) d!!.setColorFilter(
+            // Apply theme-aware icon tint
+            d!!.setColorFilter(
                 ContextCompat.getColor(
                     requireContext(),
-                    R.color.top_background
-                ), PorterDuff.Mode.MULTIPLY
+                    R.color.icon_tint_color
+                ), PorterDuff.Mode.SRC_IN
             )
             createGeneralAlert(activity, item.name, sb.toString(), getString(R.string.dismiss), d)
         } else {

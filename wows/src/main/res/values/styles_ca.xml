@@ -6,9 +6,9 @@
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-  
+
           http://www.apache.org/licenses/LICENSE-2.0
-  
+
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,10 +19,28 @@
 <resources>
 
     <!-- OCEAN THEME-->
-    <style name="Theme.CA.Material.Ocean" parent="MaterialDrawerTheme">
-        <item name="colorPrimary">@color/transparent</item>
+    <style name="Theme.CA.Material.Ocean" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Material 3 Primary colors -->
+        <item name="colorPrimary">@color/md_theme_navy_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_navy_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_navy_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_navy_onPrimaryContainer</item>
+
+        <!-- Legacy Material 2 compatibility -->
         <item name="colorPrimaryDark">@color/material_primary_dark</item>
         <item name="colorAccent">@color/material_accent</item>
+
+        <!-- Material 3 Secondary colors -->
+        <item name="colorSecondary">@color/md_theme_navy_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_navy_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_navy_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_navy_onSecondaryContainer</item>
+
+        <!-- Material 3 Surface colors -->
+        <item name="colorSurface">@color/md_theme_navy_surface</item>
+        <item name="colorOnSurface">@color/md_theme_navy_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_navy_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_navy_onSurfaceVariant</item>
 
         <item name="android:windowBackground">@drawable/background</item>
         <item name="android:textColorPrimary">@color/material_text_primary</item>
@@ -33,7 +51,16 @@
 
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
         <item name="colorButtonNormal">@color/material_button_color</item>
-        <item name="android:windowIsTranslucent">true</item>
+
+        <!-- Edge-to-Edge Support -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+        <item name="android:enforceNavigationBarContrast">true</item>
+
         <item name="android:windowActionBarOverlay">true</item>
         <!-- Support library compatibility -->
         <item name="windowActionBarOverlay">true</item>
@@ -51,13 +78,13 @@
 
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_background">@color/material_drawer_background</item>
-        <item name="material_drawer_primary_text">@color/top_background</item>
-        <item name="material_drawer_primary_icon">@color/top_background</item>
-        <item name="material_drawer_secondary_text">@color/top_background</item>
-        <item name="material_drawer_hint_text">@color/top_background</item>
+        <item name="material_drawer_primary_text">@color/drawer_text_primary</item>
+        <item name="material_drawer_primary_icon">@color/drawer_text_primary</item>
+        <item name="material_drawer_secondary_text">@color/drawer_text_primary</item>
+        <item name="material_drawer_hint_text">@color/drawer_text_primary</item>
         <item name="material_drawer_divider">@color/material_divider_color</item>
         <item name="material_drawer_selected">@color/material_drawer_selected</item>
-        <item name="material_drawer_selected_text">@color/bottom_background</item>
+        <item name="material_drawer_selected_text">@color/drawer_text_selected</item>
         <item name="material_drawer_header_selection_text">
             @color/material_drawer_header_selection_text
         </item>
@@ -110,9 +137,13 @@
     <!--</item>-->
     <!--</style>-->
 
-    <!-- DARK THEME-->
-    <style name="Theme.CA.Material.Dark" parent="MaterialDrawerTheme">
-        <item name="colorPrimary">@color/material_action_bar_dark</item>
+    <!-- DARK THEME - Material 3 with Dynamic Colors -->
+    <style name="Theme.CA.Material.Dark" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
+        <!-- DO NOT override colorPrimary, colorSecondary, etc. when using DynamicColors parent -->
+        <!-- The system will provide dynamic colors on Android 12+ -->
+        <!-- On older versions, Material3 provides sensible defaults -->
+
+        <!-- Legacy Material 2 compatibility - only for specific components that need it -->
         <item name="colorPrimaryDark">@color/material_primary_dark</item>
         <item name="colorAccent">@color/material_accent</item>
 
@@ -125,11 +156,15 @@
 
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyleDark</item>
         <item name="colorButtonNormal">@color/material_button_color</item>
-        <item name="android:windowIsTranslucent">true</item>
 
-        <!--<item name="android:windowActionBarOverlay">true</item>-->
-        <!--&lt;!&ndash; Support library compatibility &ndash;&gt;-->
-        <!--<item name="windowActionBarOverlay">true</item>-->
+        <!-- Edge-to-Edge Support -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+        <item name="android:enforceNavigationBarContrast">true</item>
 
         <item name="popupMenuStyle">@style/WoWSCAThemeToolbarDarkOverflow</item>
         <item name="android:popupMenuStyle">@style/WoWSCAThemeToolbarDarkOverflow</item>

@@ -18,6 +18,12 @@ class InformationActivity : CABaseActivity() {
         setSupportActionBar(bar)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val scrollView = findViewById<View>(R.id.info_scroll_view)
+        applyEdgeToEdgeInsetsToContainer(scrollView)
+
         swipeBackLayout!!.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT)
     }
 

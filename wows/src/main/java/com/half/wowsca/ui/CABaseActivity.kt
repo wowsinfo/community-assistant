@@ -3,6 +3,7 @@ package com.half.wowsca.ui
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentManager
 import com.half.wowsca.CAApp.Companion.getAppLanguage
 import com.half.wowsca.CAApp.Companion.isDarkTheme
@@ -26,6 +27,10 @@ open class CABaseActivity : SwipeBackBaseActivity() {
     //    protected TextView tvKarma;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Enable Edge-to-Edge
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setTheme(this)
         val current = getAppLanguage(applicationContext)
         val myLocale = Locale(current)
@@ -42,6 +47,56 @@ open class CABaseActivity : SwipeBackBaseActivity() {
         super.onResume()
         if (mToolbar != null) if (isDarkTheme(applicationContext)) mToolbar!!.popupTheme =
             R.style.WoWSCAThemeToolbarDarkOverflow
+    }
+
+    /**
+     * Apply window insets to a toolbar to handle Edge-to-Edge properly.
+     * Call this after setting the toolbar in your activity.
+     */
+    protected fun applyEdgeToEdgeInsets() {
+        mToolbar?.let { toolbar ->
+            // Capture original padding
+            val originalPaddingLeft = toolbar.paddingLeft
+            val originalPaddingTop = toolbar.paddingTop
+            val originalPaddingRight = toolbar.paddingRight
+            val originalPaddingBottom = toolbar.paddingBottom
+            
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(toolbar) { view, windowInsets ->
+                val insets = windowInsets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+                view.setPadding(
+                    originalPaddingLeft + insets.left,
+                    originalPaddingTop + insets.top,
+                    originalPaddingRight + insets.right,
+                    originalPaddingBottom
+                )
+                windowInsets
+            }
+        }
+    }
+
+    /**
+     * Apply window insets to the container/content view to handle Edge-to-Edge properly.
+     * @param containerView The main content view that should respect navigation bar insets
+     */
+    protected fun applyEdgeToEdgeInsetsToContainer(containerView: android.view.View?) {
+        containerView?.let { view ->
+            // Capture original padding
+            val originalPaddingLeft = view.paddingLeft
+            val originalPaddingTop = view.paddingTop
+            val originalPaddingRight = view.paddingRight
+            val originalPaddingBottom = view.paddingBottom
+            
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
+                val insets = windowInsets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+                v.setPadding(
+                    originalPaddingLeft + insets.left,
+                    originalPaddingTop,
+                    originalPaddingRight + insets.right,
+                    originalPaddingBottom + insets.bottom
+                )
+                windowInsets
+            }
+        }
     }
 
     protected fun initBackStackListener() {

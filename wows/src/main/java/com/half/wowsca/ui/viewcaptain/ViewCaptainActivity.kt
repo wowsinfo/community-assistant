@@ -80,6 +80,11 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val container = findViewById<View>(R.id.container)
+        applyEdgeToEdgeInsetsToContainer(container)
+
         initBackStackListener()
         swipeBackLayout!!.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT)
     }

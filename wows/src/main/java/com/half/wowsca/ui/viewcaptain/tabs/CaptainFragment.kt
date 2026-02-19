@@ -1351,23 +1351,23 @@ class CaptainFragment : CAFragment() {
                                 val key = itea.next()
                                 xVals.add(key)
                                 if (key == "ussr") {
-                                    colorList.add(Color.parseColor("#F44336")) // RED
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_red)) // RED
                                 } else if (key == "germany") {
-                                    colorList.add(Color.parseColor("#9E9E9E")) // blackish
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_grey)) // blackish
                                 } else if (key == "usa") {
-                                    colorList.add(Color.parseColor("#2196F3")) // Blue
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_blue)) // Blue
                                 } else if (key == "poland") {
-                                    colorList.add(Color.parseColor("#FAFA00")) // yellow
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_bright_yellow)) // yellow
                                 } else if (key == "japan") {
-                                    colorList.add(Color.parseColor("#4CAF50")) // Green
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_green)) // Green
                                 } else if (key == "uk") {
-                                    colorList.add(Color.parseColor("#E1F5FE")) // whiteish blue
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_light_blue)) // whiteish blue
                                 }
                             }
-                            colorList.add(Color.parseColor("#AAE157"))
-                            colorList.add(Color.parseColor("#FF9800"))
-                            colorList.add(Color.parseColor("#22FFCB"))
-                            colorList.add(Color.parseColor("#795548"))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_lime))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_orange))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_cyan))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_brown))
 
                             val yVals1 = ArrayList<Entry>()
                             for (i in xVals.indices) {
@@ -1450,19 +1450,19 @@ class CaptainFragment : CAFragment() {
                             while (itea.hasNext()) {
                                 val key = itea.next()
                                 if (key.equals("cruiser", ignoreCase = true)) {
-                                    colorList.add(Color.parseColor("#4CAF50"))
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_green))
                                 } else if (key.equals("battleship", ignoreCase = true)) {
-                                    colorList.add(Color.parseColor("#F44336"))
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_red))
                                 } else if (key.equals("aircarrier", ignoreCase = true)) {
-                                    colorList.add(Color.parseColor("#673AB7"))
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_purple))
                                 } else if (key.equals("destroyer", ignoreCase = true)) {
-                                    colorList.add(Color.parseColor("#FDD835"))
+                                    colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_yellow))
                                 }
 
                                 xVals.add(key)
                             }
-                            colorList.add(Color.parseColor("#009688"))
-                            colorList.add(Color.parseColor("#795548"))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_teal))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_brown))
 
                             val yVals1 = ArrayList<BarEntry>()
                             for (i in xVals.indices) {
@@ -1774,16 +1774,16 @@ class CaptainFragment : CAFragment() {
                             yAxis2.textColor = textColor
 
                             val colorList: MutableList<Int> = ArrayList()
-                            colorList.add(Color.parseColor("#F44336"))
-                            colorList.add(Color.parseColor("#FF9800"))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_red))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_orange))
                             colorList.add(
                                 ContextCompat.getColor(
                                     chartSurvivalRate!!.context,
                                     R.color.average_up
                                 )
                             )
-                            colorList.add(Color.parseColor("#2196F3"))
-                            colorList.add(Color.parseColor("#FAFA00"))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_blue))
+                            colorList.add(ContextCompat.getColor(requireContext(), R.color.chart_bright_yellow))
 
                             val l = chartSurvivalRate!!.legend
                             l.isEnabled = false

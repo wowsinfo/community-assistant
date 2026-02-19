@@ -128,6 +128,11 @@ class SettingActivity : CABaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val scrollView = findViewById<View>(R.id.settings_scroll_view)
+        applyEdgeToEdgeInsetsToContainer(scrollView)
+
         aColorblind = findViewById<View>(R.id.settings_colorblind_area)
         cbColorblind = findViewById<View>(R.id.settings_colorblind_checkbox) as CheckBox?
 
@@ -189,7 +194,8 @@ class SettingActivity : CABaseActivity() {
 
         initServerLangauge()
 
-        initTheme()
+        // Theme selection removed - now uses system auto-detect (Android 12+) or navy fallback
+        // initTheme()
 
         initServer()
 

@@ -49,6 +49,11 @@ class EncyclopediaTabbedActivity : CABaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val container = findViewById<View>(R.id.encyclopedia_container)
+        applyEdgeToEdgeInsetsToContainer(container)
+
         mViewPager = findViewById<View>(R.id.encyclopedia_pager) as ViewPager?
         pager = ShipopediaPager(supportFragmentManager)
         val iconResourceArray = arrayOf(

@@ -63,6 +63,11 @@ class CompareActivity : CABaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val scrollView = findViewById<View>(R.id.compare_scroll)
+        applyEdgeToEdgeInsetsToContainer(scrollView)
+
         container = findViewById<View>(R.id.compare_container) as LinearLayout?
         progressBar = findViewById<View>(R.id.compare_progress)
         tvErrorText = findViewById<View>(R.id.compare_middle_text) as TextView?

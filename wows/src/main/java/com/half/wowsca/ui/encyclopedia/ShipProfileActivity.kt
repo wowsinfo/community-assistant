@@ -160,6 +160,11 @@ class ShipProfileActivity : CABaseActivity() {
         supportActionBar!!.setHomeButtonEnabled(true)
         title = ""
 
+        // Apply Edge-to-Edge insets
+        applyEdgeToEdgeInsets()
+        val scrollView = findViewById<View>(R.id.encyclopedia_scroll)
+        applyEdgeToEdgeInsetsToContainer(scrollView)
+
         scroll = findViewById<View>(R.id.encyclopedia_scroll) as ScrollView?
 
         progress = findViewById<View>(R.id.encyclopedia_progress)

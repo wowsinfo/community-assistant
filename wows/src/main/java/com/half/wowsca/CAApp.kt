@@ -87,30 +87,36 @@ class CAApp : Application() {
 
         @JvmStatic
         fun setTheme(act: FragmentActivity) {
-            val theme = getTheme(act)
-            if (theme == "ocean") { //dark theme
-                act.setTheme(R.style.Theme_CA_Material_Ocean)
-            } else if (theme == "dark") {
-                act.setTheme(R.style.Theme_CA_Material_Dark)
+            // Use single Material 3 DayNight theme with dynamic colors
+            // The system automatically handles:
+            // - Light/dark mode based on system settings
+            // - Dynamic colors on Android 12+ (Material You)
+            // - Fallback colors on older Android versions
+            act.setTheme(R.style.Theme_CA_Material_Dark)
+        }
             }
         }
 
-        @JvmStatic
+                @JvmStatic
         fun isOceanTheme(ctx: Context?): Boolean {
-            val theme = getTheme(ctx)
-            return theme == "ocean"
+            // Ocean theme is no longer used - we use Material 3 DayNight theme
+            return false
         }
 
         @JvmStatic
         fun isDarkTheme(ctx: Context?): Boolean {
-            val theme = getTheme(ctx)
-            return theme == "dark"
+            if (ctx == null) return true
+            // Check if system is in dark mode
+            return (ctx.resources.configuration.uiMode and 
+                android.content.res.Configuration.UI_MODE_NIGHT_MASK) == 
+                android.content.res.Configuration.UI_MODE_NIGHT_YES
         }
 
         @JvmStatic
         fun getTheme(ctx: Context?): String? {
-            val prefs = Prefs(ctx)
-            return prefs.getString(SettingActivity.THEME_CHOICE, "ocean")
+            if (ctx == null) return "dark"
+            // Return based on system theme
+            return if (isDarkTheme(ctx)) "dark" else "light"
         }
 
         @JvmStatic
