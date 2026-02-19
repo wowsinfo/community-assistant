@@ -286,7 +286,7 @@
 
     <string name="unknown">未知</string>
 
-    <string name="translator_text">繁體中文翻譯由 HALF 提供</string>
+    <string name="translator_text">繁體中文翻譯由 Community Assistant 提供</string>
 
     <string name="info_theme_mode">淺色主題</string>
     <string name="no_tier_10s_found">未找到 10 級戰車</string>
