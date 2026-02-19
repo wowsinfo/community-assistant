@@ -99,29 +99,6 @@ open class CABaseActivity : SwipeBackBaseActivity() {
         }
     }
 
-    /**
-     * Get theme-aware text color for UI elements (charts, icons, etc.)
-     * Returns appropriate color based on current theme (light or dark)
-     */
-    protected fun getThemeAwareTextColor(): Int {
-        return if (isDarkTheme(applicationContext)) {
-            androidx.core.content.ContextCompat.getColor(applicationContext, R.color.material_text_primary)
-        } else {
-            androidx.core.content.ContextCompat.getColor(applicationContext, R.color.black)
-        }
-    }
-
-    /**
-     * Get theme-aware secondary text color for UI elements
-     */
-    protected fun getThemeAwareSecondaryTextColor(): Int {
-        return if (isDarkTheme(applicationContext)) {
-            androidx.core.content.ContextCompat.getColor(applicationContext, R.color.material_text_secondary)
-        } else {
-            androidx.core.content.ContextCompat.getColor(applicationContext, R.color.black_transparent)
-        }
-    }
-
     protected fun initBackStackListener() {
         backStackListener = FragmentManager.OnBackStackChangedListener {
             invalidateOptionsMenu()
