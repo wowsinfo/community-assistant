@@ -27,10 +27,10 @@ open class CABaseActivity : SwipeBackBaseActivity() {
     //    protected TextView tvKarma;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         // Enable Edge-to-Edge
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        
+
         setTheme(this)
         val current = getAppLanguage(applicationContext)
         val myLocale = Locale(current)
