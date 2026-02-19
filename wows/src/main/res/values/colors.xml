@@ -205,4 +205,9 @@
     <color name="progress_start">#4CAF50</color>
     <color name="progress_end">#43A047</color>
 
+    <!-- Theme-aware colors (light mode defaults) -->
+    <color name="chart_text_color">@color/black</color>
+    <color name="chart_secondary_text_color">@color/black_transparent</color>
+    <color name="icon_tint_color">@color/black</color>
+
 </resources>
