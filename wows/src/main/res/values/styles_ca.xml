@@ -138,30 +138,14 @@
     <!--</style>-->
 
     <!-- DARK THEME - Material 3 with Dynamic Colors -->
-    <style name="Theme.CA.Material.Dark" parent="Theme.Material3.DynamicColors.Dark.NoActionBar">
-        <!-- Dynamic colors will be used on Android 12+, fallback colors below for older versions -->
-        
-        <!-- Material 3 Primary colors -->
-        <item name="colorPrimary">@color/md_theme_black_primary</item>
-        <item name="colorOnPrimary">@color/md_theme_black_onPrimary</item>
-        <item name="colorPrimaryContainer">@color/md_theme_black_primaryContainer</item>
-        <item name="colorOnPrimaryContainer">@color/md_theme_black_onPrimaryContainer</item>
+    <style name="Theme.CA.Material.Dark" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
+        <!-- DO NOT override colorPrimary, colorSecondary, etc. when using DynamicColors parent -->
+        <!-- The system will provide dynamic colors on Android 12+ -->
+        <!-- On older versions, Material3 provides sensible defaults -->
 
-        <!-- Legacy Material 2 compatibility -->
+        <!-- Legacy Material 2 compatibility - only for specific components that need it -->
         <item name="colorPrimaryDark">@color/material_primary_dark</item>
         <item name="colorAccent">@color/material_accent</item>
-
-        <!-- Material 3 Secondary colors -->
-        <item name="colorSecondary">@color/md_theme_black_secondary</item>
-        <item name="colorOnSecondary">@color/md_theme_black_onSecondary</item>
-        <item name="colorSecondaryContainer">@color/md_theme_black_secondaryContainer</item>
-        <item name="colorOnSecondaryContainer">@color/md_theme_black_onSecondaryContainer</item>
-
-        <!-- Material 3 Surface colors -->
-        <item name="colorSurface">@color/md_theme_black_surface</item>
-        <item name="colorOnSurface">@color/md_theme_black_onSurface</item>
-        <item name="colorSurfaceVariant">@color/md_theme_black_surfaceVariant</item>
-        <item name="colorOnSurfaceVariant">@color/md_theme_black_onSurfaceVariant</item>
 
         <item name="android:windowBackground">@color/material_background_dark</item>
         <item name="android:textColorPrimary">@color/material_text_primary</item>
@@ -181,10 +165,6 @@
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="android:enforceStatusBarContrast">false</item>
         <item name="android:enforceNavigationBarContrast">true</item>
-
-        <!--<item name="android:windowActionBarOverlay">true</item>-->
-        <!--&lt;!&ndash; Support library compatibility &ndash;&gt;-->
-        <!--<item name="windowActionBarOverlay">true</item>-->
 
         <item name="popupMenuStyle">@style/WoWSCAThemeToolbarDarkOverflow</item>
         <item name="android:popupMenuStyle">@style/WoWSCAThemeToolbarDarkOverflow</item>
