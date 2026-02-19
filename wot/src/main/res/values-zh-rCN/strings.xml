@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+
+    <string name="ad_unit_id" translatable="false">ca-app-pub-3610949611532769/5140178537</string>
+    <string name="test_ad_unit_id"  translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <!-- EVERYTHING UNDER THIS IS SUBJECT TO CHANGE-->
+    <string-array name="servers">
+        <item>US</item>
+        <item>EU</item>
+        <item>SEA</item>
+        <item>RU</item>
+        <!--
+        <item>Korea</item> -->
+    </string-array>
+
+    <string-array name="clan_basic_sorting">
+        <item>排名</item>
+        <item>名称</item>
+    </string-array>
+
+    <string-array name="advanced_sorting">
+        <item>战斗</item>
+        <item>胜率</item>
+        <item>精通</item>
+        <item>WN8</item>
+        <item>平均经验</item>
+        <item>平均伤害</item>
+        <item>K/D</item>
+        <item>名称</item>
+        <item>等级 10–1</item>
+        <item>等级 1–10</item>
+    </string-array>
+
+    <string name="recent_changes_news">补丁 3.1.3:\n\n- 更新 WN8 -> v25 \n\n- 修复了一些错误。 \n\n\n补丁 3.1.1:\n\n-错误修复和改进 \n\n\-重命名 FV 4202 - Centurion Action X \n\n\n更新 3.1:\n\n-添加了对比功能。 \n\n-WN8 更新至 v23 \n\n-错误修复。 \n\n-在玩家部分添加了要塞数据。\n\n-在工会部分添加了要塞数据。 \n\n\n补丁 3.0.2:\n\n- 图表错误修复\n\n补丁 3.0.1:\n\n- WN8 v21 -> v22 \n\n- 更多图表 \n\n- 错误修复 \n\n更新 3.0:\n\n- Material 应用重新设计。 \n\n- 新增地图部分。 \n\n- 新增默认玩家视图。选择此选项后，应用将首先加载该配置文件。\n\n- 添加了浅色主题。 \n\n- 添加了实验性 7 天、30 天和 60 天 WN8。 \n\n- 玩家和工会页面上的新图表和功能。 \n\n- 工会下载速度提升。不再需要那么长时间了。 \n\n- WN8 更新至 v21。 \n\n-现在计算并存储工会 WN8 和统计数据。\n\n- 添加了 Android Wear 支持。\n\n- 修复了一些排序问题。\n\n- 战斗活动现在显示地图图像。\n\n-更新至 Wargaming 的最新 API。\n\n-精通排序已修复。\n\n-添加了玩家和工会成员的最后战斗时间。</string>
+
+    <string name="wn8_cap">WN8</string>
+    <string name="overall">总体</string>
+    <string name="clan_wars_cap">工会战</string>
+    <string name="win_rate">胜率</string>
+    <string name="avg_battles">平均战斗</string>
+    <string name="avg_kills">平均击杀</string>
+    <string name="avg_damage">平均伤害</string>
+    <string name="avg_exp">平均经验</string>
+    <string name="last_24_wn8">最近 24 WN8</string>
+    <string name="last_7_wn8">7 天 WN8</string>
+    <string name="last_30_wn8">30 天 WN8</string>
+    <string name="last_60_wn8">60 天 WN8</string>
+    <string name="battles">战斗</string>
+    <string name="k_d">K/D</string>
+    <string name="k_d_c">K/D:</string>
+    <string name="hit_percentage">命中率 %</string>
+    <string name="hit_percentage_c">命中率 %:</string>
+    <string name="dmg_factor">伤害系数</string>
+    <string name="app_name">Assist</string>
+    <string name="language">zh-cn</string> <!-- let me choose this one -->
+
+    <string name="search_text">搜索：</string>
+    <string name="search_fragment_wn_hint">输入车辆名称或等级 #</string>
+    <string name="search_fragment_player_hint">输入用户名</string>
+    <string name="search_fragment_clan_hint">输入工会名称或缩写</string>
+    <string name="search_map_hint">输入地图名称</string>
+
+    <string name="settings">设置</string>
+
+    <string name="drawer_about">设置和信息</string>
+    <string name="drawer_clan">工会</string>
+    <string name="drawer_player">玩家</string>
+    <string name="drawer_vehicle_stats">车辆 WN8 统计</string>
+    <string name="drawer_search">搜索</string>
+    <string name="drawer_gpd">G/D 计算器</string>
+    <string name="drawer_server">服务器</string>
+    <string name="drawer_donate">支持此项目</string>
+    <string name="drawer_home">主页</string>
+    <string name="drawer_maps">地图</string>
+    <string name="drawer_battle_activity">战斗活动</string>
+
+    <string name="search_no_results">无结果</string>
+
+    <string name="info_settings">设置</string>
+    <string name="info_battles_title">为什么我的战斗没有立即更新？</string>
+    <string name="info_unknown_text">战斗尚未安排。这在登陆时经常发生</string>
+    <string name="info_unknown_title">为什么战斗时间未知？</string>
+    <string name="info_battles_text">Wargaming \u00A9 缓存工会战战斗。这可能会导致战斗更新和从屏幕上删除的延迟。</string>
+    <string name="thank_you_info">vBAddict.net 提供的预期坦克数值和 WN8 信息。</string>
+    <string name="info_about">关于</string>
+    <string name="info_version">版本：</string>
+    <string name="info_write_a_review">撰写评论</string>
+    <string name="info_email">通过电子邮件联系我</string>
+    <string name="info_twitter">在 Twitter 上联系我</string>
+    <string name="info_info">信息</string>
+    <string name="info_thank_you">感谢您</string>
+
+    <string name="list_clan_members">成员：</string>
+    <string name="list_clan_added_message">已添加</string>
+    <string name="list_clan_removed_message">已移除</string>
+
+    <string name="no_text_error">您必须输入搜索词</string>
+    <string name="no_internet_title">无互联网连接</string>
+    <string name="no_internet_message">您想打开互联网吗？</string>
+    <string name="no_internet_neutral_text">设置</string>
+    <string name="error_no_player_found">似乎有问题。请尝试重新搜索，看看是否有效。</string>
+    <string name="error">出现错误</string>
+
+    <string name="battle_activity_no_clans_text">没有保存任何工会。添加工会以查看工会战的战斗时间，设置闹钟以提醒您战斗时间以及战斗所在的省份。</string>
+
+    <string name="list_battle_title_activity">战斗活动</string>
+    <string name="activity_no_results">未找到战斗</string>
+    <string name="no_battles">无战斗</string>
+
+    <string name="system_cant_update_message">您只能每 5 分钟更新一次战斗活动</string>
+
+    <string name="battle_type_engagement">遭遇战</string>
+    <string name="battle_type_landing">登陆</string>
+    <string name="battle_type_province">省份</string>
+
+    <string name="clan_details_description">描述：</string>
+
+    <string name="alarm_dialog_time_title">您想在什么时候设置闹钟？</string>
+    <string name="alarm_dialog_before">分钟前</string>
+    <string name="alarm_pos_button_text">设置闹钟</string>
+    <string name="dismiss">关闭</string>
+    <string name="alarm_dialog_title">战斗闹钟</string>
+    <string name="alarm_set">闹钟已设置</string>
+    <string name="alarm_click_no_alarm_times">战斗已经开始或即将开始。无法为此战斗设置闹钟。</string>
+
+    <string name="scheduling">调度中</string>
+
+    <string name="server_change_text">服务器已更改为</string>
+
+    <string name="clan_details_nothing_returned">未找到此工会的任何信息。可能是服务器错误？</string>
+    <string name="recent_changes_title">更新说明</string>
+    <string name="created_by">创建者</string>
+    <string name="created_by_name">HALF</string>
+
+    <string name="vehicle_stat_win">胜率%：</string>
+    <string name="vehicle_stat_frag">击杀：</string>
+    <string name="vehicle_stat_def">防御：</string>
+    <string name="vehicle_stat_spots">点亮：</string>
+    <string name="vehicle_stat_dmg">伤害：</string>
+
+    <string name="notification_text">战斗闹钟</string>
+
+    <string name="pager_clan_details">工会详情</string>
+    <string name="pager_clan_members">成员</string>
+    <string name="pager_clan_query">查询</string>
+    <string name="details_cap">详情</string>
+    <string name="pager_tanks">坦克</string>
+
+
+    <string name="player_details_win8">WN8：</string>
+    <string name="avg_dmg">平均伤害：</string>
+    <string name="win_percentage_c">胜率 %：</string>
+    <string name="avg_exp_c">平均经验：</string>
+    <string name="battles_c">战斗：</string>
+    <string name="player_details_player_stats">玩家统计</string>
+    <string name="player_details_player_tanks">高级玩家信息</string>
+    <string name="player_details_tank_name_col">名称</string>
+    <string name="win_percentage">胜率 %</string>
+    <string name="player_details_tank_mastery_col">精通</string>
+    <string name="player_details_global_rating">WoT 评级：</string>
+    <string name="player_details_num_of_badges">徽章数量：</string>
+    <string name="player_details_badges_m">M：</string>
+    <string name="player_details_badges_1">1st：</string>
+    <string name="player_details_badges_2">2nd：</string>
+    <string name="player_details_badges_3">3rd：</string>
+    <string name="player_details_more_details">更多玩家统计</string>
+    <string name="player_details_tanking_factor">抗伤系数：</string>
+    <string name="player_details_avg_spot_dmg">平均点亮伤害：</string>
+    <string name="player_details_track_damge">平均履带伤害：</string>
+    <string name="player_details_blocked_damage">平均阻挡伤害：</string>
+    <string name="player_details_dmg_assist">平均协助伤害：</string>
+    <string name="player_details_penetration">穿透 %：</string>
+    <string name="player_details_best_game">最佳统计</string>
+    <string name="player_details_account_info">账户信息</string>
+    <string name="player_details_created_on">创建于 ：</string>
+    <string name="player_details_last_battle_on">最后战斗于：</string>
+    <string name="player_details_best_performance">最佳表现坦克</string>
+    <string name="player_details_unknown_tank">未知坦克</string>
+    <string name="player_details_joined">加入</string>
+    <string name="player_details_days_ago">天前</string>
+    <string name="player_graphs_wn8_nation">每个国家的 WN8</string>
+    <string name="player_graphs_battles_nation">每个国家的战斗</string>
+    <string name="player_graphs_tanks_per_tier">每个等级的坦克</string>
+    <string name="player_graphs_tanks_per_class">每个类型的坦克</string>
+    <string name="player_graphs_tanks_per_nation">每个国家的坦克</string>
+    <string name="player_details_best_exp">经验：</string>
+    <string name="player_details_best_frags">击杀：</string>
+    <string name="player_details_best_damage">伤害：</string>
+    <string name="player_details_clan_wars_stats">工会战统计</string>
+    <string name="player_details_no_clan_wars_stats">未找到工会战统计</string>
+    <string name="player_details_no_stats_found">未找到统计</string>
+
+    <string name="insert_all_into_db_start">正在安装本地坦克数据库</string>
+    <string name="insert_all_into_db_end">已安装本地坦克数据库</string>
+
+    <string name="open_in_wotlabs">在 WoTLabs 中打开</string>
+    <string name="open_in_clantools">在 ClanTools 中打开</string>
+    <string name="open_in_wotstats">在 WoTStats 中打开</string>
+
+    <string name="menu_default">设为默认</string>
+    <string name="menu_download">下载工会</string>
+
+    <string name="clan_details_best_tanker">最佳坦克手：</string>
+    <string name="clan_details_avg_kills">平均击杀：</string>
+    <string name="clan_details_avg_battles">平均战斗：</string>
+    <string name="clan_details_avg_damage">平均伤害：</string>
+    <string name="clan_details_avg_exp">平均经验：</string>
+    <string name="clan_details_avg_wn8">平均 WN8：</string>
+    <string name="clan_details_clan_stats">工会统计</string>
+    <string name="clan_details_export_title">导出器：选择日期</string>
+    <string name="clan_details_export_message">导出的文本文件包含：\n 基本工会信息、工会玩家列表、每个玩家的坦克列表以及每辆坦克的 wn8。\n\n这是 JSON 格式。为了节省文件大小，以下是一些关键字：\naXp = 平均经验\nwins = 获胜战斗数\nhitsPC = 命中率百分比\nfrags = 击杀或摧毁的坦克\nsur = 存活战斗\ncwn8 = 工会战 WN8\n\n这是我存储在设备上的所有信息，以便在此应用中为您提供服务。</string>
+    <string name="clan_details_export_subject">导出</string>
+    <string name="clan_graphs_no_graphs">未找到图表。重新下载工会</string>
+
+    <string name="details_tanks_member_get_all_info">下载工会</string>
+
+    <string name="event_map">事件地图</string>
+
+    <string name="info_colorblind">色盲模式</string>
+
+    <string name="failure">获取信息失败</string>
+
+    <string name="nation_china">中国</string>
+    <string name="nation_france">法国</string>
+    <string name="nation_germany">德国</string>
+    <string name="nation_japan">日本</string>
+    <string name="nation_uk">英国</string>
+    <string name="nation_ussr">苏联</string>
+    <string name="nation_usa">美国</string>
+
+    <string name="download_players">正在获取每个玩家的所有信息。点击取消。</string>
+    <string name="download_calculating">正在计算每辆坦克的统计、WN8 等。点击取消。</string>
+    <string name="download_graphs">正在创建图表数据。点击取消。</string>
+
+    <string name="download_notification_downloading">正在下载</string>
+    <string name="download_notification_information">的信息</string>
+    <string name="download_notification_standard">下载进行中。点击取消。</string>
+    <string name="download_notification_done"> 下载完成</string>
+    <string name="download_notification_cancelled"> 下载已取消</string>
+
+    <string name="first_time_download_title">下载工会</string>
+    <string name="first_time_download_text">此过程将启动需要使用大量数据的下载，可能需要几分钟。由于应用对访问次数有限制，每个工会每三天只能下载一次。\n\n您获得的是工会中每个成员的详细信息，谁在哪辆坦克中表现最佳，每个玩家的 WN8 以及更多信息。此数据存储在设备上，并将在下次下载之前重复使用。\n\n建议使用 Wifi。</string>
+
+    <string name="download_dialog_pos_message">下载</string>
+    <string name="download_task_running">工会下载已开始</string>
+    <string name="refresh">刷新</string>
+    <string name="player_details_trees_cut">树木摧毁数：</string>
+
+    <string name="info_clean_clan">清理应用在手机上使用的文件。这会删除所有下载的工会文件。</string>
+    <string name="info_clean_clan_text">清除工会下载</string>
+    <string name="info_clean_clans_toast">已清除文件</string>
+    <string name="tank_clan_member_next_download_time_text">下次下载可用：\n</string>
+    <string name="clan_details_toast_loading_up_download">正在加载已下载的工会信息</string>
+    <string name="clan_details_waiting_for_clan">等待其他工会下载</string>
+    <string name="clan_details_download_starts">下载已开始</string>
+    <string name="search_choose_hint">选择一辆坦克并点击提交</string>
+    <string name="details_query_no_tank_selected">未选择要查询的坦克</string>
+    <string name="details_query_loading">工会下载加载中</string>
+    <string name="details_query_clan_info_not_downloaded">为了访问此屏幕的功能，您需要先下载工会。</string>
+    <string name="details_query_description_tier">等级</string>
+    <string name="details_query_no_players_have_that_tank">未找到信息</string>
+
+    <string name="tank_destroyer">坦克歼击车</string>
+    <string name="heavy_tank">重型坦克</string>
+    <string name="medium_tank">中型坦克</string>
+    <string name="light_tank">轻型坦克</string>
+    <string name="artillery">火炮</string>
+
+    <string name="details_query_select_a_tank">选择\n一辆坦克</string>
+
+    <string name="task_no_internet">由于无互联网连接，下载任务已取消</string>
+    <string name="dialog_fail_text">数据库中未找到车辆。</string>
+    <string name="dialog_title">玩家差异</string>
+    <string name="dialog_top_yours">您的</string>
+    <string name="dialog_top_average">平均</string>
+    <string name="dialog_top_delta">差异</string>
+    <string name="dialog_row_wins">胜利</string>
+    <string name="dialog_row_damage">伤害</string>
+    <string name="dialog_row_kill_death">K/D</string>
+    <string name="dialog_row_spots">点亮</string>
+    <string name="dialog_row_def">防御点数</string>
+
+    <string name="unknown">未知</string>
+
+    <string name="translator_text">简体中文翻译 </string>
+
+    <string name="info_theme_mode">浅色主题</string>
+    <string name="no_tier_10s_found">未找到 10 级坦克</string>
+    <string name="no_tier_10s_found_games">未找到 10 级游戏</string>
+
+    <string name="dialog_message_bookmarking">添加书签将使该玩家成为您启动应用时看到的默认页面。</string>
+    <string name="dialog_title_bookmarking">您想为此玩家添加书签吗？</string>
+
+    <string name="wn8_per_tier">每个等级的 WN8</string>
+    <string name="wn8_per_class">每个类型的 WN8</string>
+    <string name="battles_per_tier">每个等级的战斗</string>
+    <string name="battles_per_class">每个类型的战斗</string>
+    <string name="wn8_per_top_tier">10 级坦克的 WN8</string>
+    <string name="clan_graphs_tanks_top_tier">10 级坦克数量</string>
+    <string name="battles_per_top_tier">10 级坦克的战斗</string>
+
+    <string name="wn8_per_tier_8">8 级坦克的 WN8</string>
+    <string name="battles_per_tier_8">8 级坦克的战斗</string>
+    <string name="clan_graphs_tanks_tier_8">8 级坦克数量</string>
+    <string name="no_tier_8s_found">未找到 8 级坦克</string>
+    <string name="no_tier_8s_found_games">未找到 8 级游戏</string>
+
+
+    <string name="wn8_per_tier_6">6 级坦克的 WN8</string>
+    <string name="battles_per_tier_6">6 级坦克的战斗</string>
+    <string name="wn8_per_tier_5">5 级坦克的 WN8</string>
+    <string name="battles_per_tier_5">5 级坦克的战斗</string>
+    <string name="wn8_per_tier_7">7 级坦克的 WN8</string>
+    <string name="battles_per_tier_7">7 级坦克的战斗</string>
+    <string name="wn8_per_tier_9">9 级坦克的 WN8</string>
+    <string name="battles_per_tier_9">9 级坦克的战斗</string>
+    <string name="clan_graphs_tanks_tier_6">6 级坦克数量</string>
+    <string name="no_tier_6s_found">未找到 6 级坦克</string>
+    <string name="no_tier_6s_found_games">未找到 6 级游戏</string>
+    <string name="no_tier_5s_found">未找到 5 级坦克</string>
+    <string name="no_tier_5s_found_games">未找到 5 级游戏</string>
+    <string name="no_tier_7s_found">未找到 7 级坦克</string>
+    <string name="no_tier_7s_found_games">未找到 7 级游戏</string>
+    <string name="no_tier_9s_found">未找到 9 级坦克</string>
+    <string name="no_tier_9s_found_games">未找到 9 级游戏</string>
+
+    <string name="dialog_review_title">您评论过此应用吗？</string>
+    <string name="player_details_stronghold_stats">要塞统计</string>
+    <string name="dialog_donation_title">帮助 Assist 应用</string>
+    <string name="search_text_compare">长按以比较玩家</string>
+    <string name="search_text_compare_button">比较</string>
+    <string name="search_compare_not_enough_players">玩家不足以比较</string>
+    <string name="search_compare_clear">清除</string>
+    <string name="compare_player_added">玩家已添加</string>
+    <string name="compare_player_message">您想将您收藏的指挥官也添加到比较列表中吗？</string>
+    <string name="compare_player_add">添加</string>
+    <string name="compare_maxed_out">最多比较三个指挥官，点击下面的比较按钮删除指挥官或再次长按该指挥官</string>
+    <string name="avg_dmg_per_tier">每个等级的平均伤害</string>
+    <string name="avg_exp_per_tier">每个等级的平均经验</string>
+    <string name="avg_tier">平均等级</string>
+    <string name="survival_rate">存活率</string>
+    <string name="caps_per_game">占领/场</string>
+    <string name="def_reset_per_game">防御重置/场</string>
+    <string name="stronghold_wn8">要塞 WN8</string>
+    <string name="stronghold_cap">要塞</string>
+    <string name="settings_info_clear_players">清除玩家信息</string>
+    <string name="settings_info_clear_players_text">清除所有已保存的玩家信息。仅在设备内存不足时执行此操作。</string>
+    <string name="nation_cz">捷克</string>
+
+
+    <!-- updated text-->
+    <string-array name="clan_sorting">
+        <item>排名</item>
+        <item>名称</item>
+        <item>战斗</item>
+        <item>胜率</item>
+        <item>WN8</item>
+        <item>工会 WN8</item>
+        <item>要塞 WN8</item>
+        <item>最后战斗时间</item>
+        <item>最近 24 小时 WN8</item>
+        <item>最近 7 天 WN8</item>
+        <item>最近 30 天 WN8</item>
+        <item>最近 60 天 WN8</item>
+    </string-array>
+    <!-- optional -->
+    <string name="patch_notes">更新 3.2:\n\n- 更新后端，调用可能需要更长时间，但所有数据将一次性传入。 \n\n- 添加了启动画面，保持坦克名称和成就更新。 \n\n-添加了成就视图。 \n\n- 添加了 5、7、9 级图表和数据。 \n\n-从文本移至图标。 \n\n- 更新设置页面以添加服务器语言和新选项。\n\n- 添加了服务器信息页面。 \n\n- 车辆 WN8 统计重命名为百科全书。 \n\n- 在捐赠页面添加了自愿广告。\n\n- 在工会下载中添加了最近的 wn8。 </string>
+
+    <string name="drawer_encyclopedia">坦克百科</string>
+
+    <string name="donate_title">您想帮助支持这个项目吗？</string>
+    <string name="donate_message">我是 HALF，希望 WoT 社区助手帮助了您玩《坦克世界》游戏。我想为您创建最好的坦克世界助手。我一直在努力为您免费制作更好的应用。如果您想支持该应用，捐赠或观看广告将对此应用有很大帮助。</string>
+
+    <string name="dialog_donation_message">如果您喜欢此应用，您可以发送捐赠或观看广告来支持此应用的开发。甚至给我一些您的想法，您可能会看到您的想法融入此应用！</string>
+    <string name="fragment_donate_view_ad">观看广告</string>
+    <string name="settings_info_refresh_msg">清除并刷新 Wargaming 存储的成就和坦克数据。当坦克或成就未显示时使用此功能。此信息每 3 天自动更新一次。</string>
+    <string name="settings_info_refresh_title">刷新存储数据</string>
+    <string name="refresh_finished">刷新完成</string>
+    <string name="settings_server_language">服务器语言：</string>
+    <string name="settings_server">服务器：</string>
+
+    <!-- Choose one of these for the string below. This will be the base language returned for tank names from the server. -->
+    <!-- "English", "Русский", "Polski", "Deutsch", "Français", "Español", "简体中文", "Türkçe", "Čeština", "ไทย", "Tiếng Việt", "한국어"-->
+    <!-- "en",      "ru",       "pl",       "de",   "fr",       "es",       "zh-cn",   "tr",       "cs",    "th", "vi",         "ko"-->
+    <string name="base_server_language">zh-cn</string>
+
+    <string name="resources_wot_numbers">坦克世界\n 在线玩家</string>
+    <string name="resources_wows_numbers">战舰世界\n 在线玩家</string>
+    <string name="resources_wows_total_c">战舰世界总计：\n</string>
+    <string name="resources_wot_total_c">坦克世界总计：\n</string>
+    <string name="drawer_server_info">服务器信息</string>
+    <string name="encyclopedia_wn8_stats">WN8 统计</string>
+    <string name="donation_dialog_paypal">Paypal</string>
+    <string name="day_wn8">24 小时</string>
+    <string name="week_wn8">7 天</string>
+    <string name="month_wn8">30 天</string>
+    <string name="two_month_wn8">60 天</string>
+    <string name="recent_wn8s">最近 WN8</string>
+
+    <string name="online">在线</string>
+    <string name="offline">离线</string>
+    <string name="drawer_twitch_youtube">TWITCH 和 YOUTUBE 明星</string>
+    <string name="drawer_websites">有用的网站</string>
+    <string name="patreon" translatable="false">Patreon</string>
+    <string name="app_language">应用语言：</string>
+    <string name="app_langauge_base">zh-cn</string>
+    <string name="nation_sweden">瑞典</string>
+</resources>
