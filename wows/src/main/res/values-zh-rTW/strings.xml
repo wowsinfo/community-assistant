@@ -1,0 +1,464 @@
+<resources>
+
+    <!-- optional for translation-->
+    <string name="patch_notes" translatable="false">Patch 1.3.1(54)\n\nRemoved Crashlytics.\n\nUpdated app speed and information distribution.\n\nFixes Ranked Season Sorting.\n\nUpdated to a new WTR/CA Rating provider. Takes longer to grab that data.\n\nIncreased minimum update time from 3 to 5 days to prevent overusing the data provider.</string>
+    <string name="update_notes_achieve" translatable="false">\n\n\nPatch 1.3(50)\n\nFixed an issue where grabbing all of the player\'s ships would bring in old ones.\n\nFixed a few bugs in newer logic crashing the app.\n\nPatch 1.3(49)\n\nFixing an issue where the app wouldn\'t launch if an API failed.\n\nRemoving Capture points and Dropped Capture points from the front captain screen due to data inaccuracies.\n\n\nUpdate 1.3(47):\n\nShip comparison is now in the encyclopedia area.\n\nAdded more data points on the ships tab.\n\nFixed graph on profile which was saying K/D but logic was for K/G\n\nFixed a issue where ships were not showing up.\n\nFixed a crash on backing out of the app.\n\n\nPatch 1.2.10\n\nFixed crash on hidden profiles.\n\nAdjusted settings menu.\n\nUpdated Attribution section.\n\nIncreased data collection from Wargaming servers for next update.\n\nHelp Support the app by showing an ad on launch.\n\n\nPatch 1.2.9\n\nFixed ship sorting.\n\nAdded swipe to refresh.\n\nAdded app shortcuts for Nougat.\n\nAdded Korean server.\n\nFixed color issues on search page.\n\nAdded Commonwealth sort.\n\n\nPatch 1.2.7\n\nFixed crash on Launch.\n\nFixed dropdown\'s colors.\n\nFixed France Filter\n\n\nPatch: 1.2.6\n\nAdded Notser to Twitch &amp; Youtube Stars list!\n\nFixed Main Battery accuracy graph. It now shows the correct numbers.\n\nFixing some text issues.\n\nFixing some crashes.\n\nAdded in module price and xp.\n\n\nPatch: 1.2.5\n\nAdjusting Warships.Today API implementation to match new API.\n\n\nUpdate 1.2:\n\nShipopedia upgraded to include Captain skills, upgrades and flags.\n\nAdded the ability to change what modules on a Ship\'s profile.\n\nData provided was switched to Warship.Today.\n\nMore information like armor, per AA gun stats, etc added to ship profiles.\n\nEnabled the ability to login to view private account information.\n\nCommunity Assistant(CA) Rating v1 added. To view the rating, go to settings to opt-in. More information is available by clicking the rating.\n\nKamiSamurai and Crysantos were added to the Twitch Stars section.\n\nWoWsReplays.com was added to Useful Websites.\n\nAdded No Arp ship option, new Dark theme option, Server changer and Save point amounts option in the Settings Menu.\n\nAdded Accuracy information about Main Battery and Torpedoes.\n\nRemoved Capture and Defense points because WG wasn\'t sending correct data.\n\nAdded more sorting options in the shipopedia.\n\nAdded information on captains and ships with information on Team Battles, PvE and division battles.\n\nAdding some material design animation.\n\nAdded a slide view to go back ability on most views.
+        \n\n\nPatch 1.1.6:\n\nFixing a few more crashes.\n\nUpdating Refresh logic.\n\n\nPatch 1.1.5:\n\nAdded Swipe back.\n\nWoWs Replays added in useful sites and twitch &amp; Youtube Stars.\n\nCaptain Ships should keep position. \n\n\nPatch 1.1.4:\n\n-Fixing crashes and bugs. \n\n\nPatch 1.1.3:\n\nAdded ClydeThaMonkey to the Twitch Stars.\n\nAdjusted paypal and donation area\n\nFixed some text issues\n\nOn Larger devices, more detailed images will be shown.\n\nFixed up some tablet optimizations \n\n\nPatch 1.1.2:\n\nFixed bugs in translations.\n\nAdjusted memory usage on parts of the app.\n\nFixed a few crashes.\n\nAdded a few extra languages to Wargaming Server Choice.\n\n\nUpdate 1.1:\n\nMultiple Languages Added:\nGerman, Russian, Swedish, Spanish and Dutch.\n\nTablet Support Added\n\nAdded saved data to individual shipsHolder\n\nAdded Wargaming server language choice\n\nAdded Difference in Achievements\n\nAdded more top ship stats\n\nAdded even more data on profile and shipsHolder\n\nMoved saved captain to first position when comparing\n\nDecreased memory usage\n\nFixed an issue when the app would crash if the application was open for a long period of time\n\nCreated a title area in the comparison screen that follows scrolling\n\nAdded Armored Patrol and DRMB to Useful Website Section\n\nAdded more graphs and reorganized the more details area into two tabs\n\nAdded iEarlGrey to Twitch &amp; Youtube stars\n\n Fixed a few bugs found in Beta\n\n\nPatch 1.0.1:\n\nFixing memory issues on Twitch and Youtube Section. \n\nSpeed improvements on multiple parts of the app. \n\nStability improved in multiple sections. \n\nBugs smashed. \n\nUpdate 1.0:\n\nRanked Battle statistics added.\n\nNavigational Drawer added.\n\nTwitch and Youtube area redone\n\nViewing a ship is redone to show more information.\n\nAdded a new website area and server information page. \n\nAdded the ability to view a voluntary ad instead of donating money.\n\nShipopedia redone to include WarshipStats.com information in graph form.\n\nUpdate icons and action bar.\n\nAdd/remove captain is now in the top bar.\n\nApp speed improvements and fixes\n\n\n0.7 Update Notes:\n\nWarshipstats data and features added throughout the app. \n\nShipopedia added to the app. \n\nSplash screen added. \n\nCompare section updated. \n\nApp improvements and bug fixes\n\n\n0.6.1 Patch Notes:\n\nBug fixes and patching up RU server. \n\n\n0.6 Update Notes:\n\nCaptain Comparison section added in Search Area.\n\n-Multiple graphical adjustments, fixing numbers up.\n\nImproved Stability.\n\nWarshipstats.com information added to app. More in the future.\n\n- More information stored on device. To be used in future updates.\n\n-More Links added.\n\n\n0.5.1 Update Notes:\n\nGraphic changes, additional graphs and additions to views.\n\nGlossary added to settings for icons.\n\nSpeed enhancements and bug fixes.\n\nFixed refresh.\n\n\n0.5.0.1 Patch Notes: \n\nSome text Fixed.\n\nmultiple crashes addressed.\n\nFixed logic on action bar.\n\n\n0.5.0 Update Notes:\n\nFirst update\n\nCaptain statistics and graphs.\n\nShip statistics and images\n\nCaptain Search.\n\nBattle Reference graphs on Avg Exp, Acg Damage, Win Rate and more.\n\n- Achievements and their descriptions.</string>
+    <string name="attribution_text" translatable="false">This application is powered by Wargaming Developer Partner Program and Warships.Today. Thank you for making this app possible.\n\nAmazing people from the community that helped create this app:\n  /u/compassghost for the launcher icon.\n  Star, Pack, Syth and Goat for ideas and initial testing.\n\nThank you to OhJeezums, ClydeThaMonkey, Mejashtv, ShipComrade, NoZoupForYou Gaming, Hyf1re, Notser and iChase for the insane amount of support and love you gave to this app and community. Without your support, the app and I would not be where we are today.\n\nSweet icons from NounProject:\nexplosion by Aha-Soft, Rank by Zlatko Najdenovski, Trophy by Will Gausmann, Medal by Creative Stall, Ship by Daouna Jeong, Medal by Denis Klyunchnikov, expand by Garrett Knoll, torpedo by Blaise Sewell, Airplane by Creative Stall, Delete by Simon Brown, Book by Creative Stall, Star by Erin Standley, Trophy by Creative Stall, connection by Jason D. Rowley, Email by Lorena Salagre, thumbs up by Nick Holroyd, Ying Yang by Vicons Design, Heart by Bruno Gätjens González, hexagons by Creative Stall and Battleship by Yair Cohen.</string>
+    <string name="app_name">Assist</string>
+
+    <!-- base language for wargaming to send back data with the right language attached -->
+    <!-- "English", "Русский", "Polski", "Deutsch", "Français", "Español", "简体中文", "Türkçe", "Čeština", "ไทย", "Tiếng Việt", "한국어"-->
+    <!-- "en",      "ru",       "pl",       "de",   "fr",       "es",       "zh-cn",   "tr",       "cs",    "th", "vi",         "ko"-->
+    <string name="base_server_language">zh-tw</string>
+
+    <string name="action_settings">設定</string>
+
+    <string name="action_captains">艦長</string>
+    <string name="action_refresh">重新整理</string>
+    <string name="welcome">歡迎</string>
+
+    <string name="search_et_hint">輸入使用者名稱</string>
+    <string name="search_no_results">沒有結果</string>
+
+    <string name="no_internet_title">沒有網際網路連接</string>
+    <string name="no_internet_message">是否要開啟網際網路？</string>
+    <string name="no_internet_neutral_text">設定</string>
+    <string name="no_text_error">必須輸入搜尋條件</string>
+
+    <string name="list_clan_added_message">已新增</string>
+    <string name="list_clan_removed_message">已移除</string>
+
+    <string name="captain_average_exp">平均經驗值</string>
+    <string name="captain_average_damage">平均傷害</string>
+    <string name="captain_kills_deaths">擊殺/死亡比</string>
+    <string name="captain_battles">存活率</string>
+    <string name="captain_winrate">勝率</string>
+
+    <string name="menu_favorite">加入收藏</string>
+    <string name="menu_unfavorite">取消收藏</string>
+    <string name="ships_hint">艦名或階級</string>
+
+    <string name="donate_title">要支持此專案嗎？</string>
+    <string name="donate_message">我是 HALF，希望 WoWS 社群助手有助於你玩《戰艦世界》遊戲。我想為你創造最好的戰艦世界助手。我不斷努力讓這個應用程式變得更好，而且完全免費。如果你想支持這個應用程式的開發，可以贊助或觀看下方的快速廣告。任何幫助都能讓我繼續開發這個應用程式並舉辦贈品活動，以回饋你們的支持。</string>
+    <string name="search_compare_default_text">長按艦長以將其加入比較清單</string>
+    <string name="title_compare">比較</string>
+    <string name="action_shipopedia">艦艇百科</string>
+    <string name="action_websites">實用網站</string>
+    <string name="action_twitch">Twitch 和 Youtube 明星</string>
+    <string name="action_donate">支持應用程式</string>
+    <string name="drawer_search">搜尋和比較</string>
+    <string name="drawer_captains">艦長</string>
+    <string name="encyclopedia_average_damage">平均傷害</string>
+    <string name="encyclopedia_winrate">勝率</string>
+    <string name="encyclopedia_kills">平均擊殺數</string>
+    <string name="encyclopedia_tier_start">階級 </string>
+    <string name="encyclopedia_tier_end"> 數據</string>
+    <string name="encyclopedia_survivability">生存性</string>
+    <string name="encyclopedia_artillery">主砲</string>
+    <string name="encyclopedia_torps">魚雷</string>
+    <string name="encyclopedia_aa_def">防空</string>
+    <string name="encyclopedia_aircraft">艦載機</string>
+    <string name="encyclopedia_mobility">機動性</string>
+    <string name="encyclopedia_concealment">隱蔽性</string>
+    <string name="encyclopedia_ship_stats">艦艇數據</string>
+    <string name="encyclopedia_health">生命值</string>
+    <string name="encyclopedia_gun_range">主砲射程</string>
+    <string name="encyclopedia_torp_range">魚雷射程</string>
+    <string name="encyclopedia_torp_speed">魚雷速度</string>
+    <string name="encyclopedia_secondary_range">副砲射程</string>
+    <string name="encyclopedia_aa_range">防空最大射程</string>
+    <string name="encyclopedia_spotted_range">艦艇發現距離</string>
+    <string name="encyclopedia_aircraft_spotted_range">空中發現距離</string>
+    <string name="encyclopedia_shell_damage">砲彈傷害</string>
+    <string name="encyclopedia_speed">速度</string>
+    <string name="encyclopedia_arty_fr">主砲射速</string>
+    <string name="encyclopedia_torp_fr">魚雷射速</string>
+    <string name="encyclopedia_torp_damage">魚雷傷害</string>
+    <string name="encyclopedia_num_guns">火砲數量</string>
+    <string name="encyclopedia_num_torps">魚雷數量</string>
+    <string name="encyclopedia_num_planes">艦載機數量</string>
+    <string name="encyclopedia_rudder_time">舵機轉向時間</string>
+    <string name="encyclopedia_turning_radius">迴轉半徑</string>
+    <string name="encyclopedia_average_stats">平均戰鬥數據</string>
+    <string name="damage">傷害</string>
+    <string name="win_rate">勝率</string>
+    <string name="kills">擊殺數</string>
+    <string name="planes_downed_game">每場擊落飛機數</string>
+    <string name="captures_game">每場佔領數</string>
+    <string name="def_reset_game">每場防禦重置數</string>
+    <string name="survival_rate">存活率</string>
+    <string name="encyclopedia_upgrades">可用升級</string>
+    <string name="encyclopedia_next_ship">下一艘艦艇</string>
+    <string name="price_not_known">未知價格</string>
+    <string name="gold">" 金幣"</string>
+    <string name="credits">" 銀幣"</string>
+    <string name="encyclopedia_tb_torp_speed">魚雷機魚雷速度</string>
+    <string name="encyclopedia_tb_prep_time">魚雷機準備時間</string>
+    <string name="encyclopedia_tb_torp_dam">魚雷機魚雷傷害</string>
+    <string name="encyclopedia_db_prep_time">俯衝轟炸機準備時間</string>
+    <string name="encyclopedia_db_damage">俯衝轟炸機傷害</string>
+    <string name="encyclopedia_ship_not_found">頁面失敗。找不到艦艇 ID</string>
+    <string name="dismiss">關閉</string>
+    <string name="encyclopedia_upgrade_cost">"\n\n銀幣："</string>
+    <string name="failed_to_grab_data">無法取得資料</string>
+    <string name="russia">俄羅斯</string>
+    <string name="germany">德國</string>
+    <string name="usa">美國</string>
+    <string name="poland">波蘭</string>
+    <string name="japan">日本</string>
+    <string name="uk">英國</string>
+    <string name="encyclopedia_nation_tier">\n階級 </string>
+    <string name="resources_view_add">觀看廣告</string>
+    <string name="settings">設定</string>
+    <string name="colorblind_mode">色盲模式</string>
+    <string name="settings_show_average">顯示平均比較</string>
+    <string name="settings_clean_player">清除玩家資訊</string>
+    <string name="settings_clear_player_info">清除所有已儲存的玩家資訊。僅在裝置記憶體不足時執行此操作。</string>
+    <string name="settings_refresh_stored_data">重新整理儲存資料</string>
+    <string name="settings_refresh_stored_data_info">清除並重新整理來自 Wargaming 的成就和艦艇資料。當艦艇或成就未顯示時使用此功能。此資訊會每 3 天自動更新。</string>
+    <string name="about">關於</string>
+    <string name="version">版本：</string>
+    <string name="settings_write_a_review">撰寫評論</string>
+    <string name="settings_contact_me">透過電子郵件聯絡我</string>
+    <string name="settings_twitter">在 Twitter 上聯絡我</string>
+    <string name="settings_glossary">術語表</string>
+    <string name="settings_avg_dmg">平均\n傷害</string>
+    <string name="battles">戰鬥</string>
+    <string name="settings_avg_exp">平均\n經驗值</string>
+    <string name="settings_k_d">擊殺數\n每死亡</string>
+    <string name="settings_saved_captains">已儲存\n艦長</string>
+    <string name="refresh">重新整理</string>
+    <string name="shipopedia">艦艇百科</string>
+    <string name="achievements">成就</string>
+    <string name="settings_stats_graphs"><![CDATA[數據和\n圖表]]></string>
+    <string name="shipsHolder">艦艇</string>
+    <string name="settings_att">歸屬</string>
+    <string name="average_experience">平均經驗值</string>
+    <string name="captain_first_details">你玩的戰鬥越多，此圖表就會越完整。</string>
+    <string name="games_by_tier">各階級遊戲數</string>
+    <string name="average_tier_c">平均階級：</string>
+    <string name="games_per_ship_type">各艦艇類型遊戲數</string>
+    <string name="games_per_nation">各國家遊戲數</string>
+    <string name="times_around_the_earth_c">環繞地球圈數：</string>
+    <string name="general_stats">一般數據</string>
+    <string name="profile_level">檔案等級</string>
+    <string name="total_xp">總經驗值</string>
+    <string name="total_damage">總傷害</string>
+    <string name="last_battle_on">最後戰鬥時間</string>
+    <string name="account_created_on">帳號建立時間</string>
+    <string name="kills_by_armament_type">各武裝類型擊殺數</string>
+    <string name="average_experience_per_tier">各階級平均經驗值</string>
+    <string name="average_damage_per_tier">各階級平均傷害</string>
+    <string name="main_battery">主砲</string>
+    <string name="destroyed_c">摧毀：</string>
+    <string name="hit_percentage_c">命中率：</string>
+    <string name="shots_fired_c">開火次數：</string>
+    <string name="best_ship_c">最佳艦艇：</string>
+    <string name="torpedoes">魚雷</string>
+    <string name="secondary_battery">副砲</string>
+    <string name="ramming">撞擊</string>
+    <string name="delete">刪除</string>
+    <string name="armament_use">武裝使用</string>
+    <string name="max_kills">最高擊殺數</string>
+    <string name="max_damage">最高傷害</string>
+    <string name="max_planes_killed">最高擊落飛機數</string>
+    <string name="max_xp">最高經驗值</string>
+    <string name="traveled">航行距離</string>
+    <string name="kills_game">擊殺數/場</string>
+    <string name="caps_game">佔領數/場</string>
+    <string name="survived_wins">存活勝利數</string>
+    <string name="short_kills_game">擊殺/場</string>
+    <string name="short_win_rate">勝率</string>
+    <string name="short_cap_points">佔領/場</string>
+    <string name="short_planes_game">飛機/場</string>
+    <string name="baseline">100 為基準</string>
+    <string name="save_captain">儲存艦長</string>
+    <string name="delete_captain">刪除艦長</string>
+    <string name="resources_websites">網站和工具</string>
+    <string name="resources_support">支持</string>
+    <string name="resources_server_info">伺服器資訊</string>
+    <string name="resources_wot_numbers">戰車世界\n 線上玩家</string>
+    <string name="resources_wows_numbers">戰艦世界\n 線上玩家</string>
+    <string name="resources_error">沒有返回任何內容</string>
+    <string name="resources_wows_total_c">戰艦世界總計：\n</string>
+    <string name="resources_wot_total_c">戰車世界總計：\n</string>
+    <string name="ranked">排名</string>
+    <string name="encyclopedia">百科</string>
+    <string name="live">直播中</string>
+    <string name="offline">離線</string>
+    <string name="action_server_info">伺服器資訊</string>
+    <string name="premium_ship_stats">特殊艦數據</string>
+    <string name="dialog_assist_title">協助開發此應用程式</string>
+    <string name="dialog_review_app">你已經評論過此應用程式了嗎？</string>
+    <string name="dialog_review_message">花 15 秒可以幫助這個應用程式成長。點擊下方的評論按鈕在 Google Play 上留下快速評論。</string>
+    <string name="dialog_review_positive">評論</string>
+    <string name="no">否</string>
+    <string name="dialog_view_ad">觀看廣告</string>
+    <string name="dialog_follow_title">想追蹤開發進度嗎？</string>
+    <string name="dialog_follow_message">在 Twitter 上關注我，我會發布即將推出的功能的新圖片，並討論新版本。</string>
+    <string name="dialog_bookmark_title">要為此艦長加上書籤嗎？</string>
+    <string name="dialog_bookmark_message">加上書籤後，開啟應用程式時會直接顯示此艦長，無需再次搜尋</string>
+    <string name="yes">是</string>
+    <string name="dialog_assist_message">想幫助這個免費應用程式嗎？贊助或觀看快速廣告以支持應用程式。廣告是自願的，絕不會出現在應用程式的其他地方。這些支持有助於支付我在 Twitter、Twitch 甚至 Youtube 上舉辦的贈品活動，以及此應用程式的開發。</string>
+    <string name="avg_dmg_c">平均傷害：</string>
+    <string name="avg_caps_c">平均佔領：</string>
+    <string name="avg_resets_c">平均重置：</string>
+    <string name="avg_planes_c">平均飛機：</string>
+    <string name="avg_xp_c">平均經驗值：</string>
+    <string name="ranked_season">賽季</string>
+    <string name="avg_kills_c">平均擊殺：</string>
+    <string name="ship">艦艇</string>
+    <string name="top_damage_c">最高傷害：</string>
+    <string name="top_exp_c">最高經驗值：</string>
+    <string name="unknown">未知</string>
+    <string name="compareArmament">武裝數據</string>
+    <string name="compare_stats_average">與平均數據比較的數據</string>
+    <string name="main_battery_kills">主砲擊殺數</string>
+    <string name="planes_downed">擊落飛機數</string>
+    <string name="torpedoes_kills">魚雷擊殺數</string>
+    <string name="aircraft_kills">艦載機擊殺數</string>
+    <string name="other_kills">其他擊殺數</string>
+    <string name="main_battery_hit_per">主砲命中率</string>
+    <string name="torpedoes_hit_per">魚雷命中率</string>
+    <string name="average_damage">平均傷害</string>
+    <string name="captain">艦長</string>
+    <string name="average_tier">平均階級</string>
+    <string name="not_enough_captains">沒有足夠的艦長進行比較</string>
+    <string name="compare">比較</string>
+    <string name="clear_list">清除清單</string>
+    <string name="compare_list">比較清單</string>
+    <string name="compare_add_title">艦長已新增至清單</string>
+    <string name="compare_dialog_message">要將你加上書籤的艦長也新增到比較清單嗎？</string>
+    <string name="compare_max_message">最多比較三位艦長，點擊下方的比較按鈕以刪除艦長，或再次長按該艦長</string>
+    <string name="compare_bottom_text_max">" 在清單中。3/3"</string>
+    <string name="compare_bottom_text_middle">" 在清單中。2/3"</string>
+    <string name="compare_bottom_text_single">" 在清單中。1/3"</string>
+    <string name="update_notes_title">更新說明</string>
+    <string name="player_stored_data_deleted">玩家儲存資料已刪除</string>
+    <string name="purging_refresh">正在清除資料並開始重新整理</string>
+    <string name="purge_refresh_done">清除和重新整理已完成</string>
+    <string name="average_win_rate_per_tier">各階級平均勝率</string>
+    <string name="average_survival_per_tier">各階級平均存活率</string>
+    <string name="average_damage_per_class">各類型平均傷害</string>
+    <string name="average_win_rate_per_class">各類型平均勝率</string>
+    <string name="no_data_for_season">"沒有賽季資料 "</string>
+    <string name="ranked_stats">排名數據</string>
+    <string name="crap_contact_me">有些問題無法正常運作，請透過電子郵件聯絡我以幫助我重現/修復問題。</string>
+    <string name="player_private">玩家檔案為私人</string>
+    <string name="failure_in_loading">載入資料失敗</string>
+
+    <string name="top_kills">單場最高擊殺數</string>
+    <string name="top_damage">單場最高傷害</string>
+    <string name="top_exp">單場最高經驗值</string>
+    <string name="most_planes_destroyed">單場最高擊落飛機數</string>
+    <string name="top_survival_rate">最高存活率</string>
+    <string name="top_average_damage">最高平均傷害</string>
+    <string name="top_win_rate">最高勝率</string>
+    <string name="top_distance_traveled">航行距離最遠艦艇</string>
+    <string name="top_played_ship">最常使用艦艇</string>
+    <string name="top_most_kills">最高擊殺數</string>
+    <string name="top_total_exp">最高總經驗值</string>
+    <string name="top_total_planes">最高總擊落飛機數</string>
+    <string name="top_total_damage">最高總傷害</string>
+    <string name="top_survival_wins">最高存活勝利數</string>
+
+    <string name="wargaming_server_language">Wargaming 伺服器語言</string>
+    <string name="wins">勝利</string>
+    <string name="losses">失敗</string>
+    <string name="draws">平局</string>
+    <string name="total_capture_points">總佔領點數</string>
+    <string name="total_defense_points">總防禦點數</string>
+    <string name="total_planes_downed">總擊落飛機數</string>
+    <string name="top_ship_info">頂尖艦艇資訊</string>
+    <string name="settings_update_to_new_language">將伺服器資料更新為新語言</string>
+    <string name="settings_dev_blog">開發部落格</string>
+    <string name="compare_needs_two">比較需要兩個人</string>
+    <string name="average_experience_per_class">各類型平均經驗值</string>
+    <string name="average_survival_rate_per_class">各類型平均存活率</string>
+
+    <string name="top_ten_played_ships">前十大最常使用艦艇</string>
+    <string name="top_ten_average_exp">平均經驗值前十大</string>
+    <string name="top_ten_avg_dmg">平均傷害前十大艦艇</string>
+    <string name="top_ten_win_rate">勝率前十大艦艇</string>
+    <string name="top_ten_k_d">K/D 前十大艦艇</string>
+
+    <string name="translated_by">由 Community Assistant 翻譯</string>
+    <string name="pan_asia">亞洲</string>
+
+    <string name="patreon" translatable="false">Patreon</string>
+
+    <!-- changed text-->
+
+    <string-array name="ship_sorting">
+        <item>戰鬥</item>
+        <item>名稱</item>
+        <item>平均經驗值</item>
+        <item>平均傷害</item>
+        <item>勝率</item>
+        <item>擊殺/死亡</item>
+        <item>總傷害</item>
+        <item>總擊殺數</item>
+        <item>擊落飛機數</item>
+        <item>階級 10–1</item>
+        <item>階級 1-10</item>
+        <!-- only these are new-->
+        <item>CA 評等</item>
+        <item>主砲精準度</item>
+        <item>魚雷精準度</item>
+    </string-array>
+
+    <string name="encyclopedia_hint">按名稱搜尋</string>
+    <string-array name="search_nation">
+        <item>美國</item>
+        <item>英國</item>
+        <item>蘇聯</item>
+        <item>日本</item>
+        <item>德國</item>
+        <item>亞洲</item>
+        <item>波蘭</item>
+        <item>法國</item>
+        <item>大英國協</item>
+    </string-array>
+
+    <string name="settings_theme_text">應用程式主題</string>
+    <string name="encyclopedia_all">全部</string>
+    <string name="settings_remove_arp_text">移除 ARP 艦艇圖示</string>
+    <string name="average_accuracy_per_tier">各階級平均主砲精準度</string>
+    <string name="top_ten_accuracy">主砲精準度前十大</string>
+    <string name="torp_accuracy">魚雷精準度</string>
+    <string name="main_battery_accuracy">主砲精準度</string>
+    <string name="search_stats_server"><![CDATA[搜尋和數據伺服器]]></string>
+    <string name="karma">聲望</string>
+    <string name="login_primary_user">在收藏使用者上啟用登入</string>
+    <string name="account_information">帳號資訊</string>
+    <string name="pi_gold">金幣</string>
+    <string name="free_experience">自由經驗值</string>
+    <string name="pi_credits">銀幣</string>
+    <string name="slot_info">艦艇 / 總港口欄位</string>
+    <string name="battle_time">戰鬥時間</string>
+    <string name="premium_expires_on">特級帳號到期時間</string>
+    <string name="settings_saved_captain_points">艦長總體資料</string>
+    <string name="settings_saved_ships_points">個別艦艇資料</string>
+    <string name="settings_stats_number_dialog_title">降低儲存點數？</string>
+    <string name="settings_stats_number_dialog_message">降低此數字時，應用程式需要清除所有已儲存的艦長資料以適應此變更。你同意嗎？</string>
+    <string name="settings_stats_number_dialog_positive">降低數字</string>
+    <string name="settings_stats_area_warning">以下設定將改變應用程式中的記憶體使用方式。變更或使用這些元素時請謹慎。</string>
+    <string name="memory_settings">記憶體設定</string>
+    <string name="settings_data_points">儲存的資料點數</string>
+    <string name="planes_downed_encyclo">擊落飛機數</string>
+    <string name="community_assistant_rating_overall">總體社群助手評等</string>
+    <string name="community_assistant_rating">社群助手評等</string>
+    <string name="community_assistant_rating_shorter">CA 評等</string>
+    <string name="breakdown_of_rating">細目</string>
+    <string name="best_ca_rating">最佳 CA 評等</string>
+    <string name="total_kills">總擊殺數</string>
+    <string name="team_battles_title">團隊戰鬥數據</string>
+    <string name="two_div_title">2 艦長分隊數據</string>
+    <string name="three_div_title">3 艦長分隊數據</string>
+    <string name="pve_title">PvE 數據</string>
+    <string name="games_per_gamemode">各模式遊戲數</string>
+    <string name="million">" 百萬"</string>
+    <string name="game_mode_statistics">遊戲模式數據</string>
+    <string name="win_rate_per_mode">各模式勝率</string>
+    <string name="solo_pvp">單人 PvP</string>
+    <string name="pve">PvE</string>
+    <string name="pvp_2_div">PvP 2 人分隊</string>
+    <string name="pvp_3_div">PvP 3 人分隊</string>
+    <string name="team_battles">團隊戰鬥</string>
+    <string name="survival_rate_per_mode">各模式存活率</string>
+    <string name="most_accuracy_gun_shipg">主砲精準度最高艦艇</string>
+    <string name="most_accuracy_torp_ship">魚雷精準度最高艦艇</string>
+    <string name="click_module_to_update_view">點擊模組以更新檢視</string>
+    <string name="module_list">模組</string>
+    <string name="ship_characteristics">艦艇特性</string>
+    <string name="disable_login">停用登入</string>
+    <string name="fire_control">射控系統</string>
+    <string name="flight_control">飛行控制</string>
+    <string name="torpedo_bomber">魚雷機</string>
+    <string name="dive_bomber">俯衝轟炸機</string>
+    <string name="captain_ca_per_tier">各階級 CA 評等</string>
+    <string name="captain_ca_contrabution">各階級評等貢獻</string>
+
+    <!--These are optional-->
+    <string name="ca_rating_explanation">社群助手評等為 %1$s 傷害、%2$s 擊殺數和 %3$s 勝率。基準為 1000。</string>
+    <string name="ca_rating_overall_explanation">總體社群助手評等的計算方式是找出各階級的平均 CA 評等，然後乘以該階級在玩家總遊戲數中的百分比。這些數字的總和即為總體 CA 評等。</string>
+    <string name="ca_rating_reason">數字和公式的原因：\n%1$s 傷害、%2$s 擊殺數和 %3$s 勝率是用於計算艦艇 CA 評等的數字。
+        標準（艦艇數據 / 預期艦艇數據）* 數據係數公式。例如：（22000 傷害 / 20000 預期）* %1$s。將傷害、擊殺數和勝率相加，然後乘以 1000。\n\n
+        傷害和擊殺數的權重高於勝率，因為糟糕的隊伍不應該影響你的評等。
+        造成傷害和擊殺數對贏得遊戲非常重要，在我們從 Wargaming 獲得準確的佔領和防禦點數資料之前，這些將不得不使用。
+        總體 CA 評等的公式是透過將各階級的總體評等乘以該階級在你總遊戲數中的百分比來計算的。這有助於防止庫存艦艇傷害你的總體分數，並讓你最喜歡的艦艇/階級能夠勝過其他可能拉低你的階級。
+        最初，此方法是為了防止海豹欺凌者利用傳統的總體評等系統，但我不想傷害那些只是喜歡低階級或與其他玩家一起玩低階級的人。
+        此方法仍可防止這種情況，因為玩家往往需要在更高階級進行更多遊戲才能升級到下一階級。但這不會傷害那些想用自己最喜歡的艦艇玩低階級遊戲的人。</string>
+    <!--end of optional area-->
+
+    <!--This one would be nice to have done.-->
+    <string name="ca_rating_tl_dr">簡而言之：\n\n個別艦艇社群助手評等為 %1$s 傷害、%2$s 擊殺數和 %3$s 勝率。總體社群助手評等的計算方式為（各階級平均 CA 評等）*（該階級遊戲數 / 總遊戲數）的總和。基準為 1000。</string>
+
+    <string-array name="themes">
+        <item>海洋</item>
+        <item>暗色</item>
+    </string-array>
+    <string name="title_activity_information">社群助手 (CA) 評等</string>
+    <string name="per_ship_rating">個別艦艇評等</string>
+    <string name="overall_ca_rating">總體 CA 評等</string>
+    <string name="ca_rating_dialog_title">社群助手 (CA) 評等</string>
+    <string name="learn_more">瞭解更多</string>
+    <string name="gun_dispersion">火砲散布</string>
+    <string name="gun_rotation_speed">火砲旋轉 180°</string>
+    <string name="armor_values">裝甲值</string>
+    <string name="aa_info">防空資訊</string>
+    <string name="deck_armor">甲板：</string>
+    <string name="range_armor">整體：</string>
+    <string name="bow_stern_armor"><![CDATA[艦首和艦尾：]]></string>
+    <string name="gun_casemate_armor">砲廓裝甲：</string>
+    <string name="citadel_armor">要害艙裝甲：</string>
+    <string name="millimeters">公釐</string>
+    <string name="damage_per_second">dps</string>
+    <string name="kilometers">公里</string>
+    <string name="kilometers_per_second">公里/小時</string>
+    <string name="seconds">秒</string>
+    <string name="meters">公尺</string>
+    <string name="warship_today_nprofile_page">Warship.Today 檔案</string>
+    <string name="login">登入</string>
+    <string name="app_language">應用程式語言</string>
+    <string name="app_langauge_base">en</string>
+    <string name="nation_france">法國</string>
+    <string name="nation_commonwealth">大英國協</string>
+
+
+    <string name="view_an_ad_on_launch">啟動時觀看廣告</string>
+    <string name="total_spotting_damage">偵察傷害</string>
+    <string name="total_tanking_damage">承受傷害</string>
+    <string name="total_torp_tanking_damage">魚雷承受傷害</string>
+    <string name="total_damage_to_buildings">建築物傷害</string>
+    <string name="total_suppressions">壓制數</string>
+    <string name="total_spots">總偵察數</string>
+    <string name="max_spots">最高偵察數</string>
+    <string name="most_spotted_in_a_match">單場最高偵察數</string>
+    <string name="most_scouting_damage_in_a_match">單場最高偵察傷害</string>
+    <string name="top_tanking_damage">最高承受傷害</string>
+    <string name="top_torpedo_tanking_damage">最高魚雷承受傷害</string>
+    <string name="toast_not_enough_ships_to_compare">你必須新增超過一艘艦艇才能進行比較</string>
+    <string name="long_click_to_add_ship_to_compare_list">長按以將艦艇新增至比較清單</string>
+    <string name="ship_compare_title">艦艇比較</string>
+    <string name="ap_damage">穿甲彈傷害</string>
+    <string name="he_damage">高爆彈傷害</string>
+    <string name="he_burn_chance">高爆彈起火機率</string>
+    <string name="num_of_turrets">砲塔數量</string>
+    <string name="num_of_torp_turret">魚雷發射器數量</string>
+    <string name="fighter_squadrons">戰鬥機中隊</string>
+    <string name="bomber_squadron">轟炸機中隊</string>
+    <string name="torpedo_squadrons">魚雷機中隊</string>
+    <string name="db_burn_chance">俯衝轟炸機起火機率</string>
+    <string name="minimum_armor">最小裝甲</string>
+    <string name="maximum_armor">最大裝甲</string>
+    <string name="deck_minimum_armor">甲板最小裝甲</string>
+    <string name="deck_maximum_armor">甲板最大裝甲</string>
+    <string name="extremities_min_armor">首尾最小裝甲</string>
+    <string name="extremities_max_armor">首尾最大裝甲</string>
+    <string name="casemate_min_armor">砲廓最小裝甲</string>
+    <string name="casemate_max_armor">砲廓最大裝甲</string>
+    <string name="citadel_min_armor">要害艙最小裝甲</string>
+    <string name="citadel_max_armor">要害艙最大裝甲</string>
+</resources>
