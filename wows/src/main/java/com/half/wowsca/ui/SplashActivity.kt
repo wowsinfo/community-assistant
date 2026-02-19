@@ -16,9 +16,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -43,8 +40,9 @@ class SplashActivity : CABaseActivity() {
     private var callNext = false
     private var grabbingInfo = false
     private var goToNext = false
-    private var isLoading by mutableStateOf(true)
-    private var showRetryButton by mutableStateOf(false)
+    private var isLoading = true
+    private var showRetryButton = false
+    private lateinit var composeView: ComposeView
     private val mainHandler = Handler(Looper.getMainLooper())
     private val infoPoll = object : Runnable {
         override fun run() {
@@ -54,36 +52,27 @@ class SplashActivity : CABaseActivity() {
             val manager = infoManager
             if (manager?.isInfoThere(applicationContext) == true) {
                 grabbingInfo = false
+                isLoading = false
+                showRetryButton = false
+                render()
                 goToNext()
                 return
             }
-            mainHandler.postDelayed(this, 500)
+            mainHandler.postDelayed(this, INFO_POLL_INTERVAL_MILLIS)
         }
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(
-            ComposeView(this).apply {
-                setContent {
-                    MaterialTheme {
-                        SplashScreen(
-                            isLoading = isLoading,
-                            showRetryButton = showRetryButton,
-                            onRetry = {
-                                showRetryButton = false
-                                isLoading = true
-                                initView()
-                            }
-                        )
-                    }
-                }
-            }
-        )
+        composeView = ComposeView(this)
+        setContentView(composeView)
         if (savedInstanceState != null) {
             callNext = savedInstanceState.getBoolean(CALL_NEXT_DONE)
             grabbingInfo = savedInstanceState.getBoolean(GRABBING_INFO)
+            isLoading = savedInstanceState.getBoolean(IS_LOADING, true)
+            showRetryButton = savedInstanceState.getBoolean(SHOW_RETRY_BUTTON, false)
         }
+        render()
         bindView()
         val action = intent?.action
         if (!action.isNullOrEmpty()) {
@@ -125,6 +114,7 @@ class SplashActivity : CABaseActivity() {
         if (connected) {
             isLoading = true
             showRetryButton = false
+            render()
             if (!callNext && hasAllInfo) {
                 val r = Runnable {
                     manager.load(
@@ -151,6 +141,7 @@ class SplashActivity : CABaseActivity() {
             )
             isLoading = false
             showRetryButton = true
+            render()
         }
     }
 
@@ -174,13 +165,15 @@ class SplashActivity : CABaseActivity() {
             task.setCtx(applicationContext)
             task.execute(query)
             mainHandler.removeCallbacks(infoPoll)
-            mainHandler.postDelayed(infoPoll, 500)
+            mainHandler.postDelayed(infoPoll, INFO_POLL_INTERVAL_MILLIS)
         }
 
     public override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(CALL_NEXT_DONE, callNext)
         outState.putBoolean(GRABBING_INFO, grabbingInfo)
+        outState.putBoolean(IS_LOADING, isLoading)
+        outState.putBoolean(SHOW_RETRY_BUTTON, showRetryButton)
     }
 
     override fun onBackPressed() {
@@ -189,9 +182,26 @@ class SplashActivity : CABaseActivity() {
         mainHandler.removeCallbacks(infoPoll)
     }
 
+    private fun render() {
+        composeView.setContent {
+            MaterialTheme {
+                SplashScreen(
+                    isLoading = isLoading,
+                    showRetryButton = showRetryButton,
+                    onRetry = {
+                        initView()
+                    }
+                )
+            }
+        }
+    }
+
     companion object {
+        const val INFO_POLL_INTERVAL_MILLIS = 500L
         const val GRABBING_INFO: String = "grabbingInfo"
         const val CALL_NEXT_DONE: String = "callNextDone"
+        const val IS_LOADING: String = "isLoading"
+        const val SHOW_RETRY_BUTTON: String = "showRetryButton"
     }
 }
 
@@ -214,7 +224,7 @@ private fun SplashScreen(
         if (isLoading) {
             CircularProgressIndicator(modifier = Modifier.size(32.dp))
         }
-        if (showRetryButton) {
+        if (!isLoading && showRetryButton) {
             Button(onClick = onRetry) {
                 Text(text = stringResource(R.string.refresh))
             }
