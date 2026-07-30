@@ -75,6 +75,11 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp.logging)
+
     // Uncomment the line below if you want to include Google Play Services Ads, make sure to use a different version
     // implementation("com.google.android.gms:play-services-ads:17.1.1")
 }
