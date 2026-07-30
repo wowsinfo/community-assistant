@@ -22,7 +22,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import androidx.activity.viewModels
+import com.half.wowsca.ui.search.SearchUiState
+import com.half.wowsca.ui.search.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getSelectedId
 import com.half.wowsca.CAApp.Companion.getServerType
 import com.half.wowsca.CAApp.Companion.isDarkTheme
@@ -30,7 +35,6 @@ import com.half.wowsca.CAApp.Companion.setSelectedId
 import com.half.wowsca.CAApp.Companion.setServerType
 import com.half.wowsca.R
 import com.half.wowsca.alerts.Alert.generalNoInternetDialogAlert
-import com.half.wowsca.backend.SearchTask
 import com.half.wowsca.managers.CaptainManager.createCapIdStr
 import com.half.wowsca.managers.CaptainManager.deleteTemp
 import com.half.wowsca.managers.CaptainManager.getCaptains
@@ -42,11 +46,9 @@ import com.half.wowsca.managers.CompareManager.getCaptains
 import com.half.wowsca.managers.CompareManager.isAlreadyThere
 import com.half.wowsca.managers.CompareManager.removeCaptain
 import com.half.wowsca.managers.CompareManager.size
-import com.half.wowsca.model.AddRemoveEvent
 import com.half.wowsca.model.Captain
 import com.half.wowsca.model.enums.Server
 import com.half.wowsca.model.queries.SearchQuery
-import com.half.wowsca.model.result.SearchResults
 import com.half.wowsca.ui.UIUtils.createBookmarkingDialogIfNeeded
 import com.half.wowsca.ui.adapter.CompareAdapter
 import com.half.wowsca.ui.adapter.SearchAdapter
@@ -58,7 +60,10 @@ import com.utilities.views.SwipeBackLayout
 import org.greenrobot.eventbus.Subscribe
 import java.util.Locale
 
+@AndroidEntryPoint
 class SearchActivity : CABaseActivity() {
+
+    private val viewModel: SearchViewModel by viewModels()
 
     private var etSearch: EditText? = null
     private var delete: View? = null
@@ -84,6 +89,7 @@ class SearchActivity : CABaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         bindView()
+        observeSearchState()
         if (savedInstanceState != null) {
             savedSearch = savedInstanceState.getString("search")
         }
@@ -114,14 +120,12 @@ class SearchActivity : CABaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         initView()
         deleteTemp(applicationContext)
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
     }
 
     private fun initView() {
@@ -166,7 +170,9 @@ class SearchActivity : CABaseActivity() {
             }
             if (captains.size > 0) {
                 val defaultSearch =
-                    SearchAdapter(applicationContext, R.layout.list_search, captains)
+                    SearchAdapter(applicationContext, R.layout.list_search, captains) { captain, isRemove ->
+                        handleCaptainChanged(captain, isRemove)
+                    }
                 listView!!.adapter = defaultSearch
             }
         }
@@ -397,8 +403,7 @@ class SearchActivity : CABaseActivity() {
                 val query = SearchQuery()
                 query.server = getServerType(applicationContext)
                 query.search = searchTerm
-                val task = SearchTask()
-                task.execute(query)
+                viewModel.search(searchTerm, getServerType(applicationContext))
             } else {
                 Toast.makeText(applicationContext, R.string.no_text_error, Toast.LENGTH_SHORT)
                     .show()
@@ -413,41 +418,45 @@ class SearchActivity : CABaseActivity() {
         }
     }
 
-    @Subscribe
-    fun onSearchRecieved(result: SearchResults?) {
-        listView!!.post {
-            progress!!.visibility = View.GONE
-            searching = false
-            if (result != null) {
-                if (result.captains != null) {
-                    if (result.captains.size > 0) {
-                        val adapter =
-                            SearchAdapter(applicationContext, R.layout.list_search, result.captains)
+    private fun observeSearchState() {
+        lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                when (state) {
+                    is SearchUiState.Idle -> { /* no-op */ }
+                    is SearchUiState.Loading -> {
+                        progress!!.visibility = View.VISIBLE
+                        listView!!.adapter = null
+                        tvError!!.visibility = View.GONE
+                    }
+                    is SearchUiState.Success -> {
+                        progress!!.visibility = View.GONE
+                        searching = false
+                        val adapter = SearchAdapter(
+                            applicationContext,
+                            R.layout.list_search,
+                            state.results,
+                            onCaptainChanged = { captain, isRemove -> handleCaptainChanged(captain, isRemove) }
+                        )
                         listView!!.adapter = adapter
                         tvError!!.visibility = View.GONE
-                    } else {
+                        listView!!.visibility = View.VISIBLE
+                    }
+                    is SearchUiState.Error -> {
+                        progress!!.visibility = View.GONE
+                        searching = false
                         tvError!!.visibility = View.VISIBLE
                     }
-                } else {
-                    tvError!!.visibility = View.VISIBLE
                 }
-            } else {
-                tvError!!.visibility = View.VISIBLE
             }
         }
     }
 
-    @Subscribe
-    fun onAddRemove(event: AddRemoveEvent) {
-        if (!event.isRemove) {
-            createBookmarkingDialogIfNeeded(this, event.captain!!)
-            saveCaptain(applicationContext, event.captain)
+    private fun handleCaptainChanged(captain: Captain, isRemove: Boolean) {
+        if (!isRemove) {
+            createBookmarkingDialogIfNeeded(this, captain)
+            saveCaptain(applicationContext, captain)
         } else {
-            removeCaptain(
-                applicationContext, createCapIdStr(
-                    event.captain!!.server, event.captain!!.id
-                )
-            )
+            removeCaptain(applicationContext, createCapIdStr(captain.server, captain.id))
         }
     }
 
