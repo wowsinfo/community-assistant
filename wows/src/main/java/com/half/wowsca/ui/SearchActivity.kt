@@ -28,8 +28,11 @@ class SearchActivity : CABaseActivity() {
                             startActivity(Intent(this, CompareActivity::class.java))
                         }
                     },
-                    onCaptainClick = { _ ->
-                        // Captain selection handled in SearchScreen
+                    onCaptainClick = { captain ->
+                        val i = Intent(this, com.half.wowsca.ui.viewcaptain.ViewCaptainActivity::class.java)
+                        i.putExtra(com.half.wowsca.ui.viewcaptain.ViewCaptainActivity.EXTRA_ID, captain.id)
+                        i.putExtra(com.half.wowsca.ui.viewcaptain.ViewCaptainActivity.EXTRA_SERVER, captain.server?.name)
+                        startActivity(i)
                     }
                 )
             }

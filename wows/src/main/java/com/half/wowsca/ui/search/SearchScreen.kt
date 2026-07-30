@@ -150,7 +150,7 @@ fun SearchScreen(
                             items(state.results, key = { it.id }) { captain ->
                                 val idStr = CaptainManager.createCapIdStr(captain.server, captain.id)
                                 val isSaved = CaptainManager.getCaptains(ctx)?.containsKey(idStr) == true
-                                Card(modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 2.dp).clickable { CompareManager.addCaptain(captain, false) }, elevation = CardDefaults.cardElevation(2.dp)) {
+                                Card(modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 2.dp).clickable { onCaptainClick(captain) }, elevation = CardDefaults.cardElevation(2.dp)) {
                                     Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
                                         Column(modifier = Modifier.weight(1f)) {
                                             Text(captain.name ?: "Unknown", fontWeight = FontWeight.Medium)
