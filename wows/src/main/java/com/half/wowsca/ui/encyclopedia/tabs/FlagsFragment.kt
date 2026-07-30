@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.CAApp.Companion.isDarkTheme
 import com.half.wowsca.R
@@ -41,7 +40,6 @@ class FlagsFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         val holder = infoManager!!.getExteriorItems(requireContext())
         if (holder.items != null && recyclerView!!.adapter == null) {
             layoutManager =
@@ -71,10 +69,9 @@ class FlagsFragment : CAFragment() {
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
     }
 
-    @Subscribe
+    
     fun flagClickedEvent(event: FlagClickedEvent) {
         val holder = infoManager!!.getExteriorItems(requireContext())
         val item = holder[event.id]

@@ -18,7 +18,6 @@ import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.CAApp.Companion.getServerLanguage
 import com.half.wowsca.CAApp.Companion.getServerType
 import com.half.wowsca.CAApp.Companion.infoManager
@@ -274,7 +273,6 @@ class ShipProfileActivity : CABaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         initView()
     }
 
@@ -1039,7 +1037,6 @@ class ShipProfileActivity : CABaseActivity() {
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -1048,7 +1045,7 @@ class ShipProfileActivity : CABaseActivity() {
         outState.putString(SHIP_DATA, shipServerInfo)
     }
 
-    @Subscribe
+    
     fun onShipRecieveInfo(result: ShipResult) {
         if (result.shipInfo != null && result.shipId == shipId) {
             shipServerInfo = result.shipInfo

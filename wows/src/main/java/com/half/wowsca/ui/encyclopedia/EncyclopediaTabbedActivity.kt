@@ -10,7 +10,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.CAApp.Companion.isOceanTheme
 import com.half.wowsca.R
 import com.half.wowsca.managers.CompareManager.clearShips
@@ -84,14 +83,12 @@ class EncyclopediaTabbedActivity : CABaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         toggleTopArea()
         setUpButtons()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -107,7 +104,7 @@ class EncyclopediaTabbedActivity : CABaseActivity() {
         } else super.onBackPressed()
     }
 
-    @Subscribe
+    
     fun onShipCompare(event: ShipCompareEvent?) {
         toggleTopArea()
     }
@@ -158,7 +155,7 @@ class EncyclopediaTabbedActivity : CABaseActivity() {
         clearShips(true)
         val event = ShipCompareEvent(0)
         event.isCleared = true
-        eventBus.post(event)
+        // eventBus removed
     }
 
     private fun toggleTopArea() {

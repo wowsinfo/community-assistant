@@ -16,7 +16,6 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.CAApp.Companion.getTheme
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.CAApp.Companion.isDarkTheme
@@ -94,13 +93,11 @@ class EncyclopediaShipsFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         initView()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
     }
 
     private fun initView() {
@@ -261,7 +258,7 @@ class EncyclopediaShipsFragment : CAFragment() {
         }
     }
 
-    @Subscribe
+    
     fun onShipCompare(event: ShipCompareEvent?) {
         setCompareText()
         adapter!!.notifyDataSetChanged()

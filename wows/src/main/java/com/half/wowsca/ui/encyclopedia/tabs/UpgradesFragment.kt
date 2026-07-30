@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.R
 import com.half.wowsca.alerts.Alert.createGeneralAlert
@@ -40,7 +39,6 @@ class UpgradesFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         val holder = infoManager!!.getUpgrades(requireContext())
         if (holder.items != null && recyclerView!!.adapter == null) {
             layoutManager =
@@ -64,10 +62,9 @@ class UpgradesFragment : CAFragment() {
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
     }
 
-    @Subscribe
+    
     fun upgradeClicked(event: UpgradeClickEvent) {
         val holder = infoManager!!.getUpgrades(requireContext())
         val info = holder[event.id]
