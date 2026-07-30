@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.gridlayout.widget.GridLayout
-import com.half.wowsca.CAApp.Companion.eventBus
+import com.half.wowsca.util.AppEventBus
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.R
 import com.half.wowsca.backend.GetShipEncyclopediaInfo
@@ -334,7 +334,7 @@ class ShipModuleView(context: Context) : LinearLayout(context) {
                                     //Update the screen
                                     CompareManager.GRABBING_INFO = true
                                     searchShip(context, shipID)
-                                    eventBus.post(ProgressEvent(true))
+                                    AppEventBus.post(ProgressEvent(true))
                                     false
                                 }
                                 menu.show()

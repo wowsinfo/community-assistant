@@ -2,7 +2,7 @@ package com.half.wowsca.managers
 
 import android.content.Context
 import com.google.gson.GsonBuilder
-import com.half.wowsca.CAApp.Companion.eventBus
+import com.half.wowsca.util.AppEventBus
 import com.half.wowsca.managers.CaptainManager.getCapIdStr
 import com.half.wowsca.model.Achievement
 import com.half.wowsca.model.Captain
@@ -134,7 +134,7 @@ object StorageManager {
                     }
                 }
             }
-            eventBus.post(CaptainSavedEvent())
+            AppEventBus.post(CaptainSavedEvent())
         }
         val t = Thread(runnable)
         t.start()

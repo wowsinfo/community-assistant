@@ -3,7 +3,7 @@ package com.half.wowsca.ui
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.half.wowsca.CAApp.Companion.eventBus
+import com.half.wowsca.util.AppEventBus
 import com.half.wowsca.R
 import com.half.wowsca.model.RefreshEvent
 
@@ -20,9 +20,7 @@ open class CAFragment : Fragment() {
 
     protected fun initSwipeLayout() {
         if (mSwipeRefreshLayout != null) mSwipeRefreshLayout!!.setOnRefreshListener {
-            eventBus.post(
-                RefreshEvent(true)
-            )
+            AppEventBus.post(RefreshEvent(true))
         }
     }
 
