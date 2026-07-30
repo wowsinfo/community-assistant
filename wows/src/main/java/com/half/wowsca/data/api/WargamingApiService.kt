@@ -10,6 +10,31 @@ import retrofit2.http.Url
  */
 interface WargamingApiService {
 
+    @GET("/wows/encyclopedia/ships/")
+    suspend fun getShips(
+        @Query("application_id") applicationId: String,
+        @Query("language") language: String = "en",
+    ): WargamingResponse<Map<String, Any>>
+
+    @GET("/wows/encyclopedia/achievements/")
+    suspend fun getAchievements(
+        @Query("application_id") applicationId: String,
+        @Query("language") language: String = "en",
+    ): WargamingResponse<Map<String, Any>>
+
+    @GET("/wows/encyclopedia/consumables/")
+    suspend fun getConsumables(
+        @Query("application_id") applicationId: String,
+        @Query("type") type: String,
+        @Query("language") language: String = "en",
+    ): WargamingResponse<Map<String, Any>>
+
+    @GET("/wows/encyclopedia/crewskills/")
+    suspend fun getCrewSkills(
+        @Query("application_id") applicationId: String,
+        @Query("language") language: String = "en",
+    ): WargamingResponse<Map<String, Any>>
+
     @GET("/wows/encyclopedia/shipprofile/")
     suspend fun getShipProfile(
         @Query("application_id") applicationId: String,
