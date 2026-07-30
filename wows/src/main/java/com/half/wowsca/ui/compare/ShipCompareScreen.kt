@@ -16,6 +16,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,6 +26,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.half.wowsca.managers.CompareManager
 import com.half.wowsca.model.Captain
@@ -34,112 +37,80 @@ import com.half.wowsca.model.Ship
 fun ShipCompareScreen(
     onBack: () -> Unit,
 ) {
-    val captains = CompareManager.getCaptains()
+    val captains = CompareManager.getCaptains().filterNotNull()
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Ship Comparison") },
+                title = { Text("Ship Compare") },
                 navigationIcon = {
-                    androidx.compose.material3.IconButton(onClick = onBack) {
-                        androidx.compose.material3.Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
-                        )
+                    IconButton(onClick = onBack) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState())
-        ) {
-            Text(
-                text = "Ship Stats Comparison",
-                style = MaterialTheme.typography.titleLarge
-            )
-            Spacer(modifier = Modifier.height(12.dp))
+        if (captains.isEmpty()) {
+            Text("No players selected", modifier = Modifier.fillMaxSize().padding(padding).padding(16.dp))
+            return@Scaffold
+        }
 
+        Column(
+            modifier = Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState())
+        ) {
             captains.forEach { captain ->
-                CaptainShipsSection(captain)
+                Text(captain.name ?: "Unknown", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, modifier = Modifier.padding(12.dp, 8.dp))
+                val ships = captain.ships?.take(10) ?: emptyList()
+                if (ships.isEmpty()) {
+                    Text("No ship data", modifier = Modifier.padding(12.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+                } else {
+                    ships.forEach { ship ->
+                        ShipStatCard(ship)
+                        Spacer(modifier = Modifier.height(4.dp))
+                    }
+                }
                 HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
             }
+            Spacer(modifier = Modifier.height(32.dp))
         }
-    }
-}
-
-@Composable
-private fun CaptainShipsSection(captain: Captain) {
-    Text(
-        text = (captain.name ?: "Unknown") + " - Ships",
-        style = MaterialTheme.typography.titleMedium
-    )
-    Spacer(modifier = Modifier.height(4.dp))
-
-    val ships = captain.ships
-    if (ships.isNullOrEmpty()) {
-        Text(
-            text = "No ship data",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        return
-    }
-
-    ships.take(5).forEach { ship ->
-        ShipStatCard(ship)
-        Spacer(modifier = Modifier.height(4.dp))
-    }
-
-    if (ships.size > 5) {
-        Text(
-            text = "...and ${ships.size - 5} more ships",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
     }
 }
 
 @Composable
 private fun ShipStatCard(ship: Ship) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
-    ) {
+    Card(modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp), elevation = CardDefaults.cardElevation(1.dp)) {
         Column(modifier = Modifier.padding(12.dp)) {
-            Text(text = "Ship ID: ${ship.shipId}", style = MaterialTheme.typography.bodyMedium)
-            Row(modifier = Modifier.fillMaxWidth()) {
-                StatItem("Battles", "${ship.battles}", Modifier.weight(1f))
-                StatItem("Wins", "${ship.wins}", Modifier.weight(1f))
-                StatItem("WR", if (ship.battles > 0) String.format("%.1f%%", (ship.wins.toFloat() / ship.battles) * 100) else "-", Modifier.weight(1f))
+            Text("Ship ID: ${ship.shipId}", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+            Row(modifier = Modifier.fillMaxWidth().padding(top = 4.dp)) {
+                MiniStat("Battles", "${ship.battles}")
+                MiniStat("Wins", "${ship.wins}")
+                MiniStat("WR", if (ship.battles > 0) String.format("%.1f%%", (ship.wins.toFloat() / ship.battles) * 100) else "-")
+                MiniStat("Frags", "${ship.frags}")
             }
             Row(modifier = Modifier.fillMaxWidth()) {
-                StatItem("Frags", "${ship.frags}", Modifier.weight(1f))
-                StatItem("XP", "${ship.totalXP}", Modifier.weight(1f))
-                StatItem("DMG", "${ship.totalDamage}", Modifier.weight(1f))
+                MiniStat("XP", formatNum(ship.totalXP))
+                MiniStat("Damage", formatNum(ship.totalDamage.toLong()))
+                MiniStat("Survived", "${ship.survivedBattles}")
             }
         }
     }
 }
 
 @Composable
-private fun StatItem(label: String, value: String, modifier: Modifier = Modifier) {
-    Column(modifier = modifier.padding(2.dp)) {
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Text(
-            text = value,
-            style = MaterialTheme.typography.bodySmall
-        )
+private fun MiniStat(label: String, value: String) {
+    Column(modifier = Modifier.padding(end = 12.dp)) {
+        Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text(value, style = MaterialTheme.typography.bodySmall)
     }
 }
+
+private fun formatNum(n: Long): String =
+    if (n >= 1_000_000) String.format("%.1fM", n / 1_000_000.0)
+    else if (n >= 1_000) String.format("%.1fK", n / 1_000.0)
+    else "$n"
