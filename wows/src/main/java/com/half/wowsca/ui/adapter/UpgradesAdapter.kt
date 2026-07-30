@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.R
 import com.half.wowsca.model.UpgradeClickEvent
 import com.half.wowsca.model.encyclopedia.items.EquipmentInfo
@@ -17,7 +16,11 @@ import com.squareup.picasso.Picasso
 /**
  * Created by slai4 on 4/26/2016.
  */
-class UpgradesAdapter(private val items: List<EquipmentInfo>?, private val ctx: Context) :
+class UpgradesAdapter(
+    private val items: List<EquipmentInfo>?,
+    private val ctx: Context,
+    private val onUpgradeClicked: (Long) -> Unit = {},
+) :
     RecyclerView.Adapter<UpgradesHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpgradesHolder {
         val convertView =
@@ -38,7 +41,7 @@ class UpgradesAdapter(private val items: List<EquipmentInfo>?, private val ctx: 
         return items?.size ?: 0
     }
 
-    class UpgradesHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class UpgradesHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var tvName: TextView = itemView.findViewById(R.id.list_captain_skill_text)
         var ivIcon: ImageView = itemView.findViewById(R.id.list_captain_skill_image)
 
@@ -49,7 +52,7 @@ class UpgradesAdapter(private val items: List<EquipmentInfo>?, private val ctx: 
         }
 
         override fun onClick(v: View) {
-            eventBus.post(UpgradeClickEvent(id))
+            onUpgradeClicked(id)
         }
     }
 }

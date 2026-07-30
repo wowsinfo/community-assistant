@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.R
 import com.half.wowsca.model.FlagClickedEvent
 import com.half.wowsca.model.encyclopedia.items.ExteriorItem
@@ -17,7 +16,11 @@ import com.squareup.picasso.Picasso
 /**
  * Created by slai4 on 4/25/2016.
  */
-class FlagsAdapter(private val exteriorItems: List<ExteriorItem>?, private val ctx: Context) :
+class FlagsAdapter(
+    private val exteriorItems: List<ExteriorItem>?,
+    private val ctx: Context,
+    private val onFlagClicked: (Long) -> Unit = {},
+) :
     RecyclerView.Adapter<FlagsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlagsViewHolder {
         val convertView =
@@ -38,7 +41,7 @@ class FlagsAdapter(private val exteriorItems: List<ExteriorItem>?, private val c
         return exteriorItems?.size ?: 0
     }
 
-    class FlagsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+    inner class FlagsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
         var tvName: TextView = itemView.findViewById(R.id.list_captain_skill_text)
         var ivIcon: ImageView = itemView.findViewById(R.id.list_captain_skill_image)
@@ -50,7 +53,7 @@ class FlagsAdapter(private val exteriorItems: List<ExteriorItem>?, private val c
         }
 
         override fun onClick(v: View) {
-            eventBus.post(FlagClickedEvent(id))
+            onFlagClicked(id)
         }
     }
 }

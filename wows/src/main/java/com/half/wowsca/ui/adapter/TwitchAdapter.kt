@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.R
 import com.half.wowsca.model.TwitchObj
 import com.half.wowsca.model.enums.TwitchStatus
@@ -21,7 +20,9 @@ import java.util.Collections
 /**
  * Created by slai4 on 12/3/2015.
  */
-class TwitchAdapter : RecyclerView.Adapter<TwitchHolder>() {
+class TwitchAdapter(
+    private val onItemClicked: (String) -> Unit = {},
+) : RecyclerView.Adapter<TwitchHolder>() {
     var twitchObjs: List<TwitchObj>? = null
 
     var ctx: Context? = null
@@ -92,7 +93,7 @@ class TwitchAdapter : RecyclerView.Adapter<TwitchHolder>() {
         notifyDataSetChanged()
     }
 
-    class TwitchHolder(var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    inner class TwitchHolder(var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         var title: TextView
         var logo: ImageView
 
@@ -134,7 +135,7 @@ class TwitchAdapter : RecyclerView.Adapter<TwitchHolder>() {
                     "Jammin411" -> sb.append("c/Jammin411")
                     "notser" -> sb.append("user/MrNotser")
                 }
-                eventBus.post(sb.toString())
+                onItemClicked(sb.toString())
             }
             twitter = itemView.findViewById(R.id.twitch_twitter)
             twitter.setOnClickListener {
@@ -155,13 +156,13 @@ class TwitchAdapter : RecyclerView.Adapter<TwitchHolder>() {
                     "crysantos" -> sb.append("CrysantosTV")
                     "kamisamurai" -> sb.append("KamiSamuraiTV")
                 }
-                eventBus.post(sb.toString())
+                onItemClicked(sb.toString())
             }
         }
 
         override fun onClick(v: View) {
             d("Twitch", "url = $url")
-            eventBus.post(url)
+            onItemClicked(url ?: "")
         }
     }
 }

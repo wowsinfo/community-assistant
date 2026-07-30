@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.R
 import com.half.wowsca.model.CaptainSkillClickedEvent
 import com.half.wowsca.model.encyclopedia.items.CaptainSkill
@@ -17,7 +16,11 @@ import com.squareup.picasso.Picasso
 /**
  * Created by slai4 on 4/25/2016.
  */
-class CaptainSkillsAdapter(private val skills: List<CaptainSkill>?, private val ctx: Context) :
+class CaptainSkillsAdapter(
+    private val skills: List<CaptainSkill>?,
+    private val ctx: Context,
+    private val onSkillClicked: (Long) -> Unit = {},
+) :
     RecyclerView.Adapter<SkillsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SkillsViewHolder {
         val convertView =
@@ -37,7 +40,7 @@ class CaptainSkillsAdapter(private val skills: List<CaptainSkill>?, private val 
         return skills?.size ?: 0
     }
 
-    class SkillsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+    inner class SkillsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
         var tvName: TextView = itemView.findViewById(R.id.list_captain_skill_text)
         var ivIcon: ImageView = itemView.findViewById(R.id.list_captain_skill_image)
@@ -49,7 +52,7 @@ class CaptainSkillsAdapter(private val skills: List<CaptainSkill>?, private val 
         }
 
         override fun onClick(v: View) {
-            eventBus.post(CaptainSkillClickedEvent(id))
+            onSkillClicked(id)
         }
     }
 }

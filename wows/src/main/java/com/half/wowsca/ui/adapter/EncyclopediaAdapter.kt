@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.R
 import com.half.wowsca.managers.CompareManager.addShipID
 import com.half.wowsca.managers.CompareManager.getSHIPS
@@ -26,7 +25,11 @@ import java.util.Locale
 /**
  * Created by slai4 on 10/31/2015.
  */
-class EncyclopediaAdapter(ships: List<ShipInfo?>, context: Context) :
+class EncyclopediaAdapter(
+    ships: List<ShipInfo?>,
+    context: Context,
+    private val onShipCompare: (Long) -> Unit = {},
+) :
     RecyclerView.Adapter<EncyclopediaAdapter.ShipViewHolder>() {
     private val backupShips: ArrayList<ShipInfo>
     private val ctx: Context
@@ -131,7 +134,7 @@ class EncyclopediaAdapter(ships: List<ShipInfo?>, context: Context) :
         }
     }
 
-    class ShipViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ShipViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var img: ImageView = itemView.findViewById(R.id.list_encyclopedia_ship_image)
         var name: TextView = itemView.findViewById(R.id.list_encyclopedia_ship_name)
         var area: View = itemView.findViewById(R.id.list_encyclopedia_area)
@@ -150,7 +153,7 @@ class EncyclopediaAdapter(ships: List<ShipInfo?>, context: Context) :
             area.setOnLongClickListener { //go to activity
                 if (!getSHIPS()!!.contains(shipId)) addShipID(shipId)
                 else removeShipID(shipId)
-                eventBus.post(ShipCompareEvent(shipId))
+                onShipCompare(shipId)
                 true
             }
         }

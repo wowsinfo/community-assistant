@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.half.wowsca.CAApp
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.R
 import com.half.wowsca.model.Ship
@@ -29,7 +28,12 @@ import java.util.Locale
 /**
  * Created by slai4 on 10/1/2015.
  */
-class ShipsAdapter(ships: List<Ship>, ctx: Context) :
+class ShipsAdapter(
+    ships: List<Ship>,
+    ctx: Context,
+    private val onShipClicked: (Long) -> Unit = {},
+    private val onSortingDone: () -> Unit = {},
+) :
     RecyclerView.Adapter<ShipsAdapter.ShipViewHolder>() {
     private val backupShips: ArrayList<Ship>
     private val ctx: Context
@@ -136,7 +140,7 @@ class ShipsAdapter(ships: List<Ship>, ctx: Context) :
                 12 -> Collections.sort(ships, compare.accuracyComparator)
                 13 -> Collections.sort(ships, compare.accuractTorpsComparator)
             }
-            eventBus.post(SortingDoneEvent())
+            onSortingDone()
 
             notifyDataSetChanged()
         } catch (e: Exception) {
@@ -182,7 +186,7 @@ class ShipsAdapter(ships: List<Ship>, ctx: Context) :
         }
     }
 
-    class ShipViewHolder(var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    inner class ShipViewHolder(var view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         var tvName: TextView = itemView.findViewById(R.id.snippet_ship_name)
         var nationTier: TextView = itemView.findViewById(R.id.snippet_ship_nation_tier)
         var tvBattles: TextView = itemView.findViewById(R.id.snippet_ship_battles)
@@ -204,7 +208,7 @@ class ShipsAdapter(ships: List<Ship>, ctx: Context) :
         }
 
         override fun onClick(v: View) {
-            eventBus.post(ShipClickedEvent(ship))
+            onShipClicked(ship)
             CAApp.lastShipPos = pos
         }
     }
