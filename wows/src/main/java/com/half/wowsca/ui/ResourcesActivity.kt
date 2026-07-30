@@ -20,11 +20,12 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.half.wowsca.ui.resources.ServerInfoUiState
 import com.half.wowsca.ui.resources.ServerInfoViewModel
+import com.half.wowsca.ui.resources.TwitchUiState
+import com.half.wowsca.ui.resources.TwitchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getServerType
 import com.half.wowsca.R
-import com.half.wowsca.backend.GetTwitchInfo
 import com.half.wowsca.model.ServerInfo
 import com.half.wowsca.model.TwitchObj
 import com.half.wowsca.model.enums.Server
@@ -49,6 +50,7 @@ import java.util.concurrent.TimeUnit
 class ResourcesActivity : CABaseActivity() {
 
     private val serverInfoViewModel: ServerInfoViewModel by viewModels()
+    private val twitchViewModel: TwitchViewModel by viewModels()
     private var type: String? = null
 
     //donation area
@@ -170,6 +172,7 @@ class ResourcesActivity : CABaseActivity() {
         super.onResume()
         initView()
         observeServerInfo()
+        observeTwitchInfo()
     }
 
     override fun onPause() {
@@ -302,11 +305,7 @@ class ResourcesActivity : CABaseActivity() {
                 TimeUnit.SECONDS,
                 mWorkQueue
             )
-            for (name in array) {
-                val info = GetTwitchInfo()
-                info.executeOnExecutor(executor, name)
-            }
-            streamers = ArrayList()
+            twitchViewModel.loadTwitchInfo(array.toList())
         }
     }
 
@@ -414,13 +413,8 @@ class ResourcesActivity : CABaseActivity() {
         llServerContainer!!.addView(serverInfo)
     }
 
-    @Subscribe
-    fun onTwitchReceived(obj: TwitchObj) {
-        runOnUiThread {
-            streamers!!.add(obj)
-            initView()
-        }
-    }
+    
+
 
 
         private fun observeServerInfo() {
@@ -446,7 +440,34 @@ class ResourcesActivity : CABaseActivity() {
         }
     }
 
-    @Subscribe
+    private fun observeTwitchInfo() {
+        lifecycleScope.launch {
+            twitchViewModel.uiState.collect { state ->
+                when (state) {
+                    is TwitchUiState.Idle -> {}
+                    is TwitchUiState.Loading -> {
+                        twitchProgress!!.visibility = View.VISIBLE
+                    }
+                    is TwitchUiState.Success -> {
+                        twitchProgress!!.visibility = View.GONE
+                        streamers = state.streamers as MutableList<TwitchObj>
+                        if (adapter == null) {
+                            setUpTwitch()
+                        } else {
+                            adapter!!.twitchObjs = streamers
+                            adapter!!.sort()
+                            adapter!!.notifyDataSetChanged()
+                        }
+                    }
+                    is TwitchUiState.Error -> {
+                        twitchProgress!!.visibility = View.GONE
+                    }
+                }
+            }
+        }
+    }
+
+    
     fun urlSent(url: String) {
         wtf("urlSent", "url = $url")
         val i = Intent(Intent.ACTION_VIEW)
