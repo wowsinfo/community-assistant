@@ -382,7 +382,7 @@ class SettingActivity : CABaseActivity() {
             val query = InfoQuery()
             query.server = getServerType(applicationContext)
             val task = GetNeededInfoTask()
-            task.setCtx(applicationContext)
+            task.ctx = applicationContext
             task.execute(query)
             Toast.makeText(applicationContext, R.string.purging_refresh, Toast.LENGTH_SHORT).show()
         }

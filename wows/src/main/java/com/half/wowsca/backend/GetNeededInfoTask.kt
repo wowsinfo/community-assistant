@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.AsyncTask
 import android.text.TextUtils
 import com.half.wowsca.CAApp
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.CAApp.Companion.getServerLanguage
 import com.half.wowsca.CAApp.Companion.getServerType
 import com.half.wowsca.CAApp.Companion.infoManager
@@ -40,7 +39,8 @@ import java.net.URL
  * Created by slai4 on 9/21/2015.
  */
 class GetNeededInfoTask : AsyncTask<InfoQuery?, Void?, InfoResult>() {
-    private var ctx: Context? = null
+    var ctx: Context? = null
+    var onResult: ((InfoResult) -> Unit)? = null
 
     override fun doInBackground(vararg params: InfoQuery?): InfoResult? {
         val languagePart = "&language=" + getServerLanguage(ctx!!)
@@ -483,12 +483,10 @@ class GetNeededInfoTask : AsyncTask<InfoQuery?, Void?, InfoResult>() {
 
     override fun onPostExecute(shipsResult: InfoResult) {
         super.onPostExecute(shipsResult)
-        eventBus.post(shipsResult)
+        onResult?.invoke(shipsResult)
     }
 
-    fun setCtx(ctx: Context?) {
-        this.ctx = ctx
-    }
+    // ctx is now a public var, use task.ctx = value directly
 
     companion object {
         const val SAVED_FRESH_DATA: String = "SAVED_FRESH_DATA"

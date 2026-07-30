@@ -67,3 +67,4 @@ fastlane/readme.md
 \.idea/modules\.xml
 
 \.idea/
+*.salive

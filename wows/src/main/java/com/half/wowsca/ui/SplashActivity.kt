@@ -9,7 +9,6 @@ import android.widget.ImageView
 import com.half.wowsca.CAApp
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.half.wowsca.ui.encyclopedia.EncyclopediaState
 import com.half.wowsca.ui.encyclopedia.EncyclopediaViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -150,7 +149,7 @@ class SplashActivity : CABaseActivity() {
     private val neededInfo: Unit
         get() {
             grabbingInfo = true
-            encyclopediaViewModel.loadEncyclopedia(getServerType(applicationContext))
+            encyclopediaViewModel.loadEncyclopedia(applicationContext, getServerType(applicationContext))
         }
 
     public override fun onSaveInstanceState(outState: Bundle) {
@@ -161,20 +160,15 @@ class SplashActivity : CABaseActivity() {
 
         private fun observeEncyclopedia() {
         lifecycleScope.launch {
-            encyclopediaViewModel.encyclopediaState.collect { state ->
-                when (state) {
-                    is EncyclopediaState.Idle -> {}
-                    is EncyclopediaState.Loading -> {
-                        progressBar!!.visibility = View.VISIBLE
-                    }
-                    is EncyclopediaState.Success -> {
-                        progressBar!!.visibility = View.GONE
-                        grabbingInfo = false
-                        goToNext()
-                    }
-                    is EncyclopediaState.Error -> {
-                        progressBar!!.visibility = View.GONE
-                    }
+            encyclopediaViewModel.isLoading.collect { loading ->
+                progressBar!!.visibility = if (loading) View.VISIBLE else View.GONE
+            }
+        }
+        lifecycleScope.launch {
+            encyclopediaViewModel.isLoaded.collect { loaded ->
+                if (loaded) {
+                    grabbingInfo = false
+                    goToNext()
                 }
             }
         }

@@ -1,51 +1,42 @@
 package com.half.wowsca.ui.encyclopedia
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.half.wowsca.data.repository.EncyclopediaRepository
+import com.half.wowsca.backend.GetNeededInfoTask
 import com.half.wowsca.model.enums.Server
-import com.half.wowsca.model.result.InfoResult
+import com.half.wowsca.model.queries.InfoQuery
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import android.os.AsyncTask
 import javax.inject.Inject
 
 @HiltViewModel
-class EncyclopediaViewModel @Inject constructor(
-    private val encyclopediaRepository: EncyclopediaRepository,
-) : ViewModel() {
+class EncyclopediaViewModel @Inject constructor() : ViewModel() {
 
-    private val _encyclopediaState = MutableStateFlow<EncyclopediaState>(EncyclopediaState.Idle)
-    val encyclopediaState: StateFlow<EncyclopediaState> = _encyclopediaState.asStateFlow()
+    private val _isLoaded = MutableStateFlow(false)
+    val isLoaded: StateFlow<Boolean> = _isLoaded.asStateFlow()
 
-    fun loadEncyclopedia(server: Server, language: String = "en") {
-        if (_encyclopediaState.value is EncyclopediaState.Loading) return
-        _encyclopediaState.value = EncyclopediaState.Loading
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
-        viewModelScope.launch {
-            val ships = encyclopediaRepository.getShips(server, language)
-            val achievements = encyclopediaRepository.getAchievements(server, language)
-            val upgrades = encyclopediaRepository.getUpgrades(server, language)
-            val skills = encyclopediaRepository.getCrewSkills(server, language)
-            val flags = encyclopediaRepository.getFlags(server, language)
+    fun loadEncyclopedia(context: Context, server: Server) {
+        if (_isLoading.value) return
+        _isLoading.value = true
 
-            val result = InfoResult()
-            ships.onSuccess { result.shipsInfo = it }
-            achievements.onSuccess { result.achievements = it }
-            upgrades.onSuccess { result.upgrades = it }
-            skills.onSuccess { result.skills = it }
-            flags.onSuccess { result.flags = it }
+        val query = InfoQuery()
+        query.server = server
 
-            _encyclopediaState.value = EncyclopediaState.Success(result)
+        val task = GetNeededInfoTask()
+        task.ctx = context
+        task.onResult = { _ ->
+            _isLoading.value = false
+            _isLoaded.value = true
         }
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, query)
     }
-}
-
-sealed interface EncyclopediaState {
-    data object Idle : EncyclopediaState
-    data object Loading : EncyclopediaState
-    data class Success(val infoResult: InfoResult) : EncyclopediaState
-    data class Error(val message: String) : EncyclopediaState
 }
