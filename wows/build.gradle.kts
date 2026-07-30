@@ -5,13 +5,6 @@ plugins {
     alias(libs.plugins.jetbrainsKotlin)
 }
 
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-    }
-}
-
 repositories {
     maven { url = uri("https://jitpack.io") }
 }

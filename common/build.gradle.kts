@@ -3,12 +3,6 @@ plugins {
     alias(libs.plugins.jetbrainsKotlin)
 }
 
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-    }
-}
 android {
     namespace = "com.half.common"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
