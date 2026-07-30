@@ -32,6 +32,7 @@ class SearchActivity : CABaseActivity() {
                         com.half.wowsca.managers.CaptainManager.saveTempStoredCaptain(this, captain)
                         val i = Intent(this, com.half.wowsca.ui.viewcaptain.ViewCaptainActivity::class.java)
                         i.putExtra(com.half.wowsca.ui.viewcaptain.ViewCaptainActivity.EXTRA_ID, captain.id)
+                        i.putExtra(com.half.wowsca.ui.viewcaptain.ViewCaptainActivity.EXTRA_NAME, captain.name)
                         i.putExtra(com.half.wowsca.ui.viewcaptain.ViewCaptainActivity.EXTRA_SERVER, captain.server?.name)
                         startActivity(i)
                     }
