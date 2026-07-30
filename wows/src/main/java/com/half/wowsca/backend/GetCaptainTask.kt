@@ -5,7 +5,6 @@ import android.os.AsyncTask
 import android.text.TextUtils
 import android.util.SparseArray
 import com.half.wowsca.CAApp
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.managers.CARatingManager.CalculateCAShipRating
 import com.half.wowsca.model.Achievement
@@ -32,6 +31,7 @@ import java.util.Collections
  */
 class GetCaptainTask : AsyncTask<CaptainQuery?, Int?, CaptainResult>() {
     var ctx: Context? = null
+    var onResult: ((CaptainResult) -> Unit)? = null
 
     override fun doInBackground(vararg params: CaptainQuery?): CaptainResult? {
         val query = params[0] ?: return null
@@ -627,7 +627,7 @@ class GetCaptainTask : AsyncTask<CaptainQuery?, Int?, CaptainResult>() {
 
     override fun onPostExecute(captainResult: CaptainResult) {
         super.onPostExecute(captainResult)
-        eventBus.post(captainResult)
+        onResult?.invoke(captainResult)
     }
 
     companion object {

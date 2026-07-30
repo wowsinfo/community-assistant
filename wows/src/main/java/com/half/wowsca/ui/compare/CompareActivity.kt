@@ -19,7 +19,9 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.LargeValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.CAApp.Companion.isDarkTheme
 import com.half.wowsca.R
@@ -41,6 +43,7 @@ import com.utilities.views.SwipeBackLayout
 import org.greenrobot.eventbus.Subscribe
 import java.text.DecimalFormat
 
+@dagger.hilt.android.AndroidEntryPoint
 class CompareActivity : CABaseActivity() {
     private var container: LinearLayout? = null
     private var progressBar: View? = null
@@ -78,13 +81,14 @@ class CompareActivity : CABaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        // register removed
         initView()
+        observeCaptainResults()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        // unregister removed
     }
 
     private fun initView() {
@@ -114,8 +118,15 @@ class CompareActivity : CABaseActivity() {
         }
     }
 
-    @Subscribe
-    fun onReceiver(result: CaptainResult?) {
+    private fun observeCaptainResults() {
+        lifecycleScope.launch {
+            AppEventBus.captainResults.collect { result ->
+                onCaptainResult(result)
+            }
+        }
+    }
+
+    private fun onCaptainResult(result: CaptainResult?) {
         if (result != null) {
             if (result.captain != null) {
                 val c = result.captain

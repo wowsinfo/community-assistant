@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.R
 import com.half.wowsca.managers.CompareManager.getSHIPS
 import com.half.wowsca.ui.CAFragment
@@ -38,13 +40,14 @@ class ShipModuleListFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        // register removed
+        observeAppEvents()
         initView()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        // unregister removed
     }
 
     private fun initView() {
@@ -57,8 +60,15 @@ class ShipModuleListFragment : CAFragment() {
         }
     }
 
-    @Subscribe
-    fun onRefresh(shipId: Long) {
+    private fun observeAppEvents() {
+        lifecycleScope.launch {
+            AppEventBus.shipIdEvents.collect { shipId ->
+                onShipIdReceived(shipId)
+            }
+        }
+    }
+
+    private fun onShipIdReceived(shipId: Long) {
         d("ShiModuleListFragment", "onRefresh = $shipId")
         if (adapter != null) {
             var i = 0

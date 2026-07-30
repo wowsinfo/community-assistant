@@ -8,6 +8,7 @@ import com.half.wowsca.CAApp.Companion.getServerLanguage
 import com.half.wowsca.CAApp.Companion.getServerType
 import com.half.wowsca.R
 import com.half.wowsca.backend.GetCaptainTask
+import com.half.wowsca.util.AppEventBus
 import com.half.wowsca.backend.GetShipEncyclopediaInfo
 import com.half.wowsca.model.Captain
 import com.half.wowsca.model.enums.Server
@@ -134,7 +135,9 @@ object CompareManager {
         asyncTasks = mutableListOf()
 
         for (i in SHIPS!!) {
-            val info = GetShipEncyclopediaInfo()
+            val info = GetShipEncyclopediaInfo().apply {
+                onResult = { result -> AppEventBus.post(result) }
+            }
             asyncTasks?.add(info)
             val query = ShipQuery()
             query.shipId = i
@@ -147,7 +150,9 @@ object CompareManager {
 
     @JvmStatic
     fun searchShip(ctx: Context?, shipId: Long) {
-        val info = GetShipEncyclopediaInfo()
+        val info = GetShipEncyclopediaInfo().apply {
+            onResult = { result -> AppEventBus.post(result) }
+        }
         val query = ShipQuery()
         query.shipId = shipId
         query.server = getServerType(ctx)

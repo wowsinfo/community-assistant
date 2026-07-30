@@ -3,7 +3,6 @@ package com.half.wowsca.backend
 import android.os.AsyncTask
 import android.text.TextUtils
 import com.half.wowsca.CAApp
-import com.half.wowsca.CAApp.Companion.eventBus
 import com.half.wowsca.model.queries.ShipQuery
 import com.half.wowsca.model.result.ShipResult
 import com.utilities.Utils.getInputStreamResponse
@@ -16,6 +15,7 @@ import java.net.URL
  * Created by slai4 on 11/1/2015.
  */
 class GetShipEncyclopediaInfo : AsyncTask<ShipQuery?, Void?, ShipResult>() {
+    var onResult: ((ShipResult) -> Unit)? = null
     override fun doInBackground(vararg params: ShipQuery?): ShipResult? {
         val query = params[0] ?: return null
         val result = ShipResult()
@@ -100,7 +100,7 @@ class GetShipEncyclopediaInfo : AsyncTask<ShipQuery?, Void?, ShipResult>() {
 
     override fun onPostExecute(shipResult: ShipResult) {
         super.onPostExecute(shipResult)
-        eventBus.post(shipResult)
+        onResult?.invoke(shipResult)
     }
 
     fun getURLResult(url: String?): String? {

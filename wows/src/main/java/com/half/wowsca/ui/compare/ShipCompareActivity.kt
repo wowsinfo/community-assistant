@@ -7,7 +7,9 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.isOceanTheme
 import com.half.wowsca.R
 import com.half.wowsca.managers.CompareManager
@@ -27,6 +29,7 @@ import org.greenrobot.eventbus.Subscribe
 /**
  * Created by slai47 on 3/5/2017.
  */
+@dagger.hilt.android.AndroidEntryPoint
 class ShipCompareActivity : CABaseActivity() {
     /**
      * this holds a pager of a ShipCompareDifFragment and the ship profiles
@@ -59,13 +62,14 @@ class ShipCompareActivity : CABaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        // register removed
         initView()
+        observeAppEvents()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        // unregister removed
     }
 
     private fun initView() {
@@ -111,7 +115,7 @@ class ShipCompareActivity : CABaseActivity() {
             pagerTabs!!.setViewPager(mViewPager)
         }
         if (lastUpdated != null) {
-            eventBus.post(lastUpdated!!.shipId)
+            AppEventBus.postShipId(lastUpdated?.shipId ?: return)
             lastUpdated = null
         }
     }
@@ -121,8 +125,20 @@ class ShipCompareActivity : CABaseActivity() {
         searchShips(applicationContext)
     }
 
-    @Subscribe
-    fun onShipRecieveInfo(result: ShipResult) {
+    private fun observeAppEvents() {
+        lifecycleScope.launch {
+            AppEventBus.shipResults.collect { result ->
+                onShipRecieveInfo(result)
+            }
+        }
+        lifecycleScope.launch {
+            AppEventBus.progressEvents.collect { event ->
+                onRefresh(event)
+            }
+        }
+    }
+
+    private fun onShipRecieveInfo(result: ShipResult) {
         d("onShipReceiveInfo", "result = $result")
         if (result.shipInfo != null && getSHIPS()!!.contains(result.shipId)) {
             addShipInfo(result.shipId, result.shipInfo)
@@ -147,7 +163,7 @@ class ShipCompareActivity : CABaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    @Subscribe
+    /* replaced by observeAppEvents */
     fun onRefresh(event: ProgressEvent) {
         progress!!.visibility =
             if (event.isRefreshing) View.VISIBLE else View.GONE

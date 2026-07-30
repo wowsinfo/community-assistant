@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.utils.ColorTemplate
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.R
 import com.half.wowsca.managers.CompareManager.getSHIPS
@@ -48,12 +50,13 @@ class ShipCompareGraphFragment : CAFragment() {
     override fun onResume() {
         super.onResume()
         initView()
-        eventBus.register(this)
+        // register removed
+        observeAppEvents()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        // unregister removed
     }
 
     private fun initView() {
@@ -459,8 +462,15 @@ class ShipCompareGraphFragment : CAFragment() {
         }
     }
 
-    @Subscribe
-    fun onRefresh(shipId: Long?) {
+    private fun observeAppEvents() {
+        lifecycleScope.launch {
+            AppEventBus.shipIdEvents.collect { shipId ->
+                onShipIdReceived(shipId)
+            }
+        }
+    }
+
+    private fun onShipIdReceived(shipId: Long) {
         initView()
     }
 }

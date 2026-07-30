@@ -29,9 +29,13 @@ object AppEventBus {
     private val _shipResults = MutableSharedFlow<ShipResult>(extraBufferCapacity = 1)
     val shipResults: SharedFlow<ShipResult> = _shipResults.asSharedFlow()
 
+    private val _shipIdEvents = MutableSharedFlow<Long>(extraBufferCapacity = 1)
+    val shipIdEvents: SharedFlow<Long> = _shipIdEvents.asSharedFlow()
+
     fun post(event: RefreshEvent) { _refreshEvents.tryEmit(event) }
     fun post(event: ProgressEvent) { _progressEvents.tryEmit(event) }
     fun post(event: CaptainSavedEvent) { _captainSavedEvents.tryEmit(event) }
     fun post(event: CaptainResult) { _captainResults.tryEmit(event) }
     fun post(event: ShipResult) { _shipResults.tryEmit(event) }
+    fun postShipId(id: Long) { _shipIdEvents.tryEmit(id) }
 }
