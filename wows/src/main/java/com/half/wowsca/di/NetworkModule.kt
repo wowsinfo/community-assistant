@@ -22,7 +22,7 @@ annotation class ServerInfoRetrofit
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = "https://api.worldofwarships"
+    private const val BASE_URL = "https://api.worldofwarships/"
 
     @Provides
     @Singleton

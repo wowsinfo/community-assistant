@@ -16,7 +16,9 @@ class CaptainRepository @Inject constructor(
      */
     suspend fun searchPlayers(search: String, server: Server): Result<List<Captain>> {
         return try {
+            val baseUrl = "https://api.worldofwarships${server.suffix}"
             val response = api.searchPlayers(
+                url = "$baseUrl/wows/account/list/",
                 applicationId = server.appId,
                 search = search,
             )

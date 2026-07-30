@@ -16,7 +16,9 @@ class ShipEncyclopediaRepository @Inject constructor(
      */
     suspend fun getShipProfile(shipId: Long, server: Server, language: String = "en"): Result<String> {
         return try {
+            val baseUrl = "https://api.worldofwarships${server.suffix}"
             val response = api.getShipProfile(
+                url = "$baseUrl/wows/encyclopedia/shipprofile/",
                 applicationId = server.appId,
                 shipId = shipId,
                 language = language,
