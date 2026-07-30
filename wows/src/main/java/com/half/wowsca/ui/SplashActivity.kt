@@ -7,12 +7,16 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import com.half.wowsca.CAApp
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.ui.encyclopedia.EncyclopediaState
+import com.half.wowsca.ui.encyclopedia.EncyclopediaViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getServerType
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.R
 import com.half.wowsca.alerts.Alert.generalNoInternetDialogAlert
-import com.half.wowsca.backend.GetNeededInfoTask
 import com.half.wowsca.model.enums.ShortcutRoutes
 import com.half.wowsca.model.queries.InfoQuery
 import com.half.wowsca.model.result.InfoResult
@@ -24,7 +28,10 @@ import org.greenrobot.eventbus.Subscribe
 /**
  * Created by slai4 on 10/31/2015.
  */
+@AndroidEntryPoint
 class SplashActivity : CABaseActivity() {
+
+    private val encyclopediaViewModel: EncyclopediaViewModel by viewModels()
     private var progressBar: View? = null
     private var button: View? = null
     private var iv: ImageView? = null
@@ -71,13 +78,13 @@ class SplashActivity : CABaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         initView()
+        observeEncyclopedia()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        // eventBus removed
     }
 
     override fun onDestroy() {
@@ -143,11 +150,7 @@ class SplashActivity : CABaseActivity() {
     private val neededInfo: Unit
         get() {
             grabbingInfo = true
-            val query = InfoQuery()
-            query.server = getServerType(applicationContext)
-            val task = GetNeededInfoTask()
-            task.setCtx(applicationContext)
-            task.execute(query)
+            encyclopediaViewModel.loadEncyclopedia(getServerType(applicationContext))
         }
 
     public override fun onSaveInstanceState(outState: Bundle) {
@@ -156,14 +159,26 @@ class SplashActivity : CABaseActivity() {
         outState.putBoolean(GRABBING_INFO, grabbingInfo)
     }
 
-    @Subscribe
-    fun onInfoRecieved(result: InfoResult?) {
-        progressBar!!.post {
-            grabbingInfo = false
-            goToNext()
+        private fun observeEncyclopedia() {
+        lifecycleScope.launch {
+            encyclopediaViewModel.encyclopediaState.collect { state ->
+                when (state) {
+                    is EncyclopediaState.Idle -> {}
+                    is EncyclopediaState.Loading -> {
+                        progressBar!!.visibility = View.VISIBLE
+                    }
+                    is EncyclopediaState.Success -> {
+                        progressBar!!.visibility = View.GONE
+                        grabbingInfo = false
+                        goToNext()
+                    }
+                    is EncyclopediaState.Error -> {
+                        progressBar!!.visibility = View.GONE
+                    }
+                }
+            }
         }
     }
-
     override fun onBackPressed() {
         super.onBackPressed()
         goToNext = false
