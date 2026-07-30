@@ -33,7 +33,7 @@ fun SplashScreen(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             // Logo image (200dp height as original)
             Image(
-                painter = painterResource(id = com.half.wowsca.R.mipmap.ic_launcher),
+                painter = painterResource(id = com.half.wowsca.R.drawable.launcher_icon),
                 contentDescription = "App Logo",
                 modifier = Modifier.fillMaxWidth().height(200.dp)
             )
