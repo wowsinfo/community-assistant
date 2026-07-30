@@ -16,10 +16,14 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.ui.resources.ServerInfoUiState
+import com.half.wowsca.ui.resources.ServerInfoViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getServerType
 import com.half.wowsca.R
-import com.half.wowsca.backend.GetServerInfo
 import com.half.wowsca.backend.GetTwitchInfo
 import com.half.wowsca.model.ServerInfo
 import com.half.wowsca.model.TwitchObj
@@ -41,7 +45,10 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by slai4 on 11/29/2015.
  */
+@AndroidEntryPoint
 class ResourcesActivity : CABaseActivity() {
+
+    private val serverInfoViewModel: ServerInfoViewModel by viewModels()
     private var type: String? = null
 
     //donation area
@@ -161,13 +168,13 @@ class ResourcesActivity : CABaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         initView()
+        observeServerInfo()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        // eventBus removed
     }
 
     private fun initView() {
@@ -242,8 +249,7 @@ class ResourcesActivity : CABaseActivity() {
                 }
             }
         } else {
-            val info = GetServerInfo()
-            info.execute("")
+            serverInfoViewModel.loadServerInfo()
             serverProgress!!.visibility = View.VISIBLE
             llServerContainer!!.visibility = View.GONE
         }
@@ -417,17 +423,25 @@ class ResourcesActivity : CABaseActivity() {
     }
 
 
-    @Subscribe
-    fun onRecieveServers(result: ServerResult?) {
-        if (result != null) {
-            serverResult = result
-            runOnUiThread { initView() }
-        } else {
-            serverResult = ServerResult()
-            runOnUiThread {
-                Toast.makeText(applicationContext, R.string.resources_error, Toast.LENGTH_SHORT)
-                    .show()
-                initView()
+        private fun observeServerInfo() {
+        lifecycleScope.launch {
+            serverInfoViewModel.uiState.collect { state ->
+                when (state) {
+                    is ServerInfoUiState.Idle -> { /* no-op */ }
+                    is ServerInfoUiState.Loading -> {
+                        serverProgress!!.visibility = View.VISIBLE
+                    }
+                    is ServerInfoUiState.Success -> {
+                        serverProgress!!.visibility = View.GONE
+                        serverResult = state.serverResult
+                        initView()
+                    }
+                    is ServerInfoUiState.Error -> {
+                        serverProgress!!.visibility = View.GONE
+                        Toast.makeText(applicationContext, R.string.resources_error, Toast.LENGTH_SHORT).show()
+                        initView()
+                    }
+                }
             }
         }
     }

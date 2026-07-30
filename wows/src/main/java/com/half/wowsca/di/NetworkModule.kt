@@ -1,7 +1,10 @@
 package com.half.wowsca.di
 
+import com.half.wowsca.data.api.ServerInfoApiService
 import com.half.wowsca.data.api.WargamingApiService
 import dagger.Module
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Qualifier
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -10,6 +13,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class ServerInfoRetrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -35,6 +42,23 @@ object NetworkModule {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    @ServerInfoRetrofit
+    fun provideServerInfoRetrofit(client: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://api.worldoftanks")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideServerInfoApiService(@ServerInfoRetrofit retrofit: Retrofit): ServerInfoApiService {
+        return retrofit.create(ServerInfoApiService::class.java)
     }
 
     @Provides
