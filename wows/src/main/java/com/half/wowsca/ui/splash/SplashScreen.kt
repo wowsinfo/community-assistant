@@ -8,11 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -47,11 +47,10 @@ fun SplashScreen(
                 Text("Loading game data...", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
 
-            // Continue button (shown when loaded or when data already exists)
+            // Auto-navigate when loading is complete
             if (isLoaded) {
-                Spacer(modifier = Modifier.height(16.dp))
-                Button(onClick = onContinue) {
-                    Text("Continue")
+                androidx.compose.runtime.LaunchedEffect(Unit) {
+                    onContinue()
                 }
             }
         }
