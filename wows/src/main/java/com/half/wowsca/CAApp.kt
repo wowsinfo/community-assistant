@@ -117,13 +117,13 @@ class CAApp : Application() {
         @JvmStatic
         fun getTheme(ctx: Context?): String? {
             val prefs = Prefs(ctx)
-            return prefs.getString(SettingActivity.THEME_CHOICE, "ocean")
+            return prefs.getString("theme_choice", "ocean")
         }
 
         @JvmStatic
         fun isNoArp(ctx: Context?): Boolean {
             val prefs = Prefs(ctx)
-            return prefs.getBoolean(SettingActivity.NO_ARP, false)
+            return prefs.getBoolean("no_arp", false)
         }
 
         @JvmStatic

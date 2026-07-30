@@ -146,8 +146,7 @@ class EncyclopediaAdapter(
             area.setOnClickListener { //send to encyclopedia page
                 val i = Intent(img.context, ShipProfileActivity::class.java)
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                i.putExtra(ShipProfileActivity.SHIP_ID, shipId)
-                ShipProfileActivity.MODULE_LIST = null
+                i.putExtra("shipid", shipId)
                 img.context.startActivity(i)
             }
             area.setOnLongClickListener { //go to activity

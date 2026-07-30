@@ -8,7 +8,6 @@ import com.half.wowsca.CAApp.Companion.getAppLanguage
 import com.half.wowsca.CAApp.Companion.isDarkTheme
 import com.half.wowsca.CAApp.Companion.setTheme
 import com.half.wowsca.R
-import com.half.wowsca.ui.viewcaptain.ViewCaptainTabbedFragment
 import com.utilities.swipeback.SwipeBackBaseActivity
 import java.util.Locale
 
@@ -47,13 +46,7 @@ open class CABaseActivity : SwipeBackBaseActivity() {
     protected fun initBackStackListener() {
         backStackListener = FragmentManager.OnBackStackChangedListener {
             invalidateOptionsMenu()
-            val current = supportFragmentManager.findFragmentById(R.id.container)
-            try {
-                if (current is ViewCaptainTabbedFragment) {
-                    current.fix()
-                }
-            } catch (e: Exception) {
-            }
+            // Fragment-based navigation removed (Compose)
         }
     } //    public void setUpKarma(Captain captain){
     //        if(captain != null){

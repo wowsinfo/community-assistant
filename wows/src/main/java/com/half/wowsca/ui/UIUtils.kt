@@ -169,7 +169,7 @@ object UIUtils {
                     val i = Intent(act.applicationContext, ViewCaptainActivity::class.java)
                     i.putExtra(ViewCaptainActivity.EXTRA_ID, captain.id)
                     i.putExtra(ViewCaptainActivity.EXTRA_SERVER, captain.server.toString())
-                    i.putExtra(ViewCaptainActivity.EXTRA_NAME, captain.name)
+                    // name loaded from CaptainManager in ViewCaptainScreen
                     act.startActivity(i)
                     break
                 }

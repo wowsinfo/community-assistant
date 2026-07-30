@@ -77,7 +77,7 @@ class AuthenticationActivity : CABaseActivity() {
             onBackPressed()
         } else if (item.itemId == R.id.action_Login) {
             val prefs = Prefs(applicationContext)
-            prefs.setBoolean(SettingActivity.LOGIN_USER, false)
+            prefs.setBoolean("login_user", false)
             finish()
         }
         return super.onOptionsItemSelected(item)
