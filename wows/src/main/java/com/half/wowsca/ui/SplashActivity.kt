@@ -7,9 +7,11 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import com.half.wowsca.CAApp
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.half.wowsca.ui.encyclopedia.EncyclopediaViewModel
+import com.half.wowsca.ui.splash.SplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getServerType

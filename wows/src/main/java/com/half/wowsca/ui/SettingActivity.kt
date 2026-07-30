@@ -16,9 +16,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.half.wowsca.ui.encyclopedia.EncyclopediaViewModel
+import com.half.wowsca.ui.settings.SettingsScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getAppLanguage

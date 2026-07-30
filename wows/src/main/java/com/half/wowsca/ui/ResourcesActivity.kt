@@ -16,9 +16,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.half.wowsca.ui.resources.ServerInfoUiState
+import com.half.wowsca.ui.resources.ResourcesScreen
 import com.half.wowsca.ui.resources.ServerInfoViewModel
 import com.half.wowsca.ui.resources.TwitchUiState
 import com.half.wowsca.ui.resources.TwitchViewModel
@@ -93,7 +95,18 @@ class ResourcesActivity : CABaseActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_resources)
+        setContent {
+            com.half.wowsca.ui.theme.AppTheme {
+                ResourcesScreen(
+                    serverInfoViewModel = serverInfoViewModel,
+                    twitchViewModel = twitchViewModel,
+                    onUrlClick = { url ->
+                        val i = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+                        startActivity(i)
+                    }
+                )
+            }
+        }
         if (savedInstanceState != null) {
             type = savedInstanceState.getString(EXTRA_TYPE)
             viewAd = false
