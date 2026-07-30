@@ -67,8 +67,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
 
     // Compose
+    implementation(libs.activity.compose)
     implementation(libs.compose.material3)
     implementation(libs.compose.runtime)
+    implementation(libs.compose.foundation)
 
     // Hilt
     implementation(libs.hilt.android)

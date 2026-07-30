@@ -23,7 +23,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import com.half.wowsca.ui.search.SearchScreen
 import com.half.wowsca.ui.search.SearchUiState
 import com.half.wowsca.ui.search.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -86,31 +88,26 @@ class SearchActivity : CABaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
-        bindView()
-        observeSearchState()
-        if (savedInstanceState != null) {
-            savedSearch = savedInstanceState.getString("search")
+        setContent {
+            com.half.wowsca.ui.theme.AppTheme {
+                SearchScreen(
+                    viewModel = viewModel,
+                    onCompareClick = {
+                        if (com.half.wowsca.managers.CompareManager.size() > 1) {
+                            startActivity(Intent(this@SearchActivity, com.half.wowsca.ui.compare.CompareActivity::class.java))
+                        }
+                    },
+                    onCaptainClick = { captain ->
+                        com.half.wowsca.managers.CompareManager.addCaptain(captain, false)
+                        createBookmarkingDialogIfNeeded(this@SearchActivity, captain)
+                    }
+                )
+            }
         }
+        observeSearchState()
     }
 
-    private fun bindView() {
-        mToolbar = findViewById<View>(R.id.toolbar) as Toolbar?
-        setSupportActionBar(mToolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setHomeButtonEnabled(true)
-
-        etSearch = findViewById<View>(R.id.search_et) as EditText?
-        delete = findViewById<View>(R.id.search_et_delete)
-        sServers = findViewById<View>(R.id.search_server_spinner) as Spinner?
-        listView = findViewById<View>(R.id.search_listview) as ListView?
-        progress = findViewById<View>(R.id.progressBar)
-        tvError = findViewById<View>(R.id.search_error_text) as TextView?
-
-        bCompare = findViewById<View>(R.id.search_compare_button) as Button?
-        tvCompare = findViewById<View>(R.id.search_compare_text) as TextView?
-        swipeBackLayout!!.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT)
-    }
+    private fun bindView() { /* replaced by Compose */ }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -127,19 +124,7 @@ class SearchActivity : CABaseActivity() {
         super.onPause()
     }
 
-    private fun initView() {
-        initCompare()
-
-        initSearch()
-
-        initServerSpinner()
-
-        initListOnClick()
-
-        initAutoSearchOnRotate()
-
-        autoPlaceSavedCaptains()
-    }
+    private fun initView() { /* replaced by Compose */ }
 
     private fun initAutoSearchOnRotate() {
         if (!TextUtils.isEmpty(savedSearch)) {
