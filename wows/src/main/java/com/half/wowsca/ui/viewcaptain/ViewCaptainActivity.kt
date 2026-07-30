@@ -19,8 +19,16 @@ class ViewCaptainActivity : CABaseActivity() {
         val serverName = intent.getStringExtra(EXTRA_SERVER)
         val server = serverName?.let { Server.valueOf(it) }
         val captain = server?.let { s ->
-            val idStr = CaptainManager.createCapIdStr(s, id)
-            CaptainManager.getCaptains(applicationContext)?.get(idStr)
+            // Check temp storage first (from search result)
+            var cap = if (CaptainManager.fromSearch(applicationContext, s, id)) {
+                CaptainManager.getTEMP(applicationContext)
+            } else null
+            // Fall back to saved captains
+            if (cap == null) {
+                val idStr = CaptainManager.createCapIdStr(s, id)
+                cap = CaptainManager.getCaptains(applicationContext)?.get(idStr)
+            }
+            cap
         }
 
         setContent {
