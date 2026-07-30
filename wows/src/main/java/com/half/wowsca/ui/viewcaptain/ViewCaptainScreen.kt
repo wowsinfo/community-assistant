@@ -1,5 +1,6 @@
 package com.half.wowsca.ui.viewcaptain
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,10 +13,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,6 +33,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.half.wowsca.model.Captain
@@ -44,27 +42,16 @@ import com.half.wowsca.model.Statistics
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ViewCaptainScreen(
-    captain: Captain?,
-    onBack: () -> Unit,
-) {
+fun ViewCaptainScreen(captain: Captain?, onBack: () -> Unit) {
     var selectedTab by remember { mutableIntStateOf(0) }
-    val tabs = listOf("Summary", "Ships", "Achievements", "Ranked")
+    val tabs = listOf("Summary", "Ships", "Achievements", "Graphs", "Ranked")
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(captain?.name ?: "Captain Profile") },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
-                )
+                navigationIcon = { IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back") } },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primary, titleContentColor = MaterialTheme.colorScheme.onPrimary, navigationIconContentColor = MaterialTheme.colorScheme.onPrimary)
             )
         }
     ) { padding ->
@@ -72,167 +59,230 @@ fun ViewCaptainScreen(
             Text("Captain not found", modifier = Modifier.fillMaxSize().padding(padding).padding(16.dp), color = MaterialTheme.colorScheme.error)
             return@Scaffold
         }
-
-        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
-            // Captain header card
-            Card(modifier = Modifier.fillMaxWidth().padding(12.dp), elevation = CardDefaults.cardElevation(4.dp)) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(captain.name ?: "Unknown", style = MaterialTheme.typography.headlineSmall)
+        Column(Modifier.fillMaxSize().padding(padding)) {
+            // Captain header
+            Card(Modifier.fillMaxWidth().padding(12.dp), elevation = CardDefaults.cardElevation(4.dp)) {
+                Column(Modifier.padding(16.dp)) {
+                    Text(captain.name ?: "Unknown", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
                     Text("Server: ${captain.server?.name?.uppercase() ?: "-"}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     captain.clanName?.let { Text("Clan: $it", style = MaterialTheme.typography.bodyMedium) }
                 }
             }
-
             TabRow(selectedTabIndex = selectedTab) {
-                tabs.forEachIndexed { i, title ->
-                    Tab(selected = selectedTab == i, onClick = { selectedTab = i }, text = { Text(title) })
-                }
+                tabs.forEachIndexed { i, t -> Tab(selected = selectedTab == i, onClick = { selectedTab = i }, text = { Text(t) }) }
             }
-
             when (selectedTab) {
                 0 -> SummaryTab(captain)
-                1 -> ShipsTab(captain)
-                2 -> AchievementsTab(captain)
-                3 -> RankedTab(captain)
+                1 -> ShipsTab2(captain)
+                2 -> AchievementsTab2(captain)
+                3 -> GraphsTab(captain)
+                4 -> RankedTab2(captain)
             }
         }
     }
 }
 
+// === SUMMARY TAB ===
 @Composable
 private fun SummaryTab(captain: Captain) {
     val d = captain.details
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState())) {
-        if (d == null) { Text("No stats available"); return@Column }
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(12.dp)) {
+        if (d == null) { Text("No stats"); return@Column }
 
-        Text("Overall Stats", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-        Spacer(modifier = Modifier.height(8.dp))
+        // Top 5 stat cards
+        Text("Overview", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.height(8.dp))
+        StatCard("Battles", formatNum(d.battles), "Total games played")
+        StatCard("Win Rate", formatPercent(d.wins, d.battles), "${d.wins} wins")
+        StatCard("Average XP", if (d.battles > 0) formatNum((d.totalXP / d.battles).toInt()) else "0", "Per battle")
+        StatCard("Average Damage", if (d.battles > 0) formatNum((d.totalDamage.toLong() / d.battles).toInt()) else "0", "Per battle")
+        StatCard("K/D Ratio", if (d.battles > 0) String.format("%.2f", d.frags.toFloat() / d.battles) else "0", "Frags per battle")
 
-        StatRow("Battles", formatNum(d.battles))
-        StatRow("Wins", formatNum(d.wins))
-        StatRow("Win Rate", formatPercent(d.wins, d.battles))
-        StatRow("Frags", formatNum(d.frags))
-        StatRow("Total XP", formatNum(d.totalXP))
-        StatRow("Survived Battles", formatNum(d.survivedBattles))
-        StatRow("Max XP", formatNum(d.maxXP))
-        StatRow("Max Frags", formatNum(d.maxFragsInBattle))
-        StatRow("Total Damage", formatNum(d.totalDamage.toLong()))
-        StatRow("Planes Killed", formatNum(d.planesKilled))
-        StatRow("Capture Points", formatNum(d.capturePoints))
-        StatRow("Dropped Capture", formatNum(d.droppedCapturePoints))
-
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(Modifier.height(12.dp))
         HorizontalDivider()
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(Modifier.height(12.dp))
 
-        // PvP stats
-        pveSection("PvE Stats", captain.pveDetails)
-        pveSection("PvP Solo", captain.pvpSoloDetails)
-        pveSection("PvP Div2", captain.pvpDiv2Details)
-        pveSection("PvP Div3", captain.pvpDiv3Details)
-        pveSection("Team Battles", captain.teamBattleDetails)
+        // General stats
+        Text("General", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.height(8.dp))
+        GenRow("Total XP", formatNum(d.totalXP))
+        GenRow("Total Damage", formatNum(d.totalDamage.toLong()))
+        GenRow("Planes Killed", formatNum(d.planesKilled))
+        GenRow("Capture Points", formatNum(d.capturePoints))
+        GenRow("Dropped Capture", formatNum(d.droppedCapturePoints))
+        GenRow("Profile Level", "${d.tierLevel}")
+
+        Spacer(Modifier.height(12.dp))
+        HorizontalDivider()
+        Spacer(Modifier.height(12.dp))
+
+        // PvP/PvE sections
+        PvESection("PvE Stats", captain.pveDetails)
+        PvESection("PvP Solo", captain.pvpSoloDetails)
+        PvESection("PvP Div 2", captain.pvpDiv2Details)
+        PvESection("PvP Div 3", captain.pvpDiv3Details)
+        PvESection("Team Battles", captain.teamBattleDetails)
+
+        // Ships summary
+        Spacer(Modifier.height(12.dp))
+        HorizontalDivider()
+        Spacer(Modifier.height(12.dp))
+        Text("Ships (${captain.ships?.size ?: 0})", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        captain.ships?.forEach { ship ->
+            ShipMiniCard(ship)
+        }
+        Spacer(Modifier.height(32.dp))
     }
 }
 
 @Composable
-private fun pveSection(title: String, stats: Statistics?) {
-    if (stats == null) return
-    Text(title, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-    StatRow("Battles", formatNum(stats.battles))
-    StatRow("Wins", formatNum(stats.wins))
-    StatRow("Win Rate", formatPercent(stats.wins, stats.battles))
-    Spacer(modifier = Modifier.height(8.dp))
+private fun StatCard(title: String, value: String, subtitle: String) {
+    Card(Modifier.fillMaxWidth().padding(vertical = 3.dp), elevation = CardDefaults.cardElevation(2.dp)) {
+        Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(title, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(subtitle, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Text(value, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+        }
+    }
 }
 
 @Composable
-private fun ShipsTab(captain: Captain) {
-    val ships = captain.ships
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState())) {
+private fun GenRow(label: String, value: String) {
+    Row(Modifier.fillMaxWidth().padding(vertical = 2.dp)) {
+        Text(label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.width(140.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text(value, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+    }
+}
+
+@Composable
+private fun PvESection(title: String, stats: Statistics?) {
+    if (stats == null) return
+    Text(title, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 8.dp))
+    GenRow("Battles", formatNum(stats.battles))
+    GenRow("Wins", formatNum(stats.wins))
+    GenRow("Win Rate", formatPercent(stats.wins, stats.battles))
+}
+
+@Composable
+private fun ShipMiniCard(ship: Ship) {
+    Card(Modifier.fillMaxWidth().padding(vertical = 2.dp), elevation = CardDefaults.cardElevation(1.dp)) {
+        Row(Modifier.fillMaxWidth().padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text("Ship ${ship.shipId}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Medium)
+                Text("B:${ship.battles} W:${ship.wins} F:${ship.frags}", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Text(formatNum(ship.battles), style = MaterialTheme.typography.bodySmall)
+        }
+    }
+}
+
+// === SHIPS TAB ===
+@Composable
+private fun ShipsTab2(captain: Captain) {
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(12.dp)) {
+        val ships = captain.ships
         Text("Ships (${ships?.size ?: 0})", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-        Spacer(modifier = Modifier.height(8.dp))
         if (ships.isNullOrEmpty()) { Text("No ship data"); return@Column }
         ships.forEach { ship ->
-            Card(modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp), elevation = CardDefaults.cardElevation(1.dp)) {
-                Column(modifier = Modifier.padding(12.dp)) {
-                    Text("Ship ID: ${ship.shipId}", style = MaterialTheme.typography.bodyMedium)
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        MiniStat("Battles", "${ship.battles}")
-                        MiniStat("Wins", "${ship.wins}")
-                        MiniStat("WR", formatPercent(ship.wins, ship.battles))
-                        MiniStat("Frags", "${ship.frags}")
-                    }
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        MiniStat("XP", formatNum(ship.totalXP))
-                        MiniStat("Damage", formatNum(ship.totalDamage.toLong()))
-                        MiniStat("Planes", "${ship.planesKilled}")
-                    }
+            Card(Modifier.fillMaxWidth().padding(vertical = 2.dp), elevation = CardDefaults.cardElevation(1.dp)) {
+                Column(Modifier.padding(12.dp)) {
+                    Text("Ship ID: ${ship.shipId}", fontWeight = FontWeight.Medium)
+                    Row(Modifier.fillMaxWidth()) { MiniStat("Battles", "${ship.battles}"); MiniStat("Wins", "${ship.wins}"); MiniStat("WR", formatPercent(ship.wins, ship.battles)); MiniStat("Frags", "${ship.frags}") }
+                    Row(Modifier.fillMaxWidth()) { MiniStat("XP", formatNum(ship.totalXP)); MiniStat("Damage", formatNum(ship.totalDamage.toLong())); MiniStat("Survived", "${ship.survivedBattles}") }
                 }
             }
         }
     }
 }
 
+// === ACHIEVEMENTS TAB ===
 @Composable
-private fun AchievementsTab(captain: Captain) {
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+private fun AchievementsTab2(captain: Captain) {
+    Column(Modifier.fillMaxSize().padding(16.dp)) {
         Text("Achievements", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(Modifier.height(8.dp))
         val a = captain.achievements
-        if (a.isNullOrEmpty()) Text("No achievements data")
+        if (a.isNullOrEmpty()) Text("No achievements data available")
         else Text("${a.size} achievements earned")
     }
 }
 
+// === GRAPHS TAB ===
 @Composable
-private fun RankedTab(captain: Captain) {
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState())) {
-        Text("Ranked Seasons", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-        Spacer(modifier = Modifier.height(8.dp))
-        val seasons = captain.rankedSeasons
-        if (seasons.isNullOrEmpty()) { Text("No ranked data"); return@Column }
-        seasons.forEach { s ->
-            Card(modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp), elevation = CardDefaults.cardElevation(1.dp)) {
-                Column(modifier = Modifier.padding(12.dp)) {
-                    Text("Season ${s.seasonInt ?: "?"}", style = MaterialTheme.typography.bodyMedium)
-                    Row {
-                        MiniStat("Rank", "${s.rank}")
-                        MiniStat("Max Rank", "${s.maxRank}")
-                        MiniStat("Stars", "${s.stars}")
-                        MiniStat("Stage", "${s.stage}")
-                    }
-                    s.solo?.let { Row {
-                        MiniStat("Battles", "${it.battles}")
-                        MiniStat("Wins", "${it.wins}")
-                        MiniStat("WR", formatPercent(it.wins, it.battles))
-                    } }
-                }
+private fun GraphsTab(captain: Captain) {
+    val ships = captain.ships?.filter { it.battles > 0 } ?: emptyList()
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(12.dp)) {
+        Text("Performance by Tier", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.height(8.dp))
+
+        if (ships.isEmpty()) {
+            Text("No ship data available for graphs", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        } else {
+            Text("Average Experience (top 10 ships)", style = MaterialTheme.typography.bodyMedium)
+            Spacer(Modifier.height(8.dp))
+            ships.sortedByDescending { it.totalXP.toFloat() / maxOf(1, it.battles) }.take(10).forEach { s ->
+                val avg = if (s.battles > 0) s.totalXP.toFloat() / s.battles else 0f
+                GraphBar("Ship ${s.shipId}", formatNum(avg.toLong()))
+            }
+            Spacer(Modifier.height(16.dp))
+
+            Text("Average Damage (top 10 ships)", style = MaterialTheme.typography.bodyMedium)
+            Spacer(Modifier.height(8.dp))
+            ships.sortedByDescending { s -> if (s.battles > 0) s.totalDamage.toFloat() / s.battles else 0f }.take(10).forEach { s ->
+                val avg = if (s.battles > 0) s.totalDamage.toFloat() / s.battles else 0f
+                GraphBar("Ship ${s.shipId}", formatNum(avg.toLong()))
+            }
+            Spacer(Modifier.height(16.dp))
+
+            Text("Win Rate (top 10 ships)", style = MaterialTheme.typography.bodyMedium)
+            Spacer(Modifier.height(8.dp))
+            ships.sortedByDescending { s -> if (s.battles > 0) s.wins.toFloat() / s.battles else 0f }.take(10).forEach { s ->
+                val wr = if (s.battles > 0) String.format("%.1f%%", (s.wins.toFloat() / s.battles) * 100) else "0%"
+                GraphBar("Ship ${s.shipId}", wr)
             }
         }
+        Spacer(Modifier.height(32.dp))
     }
 }
 
 @Composable
-private fun StatRow(label: String, value: String) {
-    Row(modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp)) {
-        Text(label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.width(140.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text(value, style = MaterialTheme.typography.bodyMedium)
+private fun GraphBar(label: String, value: String) {
+    Row(Modifier.fillMaxWidth().padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(label, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+        Text(value, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+    }
+}
+
+// === RANKED TAB ===
+@Composable
+private fun RankedTab2(captain: Captain) {
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
+        Text("Ranked Seasons", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.height(8.dp))
+        val seasons = captain.rankedSeasons
+        if (seasons.isNullOrEmpty()) { Text("No ranked data"); return@Column }
+        seasons.forEach { s ->
+            Card(Modifier.fillMaxWidth().padding(vertical = 2.dp), elevation = CardDefaults.cardElevation(1.dp)) {
+                Column(Modifier.padding(12.dp)) {
+                    Text("Season ${s.seasonInt ?: "?"}", fontWeight = FontWeight.Medium)
+                    Row { MiniStat("Rank", "${s.rank}"); MiniStat("Max Rank", "${s.maxRank}"); MiniStat("Stars", "${s.stars}"); MiniStat("Stage", "${s.stage}") }
+                    s.solo?.let { Row { MiniStat("Battles", "${it.battles}"); MiniStat("Wins", "${it.wins}"); MiniStat("WR", formatPercent(it.wins, it.battles)) } }
+                }
+            }
+        }
     }
 }
 
 @Composable
 private fun MiniStat(label: String, value: String) {
-    Column(modifier = Modifier.padding(end = 12.dp)) {
+    Column(Modifier.padding(end = 12.dp)) {
         Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         Text(value, style = MaterialTheme.typography.bodySmall)
     }
 }
 
-private fun formatPercent(part: Int, total: Int): String =
-    if (total > 0) String.format("%.1f%%", (part.toFloat() / total) * 100) else "-"
-
-private fun formatNum(n: Long): String =
-    if (n >= 1_000_000) String.format("%.1fM", n / 1_000_000.0)
-    else if (n >= 1_000) String.format("%.1fK", n / 1_000.0)
-    else "$n"
-
+private fun formatPercent(part: Int, total: Int): String = if (total > 0) String.format("%.1f%%", (part.toFloat() / total) * 100) else "-"
+private fun formatNum(n: Long): String = if (n >= 1_000_000) String.format("%.1fM", n / 1_000_000.0) else if (n >= 1_000) String.format("%.1fK", n / 1_000.0) else "$n"
 private fun formatNum(n: Int): String = formatNum(n.toLong())
