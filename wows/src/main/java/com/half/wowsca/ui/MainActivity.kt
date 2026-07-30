@@ -16,21 +16,7 @@ class MainActivity : CABaseActivity() {
         setContent {
             AppTheme {
                 MainScreen(
-                    context = applicationContext,
-                    onSearchClick = {
-                        startActivity(Intent(this, SearchActivity::class.java))
-                    },
-                    onSettingsClick = {
-                        startActivity(Intent(this, SettingActivity::class.java))
-                    },
-                    onResourcesClick = {
-                        val i = Intent(this, ResourcesActivity::class.java)
-                        startActivity(i)
-                    },
-                    onCaptainClick = { captain ->
-                        val i = Intent(this, ViewCaptainActivity::class.java)
-                        startActivity(i)
-                    }
+                    context = applicationContext
                 )
             }
         }
