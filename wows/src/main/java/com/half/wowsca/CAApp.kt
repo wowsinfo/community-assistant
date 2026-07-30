@@ -16,10 +16,12 @@ import com.utilities.logging.Dlog
 import com.utilities.logging.Dlog.d
 import com.utilities.preferences.Prefs
 import org.greenrobot.eventbus.EventBus
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Created by slai4 on 9/15/2015.
  */
+@HiltAndroidApp
 class CAApp : Application() {
     override fun onCreate() {
         super.onCreate()

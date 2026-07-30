@@ -3,10 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrainsKotlin)
-}
-
-repositories {
-    maven { url = uri("https://jitpack.io") }
+    alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -71,6 +69,11 @@ dependencies {
     // Compose
     implementation(libs.compose.material3)
     implementation(libs.compose.runtime)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
 
     // Uncomment the line below if you want to include Google Play Services Ads, make sure to use a different version
     // implementation("com.google.android.gms:play-services-ads:17.1.1")

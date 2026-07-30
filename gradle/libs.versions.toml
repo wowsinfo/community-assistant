@@ -23,6 +23,9 @@ appcompat = "1.7.0"
 jsoup = "1.13.1"
 picasso_downloader = "1.1.0"
 coil = "2.7.0"
+hilt = "2.53.1"
+hilt-navigation-compose = "1.2.0"
+ksp = "2.1.0-1.0.29"
 
 [libraries]
 compose_material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
@@ -44,6 +47,9 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat"
 jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 picasso_downloader = { module = "com.jakewharton.picasso:picasso2-okhttp3-downloader", version.ref = "picasso_downloader" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -51,3 +57,5 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrainsKotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
