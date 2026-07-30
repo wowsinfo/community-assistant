@@ -8,6 +8,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
 import androidx.lifecycle.lifecycleScope
+import androidx.activity.compose.setContent
+import com.half.wowsca.ui.compare.ShipCompareScreen
 import com.half.wowsca.util.AppEventBus
 import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.isOceanTheme

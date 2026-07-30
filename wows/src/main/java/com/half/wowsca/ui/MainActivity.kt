@@ -13,6 +13,8 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.half.wowsca.CAApp
 import androidx.lifecycle.lifecycleScope
+import androidx.activity.compose.setContent
+import com.half.wowsca.ui.main.MainScreen
 import com.half.wowsca.util.AppEventBus
 import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getSelectedId

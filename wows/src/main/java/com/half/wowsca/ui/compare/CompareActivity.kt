@@ -20,6 +20,8 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.LargeValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import androidx.lifecycle.lifecycleScope
+import androidx.activity.compose.setContent
+import com.half.wowsca.ui.compare.CompareScreen
 import com.half.wowsca.util.AppEventBus
 import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.infoManager
