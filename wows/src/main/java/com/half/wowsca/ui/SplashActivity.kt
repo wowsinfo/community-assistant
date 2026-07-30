@@ -22,7 +22,6 @@ import com.half.wowsca.model.result.InfoResult
 import com.squareup.picasso.Picasso
 import com.utilities.Utils.hasInternetConnection
 import com.utilities.preferences.Prefs
-import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created by slai4 on 10/31/2015.

@@ -12,7 +12,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.half.wowsca.CAApp
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getSelectedId
 import com.half.wowsca.CAApp.Companion.setSelectedId
 import com.half.wowsca.NumberVault
@@ -55,7 +57,6 @@ import com.mikepenz.materialdrawer.Drawer
 import com.utilities.Utils.hasInternetConnection
 import com.utilities.logging.Dlog.wtf
 import com.utilities.preferences.Prefs
-import org.greenrobot.eventbus.Subscribe
 
 class MainActivity : CABaseActivity(), ICaptain {
     private var selectedId: String? = null
@@ -86,7 +87,7 @@ class MainActivity : CABaseActivity(), ICaptain {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        
         invalidateOptionsMenu()
         initView()
         setUpDrawer()
@@ -150,7 +151,7 @@ class MainActivity : CABaseActivity(), ICaptain {
                 }
             }
             if (captain.ships == null || FORCE_REFRESH) {
-                eventBus.post(ProgressEvent(true))
+                AppEventBus.post(ProgressEvent(true))
                 FORCE_REFRESH = false
                 val connected = hasInternetConnection(this)
                 if (connected) {
@@ -242,7 +243,9 @@ class MainActivity : CABaseActivity(), ICaptain {
         query.server = captain.server
         query.token = if (info != null) info.token else null
 
-        val task = GetCaptainTask()
+        val task = GetCaptainTask().apply {
+                    onResult = { result -> AppEventBus.post(result) }
+                }
         task.ctx = applicationContext
         task.execute(query)
     }
@@ -354,7 +357,7 @@ class MainActivity : CABaseActivity(), ICaptain {
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        
         supportFragmentManager.removeOnBackStackChangedListener((backStackListener)!!)
     }
 
@@ -389,7 +392,7 @@ class MainActivity : CABaseActivity(), ICaptain {
 
         if (id == R.id.action_refresh) {
             FORCE_REFRESH = true
-            eventBus.post(RefreshEvent(false))
+            AppEventBus.post(RefreshEvent(false))
             initView()
         } else if (id == R.id.action_bookmark) {
             setSelectedId(applicationContext, null)
@@ -410,7 +413,7 @@ class MainActivity : CABaseActivity(), ICaptain {
                     captain.name + " " + getString(R.string.list_clan_removed_message),
                     Toast.LENGTH_SHORT
                 ).show()
-                eventBus.post(event)
+                AppEventBus.post(event)
             }
         } else if (id == R.id.action_view_ad) {
             val i = Intent(applicationContext, ResourcesActivity::class.java)
@@ -433,7 +436,6 @@ class MainActivity : CABaseActivity(), ICaptain {
         return super.onOptionsItemSelected(item)
     }
 
-    @Subscribe
     fun onRefresh(event: RefreshEvent) {
         if (event.isFromSwipe) {
             FORCE_REFRESH = true
@@ -441,7 +443,6 @@ class MainActivity : CABaseActivity(), ICaptain {
         }
     }
 
-    @Subscribe
     fun onRecieveCaptain(result: CaptainResult?) {
         if (result != null) {
             mToolbar!!.post(object : Runnable {
@@ -455,7 +456,7 @@ class MainActivity : CABaseActivity(), ICaptain {
                             saveCaptain(applicationContext, captain)
                             setCaptainTitle(captain)
                             savePlayerStats(mToolbar!!.context, captain)
-                            eventBus.post(CaptainReceivedEvent())
+                            AppEventBus.post(CaptainReceivedEvent())
                         }
                     } else {
                         Toast.makeText(
@@ -485,7 +486,6 @@ class MainActivity : CABaseActivity(), ICaptain {
         }
     }
 
-    @Subscribe
     fun onAddRemove(event: AddRemoveEvent) {
         if (!event.isRemove) {
             createBookmarkingDialogIfNeeded(this, (event.captain)!!)
@@ -504,7 +504,6 @@ class MainActivity : CABaseActivity(), ICaptain {
         setUpDrawer()
     }
 
-    @Subscribe
     fun showShip(ship: ShipClickedEvent?) {
         if (ship != null) {
             val shipFragment = ShipFragment()

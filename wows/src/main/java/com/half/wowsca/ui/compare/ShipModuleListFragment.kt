@@ -14,7 +14,6 @@ import com.half.wowsca.managers.CompareManager.getSHIPS
 import com.half.wowsca.ui.CAFragment
 import com.half.wowsca.ui.adapter.ShipModuleCompareAdapter
 import com.utilities.logging.Dlog.d
-import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created by slai47 on 5/21/2017.

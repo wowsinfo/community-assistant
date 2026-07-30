@@ -10,7 +10,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.R
 import com.half.wowsca.interfaces.ICaptain
@@ -30,7 +32,6 @@ import com.half.wowsca.ui.UIUtils.setUpCard
 import com.utilities.Utils.defaultDecimalFormatter
 import com.utilities.Utils.oneDepthDecimalFormatter
 import com.utilities.logging.Dlog.wtf
-import org.greenrobot.eventbus.Subscribe
 import java.text.DecimalFormat
 import java.util.Collections
 
@@ -62,13 +63,13 @@ class CaptainRankedFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        
         initView()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        
     }
 
     private fun initView() {
@@ -318,7 +319,7 @@ class CaptainRankedFragment : CAFragment() {
                                         override fun onClick(v: View) {
                                             val s: Long? = v.tag as Long?
                                             if (s != null) {
-                                                eventBus.post(ShipClickedEvent(s))
+                                                AppEventBus.post(ShipClickedEvent(s))
                                             }
                                         }
                                     })
@@ -346,19 +347,16 @@ class CaptainRankedFragment : CAFragment() {
         aShips!!.removeAllViews()
     }
 
-    @Subscribe
     fun onReceive(event: CaptainReceivedEvent?) {
         initView()
     }
 
-    @Subscribe
     fun onRefresh(event: RefreshEvent?) {
         //clear out elements
         refreshing(true)
         aSeasons!!.removeAllViews()
     }
 
-    @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout!!.isRefreshing = event.isRefreshing

@@ -40,7 +40,6 @@ import com.utilities.Utils.defaultDecimalFormatter
 import com.utilities.Utils.oneDepthDecimalFormatter
 import com.utilities.preferences.Prefs
 import com.utilities.views.SwipeBackLayout
-import org.greenrobot.eventbus.Subscribe
 import java.text.DecimalFormat
 
 @dagger.hilt.android.AndroidEntryPoint

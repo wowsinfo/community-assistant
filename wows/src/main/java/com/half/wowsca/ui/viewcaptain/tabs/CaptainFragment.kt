@@ -41,7 +41,9 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
 import com.github.mikephil.charting.utils.ViewPortHandler
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getTextColor
 import com.half.wowsca.CAApp.Companion.getTheme
 import com.half.wowsca.CAApp.Companion.infoManager
@@ -77,7 +79,6 @@ import com.utilities.Utils.getDayMonthYearFormatter
 import com.utilities.Utils.oneDepthDecimalFormatter
 import com.utilities.logging.Dlog.d
 import com.utilities.preferences.Prefs
-import org.greenrobot.eventbus.Subscribe
 import java.text.DecimalFormat
 import java.util.Calendar
 import java.util.Collections
@@ -311,7 +312,7 @@ class CaptainFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        
         initView()
     }
 
@@ -1845,20 +1846,17 @@ class CaptainFragment : CAFragment() {
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        
     }
 
-    @Subscribe
     fun onReceive(event: CaptainReceivedEvent?) {
         initView()
     }
 
-    @Subscribe
     fun onSaveFinished(event: CaptainSavedEvent?) {
         chartProgress!!.post { initView() }
     }
 
-    @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         d("CaptainFragment", "progressEvent")
         if (mSwipeRefreshLayout != null) {
@@ -1866,7 +1864,6 @@ class CaptainFragment : CAFragment() {
         }
     }
 
-    @Subscribe
     fun onRefresh(event: RefreshEvent?) {
         refreshing(true)
         tvBattles!!.text = ""

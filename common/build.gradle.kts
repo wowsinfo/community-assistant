@@ -35,7 +35,6 @@ dependencies {
     api(files("libs/gson-2.2.4.jar"))
     api(libs.picasso)
     api(libs.coil)
-    api(libs.eventbus)
     api(libs.okhttp)
     api(libs.androidx.core)
     api(libs.appcompat)

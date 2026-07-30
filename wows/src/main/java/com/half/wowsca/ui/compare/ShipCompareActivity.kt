@@ -24,7 +24,6 @@ import com.half.wowsca.ui.CABaseActivity
 import com.half.wowsca.ui.adapter.pager.ShipComparePager
 import com.utilities.logging.Dlog.d
 import com.utilities.views.SlidingTabLayout
-import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created by slai47 on 3/5/2017.

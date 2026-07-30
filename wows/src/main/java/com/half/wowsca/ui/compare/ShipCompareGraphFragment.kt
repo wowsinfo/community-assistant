@@ -18,7 +18,6 @@ import com.half.wowsca.managers.InfoManager
 import com.half.wowsca.model.ShipInformation
 import com.half.wowsca.ui.CAFragment
 import com.half.wowsca.ui.adapter.ShipsCompareAdapter
-import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created by slai47 on 4/19/2017.

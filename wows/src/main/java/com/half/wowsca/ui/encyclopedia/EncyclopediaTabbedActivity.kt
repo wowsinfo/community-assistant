@@ -21,7 +21,6 @@ import com.half.wowsca.ui.adapter.pager.ShipopediaPager
 import com.half.wowsca.ui.compare.ShipCompareActivity
 import com.utilities.views.SlidingTabLayout
 import com.utilities.views.SwipeBackLayout
-import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created by slai4 on 10/31/2015.

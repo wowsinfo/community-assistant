@@ -8,7 +8,9 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.GridView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.R
 import com.half.wowsca.interfaces.ICaptain
@@ -21,7 +23,6 @@ import com.half.wowsca.model.ProgressEvent
 import com.half.wowsca.model.RefreshEvent
 import com.half.wowsca.ui.CAFragment
 import com.half.wowsca.ui.adapter.AchievementsAdapter
-import org.greenrobot.eventbus.Subscribe
 import java.util.Collections
 
 /**
@@ -48,13 +49,13 @@ class CaptainAchievementsFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        
         initView()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        
     }
 
     private fun initView() {
@@ -135,18 +136,15 @@ class CaptainAchievementsFragment : CAFragment() {
         t.start()
     }
 
-    @Subscribe
     fun onReceive(event: CaptainReceivedEvent?) {
         initView()
     }
 
-    @Subscribe
     fun onRefresh(event: RefreshEvent?) {
         refreshing(true)
         battleGrid!!.adapter = null
     }
 
-    @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout!!.isRefreshing = event.isRefreshing

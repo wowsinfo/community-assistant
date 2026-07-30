@@ -57,7 +57,6 @@ import com.half.wowsca.ui.viewcaptain.ViewCaptainActivity
 import com.utilities.Utils.hasInternetConnection
 import com.utilities.logging.Dlog.wtf
 import com.utilities.views.SwipeBackLayout
-import org.greenrobot.eventbus.Subscribe
 import java.util.Locale
 
 @AndroidEntryPoint

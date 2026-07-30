@@ -16,7 +16,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.half.wowsca.CAApp
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.isDarkTheme
 import com.half.wowsca.R
 import com.half.wowsca.interfaces.ICaptain
@@ -30,7 +32,6 @@ import com.half.wowsca.ui.CAFragment
 import com.half.wowsca.ui.adapter.ShipsAdapter
 import com.utilities.logging.Dlog.wtf
 import com.utilities.preferences.Prefs
-import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created by slai4 on 9/15/2015.
@@ -69,13 +70,13 @@ class CaptainShipsFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        
         initView()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        
     }
 
     private fun initView() {
@@ -229,12 +230,10 @@ class CaptainShipsFragment : CAFragment() {
         }
     }
 
-    @Subscribe
     fun onReceive(event: CaptainReceivedEvent?) {
         initView()
     }
 
-    @Subscribe
     fun onSortDone(event: SortingDoneEvent?) {
         sSorter!!.post(object : Runnable {
             override fun run() {
@@ -243,7 +242,6 @@ class CaptainShipsFragment : CAFragment() {
         })
     }
 
-    @Subscribe
     fun onRefresh(event: RefreshEvent?) {
         refreshing(true)
         adapter = null
@@ -252,7 +250,6 @@ class CaptainShipsFragment : CAFragment() {
         sSorter!!.adapter = null
     }
 
-    @Subscribe
     fun onScrollEvent(event: ScrollToEvent) {
         wtf("Onscroll", "pos = " + event.position)
         try {
@@ -262,7 +259,6 @@ class CaptainShipsFragment : CAFragment() {
         }
     }
 
-    @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout!!.isRefreshing = event.isRefreshing

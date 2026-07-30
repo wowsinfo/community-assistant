@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.infoManager
 import com.half.wowsca.R
 import com.half.wowsca.interfaces.ICaptain
@@ -21,7 +23,6 @@ import com.half.wowsca.ui.UIUtils.setShipImage
 import com.half.wowsca.ui.UIUtils.setUpCard
 import com.utilities.Utils.oneDepthDecimalFormatter
 import com.utilities.logging.Dlog.d
-import org.greenrobot.eventbus.Subscribe
 import java.text.DecimalFormat
 
 /**
@@ -333,7 +334,7 @@ class CaptainTopShipInfoFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        
         initView()
     }
 
@@ -623,15 +624,13 @@ class CaptainTopShipInfoFragment : CAFragment() {
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        
     }
 
-    @Subscribe
     fun onReceive(event: CaptainReceivedEvent?) {
         initView()
     }
 
-    @Subscribe
     fun onRefresh(event: RefreshEvent?) {
         refreshing(true)
 
@@ -712,7 +711,6 @@ class CaptainTopShipInfoFragment : CAFragment() {
         tv1!!.text = ""
     }
 
-    @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout!!.isRefreshing = event.isRefreshing

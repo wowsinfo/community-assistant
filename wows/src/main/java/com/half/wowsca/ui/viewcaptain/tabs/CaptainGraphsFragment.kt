@@ -17,7 +17,9 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.LargeValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getTextColor
 import com.half.wowsca.CAApp.Companion.getTheme
 import com.half.wowsca.CAApp.Companion.infoManager
@@ -33,7 +35,6 @@ import com.half.wowsca.model.ShipCompare
 import com.half.wowsca.model.encyclopedia.items.ShipInfo
 import com.half.wowsca.ui.CAFragment
 import com.utilities.logging.Dlog.d
-import org.greenrobot.eventbus.Subscribe
 import java.util.Collections
 
 /**
@@ -94,13 +95,13 @@ class CaptainGraphsFragment : CAFragment() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        
         initView()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        
     }
 
     private fun initView() {
@@ -737,12 +738,10 @@ class CaptainGraphsFragment : CAFragment() {
         xAxis.setDrawGridLines(true)
     }
 
-    @Subscribe
     fun onReceive(event: CaptainReceivedEvent?) {
         initView()
     }
 
-    @Subscribe
     fun onRefresh(event: RefreshEvent?) {
         refreshing(true)
         chartAverageExperienceClass!!.clear()
@@ -755,7 +754,6 @@ class CaptainGraphsFragment : CAFragment() {
         chartAverageSurvival!!.clear()
     }
 
-    @Subscribe
     fun onProgressEvent(event: ProgressEvent) {
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout!!.isRefreshing = event.isRefreshing

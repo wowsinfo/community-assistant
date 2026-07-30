@@ -36,7 +36,6 @@ import com.half.wowsca.ui.adapter.TwitchAdapter
 import com.utilities.logging.Dlog.wtf
 import com.utilities.preferences.Prefs
 import com.utilities.views.SwipeBackLayout
-import org.greenrobot.eventbus.Subscribe
 import java.util.Locale
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingQueue

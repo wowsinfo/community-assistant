@@ -26,7 +26,6 @@ import com.half.wowsca.model.ShipCompareEvent
 import com.half.wowsca.model.encyclopedia.items.ShipInfo
 import com.half.wowsca.ui.CAFragment
 import com.half.wowsca.ui.adapter.EncyclopediaAdapter
-import org.greenrobot.eventbus.Subscribe
 import java.util.Collections
 
 /**

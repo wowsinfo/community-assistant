@@ -44,7 +44,6 @@ import com.half.wowsca.model.enums.Server
 import com.half.wowsca.model.queries.InfoQuery
 import com.utilities.preferences.Prefs
 import com.utilities.views.SwipeBackLayout
-import org.greenrobot.eventbus.Subscribe
 import java.util.Locale
 
 @AndroidEntryPoint

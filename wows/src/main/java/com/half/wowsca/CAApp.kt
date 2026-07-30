@@ -15,7 +15,6 @@ import com.half.wowsca.ui.SettingActivity
 import com.utilities.logging.Dlog
 import com.utilities.logging.Dlog.d
 import com.utilities.preferences.Prefs
-import org.greenrobot.eventbus.EventBus
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -133,9 +132,7 @@ class CAApp : Application() {
             return ContextCompat.getColor(ctx!!, R.color.material_text_primary)
         }
 
-        @JvmStatic
-        val eventBus: EventBus
-            get() = EventBus.getDefault()
+        // eventBus removed — use AppEventBus instead
 
         @JvmStatic
         fun getServerType(ctx: Context?): Server {

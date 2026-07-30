@@ -15,7 +15,6 @@ import com.half.wowsca.model.encyclopedia.items.EquipmentInfo
 import com.half.wowsca.ui.CAFragment
 import com.half.wowsca.ui.adapter.UpgradesAdapter
 import com.half.wowsca.ui.encyclopedia.ShipProfileActivity
-import org.greenrobot.eventbus.Subscribe
 import java.text.DecimalFormat
 import java.util.Collections
 

@@ -11,7 +11,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.util.AppEventBus
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getSelectedId
 import com.half.wowsca.CAApp.Companion.getServerType
 import com.half.wowsca.CAApp.Companion.setSelectedId
@@ -47,7 +49,6 @@ import com.utilities.Utils.hasInternetConnection
 import com.utilities.logging.Dlog.wtf
 import com.utilities.preferences.Prefs
 import com.utilities.views.SwipeBackLayout
-import org.greenrobot.eventbus.Subscribe
 
 class ViewCaptainActivity : CABaseActivity(), ICaptain {
     private var id: Long = 0
@@ -86,14 +87,14 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
+        
         initView()
         supportFragmentManager.addOnBackStackChangedListener((backStackListener)!!)
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        
         supportFragmentManager.removeOnBackStackChangedListener((backStackListener)!!)
     }
 
@@ -134,7 +135,9 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
                 query.id = id
                 query.name = name
                 query.server = server
-                val task = GetCaptainTask()
+            val task = GetCaptainTask().apply {
+                    onResult = { result -> AppEventBus.post(result) }
+                }
                 task.ctx = applicationContext
                 task.execute(query)
             } else {
@@ -207,7 +210,7 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
                 deleteTemp(applicationContext)
             }
             FORCE_REFRESH = true
-            eventBus.post(RefreshEvent(false))
+            AppEventBus.post(RefreshEvent(false))
             initView()
         } else if (id == R.id.action_captains) {
             createCaptainListViewMenu(this, createCapIdStr(server, this.id))
@@ -228,7 +231,7 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
                 removeCaptain(applicationContext, createCapIdStr(server, this.id))
                 setSelectedId(applicationContext, null)
             }
-            eventBus.post(event)
+            AppEventBus.post(event)
         } else if (id == R.id.action_save) {
             val captains: Map<String?, Captain?>? = getCaptains(
                 applicationContext
@@ -252,7 +255,7 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                eventBus.post(e)
+                AppEventBus.post(e)
             } else {
                 Toast.makeText(applicationContext, R.string.crap_contact_me, Toast.LENGTH_SHORT)
                     .show()
@@ -270,7 +273,6 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
         return super.onOptionsItemSelected(item)
     }
 
-    @Subscribe
     fun onRefresh(event: RefreshEvent) {
         if (event.isFromSwipe) {
             if (fromSearch(applicationContext, (server)!!, id)) {
@@ -281,7 +283,6 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
         }
     }
 
-    @Subscribe
     fun onRecieveCaptain(result: CaptainResult?) {
         if (result != null) {
             mToolbar!!.post(Runnable {
@@ -300,7 +301,7 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
                             saveTempStoredCaptain(applicationContext, captain)
                         }
                         setTopTitle(captain)
-                        eventBus.post(CaptainReceivedEvent())
+                        AppEventBus.post(CaptainReceivedEvent())
                     } else {
                     }
                 } else {
@@ -324,7 +325,6 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
         return captain
     }
 
-    @Subscribe
     fun onAddRemove(event: AddRemoveEvent) {
         if (!event.isRemove) {
             createBookmarkingDialogIfNeeded(this, (event.captain)!!)
@@ -340,7 +340,6 @@ class ViewCaptainActivity : CABaseActivity(), ICaptain {
         invalidateOptionsMenu()
     }
 
-    @Subscribe
     fun showShip(ship: ShipClickedEvent?) {
         if (ship != null) {
             val shipFragment = ShipFragment()

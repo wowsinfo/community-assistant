@@ -14,7 +14,6 @@ import com.half.wowsca.model.CaptainSkillClickedEvent
 import com.half.wowsca.model.encyclopedia.items.CaptainSkill
 import com.half.wowsca.ui.CAFragment
 import com.half.wowsca.ui.adapter.CaptainSkillsAdapter
-import org.greenrobot.eventbus.Subscribe
 import java.util.Collections
 
 /**

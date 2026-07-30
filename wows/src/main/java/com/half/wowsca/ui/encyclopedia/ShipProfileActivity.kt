@@ -37,7 +37,6 @@ import com.utilities.Utils.defaultDecimalFormatter
 import com.utilities.Utils.oneDepthDecimalFormatter
 import com.utilities.logging.Dlog.wtf
 import com.utilities.views.SwipeBackLayout
-import org.greenrobot.eventbus.Subscribe
 import org.json.JSONObject
 import java.text.DecimalFormat
 import java.util.Collections

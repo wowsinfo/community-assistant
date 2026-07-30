@@ -17,7 +17,6 @@ import com.half.wowsca.model.FlagClickedEvent
 import com.half.wowsca.model.encyclopedia.items.ExteriorItem
 import com.half.wowsca.ui.CAFragment
 import com.half.wowsca.ui.adapter.FlagsAdapter
-import org.greenrobot.eventbus.Subscribe
 import java.util.Collections
 
 /**

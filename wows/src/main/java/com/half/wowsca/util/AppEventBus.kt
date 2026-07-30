@@ -1,8 +1,11 @@
 package com.half.wowsca.util
 
+import com.half.wowsca.model.AddRemoveEvent
+import com.half.wowsca.model.CaptainReceivedEvent
 import com.half.wowsca.model.CaptainSavedEvent
 import com.half.wowsca.model.ProgressEvent
 import com.half.wowsca.model.RefreshEvent
+import com.half.wowsca.model.ShipClickedEvent
 import com.half.wowsca.model.result.CaptainResult
 import com.half.wowsca.model.result.ShipResult
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -11,7 +14,6 @@ import kotlinx.coroutines.flow.asSharedFlow
 
 /**
  * Lightweight SharedFlow-based event bus to replace GreenRobot EventBus.
- * One SharedFlow per event type for type safety.
  */
 object AppEventBus {
     private val _refreshEvents = MutableSharedFlow<RefreshEvent>(extraBufferCapacity = 1)
@@ -32,10 +34,32 @@ object AppEventBus {
     private val _shipIdEvents = MutableSharedFlow<Long>(extraBufferCapacity = 1)
     val shipIdEvents: SharedFlow<Long> = _shipIdEvents.asSharedFlow()
 
-    fun post(event: RefreshEvent) { _refreshEvents.tryEmit(event) }
-    fun post(event: ProgressEvent) { _progressEvents.tryEmit(event) }
-    fun post(event: CaptainSavedEvent) { _captainSavedEvents.tryEmit(event) }
-    fun post(event: CaptainResult) { _captainResults.tryEmit(event) }
-    fun post(event: ShipResult) { _shipResults.tryEmit(event) }
+    private val _addRemoveEvents = MutableSharedFlow<AddRemoveEvent>(extraBufferCapacity = 1)
+    val addRemoveEvents: SharedFlow<AddRemoveEvent> = _addRemoveEvents.asSharedFlow()
+
+    private val _captainReceivedEvents = MutableSharedFlow<CaptainReceivedEvent>(extraBufferCapacity = 1)
+    val captainReceivedEvents: SharedFlow<CaptainReceivedEvent> = _captainReceivedEvents.asSharedFlow()
+
+    private val _shipClickedEvents = MutableSharedFlow<ShipClickedEvent>(extraBufferCapacity = 1)
+    val shipClickedEvents: SharedFlow<ShipClickedEvent> = _shipClickedEvents.asSharedFlow()
+
+    /**
+     * Generic post that routes to the correct SharedFlow based on type.
+     */
+    fun post(event: Any) {
+        when (event) {
+            is RefreshEvent -> _refreshEvents.tryEmit(event)
+            is ProgressEvent -> _progressEvents.tryEmit(event)
+            is CaptainSavedEvent -> _captainSavedEvents.tryEmit(event)
+            is CaptainResult -> _captainResults.tryEmit(event)
+            is ShipResult -> _shipResults.tryEmit(event)
+            is Long -> _shipIdEvents.tryEmit(event)
+            is AddRemoveEvent -> _addRemoveEvents.tryEmit(event)
+            is CaptainReceivedEvent -> _captainReceivedEvents.tryEmit(event)
+            is ShipClickedEvent -> _shipClickedEvents.tryEmit(event)
+            else -> { /* unhandled event type */ }
+        }
+    }
+
     fun postShipId(id: Long) { _shipIdEvents.tryEmit(id) }
 }
