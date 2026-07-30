@@ -84,7 +84,6 @@ class CompareActivity : CABaseActivity() {
         super.onResume()
         // register removed
         initView()
-        observeCaptainResults()
     }
 
     override fun onPause() {
@@ -119,13 +118,6 @@ class CompareActivity : CABaseActivity() {
         }
     }
 
-    private fun observeCaptainResults() {
-        lifecycleScope.launch {
-            AppEventBus.captainResults.collect { result ->
-                onCaptainResult(result)
-            }
-        }
-    }
 
     private fun onCaptainResult(result: CaptainResult?) {
         if (result != null) {

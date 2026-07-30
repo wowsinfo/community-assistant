@@ -65,7 +65,6 @@ class ShipCompareActivity : CABaseActivity() {
         super.onResume()
         // register removed
         initView()
-        observeAppEvents()
     }
 
     override fun onPause() {
@@ -126,18 +125,6 @@ class ShipCompareActivity : CABaseActivity() {
         searchShips(applicationContext)
     }
 
-    private fun observeAppEvents() {
-        lifecycleScope.launch {
-            AppEventBus.shipResults.collect { result ->
-                onShipRecieveInfo(result)
-            }
-        }
-        lifecycleScope.launch {
-            AppEventBus.progressEvents.collect { event ->
-                onRefresh(event)
-            }
-        }
-    }
 
     private fun onShipRecieveInfo(result: ShipResult) {
         d("onShipReceiveInfo", "result = $result")

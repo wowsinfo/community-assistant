@@ -178,7 +178,6 @@ class SettingActivity : CABaseActivity() {
     override fun onResume() {
         super.onResume()
         initView()
-        observeEncyclopedia()
     }
 
     override fun onPause() {
@@ -594,21 +593,6 @@ class SettingActivity : CABaseActivity() {
     }
 
 
-    private fun observeEncyclopedia() {
-        lifecycleScope.launch {
-            encyclopediaViewModel.isLoaded.collect { loaded ->
-                if (loaded) {
-                    aRefreshInfo?.post {
-                        Toast.makeText(
-                            applicationContext,
-                            R.string.purge_refresh_done,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
-        }
-    }
 
     companion object {
         const val SHOW_COMPARE: String = "showCompare"

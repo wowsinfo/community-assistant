@@ -104,7 +104,6 @@ class SearchActivity : CABaseActivity() {
                 )
             }
         }
-        observeSearchState()
     }
 
     private fun bindView() { /* replaced by Compose */ }
@@ -402,38 +401,7 @@ class SearchActivity : CABaseActivity() {
         }
     }
 
-    private fun observeSearchState() {
-        lifecycleScope.launch {
-            viewModel.uiState.collect { state ->
-                when (state) {
-                    is SearchUiState.Idle -> { /* no-op */ }
-                    is SearchUiState.Loading -> {
-                        progress!!.visibility = View.VISIBLE
-                        listView!!.adapter = null
-                        tvError!!.visibility = View.GONE
-                    }
-                    is SearchUiState.Success -> {
-                        progress!!.visibility = View.GONE
-                        searching = false
-                        val adapter = SearchAdapter(
-                            applicationContext,
-                            R.layout.list_search,
-                            state.results,
-                            onCaptainChanged = { captain, isRemove -> handleCaptainChanged(captain, isRemove) }
-                        )
-                        listView!!.adapter = adapter
-                        tvError!!.visibility = View.GONE
-                        listView!!.visibility = View.VISIBLE
-                    }
-                    is SearchUiState.Error -> {
-                        progress!!.visibility = View.GONE
-                        searching = false
-                        tvError!!.visibility = View.VISIBLE
-                    }
-                }
-            }
-        }
-    }
+
 
     private fun handleCaptainChanged(captain: Captain, isRemove: Boolean) {
         if (!isRemove) {

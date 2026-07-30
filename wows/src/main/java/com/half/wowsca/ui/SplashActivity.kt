@@ -79,7 +79,6 @@ class SplashActivity : CABaseActivity() {
     override fun onResume() {
         super.onResume()
         initView()
-        observeEncyclopedia()
     }
 
     override fun onPause() {

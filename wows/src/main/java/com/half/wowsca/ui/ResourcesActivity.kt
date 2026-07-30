@@ -183,8 +183,6 @@ class ResourcesActivity : CABaseActivity() {
     override fun onResume() {
         super.onResume()
         initView()
-        observeServerInfo()
-        observeTwitchInfo()
     }
 
     override fun onPause() {
@@ -452,32 +450,6 @@ class ResourcesActivity : CABaseActivity() {
         }
     }
 
-    private fun observeTwitchInfo() {
-        lifecycleScope.launch {
-            twitchViewModel.uiState.collect { state ->
-                when (state) {
-                    is TwitchUiState.Idle -> {}
-                    is TwitchUiState.Loading -> {
-                        twitchProgress!!.visibility = View.VISIBLE
-                    }
-                    is TwitchUiState.Success -> {
-                        twitchProgress!!.visibility = View.GONE
-                        streamers = state.streamers as MutableList<TwitchObj>
-                        if (adapter == null) {
-                            setUpTwitch()
-                        } else {
-                            adapter!!.twitchObjs = streamers
-                            adapter!!.sort()
-                            adapter!!.notifyDataSetChanged()
-                        }
-                    }
-                    is TwitchUiState.Error -> {
-                        twitchProgress!!.visibility = View.GONE
-                    }
-                }
-            }
-        }
-    }
 
     
     fun urlSent(url: String) {
