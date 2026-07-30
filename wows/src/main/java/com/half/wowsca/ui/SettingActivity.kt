@@ -16,7 +16,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
-import com.half.wowsca.CAApp.Companion.eventBus
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.half.wowsca.ui.encyclopedia.EncyclopediaViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import com.half.wowsca.CAApp.Companion.getAppLanguage
 import com.half.wowsca.CAApp.Companion.getServerLanguage
 import com.half.wowsca.CAApp.Companion.getServerType
@@ -30,7 +34,6 @@ import com.half.wowsca.CAApp.Companion.setServerLanguage
 import com.half.wowsca.CAApp.Companion.setServerType
 import com.half.wowsca.R
 import com.half.wowsca.alerts.Alert.createGeneralAlert
-import com.half.wowsca.backend.GetNeededInfoTask
 import com.half.wowsca.managers.InfoManager.Companion.purge
 import com.half.wowsca.managers.StorageManager.clearDownloadedPlayers
 import com.half.wowsca.managers.StorageManager.getShipsStatsMax
@@ -39,13 +42,15 @@ import com.half.wowsca.managers.StorageManager.setShipsStatsMax
 import com.half.wowsca.managers.StorageManager.setStatsMax
 import com.half.wowsca.model.enums.Server
 import com.half.wowsca.model.queries.InfoQuery
-import com.half.wowsca.model.result.InfoResult
 import com.utilities.preferences.Prefs
 import com.utilities.views.SwipeBackLayout
 import org.greenrobot.eventbus.Subscribe
 import java.util.Locale
 
+@AndroidEntryPoint
 class SettingActivity : CABaseActivity() {
+
+    private val encyclopediaViewModel: EncyclopediaViewModel by viewModels()
     private val languages = arrayOf(
         "en",
         "ru",
@@ -171,13 +176,13 @@ class SettingActivity : CABaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        eventBus.register(this)
         initView()
+        observeEncyclopedia()
     }
 
     override fun onPause() {
         super.onPause()
-        eventBus.unregister(this)
+        // register removed
     }
 
     private fun initView() {
@@ -381,9 +386,7 @@ class SettingActivity : CABaseActivity() {
             purge(v.context)
             val query = InfoQuery()
             query.server = getServerType(applicationContext)
-            val task = GetNeededInfoTask()
-            task.ctx = applicationContext
-            task.execute(query)
+            encyclopediaViewModel.loadEncyclopedia(applicationContext, query.server)
             Toast.makeText(applicationContext, R.string.purging_refresh, Toast.LENGTH_SHORT).show()
         }
     }
@@ -590,14 +593,19 @@ class SettingActivity : CABaseActivity() {
     }
 
 
-    @Subscribe
-    fun onInfoRecieved(result: InfoResult?) {
-        aRefreshInfo!!.post {
-            Toast.makeText(
-                applicationContext,
-                R.string.purge_refresh_done,
-                Toast.LENGTH_SHORT
-            ).show()
+    private fun observeEncyclopedia() {
+        lifecycleScope.launch {
+            encyclopediaViewModel.isLoaded.collect { loaded ->
+                if (loaded) {
+                    aRefreshInfo?.post {
+                        Toast.makeText(
+                            applicationContext,
+                            R.string.purge_refresh_done,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
         }
     }
 
